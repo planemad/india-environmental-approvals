@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>S KUMAR AS PER PLAN.kml</name>
+	<StyleMap id="inline141">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline99</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline98</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="inline98">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>3.1</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline99">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>3.1</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Placemark>
+		<name>S KUMAR AS PER PLAN</name>
+		<styleUrl>#inline141</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						73.93555850642873,15.72151065064249,0 73.9350051669435,15.72150848122477,0 73.93496617426194,15.72161164147112,0 73.93530948442789,15.72255550193182,0 73.93512801818531,15.72261267991126,0 73.93480111766117,15.72164329206606,0 73.93460743167458,15.72143266507078,0 73.93466742873217,15.72105394102428,0 73.93555444656283,15.72086984138695,0 73.93636699776921,15.72136214980291,0 73.93683895837863,15.72161266010643,0 73.93863645611984,15.72177182214108,0 73.93823831542836,15.7221337726823,0 73.93794186030081,15.72230804701292,0 73.93761918692957,15.72287166196142,0 73.93679068028887,15.72303934904988,0 73.93555850642873,15.72151065064249,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

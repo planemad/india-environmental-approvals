@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Marli tirwal</name>
+    <description/>
+    <Style id="icon-1500-FFEA00-nodesc-normal">
+      <IconStyle>
+        <color>ff00eaff</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1500-FFEA00-nodesc-highlight">
+      <IconStyle>
+        <color>ff00eaff</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1500-FFEA00-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1500-FFEA00-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1500-FFEA00-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1899-0288D1-nodesc-normal">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-0288D1-nodesc-highlight">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1899-0288D1-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-0288D1-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-0288D1-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="line-3949AB-5650-nodesc-normal">
+      <LineStyle>
+        <color>ffab4939</color>
+        <width>5.65</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="line-3949AB-5650-nodesc-highlight">
+      <LineStyle>
+        <color>ffab4939</color>
+        <width>8.475</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="line-3949AB-5650-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-3949AB-5650-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-3949AB-5650-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="line-3949AB-5844-nodesc-normal">
+      <LineStyle>
+        <color>ffab4939</color>
+        <width>5.844</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="line-3949AB-5844-nodesc-highlight">
+      <LineStyle>
+        <color>ffab4939</color>
+        <width>8.766</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="line-3949AB-5844-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-3949AB-5844-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-3949AB-5844-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="line-3949AB-6813-nodesc-normal">
+      <LineStyle>
+        <color>ffab4939</color>
+        <width>6.813</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="line-3949AB-6813-nodesc-highlight">
+      <LineStyle>
+        <color>ffab4939</color>
+        <width>10.2195</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="line-3949AB-6813-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-3949AB-6813-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-3949AB-6813-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="line-FF5252-5844-nodesc-normal">
+      <LineStyle>
+        <color>ff5252ff</color>
+        <width>5.844</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="line-FF5252-5844-nodesc-highlight">
+      <LineStyle>
+        <color>ff5252ff</color>
+        <width>8.766</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="line-FF5252-5844-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-FF5252-5844-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-FF5252-5844-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="line-FF5252-6038-nodesc-normal">
+      <LineStyle>
+        <color>ff5252ff</color>
+        <width>6.038</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="line-FF5252-6038-nodesc-highlight">
+      <LineStyle>
+        <color>ff5252ff</color>
+        <width>9.057</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="line-FF5252-6038-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-FF5252-6038-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-FF5252-6038-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Folder>
+      <name>Untitled layer</name>
+      <Placemark>
+        <name>tirwal DTC</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            74.1426019,14.9567931,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>marli DTC</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            74.1483179,14.9387703,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Proposed LTAG RMU</name>
+        <styleUrl>#icon-1500-FFEA00-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            74.1324155,14.9713789,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Line 4</name>
+        <styleUrl>#line-3949AB-5844-nodesc</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            74.1383394,14.9777303,0
+            74.1383394,14.9771499,0
+            74.1384466,14.9760202,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>2 runs 12 sq mm cable</name>
+        <styleUrl>#line-3949AB-6813-nodesc</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            74.1384466,14.9760202,0
+            74.1366603,14.9743048,0
+            74.1324331,14.9715997,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>2 runs 12 sq mm cable</name>
+        <styleUrl>#line-3949AB-5650-nodesc</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            74.1384466,14.9760202,0
+            74.1387324,14.975078,0
+            74.1392044,14.9744147,0
+            74.1400842,14.9729222,0
+            74.1406206,14.9713675,0
+            74.1405348,14.9710151,0
+            74.1388826,14.9690458,0
+            74.1385607,14.9684654,0
+            74.139183,14.9661022,0
+            74.1392044,14.9655632,0
+            74.1388396,14.9650242,0
+            74.1385178,14.9648584,0
+            74.1383032,14.9643402,0
+            74.1380886,14.9634073,0
+            74.1367368,14.9628891,0
+            74.1366081,14.9623915,0
+            74.1371659,14.9616452,0
+            74.1381101,14.9614794,0
+            74.1384105,14.9604843,0
+            74.1392688,14.9600697,0
+            74.1426591,14.957665,0
+            74.1424875,14.9563382,0
+            74.1420583,14.9556334,0
+            74.1423158,14.9547627,0
+            74.142187,14.9536432,0
+            74.1417579,14.9531871,0
+            74.1420154,14.9519433,0
+            74.1421441,14.9504506,0
+            74.1421012,14.9486263,0
+            74.1417579,14.9472994,0
+            74.1423158,14.946097,0
+            74.1438178,14.9449775,0
+            74.1453306,14.9441586,0
+            74.1460923,14.9437128,0
+            74.1462104,14.9434848,0
+            74.1464464,14.9426866,0
+            74.1467897,14.9423756,0
+            74.1470687,14.9422512,0
+            74.1472618,14.9421372,0
+            74.1476695,14.9417433,0
+            74.1478733,14.9398152,0
+            74.1477768,14.9395457,0
+            74.1482488,14.9388097,0
+            74.1483239,14.9388615,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Marli Tirwal RMU1 </name>
+        <styleUrl>#icon-1500-FFEA00-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            74.1380424,14.9779528,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Marli Tirwal RMU2</name>
+        <styleUrl>#icon-1500-FFEA00-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            74.1389008,14.9776626,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>1 run Khotigao feeder 300sq mm Cable</name>
+        <styleUrl>#line-FF5252-5844-nodesc</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            74.1326351,14.978782,0
+            74.1346092,14.9786161,0
+            74.1355104,14.9780357,0
+            74.1372271,14.9782845,0
+            74.1376991,14.9780357,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>1 run Khotigao feeder 300sq mm cable</name>
+        <styleUrl>#line-FF5252-6038-nodesc</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            74.1376991,14.9780357,0
+            74.1380424,14.9779528,0
+            74.1389008,14.9776626,0
+            74.1393299,14.9774029,0
+            74.1398449,14.9774547,0
+            74.140553,14.9777657,0
+            74.1407354,14.9779315,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Untitled layer</name>
+    </Folder>
+  </Document>
+</kml>

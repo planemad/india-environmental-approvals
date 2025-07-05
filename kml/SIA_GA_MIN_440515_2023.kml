@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Block V- Advalpale-Thivim Mineral Block</name>
+	<open>1</open>
+	<StyleMap id="area1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#area10</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#area11</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="area10">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>5</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>bf000000</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="area11">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>5</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>bf000000</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="msn_placemark_circle">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_placemark_circle</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_placemark_circle_highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="point1">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_square.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="point10">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_square_highlight.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<StyleMap id="point11">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#point1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#point10</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_placemark_circle_highlight">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle_highlight.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="sn_placemark_circle">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Placemark>
+		<name>Block V- Advalpale-Thivim Mineral Block</name>
+		<LookAt>
+			<longitude>73.88298072199166</longitude>
+			<latitude>15.64483555767666</latitude>
+			<altitude>0</altitude>
+			<heading>0.0007218831771740441</heading>
+			<tilt>0</tilt>
+			<range>1268.629588565118</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<styleUrl>#msn_placemark_circle</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>73.88280929264714,15.64506549380977,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>Block Boundary</name>
+		<open>1</open>
+		<styleUrl>#area1</styleUrl>
+		<Polygon>
+			<extrude>1</extrude>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						73.88779058599999,15.645044153,0 73.880269036,15.648356866,0 73.880303897,15.647959416,0 73.88025831900001,15.646063336,0 73.88024128799999,15.645559709,0 73.88082844199999,15.645251327,0 73.88138564099999,15.644888625,0 73.882774467,15.643899711,0 73.885323966,15.640124247,0 73.886556029,15.639428135,0 73.88695013,15.641666357,0 73.88779058599999,15.645044153,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Folder>
+		<name>Pillars</name>
+		<Placemark>
+			<name>B.P 2</name>
+			<styleUrl>#point11</styleUrl>
+			<Point>
+				<coordinates>73.880269036,15.648356866,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>B.P 1</name>
+			<styleUrl>#point11</styleUrl>
+			<Point>
+				<coordinates>73.88779058599999,15.645044153,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>B.P 11</name>
+			<styleUrl>#point11</styleUrl>
+			<Point>
+				<coordinates>73.88695013,15.641666357,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>B.P 10</name>
+			<styleUrl>#point11</styleUrl>
+			<Point>
+				<coordinates>73.886556029,15.639428135,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>B.P 9</name>
+			<styleUrl>#point11</styleUrl>
+			<Point>
+				<coordinates>73.885323966,15.640124247,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>B.P 8</name>
+			<styleUrl>#point11</styleUrl>
+			<Point>
+				<coordinates>73.882774467,15.643899711,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>B.P 5</name>
+			<styleUrl>#point11</styleUrl>
+			<Point>
+				<coordinates>73.88024128799999,15.645559709,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>B.P 3</name>
+			<styleUrl>#point11</styleUrl>
+			<Point>
+				<coordinates>73.880303897,15.647959416,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>B.P 4</name>
+			<styleUrl>#point11</styleUrl>
+			<Point>
+				<coordinates>73.88025831900001,15.646063336,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>B.P 6</name>
+			<styleUrl>#point11</styleUrl>
+			<Point>
+				<coordinates>73.88082844199999,15.645251327,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>B.P 7</name>
+			<styleUrl>#point11</styleUrl>
+			<Point>
+				<coordinates>73.88138564099999,15.644888625,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

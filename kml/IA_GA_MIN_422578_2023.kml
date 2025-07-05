@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Block IV - Kalay Mineral Block</name>
+	<open>1</open>
+	<StyleMap id="area1006">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#area1125</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#area1314</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="area1125">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>bf000000</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="area1314">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>bf000000</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Folder>
+		<name>Kalay Mineral Block</name>
+		<open>1</open>
+		<Placemark>
+			<name>Mineral Block Boundary</name>
+			<styleUrl>#area1006</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							74.15827800540001,15.3007277061,0 74.1486828709,15.3024437306,0 74.15092962609999,15.2944955386,0 74.1523876302,15.2919401991,0 74.15365411569999,15.283781243,0 74.1614713633,15.2867998303,0 74.162453684,15.2869499886,0 74.1625257215,15.2869793327,0 74.1624405442,15.2871291195,0 74.16226377789999,15.2877518743,0 74.1622190244,15.2880059194,0 74.1613353436,15.2886505257,0 74.1601380816,15.2898137577,0 74.15928698259999,15.2907693406,0 74.1586896132,15.2918207336,0 74.1580652352,15.2933486373,0 74.1578523952,15.2946969608,0 74.1578499858,15.2957170236,0 74.1581144085,15.2969919455,0 74.15849639050001,15.2984491314,0 74.1587195856,15.2995222985,0 74.15827800540001,15.3007277061,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>lease boundary rosario.kml</name>
+	<Style id="inline292">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline81">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="inline9">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline292</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline81</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark>
+		<name>lease boundary rosario</name>
+		<styleUrl>#inline9</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						74.13635985575544,15.29372522943538,0 74.13657277072686,15.29416130528878,0 74.13689719330512,15.29528688266674,0 74.13683847389981,15.29531476409228,0 74.13678923934964,15.29531788754458,0 74.13665243520887,15.2953189949062,0 74.13673402141832,15.29545086848164,0 74.13680172303584,15.29549102577707,0 74.13676826131709,15.29552832670293,0 74.13684371863042,15.29556935944189,0 74.13687048404256,15.29564491604847,0 74.13626132104191,15.2956092545523,0 74.13584594248334,15.29389409420682,0 74.13605141547276,15.29337534155063,0 74.13635985575544,15.29372522943538,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

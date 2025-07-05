@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>SITE BOUNDARY CLASSIC.kml</name>
+	<Style id="inline1201">
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="inline2412">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline282</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline1201</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="inline282">
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Placemark>
+		<name>SITE BOUNDARY CLASSIC</name>
+		<styleUrl>#inline2412</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						73.81185335167756,15.58356639307542,0 73.81200649405243,15.58339375295921,0 73.81182912843163,15.58326534473884,0 73.81190094802842,15.5831481867553,0 73.81199838338756,15.58304742071327,0 73.81179399281278,15.58289385709575,0 73.81183416703738,15.58283438024575,0 73.81203277831958,15.58297741446743,0 73.81234417598492,15.582612513533,0 73.81254398479463,15.58302215186806,0 73.81253682535628,15.58303716471421,0 73.81273998823059,15.58322121426506,0 73.81274979422427,15.5832613923033,0 73.81272699691316,15.58328294150761,0 73.81271848205046,15.58332504676017,0 73.81229792019587,15.58370453847337,0 73.81221721727854,15.58365072129194,0 73.81204453398368,15.58386257484849,0 73.81195368317081,15.58395262246649,0 73.81174401179645,15.58378978509088,0 73.81190509550711,15.58360958148575,0 73.81185335167756,15.58356639307542,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

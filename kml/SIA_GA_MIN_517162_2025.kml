@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>RAJ METAL LEASE BOUNDARY.kmz</name>
+	<Style id="inline01">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline100">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="inline385">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline01</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline100</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark>
+		<name>RAJ METAL LEASE BOUNDARY</name>
+		<styleUrl>#inline385</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						73.91945923322733,15.68540692680884,0 73.91948102708285,15.68458685388626,0 73.92020335066029,15.68370165937469,0 73.92221568933454,15.68298788335656,0 73.92251919994247,15.68345724886629,0 73.92310303862213,15.6842561401575,0 73.92233559296143,15.68454112863752,0 73.92228081035964,15.68444712436532,0 73.92147819047722,15.68473389760744,0 73.92141220045653,15.68457307319486,0 73.92095260417703,15.68475025047088,0 73.92085322768374,15.68457030723306,0 73.92001176416986,15.68488164900869,0 73.92012213908701,15.68517698732437,0 73.91945923322733,15.68540692680884,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

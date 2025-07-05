@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Sameer Gobre KML.kml</name>
+	<Style id="inline">
+		<LineStyle>
+			<color>ffffff55</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline0">
+		<LineStyle>
+			<color>ffffff55</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="inline1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark>
+		<name>Polygon Measure</name>
+		<styleUrl>#inline1</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						74.05212988561948,15.49472965950769,0 74.05238275141448,15.49487847398121,0 74.05279193405968,15.49514279541697,0 74.05241193173624,15.49555661578474,0 74.05219949938331,15.4954754539288,0 74.05156331369676,15.49520493573022,0 74.0513441314296,15.49513497089564,0 74.05119395516407,15.49477454399474,0 74.0510630929447,15.4946756431972,0 74.05096923745093,15.49479000796673,0 74.05072490647999,15.49460503468338,0 74.05078530653086,15.49450650061799,0 74.05112069885368,15.49415816617912,0 74.05212988561948,15.49472965950769,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

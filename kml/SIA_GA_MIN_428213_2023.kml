@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Mining_Lease_Area.kml</name>
+	<Schema name="Mining_Lease_Area" id="S_Mining_Lease_Area_DS">
+		<SimpleField type="double" name="SHAPE_Area"><displayName>&lt;b&gt;SHAPE_Area&lt;/b&gt;</displayName>
+</SimpleField>
+		<SimpleField type="string" name="Text"><displayName>&lt;b&gt;Text&lt;/b&gt;</displayName>
+</SimpleField>
+	</Schema>
+	<Style id="falseColor16">
+		<BalloonStyle>
+			<text><![CDATA[<table border="0">
+  <tr><td><b>SHAPE_Area</b></td><td>$[Mining_Lease_Area/SHAPE_Area]</td></tr>
+  <tr><td><b>Text</b></td><td>$[Mining_Lease_Area/Text]</td></tr>
+</table>]]></text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>1.8</width>
+		</LineStyle>
+		<PolyStyle>
+			<colorMode>random</colorMode>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="falseColor3">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#falseColor35</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#falseColor16</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="falseColor35">
+		<BalloonStyle>
+			<text><![CDATA[<table border="0">
+  <tr><td><b>SHAPE_Area</b></td><td>$[Mining_Lease_Area/SHAPE_Area]</td></tr>
+  <tr><td><b>Text</b></td><td>$[Mining_Lease_Area/Text]</td></tr>
+</table>]]></text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>1.8</width>
+		</LineStyle>
+		<PolyStyle>
+			<colorMode>random</colorMode>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Folder id="layer 0">
+		<name>Mining_Lease_Area</name>
+		<Placemark>
+			<name>Mining Lease Area</name>
+			<styleUrl>#falseColor3</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#S_Mining_Lease_Area_DS">
+					<SimpleData name="SHAPE_Area">171.246</SimpleData>
+					<SimpleData name="Text">Mining Lease Area</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							73.90188194444453,15.59689361111104,0 73.90043944444456,15.59314305555568,0 73.9100111111111,15.5889536111112,0 73.91389277777779,15.59497416666657,0 73.90841555555566,15.59772249999997,0 73.90969611111113,15.59928027777782,0 73.9018122222222,15.60483916666682,0 73.8947050000001,15.60600583333338,0 73.89446361111111,15.60397500000004,0 73.90188194444453,15.59689361111104,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

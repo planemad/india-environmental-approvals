@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Plot Boundary Goldendunes Infratech Pvt.Ltd.kml</name>
+	<Style id="inline18">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline34">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="inline7">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline34</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline18</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark>
+		<name>Plot Boundary GD</name>
+		<styleUrl>#inline7</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						73.82580907313098,15.60765854198462,0 73.8257973474235,15.60767440632958,0 73.82586292267582,15.60783819802324,0 73.82583598442525,15.60785233782101,0 73.82585265905843,15.60788022094362,0 73.82596678196987,15.60814450407387,0 73.82589693592713,15.60817026398889,0 73.82582815458024,15.60802770867518,0 73.82568487720991,15.60772947638396,0 73.82545936825834,15.60727575002814,0 73.82527737270738,15.60690958222068,0 73.82538197021223,15.60682980152176,0 73.82541290209403,15.60689058893158,0 73.82547303506783,15.6070329815182,0 73.8258772235514,15.60696105568799,0 73.82618436678777,15.60692444678893,0 73.82618989076974,15.60710045213573,0 73.82626105481523,15.60709223267047,0 73.82631341002728,15.60756558625295,0 73.826064019885,15.60761587667873,0 73.82580907313098,15.60765854198462,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

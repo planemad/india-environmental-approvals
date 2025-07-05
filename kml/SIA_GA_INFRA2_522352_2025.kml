@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>CSIR_NIO.kml</name>
+	<Style id="inline">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline0">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="inline1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark>
+		<name>Polygon Measure</name>
+		<styleUrl>#inline1</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						73.80079742916371,15.45621627244135,0 73.80054755623642,15.45625353459115,0 73.80029057052825,15.45599394838061,0 73.80010735977864,15.45570227745156,0 73.79998223986466,15.45573298611377,0 73.79987956492913,15.45521368828163,0 73.79939487989382,15.45532628529661,0 73.7991793814155,15.45427801182183,0 73.80120905823532,15.45405248612023,0 73.80148592399476,15.45408414621625,0 73.80176646388331,15.4541930412757,0 73.80210071316441,15.45419351936096,0 73.80229655992632,15.45406142123177,0 73.80266418780933,15.4538234747336,0 73.80296325629347,15.454301693844,0 73.80311143044625,15.45454078987025,0 73.80326730087104,15.45480213398708,0 73.8031882140361,15.45523386594706,0 73.80303099504593,15.45592677777052,0 73.80299915047351,15.45622817650027,0 73.80322329914438,15.45675943012635,0 73.80336643439125,15.45715298787995,0 73.80278689559643,15.45721652093701,0 73.80120986176289,15.457512407836,0 73.80079742916371,15.45621627244135,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10201"></atom:link>
+	</Placemark>
+</Document>
+</kml>

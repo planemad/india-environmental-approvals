@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Golden Globe morjim 1.kml</name>
+	<Style id="inline2001">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline58">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="inline911">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline58</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline2001</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark>
+		<name>Golden Globe morjim</name>
+		<styleUrl>#inline911</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						73.73652815805276,15.62197255055826,0 73.73669302634144,15.62183697744045,0 73.73677318939883,15.62169450192019,0 73.73679695453323,15.62154235789108,0 73.73686810159366,15.62138859531329,0 73.73711327655865,15.62156171262706,0 73.73716196977267,15.62160636149964,0 73.73722815324193,15.62165442421147,0 73.73734393526416,15.62171759713795,0 73.73738825648846,15.62174668283687,0 73.73744451669424,15.62177894925172,0 73.73749999716293,15.62182938543619,0 73.73737282327379,15.62201627120747,0 73.73713552268741,15.62234760242738,0 73.73647990424691,15.6220637069034,0 73.73652815805276,15.62197255055826,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

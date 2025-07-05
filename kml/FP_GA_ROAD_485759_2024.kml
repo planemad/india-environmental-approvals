@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Untitled</name>
+	<gx:CascadingStyle kml:id="__managed_style_20A1F754ED31B19B03D0">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.5</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_1AC8442C3231B19B03D0">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_08270A1E2331B19B03D0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_1AC8442C3231B19B03D0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_20A1F754ED31B19B03D0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_2411B8404B31B19832A2">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_1A6E19EF7431B19832A2">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0704D6254431B19832A2">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_1A6E19EF7431B19832A2</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_2411B8404B31B19832A2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark id="01A7BF48D731B198329F">
+		<name>Untitled placemark</name>
+		<LookAt>
+			<longitude>74.10373165128064</longitude>
+			<latitude>15.08187765387584</latitude>
+			<altitude>232.4887273034531</altitude>
+			<heading>359.1500656003622</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>1801.009424785443</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0704D6254431B19832A2</styleUrl>
+		<Point>
+			<coordinates>74.09806483703613,15.08278440426865,169.8870230686775</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="06452961E931B1988152">
+		<name>Untitled placemark</name>
+		<LookAt>
+			<longitude>74.10373165128064</longitude>
+			<latitude>15.08187765387584</latitude>
+			<altitude>232.4887273034531</altitude>
+			<heading>359.1500656003622</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>1801.009424785443</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0704D6254431B19832A2</styleUrl>
+		<Point>
+			<coordinates>74.10405253217461,15.0812022192318,238.9846461977276</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0F5A16721F31B19AF199">
+		<name>Untitled path</name>
+		<LookAt>
+			<longitude>74.10373165110593</longitude>
+			<latitude>15.08187765387584</latitude>
+			<altitude>232.4887273020385</altitude>
+			<heading>359.150065594633</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>1801.009424785443</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_08270A1E2331B19B03D0</styleUrl>
+		<LineString>
+			<coordinates>
+				74.09795543424757,15.08303579820442,0 74.10411192373722,15.08134420882706,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+</Document>
+</kml>

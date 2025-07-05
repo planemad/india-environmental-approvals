@@ -1,29 +1,88 @@
 import os
 import json
 import polars as pl
+import sys
+import xml.etree.ElementTree as ET
 from typing import Dict, Any, Union
 
-# Directory path
-directory = "raw/caf"
+def get_directory_path(state: str = None) -> str:
+    """Get the appropriate directory path based on state parameter."""
+    if state:
+        return f"raw/caf_{state.lower()}"
+    return "raw/caf"
+
+# Get state parameter from command line arguments
+state_param = sys.argv[1] if len(sys.argv) > 1 else None
+directory = get_directory_path(state_param)
+
+print(f"Processing data from directory: {directory}")
+
+if not os.path.exists(directory):
+    print(f"Error: Directory {directory} does not exist. Please run initialize.sh and fetch.sh first.")
+    sys.exit(1)
 
 def recursive_find_json(directory: str) -> list[str]:
     """Recursively finds JSON files in the given directory."""
     return [os.path.join(root, file) for root, _, files in os.walk(directory) for file in files if file.endswith('.json')]
 
+def parse_xml_content(xml_string: str) -> Dict[str, Any]:
+    """Parse XML content and extract fields."""
+    try:
+        root = ET.fromstring(xml_string)
+        result = {}
+        
+        # Extract direct XML elements
+        xml_fields = {
+            'nameOfUserAgency': 'Organization Name',
+            'state': 'State', 
+            'proposalNo': 'Proposal Number',
+            'projectName': 'Project Name',
+            'category': 'Project Category (Code)',
+            'proposalStatus': 'Proposal Status',
+            'app_updated_on': 'Application Updated On'
+        }
+        
+        for xml_tag, field_name in xml_fields.items():
+            element = root.find(xml_tag)
+            if element is not None and element.text:
+                result[field_name] = element.text.strip()
+        
+        # Parse other_property JSON if present
+        other_property = root.find('other_property')
+        if other_property is not None and other_property.text:
+            try:
+                properties = json.loads(other_property.text)
+                for prop in properties:
+                    if prop.get('label') == 'Activity':
+                        result['Project Category'] = prop.get('value', '')
+                    elif prop.get('label') == 'Sector':
+                        result['Sector'] = prop.get('value', '')
+            except json.JSONDecodeError:
+                pass
+        
+        return result
+    except ET.ParseError:
+        return {}
+
 def parse_json(file_path: str) -> Dict[str, Any]:
     """Parses a JSON file and extracts specified keys."""
     try:
         with open(file_path, 'r') as f:
-            data = json.load(f)
+            content = f.read().strip()
         
-        result = extract_values(data)
+        # Try to parse as JSON first
+        try:
+            data = json.loads(content)
+            result = extract_values(data)
+        except json.JSONDecodeError:
+            # If JSON parsing fails, try XML parsing
+            result = parse_xml_content(content)
+        
         proposal_id = file_path.split('/')[-1].strip('.json')
         result['proposal_url'] = f"https://parivesh.nic.in/newupgrade/#/report/ec?proposalId={proposal_id}"
         
         return result
     
-    except json.JSONDecodeError:
-        print(f"Error decoding JSON in {file_path}")
     except Exception as e:
         print(f"Error processing {file_path}: {str(e)}")
     
@@ -46,6 +105,33 @@ def safe_get(d: Union[Dict, list], *keys) -> Any:
             return None
     return d
 
+def extract_kml_urls(data: Dict[str, Any]) -> list[str]:
+    """Extract KML URLs from the data"""
+    kml_urls = []
+    
+    # Navigate to cafKML array
+    caf_kml_list = safe_get(data, 'data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafKML')
+    if caf_kml_list and isinstance(caf_kml_list, list):
+        for caf_kml_item in caf_kml_list:
+            if isinstance(caf_kml_item, dict) and 'caf_kml' in caf_kml_item:
+                caf_kml = caf_kml_item['caf_kml']
+                if isinstance(caf_kml, dict) and 'document_name' in caf_kml:
+                    document_name = caf_kml['document_name']
+                    if document_name and document_name.endswith('.kml'):
+                        # Extract required fields for the URL
+                        doc_mapping_id = caf_kml.get('document_mapping_id')
+                        ref_id = caf_kml.get('ref_id')
+                        ref_type = caf_kml.get('type')
+                        uuid = caf_kml.get('uuid')
+                        version = caf_kml.get('version')
+                        
+                        # Construct the KML URL with the correct format
+                        if all([doc_mapping_id, ref_id, ref_type, uuid, version]):
+                            kml_url = f"https://parivesh.nic.in/dms/okm/downloadDocument?docTypemappingId={doc_mapping_id}&refId={ref_id}&refType={ref_type}&uuid={uuid}&version={version}"
+                            kml_urls.append(kml_url)
+    
+    return kml_urls
+
 def extract_values(data: Dict[str, Any]) -> Dict[str, Any]:
     """Extracts available values from the data"""
     results = {}
@@ -64,6 +150,13 @@ def extract_values(data: Dict[str, Any]) -> Dict[str, Any]:
         'Organization Name': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'organization_name'),
         'Project Category (Code)': ('data', 'clearence', 'project_category'),
         'Project Category': ('data', 'clearence', 'environmentClearanceProjectActivityDetails', 0, 'activities', 'name'),
+        # Geographic information fields
+        'Plot Number': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafKML', 0, 'cafKMLPlots', 0, 'plot_no'),
+        'Village': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafKML', 0, 'cafKMLPlots', 0, 'village'),
+        'Sub District': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafKML', 0, 'cafKMLPlots', 0, 'sub_District'),
+        'District (Geographic)': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafKML', 0, 'cafKMLPlots', 0, 'district'),
+        'State (Geographic)': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafKML', 0, 'cafKMLPlots', 0, 'state'),
+        'Village Code': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafKML', 0, 'cafKMLPlots', 0, 'village_code'),
     }
 
     for field, keys in fields_to_extract.items():
@@ -71,29 +164,84 @@ def extract_values(data: Dict[str, Any]) -> Dict[str, Any]:
         if value is not None:
             results[field] = value
 
+    # Extract KML URLs
+    kml_urls = extract_kml_urls(data)
+    if kml_urls:
+        results['KML URLs'] = ';'.join(kml_urls)  # Join multiple URLs with semicolon
+
     return results
 
 def main():
     json_files = recursive_find_json(directory)
     
+    if not json_files:
+        print(f"No JSON files found in {directory}")
+        return
+    
+    print(f"Processing {len(json_files)} files...")
+    
     # Use Polars to efficiently process the data
-    df = pl.DataFrame([parse_json(file) for file in json_files])
+    data_list = []
+    for file_path in json_files:
+        result = parse_json(file_path)
+        if result:  # Only add non-empty results
+            data_list.append(result)
+    
+    if not data_list:
+        print("No valid data found to process")
+        return
+    
+    df = pl.DataFrame(data_list)
     
     # Filter rows to keep only those with a valid 'Proposal Number'
-    df = df.filter(pl.col('Proposal Number').is_not_null())
+    if 'Proposal Number' in df.columns:
+        df = df.filter(pl.col('Proposal Number').is_not_null())
     
     # Replace newlines with semicolons in string columns
     for col in df.columns:
         if df[col].dtype == pl.Utf8:
             df = df.with_columns(pl.col(col).str.replace_all("\n", ";"))
     
+    # Reorder columns - put specified columns first, then remaining columns
+    preferred_order = [
+        'Proposal Number',
+        'Application Date',
+        'Organization Name',
+        'Project Category (Code)',
+        'Project Category',
+        'Project Land Requirement (Hectares)',
+        'Total Cost (Lakhs)',
+        'Village',
+        'Sub District'
+    ]
+    
+    # Get columns that exist in the dataframe from the preferred order
+    existing_preferred = [col for col in preferred_order if col in df.columns]
+    
+    # Get remaining columns that aren't in the preferred order
+    remaining_cols = [col for col in df.columns if col not in preferred_order]
+    
+    # Combine to create final column order
+    final_column_order = existing_preferred + remaining_cols
+    
+    # Reorder the dataframe columns
+    df = df.select(final_column_order)
+    
     # Ensure the output directory exists
     os.makedirs("csv", exist_ok=True)
-    output_file = "csv/Projects.csv"
+    
+    # Create output filename based on state parameter
+    if state_param:
+        output_file = f"csv/Projects_{state_param.upper()}.csv"
+        print(f"Processing data for state: {state_param.upper()}")
+    else:
+        output_file = "csv/Projects.csv"
+        print("Processing data for all states")
     
     # Write to CSV
     df.write_csv(output_file)
     print(f"Data saved to {output_file}")
+    print(f"Total records: {len(df)}")
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <Style id="AREA_FF00FF00">
+      <LineStyle>
+        <color>FF00FF00</color>
+        <width>2</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>8000FF00</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <Placemark>
+      <name>Aranyak Campsite</name>
+      <description>Setting up additional Tents and other amenities</description>
+      <styleUrl>#AREA_FF00FF00</styleUrl>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>74.25136517733335,15.342393139771074,0.0 74.25194051116705,15.341353315853297,0.0 74.25258826464415,15.341664034923358,0.0 74.25306536257267,15.341927224283937,0.0 74.25361890345812,15.342194939902544,0.0 74.25307206809521,15.343251572592694,0.0 74.25136517733335,15.342393139771074,0.0 </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+  </Document>
+</kml>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Mukul Gaonkar lease.kml</name>
+	<Style id="inline">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline0">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="inline1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark>
+		<name>Mukul Gaonkar lease</name>
+		<styleUrl>#inline1</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						74.07040929187733,15.3890556269816,0 74.07004277060338,15.38874676585251,0 74.06964418750218,15.38893034577397,0 74.06956726514279,15.38934054876101,0 74.0691807381139,15.38972279125256,0 74.06859292099395,15.39088878729617,0 74.06830610353964,15.39138038653992,0 74.06894865410487,15.3914448207825,0 74.06920561055917,15.39125482463748,0 74.06909335735456,15.39048842563303,0 74.06936917478627,15.38975677024462,0 74.06960483510399,15.38988222114904,0 74.07021147319121,15.38916385492135,0 74.0703163166833,15.38919265282652,0 74.07040929187733,15.3890556269816,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

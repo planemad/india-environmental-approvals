@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Palacio KML.kml</name>
+	<Style id="inline0192">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="inline1322">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline467</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline0192</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="inline467">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Placemark>
+		<name>Palacio</name>
+		<styleUrl>#inline1322</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						73.87087805664696,15.43928562445142,0 73.87080890040276,15.43920101183288,0 73.87070836953747,15.43819534727479,0 73.87105327020583,15.43815690281372,0 73.8710630352856,15.43798335723348,0 73.87114824943342,15.43748803937183,0 73.87149070810013,15.43747523160797,0 73.87280537891793,15.43757257610012,0 73.87279378046068,15.43804127752028,0 73.872736532974,15.43889537701386,0 73.872443368855,15.43904882127793,0 73.87087805664696,15.43928562445142,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

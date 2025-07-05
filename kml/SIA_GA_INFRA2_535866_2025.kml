@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Ferrum Heights Project KML.kml</name>
+	<StyleMap id="inline106">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline1310</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline242</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="inline1310">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline242">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Placemark>
+		<name>Ferrum Heights Project KML</name>
+		<styleUrl>#inline106</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						73.96553349154938,15.29656439959051,0 73.96585584603007,15.2965728446613,0 73.96590427462313,15.29624152443147,0 73.96618690637941,15.29632123405056,0 73.96604406093361,15.29714548878498,0 73.96577417397569,15.2970819706769,0 73.96582347396338,15.29677228542572,0 73.96551439563903,15.29676146651416,0 73.96553349154938,15.29656439959051,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10201"></atom:link>
+	</Placemark>
+</Document>
+</kml>

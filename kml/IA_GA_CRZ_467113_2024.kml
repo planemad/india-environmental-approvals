@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>modelama site.kml</name>
+	<Style id="inline410">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="inline57">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline410</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline601</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="inline601">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Placemark>
+		<name>modelama site</name>
+		<styleUrl>#inline57</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						73.76579659646221,15.51133507961577,0 73.76518311849549,15.51116501761107,0 73.76519611669342,15.51092035502598,0 73.76538780672065,15.51095767548328,0 73.76570102460305,15.51100982868076,0 73.76719112664222,15.51144255898231,0 73.76757669495301,15.51155319614737,0 73.7680357726102,15.51169405457662,0 73.76800995662934,15.51177011456238,0 73.7680022364987,15.51181285696221,0 73.76743640746894,15.51168221771256,0 73.76741804553376,15.51176714733391,0 73.76710259396867,15.51168788589035,0 73.7667103305908,15.51158423888369,0 73.76667103516577,15.51174365081444,0 73.7665039885477,15.51171702137537,0 73.76655392502059,15.51155118708003,0 73.76579659646221,15.51133507961577,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

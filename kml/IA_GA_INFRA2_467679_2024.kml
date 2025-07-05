@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Kudnekar Plot Boundary.kml</name>
+	<Style id="inline1000">
+		<LineStyle>
+			<color>ffffff00</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline400">
+		<LineStyle>
+			<color>ffffff00</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="inline800">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline400</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline1000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark>
+		<name>Kudnekar plot area</name>
+		<styleUrl>#inline800</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						73.90214338201751,15.48474316642852,0 73.90258742239064,15.48473622262141,0 73.90302933379571,15.48471661176097,0 73.90305615669321,15.48531206493685,0 73.90306764853014,15.48564646412841,0 73.90283216852862,15.48569826238333,0 73.90248261223563,15.48573270204312,0 73.90225226308551,15.48575909982128,0 73.9017220833215,15.48512510066257,0 73.90175582451698,15.48509709909223,0 73.90186152474219,15.48500277825175,0 73.90184441144811,15.48498160179466,0 73.90214338201751,15.48474316642852,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

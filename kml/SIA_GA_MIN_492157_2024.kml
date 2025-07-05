@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>zone2zuari.KMZ</name>
+	<Style id="line1">
+		<LineStyle>
+		</LineStyle>
+	</Style>
+	<Style id="point1">
+		<IconStyle>
+			<Icon>
+				<href>kml_symbol_dot_0_0.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="point2">
+		<IconStyle>
+			<Icon>
+				<href>kml_symbol_no symbol_0_0.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Folder>
+		<name>Point Features</name>
+		<description>Point Features</description>
+		<Placemark>
+			<description>UNKNOWN_POINT_FEATURE</description>
+			<styleUrl>#point1</styleUrl>
+			<Point>
+				<coordinates>73.998127,15.351324,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<description>UNKNOWN_POINT_FEATURE</description>
+			<styleUrl>#point1</styleUrl>
+			<Point>
+				<coordinates>73.996706,15.354038,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>2</name>
+			<description>0</description>
+			<styleUrl>#point2</styleUrl>
+			<Point>
+				<coordinates>73.9972438164,15.3519039827,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+	<Folder>
+		<name>Line Features</name>
+		<description>Line Features</description>
+		<Placemark>
+			<description>0</description>
+			<styleUrl>#line1</styleUrl>
+			<LineString>
+				<coordinates>
+					73.99601800000001,15.352584,0 73.996706,15.354038,0 73.998813,15.352697,0 73.998127,15.351324,0 73.99601800000001,15.352584,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>DEVELOPMENT OF MONEM TANK .kml</name>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+		</LineStyle>
+	</Style>
+	<Placemark>
+		<name>DEVELOPMENT OF MONEM TANK </name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						74.16266209312158,14.99957097299994,0 74.16265145676384,14.99953098266706,0 74.16264066963073,14.99947108215936,0 74.1626405021503,14.99945113860523,0 74.16263988092622,14.99940133237018,0 74.1626908708006,14.99936157019965,0 74.16272173291182,14.99936157584888,0 74.16276255747063,14.99934172274692,0 74.16278223420733,14.99928227522872,0 74.16280200476051,14.99923286087862,0 74.16285321088333,14.99923287785968,0 74.16289431206494,14.99924277083698,0 74.16293541307274,14.99925266609045,0 74.1629767063953,14.99927244662648,0 74.16301783029088,14.99928234870412,0 74.16307984272824,14.99931204976919,0 74.16312091960243,14.99932197694645,0 74.16313211359449,14.9993616078858,0 74.16315327386619,14.99939138717662,0 74.16315437783031,14.99945104514521,0 74.16315486282295,14.99949086327172,0 74.16315546948286,14.99954068890319,0 74.16313539661132,14.9995806043787,0 74.1631050666324,14.99962058007195,0 74.16308476378077,14.99965056544927,0 74.16304379811415,14.99967059900006,0 74.16300265264913,14.99967064704586,0 74.16295120088567,14.99967070707985,0 74.16289972705584,14.99967076720586,0 74.16283792986151,14.99967083928853,0 74.16278640734728,14.99967089942701,0 74.16275532040814,14.99964091833513,0 74.16272424123008,14.99961094540927,0 74.16266209312158,14.99957097299994,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10201"></atom:link>
+	</Placemark>
+</Document>
+</kml>

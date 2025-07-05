@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>MALCO Plant_kml_15122022.kml</name>
+	<StyleMap id="inline">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline6</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline7</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="inline6">
+		<LineStyle>
+			<color>ff0000aa</color>
+			<width>4.5</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline7">
+		<LineStyle>
+			<color>ff0000aa</color>
+			<width>4.5</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Placemark>
+		<name>Nicomet Plant</name>
+		<styleUrl>#inline</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						74.03183403295824,15.18664521347257,0 74.03254480162254,15.18664112418481,0 74.03311520906982,15.18668636214481,0 74.03305069133359,15.18761469683679,0 74.03249736690921,15.18767268999207,0 74.03244161784042,15.18769356067723,0 74.03196058924337,15.1876692209799,0 74.03190273462393,15.18770089786012,0 74.03141070400282,15.18765554136734,0 74.03125049285775,15.18762380938441,0 74.03106057750567,15.18759492627573,0 74.03014198580685,15.18755067069127,0 74.03012322834155,15.18723016764148,0 74.0301443117779,15.18691318071384,0 74.03015335379919,15.18675231364614,0 74.03016254787339,15.18666262472936,0 74.03183403295824,15.18664521347257,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

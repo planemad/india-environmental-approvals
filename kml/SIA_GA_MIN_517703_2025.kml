@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Sirigao Dump KML</name>
+	<Schema name="Sirigao Dump KML" id="S_Sirigao_Dump_KML_I">
+		<SimpleField type="int" name="Id"><displayName>&lt;b&gt;Id&lt;/b&gt;</displayName>
+</SimpleField>
+	</Schema>
+	<StyleMap id="falseColor">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#falseColor0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#falseColor1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="falseColor0">
+		<BalloonStyle>
+			<text><![CDATA[<table border="0">
+  <tr><td><b>Id</b></td><td>$[Sirigao Dump KML/Id]</td></tr>
+</table>
+]]></text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="falseColor1">
+		<BalloonStyle>
+			<text><![CDATA[<table border="0">
+  <tr><td><b>Id</b></td><td>$[Sirigao Dump KML/Id]</td></tr>
+</table>
+]]></text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Folder id="layer 0">
+		<name>Sirigao Dump KML</name>
+		<Placemark>
+			<name>0</name>
+			<styleUrl>#falseColor</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#S_Sirigao_Dump_KML_I">
+					<SimpleData name="Id">0</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							73.89127838327617,15.60889054905315,0 73.89125756391378,15.60849119525916,0 73.89097844538173,15.6082873020843,0 73.89074774966292,15.6081410344134,0 73.89046519764371,15.60827059403172,0 73.89027932663788,15.60840714267835,0 73.88998398493118,15.6084426827896,0 73.88982967490391,15.60843976078296,0 73.88966727706581,15.60839442980295,0 73.88956279868738,15.60831440494253,0 73.88965827190111,15.60789327936257,0 73.88949044523787,15.60758502705637,0 73.88932687783154,15.60752197839767,0 73.88948084921006,15.60733846212377,0 73.88975985587055,15.60711898296365,0 73.89001928005725,15.60669762338746,0 73.89012288716403,15.6065472495665,0 73.89031620640635,15.60632371379445,0 73.89050952428725,15.60610017871976,0 73.89052982466683,15.60605086167099,0 73.89056513221084,15.60596509175718,0 73.89113028583206,15.60587512015482,0 73.89127708808319,15.60591859414802,0 73.89211240197396,15.60589524482738,0 73.89222676062519,15.60561029841112,0 73.89262564463233,15.60547450959465,0 73.89282994673609,15.60540496124701,0 73.89285861793709,15.60550125298515,0 73.89321556092234,15.60543068713923,0 73.89319077533317,15.60531349267405,0 73.89347207898258,15.60524662842775,0 73.89367707112636,15.60519790202532,0 73.89246591784786,15.60706253428947,0 73.89199663389512,15.60778479602961,0 73.8917034669177,15.60823616729653,0 73.89127838327617,15.60889054905315,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Naquerim  Mine.kml</name>
+	<Schema name="Mining_lease_Area" id="S_Mining_lease_Area_ID">
+		<SimpleField type="int" name="Id"><displayName>&lt;b&gt;Id&lt;/b&gt;</displayName>
+</SimpleField>
+		<SimpleField type="double" name="Area_ha"><displayName>&lt;b&gt;Area_ha&lt;/b&gt;</displayName>
+</SimpleField>
+	</Schema>
+	<Style id="falseColor140">
+		<IconStyle>
+			<color>ffe7ebef</color>
+		</IconStyle>
+		<BalloonStyle>
+			<text><![CDATA[<table border="0">
+  <tr><td><b>Id</b></td><td>$[Mining_lease_Area/Id]</td></tr>
+  <tr><td><b>Area_ha</b></td><td>$[Mining_lease_Area/Area_ha]</td></tr>
+</table>]]></text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff0055ff</color>
+			<width>2.7</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>ffe7ebef</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="falseColor40">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#falseColor000</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#falseColor140</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="falseColor000">
+		<IconStyle>
+			<color>ffe7ebef</color>
+		</IconStyle>
+		<BalloonStyle>
+			<text><![CDATA[<table border="0">
+  <tr><td><b>Id</b></td><td>$[Mining_lease_Area/Id]</td></tr>
+  <tr><td><b>Area_ha</b></td><td>$[Mining_lease_Area/Area_ha]</td></tr>
+</table>]]></text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff0055ff</color>
+			<width>2.7</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>ffe7ebef</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Placemark>
+		<styleUrl>#falseColor40</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#S_Mining_lease_Area_ID">
+				<SimpleData name="Id">0</SimpleData>
+				<SimpleData name="Area_ha">40.812</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						73.95999097222223,15.11925416666668,0 73.96325269444446,15.11296397222221,0 73.96904144444441,15.11364069444447,0 73.96985188888893,15.1153764166667,0 73.96461175,15.11887691666668,0 73.9641308888889,15.116973,0 73.96229552777778,15.11733444444445,0 73.96284227777777,15.12002666666665,0 73.95999097222223,15.11925416666668,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

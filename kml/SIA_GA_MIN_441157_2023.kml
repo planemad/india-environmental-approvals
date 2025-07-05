@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>LEASE AREA ANANT METALS.kml</name>
+	<StyleMap id="inline0001">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline117</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline391</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="inline117">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline391">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Placemark>
+		<name>LEASE AREA ANANT METALS</name>
+		<styleUrl>#inline0001</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						74.08169222710123,14.99708036096185,0 74.08244972699266,14.99708359032473,0 74.08244910241079,14.99616639973882,0 74.08327265530539,14.99610085039037,0 74.08330526116309,14.99575603033978,0 74.08315759684136,14.99521412822151,0 74.08283773834499,14.99443388358874,0 74.08233746457648,14.99335469173027,0 74.08112294689073,14.99358328795709,0 74.08153800434737,14.99442454161563,0 74.08183810196886,14.99539245928201,0 74.08192334378994,14.99617328177683,0 74.08169222710123,14.99708036096185,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

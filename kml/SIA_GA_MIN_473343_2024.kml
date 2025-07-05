@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>lease 3b93.kml</name>
+	<Style id="inline">
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline0">
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="inline1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark>
+		<name>lease 3b93</name>
+		<styleUrl>#inline1</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						74.09085695104997,15.42072262068045,0 74.09111630213124,15.42057125720358,0 74.09116101095434,15.42052839015913,0 74.0914085801811,15.42013723144679,0 74.09134658381532,15.42000446431366,0 74.0913842156241,15.41984843495732,0 74.09149966249799,15.41966797756484,0 74.09161637498319,15.41954214861138,0 74.09204323690024,15.41956943076694,0 74.09234757654457,15.41958982448938,0 74.09236520399695,15.41967379858148,0 74.09274098322298,15.42076511654315,0 74.09277357718727,15.42086564300168,0 74.09278053475103,15.42089181281772,0 74.09253217971552,15.42095971420964,0 74.09239204942322,15.42098859102245,0 74.09207580395555,15.42109959206401,0 74.09182473536484,15.42106060520299,0 74.09145204899143,15.42097363921514,0 74.09115359066786,15.420936890175,0 74.09078978405628,15.42083347255049,0 74.09085695104997,15.42072262068045,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

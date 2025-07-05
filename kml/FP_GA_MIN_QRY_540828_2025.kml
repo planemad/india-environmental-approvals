@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Forest KML Surla_1.kml</name>
+	<StyleMap id="area1113">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#area1213</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#area147</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="area1213">
+		<LineStyle>
+			<color>ff00aa00</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>bf00aa00</color>
+		</PolyStyle>
+	</Style>
+	<Style id="area147">
+		<LineStyle>
+			<color>ff00aa00</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>bf00aa00</color>
+		</PolyStyle>
+	</Style>
+	<Placemark>
+		<description>FOREST_LAND</description>
+		<styleUrl>#area1113</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						74.04105032253433,15.52628124836564,0 74.0377732841,15.5232228412,0 74.03678089420001,15.5229035777,0 74.0369874135,15.5222250045,0 74.0370602262,15.5217090947,0 74.03714894629999,15.5213104271,0 74.03730621299999,15.5209271216,0 74.0382582057,15.5212781273,0 74.0389614143,15.5215117696,0 74.0400104536,15.5218570551,0 74.0409592367,15.5221980696,0 74.0423116673,15.5217391168,0 74.0426153951,15.5214769601,0 74.0427932548,15.521322884,0 74.0431989579,15.5209892419,0 74.04325862576069,15.52092949176068,0 74.0441984653973,15.52244764227576,0 74.04359879579999,15.5230953732,0 74.0432040557,15.5236080591,0 74.0431140729,15.523932065,0 74.0429451215,15.5242755796,0 74.04281087124816,15.52500553275418,0 74.04105032253433,15.52628124836564,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10201"></atom:link>
+	</Placemark>
+</Document>
+</kml>

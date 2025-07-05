@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+  <Document>
+    <name>Sy. No. 271 Quela village Ponda Taluka (30-07-22).kml</name>
+    <open>1</open>
+    <StyleMap id="inline">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#inline1</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#inline0</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="inline0">
+      <LineStyle>
+        <color>ff00ff55</color>
+        <width>5</width>
+      </LineStyle>
+      <PolyStyle>
+        <fill>0</fill>
+      </PolyStyle>
+    </Style>
+    <Style id="inline1">
+      <LineStyle>
+        <color>ff00ff55</color>
+        <width>5</width>
+      </LineStyle>
+      <PolyStyle>
+        <fill>0</fill>
+      </PolyStyle>
+    </Style>
+    <Placemark>
+      <name>Sy. No. 27\1 Quela village Ponda Taluka New</name>
+      <styleUrl>#inline</styleUrl>
+      <Polygon>
+        <tessellate>1</tessellate>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+						74.00618102081006,15.39494290973114,0 74.00618318200635,15.39492103174944,0 74.00621235773623,15.39492103178619,0 74.00621451887203,15.39494290977099,0 74.00618102081006,15.39494290973114,0 
+					</coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+      <id>FP/GA/Others/156990/2022</id>
+      <id1>81111253121497869QuelavillagePonda.kml</id1>
+      <id2>Pno_Inserted</id2>
+    </Placemark>
+  </Document>
+</kml>

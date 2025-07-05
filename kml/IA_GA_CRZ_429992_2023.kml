@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>COCHIN BOUNDARY.kml</name>
+	<Style id="inline211010">
+		<LineStyle>
+			<color>ffffaa00</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="inline25102">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline211010</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline37000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="inline37000">
+		<LineStyle>
+			<color>ffffaa00</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Placemark>
+		<name>COCHIN BOUNDARY</name>
+		<open>1</open>
+		<styleUrl>#inline25102</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						73.71904611666498,15.64463114362575,0 73.71938232188128,15.64426253568649,0 73.71953454496453,15.64442548751094,0 73.71980277395714,15.6445829654553,0 73.72029517385636,15.64555582599331,0 73.72003499084518,15.64572467819392,0 73.71970879859302,15.64574597616271,0 73.71945567605152,15.64526912051463,0 73.71932346625273,15.6450460812079,0 73.71925294259417,15.64493999462099,0 73.71910374730658,15.64471543025393,0 73.71904611666498,15.64463114362575,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10201"></atom:link>
+	</Placemark>
+</Document>
+</kml>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>SKYLINE PLOT 11164m2.kml</name>
+	<Style id="inline01">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="inline51">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline61</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline01</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="inline61">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Placemark>
+		<name>SKYLINE PLOT 11164m2</name>
+		<styleUrl>#inline51</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						73.82851928611626,15.4623625069185,0 73.82793792733484,15.46246569295734,0 73.82789047603723,15.46221071283566,0 73.82782042861596,15.46187438172873,0 73.82774921226913,15.46159865705712,0 73.82767972561811,15.46134590408953,0 73.82761115527573,15.4610886849197,0 73.82757667163807,15.46096935946992,0 73.8275577406238,15.46091121364059,0 73.82755666499904,15.4608639233715,0 73.82760978487174,15.46084699358058,0 73.82763530191194,15.46082423052511,0 73.8276934940839,15.4608065830774,0 73.8278131172912,15.46079109781627,0 73.82794012255576,15.46077131408997,0 73.82799283370531,15.46077831419922,0 73.82806681091321,15.46078796004548,0 73.82810106563265,15.46079882762227,0 73.82812665920234,15.46080944679526,0 73.82814609220539,15.46081516788533,0 73.82816251811104,15.46082703222075,0 73.82818325864895,15.46098507173318,0 73.82820573069547,15.46117763719169,0 73.82832444927672,15.461635412775,0 73.82851928611626,15.4623625069185,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

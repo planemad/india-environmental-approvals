@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>heritage princes arpora.kml</name>
+	<StyleMap id="inline">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline11</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline52</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="inline11">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>3.2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline52">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>3.2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Placemark>
+		<name>heritage princes arpora</name>
+		<styleUrl>#inline</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						73.76850908071339,15.57020283623005,0 73.76853667420801,15.57038378080667,0 73.76864545993158,15.57036075970572,0 73.76863337339061,15.57027148328796,0 73.76887616831287,15.57022727447857,0 73.76886096745979,15.57011895893056,0 73.76916649092969,15.5700564879551,0 73.76921781270204,15.57010357045984,0 73.7692184507423,15.57018521381082,0 73.76963246423938,15.57025674975613,0 73.76964498116379,15.57017183199167,0 73.76970138226079,15.57029863591071,0 73.76966521666843,15.57042653518066,0 73.76959181511218,15.57055552110251,0 73.76950422539488,15.57064460021391,0 73.76931948011165,15.57073574210189,0 73.76926429566403,15.57078667613619,0 73.76906382500195,15.57061621272305,0 73.76885208720914,15.57063946726834,0 73.76858475484208,15.57066985231758,0 73.76855962851944,15.57049100262904,0 73.76854320857952,15.57049717562274,0 73.76853843533989,15.57046720835883,0 73.76843867615442,15.57049166864584,0 73.76839475195312,15.57024243964074,0 73.76850908071339,15.57020283623005,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>
