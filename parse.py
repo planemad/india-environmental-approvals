@@ -137,12 +137,15 @@ def extract_values(data: Dict[str, Any]) -> Dict[str, Any]:
     results = {}
     
     fields_to_extract = {
+        'ID': ('data', 'proponentApplications', 'id'),
+        'Category': ('data', 'proponentApplications', 'applications', 'category'),
+        'Description': ('data', 'proponentApplications', 'applications', 'description'),
+
+
         'Proposal Number': ('data', 'proponentApplications', 'proposal_no'),
         'Application Date': ('data', 'proponentApplications', 'created_on'),
         'Project Name': ('data', 'proponentApplications', 'projectDetailDto', 'projectName'),
         'Project Description': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'project_description'),
-        'State': ('data', 'proponentApplications', 'state'),
-        'District': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafKML', 0, 'cafKMLPlots', 0, 'district'),
         'Total Cost (Lakhs)': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafProjectActivityCost', 'total_cost'),
         'Employment (Construction)': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafProjectActivityCost', 'cp_total_employment'),
         'Employment (Operational)': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafProjectActivityCost', 'op_existing_total_employment'),
@@ -151,12 +154,42 @@ def extract_values(data: Dict[str, Any]) -> Dict[str, Any]:
         'Project Category (Code)': ('data', 'clearence', 'project_category'),
         'Project Category': ('data', 'clearence', 'environmentClearanceProjectActivityDetails', 0, 'activities', 'name'),
         # Geographic information fields
+        
         'Plot Number': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafKML', 0, 'cafKMLPlots', 0, 'plot_no'),
         'Village': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafKML', 0, 'cafKMLPlots', 0, 'village'),
         'Sub District': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafKML', 0, 'cafKMLPlots', 0, 'sub_District'),
-        'District (Geographic)': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafKML', 0, 'cafKMLPlots', 0, 'district'),
-        'State (Geographic)': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafKML', 0, 'cafKMLPlots', 0, 'state'),
+        'District': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafKML', 0, 'cafKMLPlots', 0, 'district'),
+        'State': ('data', 'proponentApplications', 'state'),
         'Village Code': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafKML', 0, 'cafKMLPlots', 0, 'village_code'),
+        
+    
+       'Proposal Type': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'proposal_for'),
+        'MoEFCC File': ('data', 'proponentApplications', 'moefccFileNumber'),
+        'State File': ('data', 'proponentApplications', 'stateFileNumber'),
+        'Plot Nos': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafKML', 0, 'cafKMLPlots', 0, 'plot_no'),
+        'Shape of Project': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafLocationOfKml', 'shape_of_project'),
+        'Existing Non-Forest Land': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafLocationOfKml', 'existing_non_forest_land'),
+        'Existing Forest Land': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafLocationOfKml', 'existing_forest_land'),
+        'Existing Total Land': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafLocationOfKml', 'existing_total_land'),
+        'Additional Non-Forest Land': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafLocationOfKml', 'additional_non_forest_land'),
+        'Additional Forest Land': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafLocationOfKml', 'additional_forest_land'),
+        'Additional Total Land': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafLocationOfKml', 'additional_total_land'),
+        'Existing Cost': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafProjectActivityCost', 'total_existing_cost'),
+        'Expansion Cost': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafProjectActivityCost', 'total_expension_cost'),
+        'Villages Affected': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafOthers', 'no_of_villages'),
+        'Project Displaced Families': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafOthers', 'no_of_project_displaced_families'),
+        'Project Affected Families': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafOthers', 'no_of_project_affected_families'),
+        'Alternative Site Examined': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafOthers', 'is_alternative_sites_examined'),
+        'Alternative Site Description': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafOthers', 'alternative_sites_description'),
+        'Government Restriction': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafOthers', 'is_any_govt_restriction'),
+        'Litigation Pending': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafOthers', 'is_any_litigation_pending'),
+        'Violation Involved': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafOthers', 'is_any_violayion_involved'),
+        'Last Visible Status': ('data', 'proponentApplications', 'last_visible_status'),
+        'Last Submission Date': ('data', 'proponentApplications', 'last_submission_date'),
+        'Grant Date': ('data', 'proponentApplications', 'grant_date'),
+        'Project Exemption Reason': ('data', 'clearence', 'project_exempted_reason'),
+        'EC Consultant': ('data', 'clearence', 'ecConsultant', 'consultant_name'),
+        
     }
 
     for field, keys in fields_to_extract.items():
@@ -168,6 +201,18 @@ def extract_values(data: Dict[str, Any]) -> Dict[str, Any]:
     kml_urls = extract_kml_urls(data)
     if kml_urls:
         results['KML URLs'] = ';'.join(kml_urls)  # Join multiple URLs with semicolon
+
+    # EIA Report PDF URL
+    eia = safe_get(data, 'data', 'proponentApplications', 'ecEnclosures', 'eia_final_copy')
+    if eia and isinstance(eia, dict):
+        doc_id = eia.get('document_mapping_id')
+        ref_id = eia.get('ref_id')
+        ref_type = eia.get('type')
+        uuid = eia.get('uuid')
+        version = eia.get('version')
+        if all([doc_id, ref_id, ref_type, uuid, version]):
+            eia_url = f"https://parivesh.nic.in/dms/okm/downloadDocument?docTypemappingId={doc_id}&refId={ref_id}&refType={ref_type}&uuid={uuid}&version={version}"
+            results['EIA Report PDF'] = eia_url
 
     return results
 
@@ -204,15 +249,55 @@ def main():
     
     # Reorder columns - put specified columns first, then remaining columns
     preferred_order = [
+        'ID',
+        'Proposal Type',
         'Proposal Number',
         'Application Date',
-        'Organization Name',
-        'Project Category (Code)',
-        'Project Category',
+        'Grant Date',
+        'Last Visible Status',
+        
         'Project Land Requirement (Hectares)',
         'Total Cost (Lakhs)',
+        
+        'Organization Name',
+        'EC Consultant',
+        'Description',
+        'Category',
+        
+        'Project Category (Code)',
+        'Project Category',
+    
+        'Project Name',
+        'State',
+        'Sub District',
         'Village',
-        'Sub District'
+
+        'MoEFCC File',
+        'State File',
+        
+        'Plot Nos',
+        'Shape of Project',
+        'Existing Non-Forest Land',
+        'Existing Forest Land',
+        'Existing Total Land',
+        'Additional Non-Forest Land',
+        'Additional Forest Land',
+        'Additional Total Land',
+        'Existing Cost',
+        'Expansion Cost',
+        'Villages Affected',
+        'Project Displaced Families',
+        'Project Affected Families',
+        'Alternative Site Examined',
+        'Alternative Site Description',
+        'Government Restriction',
+        'Litigation Pending',
+        'Violation Involved',
+
+        'Last Submission Date',
+        
+        'Project Exemption Reason',
+        'EIA Report PDF',
     ]
     
     # Get columns that exist in the dataframe from the preferred order
@@ -226,6 +311,10 @@ def main():
     
     # Reorder the dataframe columns
     df = df.select(final_column_order)
+    
+    # Sort by Application Date in descending order
+    if 'Application Date' in df.columns:
+        df = df.sort('Application Date', descending=True)
     
     # Ensure the output directory exists
     os.makedirs("csv", exist_ok=True)

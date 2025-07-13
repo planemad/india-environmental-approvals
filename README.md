@@ -15,6 +15,7 @@ The complete dataset is available as CSV files under the [csv/](csv) folder in t
 - [initialize.sh](initialize.sh): Initializes the list of projects to be fetched
 - [fetch.sh](fetch.sh): Fetches the details of each project
 - [parse.py](parse.py): Parses the project files, and saves project details as a CSV file
+- [make_shape.py](make_shape.py): Downloads the linked kml for each application and compiles it into a single geojson with all the csv attributes
 
 ## License
 
