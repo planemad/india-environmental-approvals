@@ -39,6 +39,66 @@ As long as you:
 
 Ensure you have `bash`, `curl` and `python` installed
 
+### Run for All States
+```bash
+./run.sh
+```
+
+### Run for Specific State
+```bash
+./run.sh <LGD_CODE>
+```
+
+For example, to run for Goa:
+```bash
+./run.sh 30
+```
+
+### State Codes
+
+| LGD Code | State Name |
+|----------|------------|
+| 1 | Jammu And Kashmir |
+| 2 | Himachal Pradesh |
+| 3 | Punjab |
+| 4 | Chandigarh |
+| 5 | Uttarakhand |
+| 6 | Haryana |
+| 7 | Delhi |
+| 8 | Rajasthan |
+| 9 | Uttar Pradesh |
+| 10 | Bihar |
+| 11 | Sikkim |
+| 12 | Arunachal Pradesh |
+| 13 | Nagaland |
+| 14 | Manipur |
+| 15 | Mizoram |
+| 16 | Tripura |
+| 17 | Meghalaya |
+| 18 | Assam |
+| 19 | West Bengal |
+| 20 | Jharkhand |
+| 21 | Odisha |
+| 22 | Chhattisgarh |
+| 23 | Madhya Pradesh |
+| 24 | Gujarat |
+| 27 | Maharashtra |
+| 28 | Andhra Pradesh |
+| 29 | Karnataka |
+| 30 | Goa |
+| 31 | Lakshadweep |
+| 32 | Kerala |
+| 33 | Tamil Nadu |
+| 34 | Puducherry |
+| 35 | Andaman And Nicobar Islands |
+| 36 | Telangana |
+| 37 | Ladakh |
+| 38 | The Dadra And Nagar Haveli And Daman And Diu |
+
+### Manual Pipeline Steps
+
+If you prefer to run individual steps:
+
 ```
 # Initialize list of projects to fetch
 bash initialize.sh
