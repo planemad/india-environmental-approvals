@@ -1,6 +1,6 @@
 # india-environmental-approvals
 
-Dataset of environmental clearance applications for projects in India. Sourced from [Parivesh](https://parivesh.nic.in/).
+GIS dataset of environmental clearance applications for projects in India. Sourced from [Parivesh](https://parivesh.nic.in/).
 
 Browse the dataset: <https://flatgithub.com/Vonter/india-environmental-approvals?filename=csv/Projects.csv&stickyColumnName=Project%20Name&sort=Application%20Date%2Cdesc>
 
@@ -12,10 +12,11 @@ The complete dataset is available as CSV files under the [csv/](csv) folder in t
 
 ## Scripts
 
-- [initialize.sh](initialize.sh): Initializes the list of projects to be fetched
-- [fetch.sh](fetch.sh): Fetches the details of each project
-- [parse.py](parse.py): Parses the project files, and saves project details as a CSV file
-- [make_shape.py](make_shape.py): Downloads the linked kml for each application and compiles it into a single geojson with all the csv attributes
+- [1_initialize.sh](1_initialize.sh): Initializes the list of projects to be fetched
+- [2_fetch.sh](2_fetch.sh): Fetches the details of each project
+- [3_parse.py](3_parse.py): Parses the project files, and saves project details as a CSV file
+- [4_make_shape.py](4_make_shape.py): Downloads the linked kml for each application and compiles it into a single geojson with all the csv attributes
+- [5_combine_geojson.py](5_combine_geojson.py): Combines the geojson for every state into a single `india-environmental-approvals.gpkg`
 
 ## License
 
