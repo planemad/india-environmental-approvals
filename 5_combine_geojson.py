@@ -34,27 +34,159 @@ def combine_geojson_to_gpkg(geojson_files: List[str], output_path: str = "india-
     for geojson_file in geojson_files:
         try:
             print(f"Reading {geojson_file}...")
-            gdf = gpd.read_file(geojson_file)
-            
-            if not gdf.empty:
-                # Add source file information
-                source_filename = os.path.basename(geojson_file)
-                gdf['source_file'] = source_filename
+            # Try to read with GeoPandas first
+            try:
+                gdf = gpd.read_file(geojson_file)
                 
-                # Extract state code from filename if it follows the pattern Projects_XX.geojson
-                if source_filename.startswith('Projects_') and source_filename.endswith('.geojson'):
-                    state_code = source_filename.replace('Projects_', '').replace('.geojson', '')
-                    gdf['state_code'] = state_code
+                if not gdf.empty:
+                    # Validate and clean geometries
+                    initial_count = len(gdf)
+                    
+                    # Remove invalid geometries
+                    gdf = gdf[gdf.geometry.is_valid & ~gdf.geometry.is_empty]
+                    
+                    # Remove rows with null geometries
+                    gdf = gdf[gdf.geometry.notnull()]
+                    
+                    if len(gdf) < initial_count:
+                        invalid_count = initial_count - len(gdf)
+                        print(f"  Warning: Removed {invalid_count} invalid/empty geometries")
+                    
+                    if not gdf.empty:
+                        # Add source file information
+                        source_filename = os.path.basename(geojson_file)
+                        gdf['source_file'] = source_filename
+                        
+                        # Extract state code from filename if it follows the pattern Projects_XX.geojson
+                        if source_filename.startswith('Projects_') and source_filename.endswith('.geojson'):
+                            state_code = source_filename.replace('Projects_', '').replace('.geojson', '')
+                            gdf['state_code'] = state_code
+                        
+                        combined_gdfs.append(gdf)
+                        feature_count = len(gdf)
+                        total_features += feature_count
+                        print(f"  Added {feature_count} valid features from {geojson_file}")
+                    else:
+                        print(f"  Warning: No valid geometries found in {geojson_file}, skipping")
+                else:
+                    print(f"  Warning: {geojson_file} is empty, skipping")
+                    
+            except Exception as geopandas_error:
+                print(f"  GeoPandas error reading {geojson_file}: {geopandas_error}")
+                print(f"  Attempting to process with geometry validation...")
                 
-                combined_gdfs.append(gdf)
-                feature_count = len(gdf)
-                total_features += feature_count
-                print(f"  Added {feature_count} features from {geojson_file}")
-            else:
-                print(f"  Warning: {geojson_file} is empty, skipping")
+                # Try to read as raw JSON and validate manually
+                try:
+                    import json
+                    with open(geojson_file, 'r') as f:
+                        geojson_data = json.load(f)
+                    
+                    # Validate and clean features
+                    valid_features = []
+                    invalid_count = 0
+                    
+                    for feature in geojson_data.get('features', []):
+                        geometry = feature.get('geometry', {})
+                        geom_type = geometry.get('type')
+                        coordinates = geometry.get('coordinates', [])
+                        
+                        # Basic validation for common geometry types
+                        is_valid = False
+                        try:
+                            if geom_type == 'Point' and isinstance(coordinates, list) and len(coordinates) == 2:
+                                # Ensure coordinates are valid numbers
+                                if all(isinstance(coord, (int, float)) for coord in coordinates):
+                                    is_valid = True
+                            elif geom_type == 'LineString' and isinstance(coordinates, list) and len(coordinates) >= 2:
+                                # Ensure all coordinates are valid point arrays
+                                if all(isinstance(point, list) and len(point) == 2 and 
+                                      all(isinstance(coord, (int, float)) for coord in point) for point in coordinates):
+                                    is_valid = True
+                            elif geom_type == 'Polygon' and isinstance(coordinates, list) and len(coordinates) >= 1:
+                                # Check if outer ring has at least 4 coordinates and all are valid
+                                if (isinstance(coordinates[0], list) and len(coordinates[0]) >= 4 and
+                                    all(isinstance(point, list) and len(point) == 2 and 
+                                        all(isinstance(coord, (int, float)) for coord in point) for point in coordinates[0])):
+                                    is_valid = True
+                            elif geom_type == 'MultiPoint' and isinstance(coordinates, list) and len(coordinates) > 0:
+                                # Validate each point in the MultiPoint
+                                if all(isinstance(point, list) and len(point) == 2 and 
+                                      all(isinstance(coord, (int, float)) for coord in point) for point in coordinates):
+                                    is_valid = True
+                            elif geom_type == 'MultiLineString' and isinstance(coordinates, list) and len(coordinates) > 0:
+                                # Validate each LineString in the MultiLineString
+                                if all(isinstance(line, list) and len(line) >= 2 and
+                                      all(isinstance(point, list) and len(point) == 2 and 
+                                          all(isinstance(coord, (int, float)) for coord in point) for point in line) 
+                                      for line in coordinates):
+                                    is_valid = True
+                            elif geom_type == 'MultiPolygon' and isinstance(coordinates, list) and len(coordinates) > 0:
+                                # Validate each Polygon in the MultiPolygon (basic check)
+                                if all(isinstance(polygon, list) and len(polygon) >= 1 for polygon in coordinates):
+                                    is_valid = True
+                        except (TypeError, IndexError, ValueError):
+                            # If any error occurs during validation, mark as invalid
+                            is_valid = False
+                        
+                        if is_valid:
+                            valid_features.append(feature)
+                        else:
+                            invalid_count += 1
+                    
+                    if valid_features:
+                        print(f"  Found {len(valid_features)} valid features after manual validation")
+                        if invalid_count > 0:
+                            print(f"  Removed {invalid_count} invalid geometries")
+                        
+                        # Create a new GeoJSON structure with valid features
+                        cleaned_geojson = {
+                            "type": "FeatureCollection",
+                            "features": valid_features
+                        }
+                        
+                        # Write to a temporary file and read with GeoPandas
+                        temp_file = geojson_file + '.temp'
+                        with open(temp_file, 'w') as f:
+                            json.dump(cleaned_geojson, f)
+                        
+                        try:
+                            gdf = gpd.read_file(temp_file)
+                            os.remove(temp_file)  # Clean up temp file
+                            
+                            if not gdf.empty:
+                                # Add source file information
+                                source_filename = os.path.basename(geojson_file)
+                                gdf['source_file'] = source_filename
+                                
+                                # Extract state code from filename if it follows the pattern Projects_XX.geojson
+                                if source_filename.startswith('Projects_') and source_filename.endswith('.geojson'):
+                                    state_code = source_filename.replace('Projects_', '').replace('.geojson', '')
+                                    gdf['state_code'] = state_code
+                                
+                                combined_gdfs.append(gdf)
+                                feature_count = len(gdf)
+                                total_features += feature_count
+                                print(f"  Added {feature_count} features after cleaning from {geojson_file}")
+                            else:
+                                print(f"  Warning: No valid features after cleaning {geojson_file}")
+                                
+                        except Exception as temp_error:
+                            print(f"  Error reading cleaned temporary file: {temp_error}")
+                            if os.path.exists(temp_file):
+                                os.remove(temp_file)
+                            continue
+                    else:
+                        print(f"  No valid features found in {geojson_file}")
+                        
+                except json.JSONDecodeError as json_error:
+                    print(f"  JSON parsing error: {json_error}")
+                    continue
+                except Exception as manual_error:
+                    print(f"  Manual validation error: {manual_error}")
+                    continue
                 
         except Exception as e:
-            print(f"  Error reading {geojson_file}: {e}")
+            print(f"  Unexpected error reading {geojson_file}: {e}")
             continue
     
     if not combined_gdfs:
@@ -116,7 +248,7 @@ def main():
     
     # Set up paths
     geojson_dir = "geojson"
-    output_path = "parivesh.gpkg"
+    output_path = "india-environmental-approvals.gpkg"
     
     # Allow custom output path as command line argument
     if len(sys.argv) > 1:

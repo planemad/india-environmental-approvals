@@ -3,16 +3,25 @@
 # State parameter - should match the one used in initialize.sh
 STATE=${1:-""}
 
+# Parallelization parameters
+MIN_BATCH_SIZE=${MIN_BATCH_SIZE:-10}
+MAX_BATCH_SIZE=${MAX_BATCH_SIZE:-30}
+MIN_DELAY=${MIN_DELAY:-2.0}
+MAX_DELAY=${MAX_DELAY:-8.0}
+MAX_CONCURRENT=${MAX_CONCURRENT:-15}
+
 IFS=$'\n';
 
 # Determine search directory based on state parameter
 if [ -n "$STATE" ]; then
   SEARCH_DIR="raw/search_${STATE}"
   CAF_DIR="raw/caf_${STATE}"
+  URL_FILE="urls_${STATE}.txt"
   echo "Processing data for state: $STATE"
 else
   SEARCH_DIR="raw/search"
   CAF_DIR="raw/caf"
+  URL_FILE="urls_all.txt"
   echo "Processing data for all states"
 fi
 
@@ -24,89 +33,28 @@ fi
 
 mkdir -p "$CAF_DIR"
 
-# Function to check if a file is a valid JSON with actual data
-is_valid_json_file() {
-  local file="$1"
-  # Check if file exists, is not empty, and contains valid JSON with data
-  if [ -f "$file" ] && [ -s "$file" ]; then
-    # Quick check if it's valid JSON and has meaningful content in one jq call
-    if jq -e 'if type == "object" then (keys | length > 0) else true end' "$file" >/dev/null 2>&1; then
-      return 0
-    fi
-  fi
-  return 1
-}
+# Check if Python and required modules are available
+if ! command -v python3 &> /dev/null; then
+  echo "Error: python3 is required for parallel downloading"
+  exit 1
+fi
 
-# Function to build a lookup of existing valid files for a clearance type
-build_existing_files_lookup() {
-  local clearance_dir="$1"
-  local existing_files=""
-  
-  if [ -d "$clearance_dir" ]; then
-    # Use find to get all .json files and check them in batch
-    for file in "$clearance_dir"/*.json; do
-      if [ -f "$file" ] && [ -s "$file" ]; then
-        # Extract just the filename without extension
-        local basename=$(basename "$file" .json)
-        existing_files="$existing_files$basename "
-      fi
-    done
-  fi
-  echo "$existing_files"
-}
+# Check if aiohttp is available
+if ! python3 -c "import aiohttp" 2>/dev/null; then
+  echo "Error: aiohttp module is required. Install with: pip install aiohttp"
+  exit 1
+fi
 
-# Function to safely download a file
-safe_download() {
-  local url="$1"
-  local output_file="$2"
-  local temp_file="${output_file}.tmp"
-  
-  # Download to temporary file first
-  if curl -X POST --fail --silent --show-error "$url" -o "$temp_file"; then
-    # Check if the downloaded file is valid JSON
-    if jq -e . "$temp_file" >/dev/null 2>&1; then
-      # Move temp file to final location
-      mv "$temp_file" "$output_file"
-      return 0
-    else
-      echo "Warning: Downloaded file is not valid JSON, removing temp file"
-      rm -f "$temp_file"
-      return 1
-    fi
-  else
-    echo "Error: Failed to download from $url"
-    rm -f "$temp_file"
-    return 1
-  fi
-}
+echo "Generating URL list for parallel downloading..."
 
-# Counters for progress tracking
-total_proposals=0
-skipped_existing=0
-downloaded_new=0
-failed_downloads=0
-skipped_batch=0
+# Remove old URL file if it exists
+rm -f "$URL_FILE"
 
-# First pass: count total proposals across all clearance types
-echo "Counting total proposals..."
+# First pass: count total proposals and generate URL file
 total_proposals_all=0
 for clearance in {1..4}; do
   SEARCH_FILE="$SEARCH_DIR/${clearance}.json"
-  if [ -s "$SEARCH_FILE" ]; then
-    clearance_count=$(cat "$SEARCH_FILE" | jq '[.data[] | select(.id != null)] | length' 2>/dev/null || echo "0")
-    total_proposals_all=$((total_proposals_all + clearance_count))
-  fi
-done
-echo "Total proposals to process: $total_proposals_all"
-echo ""
-
-processed_count=0
-
-for clearance in {1..4};
-do
-  SEARCH_FILE="$SEARCH_DIR/${clearance}.json"
   
-  # Check if the search file exists and has content
   if [ ! -s "$SEARCH_FILE" ]; then
     echo "Warning: No data file found at $SEARCH_FILE, skipping clearance type $clearance"
     continue
@@ -116,12 +64,7 @@ do
   
   echo "Processing clearance type $clearance..."
   
-  # Build lookup of existing files for this clearance type
-  echo "  Building lookup of existing files..."
-  existing_files_lookup=$(build_existing_files_lookup "$CAF_DIR/${clearance}")
-  
-  # Extract all proposal IDs first to avoid repeated jq calls
-  echo "  Extracting proposal IDs..."
+  # Extract all proposal IDs and generate URLs
   proposal_ids=$(cat "$SEARCH_FILE" | jq -r '.data[] | select(.id != null) | .id' 2>/dev/null || echo "")
   
   if [ -z "$proposal_ids" ]; then
@@ -129,61 +72,49 @@ do
     continue
   fi
   
-  skipped_batch=0
-  last_progress_update=0
-  
-  for proposal_id in $proposal_ids;
-  do
-    total_proposals=$((total_proposals + 1))
-    processed_count=$((processed_count + 1))
-    remaining=$((total_proposals_all - processed_count))
+  for proposal_id in $proposal_ids; do
+    url="https://parivesh.nic.in/parivesh_api/proponentApplicant/getCafDataByProposalNo?proposal_id=${proposal_id}"
+    output_path="$CAF_DIR/${clearance}/${proposal_id}.json"
     
-    # Quick lookup check - much faster than file system calls
-    if [[ " $existing_files_lookup " == *" $proposal_id "* ]]; then
-      # File exists, skip it completely
-      skipped_existing=$((skipped_existing + 1))
-      skipped_batch=$((skipped_batch + 1))
-      
-      # Only print progress every 50 skipped files to reduce output noise
-      if [ $((skipped_batch % 50)) -eq 0 ] || [ $((processed_count - last_progress_update)) -ge 100 ]; then
-        echo "[$processed_count/$total_proposals_all, $remaining remaining] Skipped $skipped_batch existing files (last: $proposal_id)"
-        last_progress_update=$processed_count
-      fi
-    else
-      # Reset batch counter when we encounter a new file
-      if [ $skipped_batch -gt 0 ]; then
-        echo "[$processed_count/$total_proposals_all, $remaining remaining] Finished skipping $skipped_batch existing files"
-        skipped_batch=0
-      fi
-      
-      OUTPUT_FILE="$CAF_DIR/${clearance}/${proposal_id}.json"
-      
-      # File doesn't exist, fetch it
-      echo "[$processed_count/$total_proposals_all, $remaining remaining] Fetching new proposal: $proposal_id"
-      if safe_download "https://parivesh.nic.in/parivesh_api/proponentApplicant/getCafDataByProposalNo?proposal_id=${proposal_id}" "$OUTPUT_FILE"; then
-        downloaded_new=$((downloaded_new + 1))
-        # Add to lookup for future iterations (though this clearance is almost done)
-        existing_files_lookup="$existing_files_lookup$proposal_id "
-      else
-        failed_downloads=$((failed_downloads + 1))
-      fi
-      sleep $(echo "scale=3; $RANDOM / 32767 * 0.5" | bc)
-    fi
+    # Add to URL file (tab-separated)
+    echo -e "${url}\t${output_path}" >> "$URL_FILE"
+    total_proposals_all=$((total_proposals_all + 1))
   done
-  
-  # Print final batch summary if we ended on skipped files
-  if [ $skipped_batch -gt 0 ]; then
-    echo "  Completed clearance $clearance: skipped $skipped_batch existing files in final batch"
-  fi
 done
 
-echo "Data fetching completed. Files saved to: $CAF_DIR"
-echo "Summary:"
-echo "  Total proposals processed: $total_proposals"
-echo "  Skipped (existing): $skipped_existing"
-echo "  Downloaded new: $downloaded_new"
-echo "  Failed downloads: $failed_downloads"
+echo "Generated URL list with $total_proposals_all proposals"
+echo ""
 
-if [ $failed_downloads -gt 0 ]; then
-  echo "Warning: $failed_downloads downloads failed. You may want to re-run this script."
+# Check if URL file was created and has content
+if [ ! -s "$URL_FILE" ]; then
+  echo "Error: No URLs generated. Check your search files."
+  exit 1
+fi
+
+# Run the parallel downloader
+echo "Starting parallel download with configuration:"
+echo "  Batch size: $MIN_BATCH_SIZE-$MAX_BATCH_SIZE"
+echo "  Delay between batches: ${MIN_DELAY}s-${MAX_DELAY}s" 
+echo "  Max concurrent downloads: $MAX_CONCURRENT"
+echo ""
+
+python3 request.py "$URL_FILE" \
+  --min-batch-size "$MIN_BATCH_SIZE" \
+  --max-batch-size "$MAX_BATCH_SIZE" \
+  --min-delay "$MIN_DELAY" \
+  --max-delay "$MAX_DELAY" \
+  --max-concurrent "$MAX_CONCURRENT"
+
+download_exit_code=$?
+
+# Clean up URL file
+rm -f "$URL_FILE"
+
+if [ $download_exit_code -eq 0 ]; then
+  echo ""
+  echo "Data fetching completed successfully. Files saved to: $CAF_DIR"
+else
+  echo ""
+  echo "Warning: Parallel download script exited with code $download_exit_code"
+  echo "Some downloads may have failed. You may want to re-run this script."
 fi

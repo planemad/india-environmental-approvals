@@ -8,44 +8,51 @@
 # Usage: ./run.sh <LGD_CODE>
 # Example: ./run.sh 30 (for Goa)
 # Example: ./run.sh (for all India)
-#
-# LGD Code	State Name 
-# 35	Andaman And Nicobar Islands
-# 28	Andhra Pradesh
-# 12	Arunachal Pradesh
-# 18	Assam
-# 10	Bihar
-# 4	Chandigarh
-# 22	Chhattisgarh
-# 7	Delhi
-# 30	Goa
-# 24	Gujarat
-# 6	Haryana
-# 2	Himachal Pradesh
-# 1	Jammu And Kashmir
-# 20	Jharkhand
-# 29	Karnataka
-# 32	Kerala
-# 37	Ladakh
-# 31	Lakshadweep
-# 23	Madhya Pradesh
-# 27	Maharashtra
-# 14	Manipur
-# 17	Meghalaya
-# 15	Mizoram
-# 13	Nagaland
-# 21	Odisha
-# 34	Puducherry
-# 3	Punjab
-# 8	Rajasthan
-# 11	Sikkim
-# 33	Tamil Nadu
-# 36	Telangana
-# 38	The Dadra And Nagar Haveli And Daman And Diu
-# 16	Tripura
-# 5	Uttarakhand
-# 9	Uttar Pradesh
-# 19	West Bengal
+
+
+# Function to get state name from state code
+get_state_name() {
+    local state_code="$1"
+    case "$state_code" in
+        1) echo "Jammu And Kashmir" ;;
+        2) echo "Himachal Pradesh" ;;
+        3) echo "Punjab" ;;
+        4) echo "Chandigarh" ;;
+        5) echo "Uttarakhand" ;;
+        6) echo "Haryana" ;;
+        7) echo "Delhi" ;;
+        8) echo "Rajasthan" ;;
+        9) echo "Uttar Pradesh" ;;
+        10) echo "Bihar" ;;
+        11) echo "Sikkim" ;;
+        12) echo "Arunachal Pradesh" ;;
+        13) echo "Nagaland" ;;
+        14) echo "Manipur" ;;
+        15) echo "Mizoram" ;;
+        16) echo "Tripura" ;;
+        17) echo "Meghalaya" ;;
+        18) echo "Assam" ;;
+        19) echo "West Bengal" ;;
+        20) echo "Jharkhand" ;;
+        21) echo "Odisha" ;;
+        22) echo "Chhattisgarh" ;;
+        23) echo "Madhya Pradesh" ;;
+        24) echo "Gujarat" ;;
+        27) echo "Maharashtra" ;;
+        28) echo "Andhra Pradesh" ;;
+        29) echo "Karnataka" ;;
+        30) echo "Goa" ;;
+        31) echo "Lakshadweep" ;;
+        32) echo "Kerala" ;;
+        33) echo "Tamil Nadu" ;;
+        34) echo "Puducherry" ;;
+        35) echo "Andaman And Nicobar Islands" ;;
+        36) echo "Telangana" ;;
+        37) echo "Ladakh" ;;
+        38) echo "The Dadra And Nagar Haveli And Daman And Diu" ;;
+        *) echo "Unknown State" ;;
+    esac
+}
 
 # Array of all Indian states and union territories LGD codes (in ascending order)
 STATES=(
@@ -58,32 +65,35 @@ set -e  # Exit on any error
 if [ $# -eq 1 ]; then
     # Run for specific state
     STATE="$1"
+    STATENAME=$(get_state_name "$STATE")
+    
     echo "===================================="
     echo "Goa Environmental Approvals Pipeline"
     echo "===================================="
     echo "Running for state code: $STATE"
+    echo "State Name: $STATENAME"
     echo
 
     # Step 1: Initialize
-    echo "Step 1: Initializing data collection for $STATE..."
+    echo "Step 1: Initializing data collection for $STATE ($STATENAME)..."
     bash 1_initialize.sh "$STATE"
     echo "✓ Initialization completed"
     echo
 
     # Step 2: Fetch data
-    echo "Step 2: Fetching project data for $STATE..."
+    echo "Step 2: Fetching project data for $STATE ($STATENAME)..."
     bash 2_fetch.sh "$STATE"
     echo "✓ Data fetching completed"
     echo
 
     # Step 3: Parse
-    echo "Step 3: Processing data and generating CSV for $STATE..."
+    echo "Step 3: Processing data and generating CSV for $STATE ($STATENAME)..."
     python3 3_parse.py "$STATE"
     echo "✓ Data processing completed"
     echo
 
     # Step 4: Generate GeoJSON
-    echo "Step 4: Processing data and generating CSV for $STATE..."
+    echo "Step 4: Processing data and generating CSV for $STATE ($STATENAME)..."
     python3 4_make_shape.py $STATE
     echo "✓ Shape generation completed"
     echo
@@ -108,36 +118,39 @@ else
     echo
 
     for STATE in "${STATES[@]}"; do
+        STATENAME=$(get_state_name "$STATE")
+        
         echo "===================================="
         echo "Processing state code: $STATE"
+        echo "State Name: $STATENAME"
         echo "===================================="
         echo
 
         # Step 1: Initialize
-        echo "Step 1: Initializing data collection for $STATE..."
+        echo "Step 1: Initializing data collection for $STATE ($STATENAME)..."
         bash 1_initialize.sh "$STATE"
-        echo "✓ Initialization completed for $STATE"
+        echo "✓ Initialization completed for $STATE ($STATENAME)"
         echo
 
         # Step 2: Fetch data
-        echo "Step 2: Fetching project data for $STATE..."
+        echo "Step 2: Fetching project data for $STATE ($STATENAME)..."
         bash 2_fetch.sh "$STATE"
-        echo "✓ Data fetching completed for $STATE"
+        echo "✓ Data fetching completed for $STATE ($STATENAME)"
         echo
 
         # Step 3: Parse
-        echo "Step 3: Processing data and generating CSV for $STATE..."
+        echo "Step 3: Processing data and generating CSV for $STATE ($STATENAME)..."
         python3 3_parse.py "$STATE"
-        echo "✓ Data processing completed for $STATE"
+        echo "✓ Data processing completed for $STATE ($STATENAME)"
         echo
 
         # Step 4: Generate GeoJSON
-        echo "Step 4: Processing data and generating CSV for $STATE..."
+        echo "Step 4: Processing data and generating CSV for $STATE ($STATENAME)..."
         python3 4_make_shape.py $STATE
-        echo "✓ Shape generation completed for $STATE"
+        echo "✓ Shape generation completed for $STATE ($STATENAME)"
         echo
 
-        echo "Completed processing for state $STATE"
+        echo "Completed processing for state $STATE ($STATENAME)"
         echo "Data saved to: geojson/Projects_$STATE.geojson"
         echo
     done
