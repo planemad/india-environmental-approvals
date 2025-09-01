@@ -68,7 +68,7 @@ if [ $# -eq 1 ]; then
     STATENAME=$(get_state_name "$STATE")
     
     echo "===================================="
-    echo "Goa Environmental Approvals Pipeline"
+    echo "India Environmental Approvals Data"
     echo "===================================="
     echo "Running for state code: $STATE"
     echo "State Name: $STATENAME"
