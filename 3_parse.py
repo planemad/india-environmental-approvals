@@ -525,7 +525,7 @@ def main():
     
     # Sort by Application Date in descending order
     if 'Application Date' in df.columns:
-        df = df.sort('Application Date', descending=True)
+        df = df.sort('Application Date')
     
     # Ensure the output directory exists
     os.makedirs("csv", exist_ok=True)
