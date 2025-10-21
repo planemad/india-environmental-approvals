@@ -14,11 +14,12 @@ import random
 import argparse
 import ssl
 from pathlib import Path
-from typing import List, Tuple
+from typing import List, Tuple, Optional
 import time
+from datetime import datetime
 
 class ParallelDownloader:
-    def __init__(self, min_batch_size=5, max_batch_size=20, min_delay=1.0, max_delay=5.0, max_concurrent=10, content_type='json', http_method='POST'):
+    def __init__(self, min_batch_size=5, max_batch_size=20, min_delay=1.0, max_delay=5.0, max_concurrent=10, content_type='json', http_method='POST', timestamp_file=None):
         self.min_batch_size = min_batch_size
         self.max_batch_size = max_batch_size
         self.min_delay = min_delay
@@ -27,11 +28,78 @@ class ParallelDownloader:
         self.content_type = content_type.lower()
         self.http_method = http_method.upper()
         self.semaphore = asyncio.Semaphore(max_concurrent)
+        self.timestamp_file = timestamp_file
+        self.timestamps_data = {}
+        
+        # Load timestamp data if provided
+        if timestamp_file and os.path.exists(timestamp_file):
+            self._load_timestamps()
         
         # Stats tracking
         self.downloaded = 0
         self.skipped = 0
         self.failed = 0
+        self.force_redownloaded = 0
+        
+    def _load_timestamps(self):
+        """Load timestamp data from JSON file"""
+        try:
+            with open(self.timestamp_file, 'r') as f:
+                data = json.load(f)
+                # Extract timestamps for each proposal ID
+                for item in data.get('data', []):
+                    if item.get('id') and item.get('app_updated_on'):
+                        self.timestamps_data[str(item['id'])] = item['app_updated_on']
+        except Exception as e:
+            print(f"Warning: Could not load timestamps from {self.timestamp_file}: {e}")
+    
+    def _should_redownload_file(self, output_path: str) -> bool:
+        """Check if file should be re-downloaded based on timestamp comparison"""
+        if not self.timestamps_data:
+            return False
+            
+        # Extract proposal_id from filename
+        filename = os.path.basename(output_path)
+        proposal_id = filename.replace('.json', '')
+        
+        if proposal_id not in self.timestamps_data:
+            return False
+            
+        try:
+            # Get current timestamp from search data
+            current_timestamp = self.timestamps_data[proposal_id]
+            
+            # Try to get timestamp from existing file
+            if os.path.exists(output_path):
+                with open(output_path, 'r') as f:
+                    existing_data = json.load(f)
+                    
+                # Check various possible timestamp fields in the existing file
+                existing_timestamp = None
+                for field in ['app_updated_on', 'Application Updated On', 'updated_on']:
+                    if field in existing_data:
+                        existing_timestamp = existing_data[field]
+                        break
+                
+                if existing_timestamp:
+                    # Parse timestamps and compare
+                    try:
+                        current_dt = datetime.fromisoformat(current_timestamp.replace('Z', '+00:00'))
+                        existing_dt = datetime.fromisoformat(existing_timestamp.replace('Z', '+00:00'))
+                        
+                        if current_dt > existing_dt:
+                            print(f"  Re-downloading {proposal_id}: updated {existing_timestamp} -> {current_timestamp}")
+                            return True
+                    except ValueError:
+                        # If timestamp parsing fails, play it safe and re-download
+                        return True
+            
+        except Exception as e:
+            print(f"Warning: Error checking timestamp for {proposal_id}: {e}")
+            # If we can't determine, don't re-download to avoid unnecessary load
+            return False
+            
+        return False
         
     def parse_url_file(self, url_file_path: str) -> List[Tuple[str, str]]:
         """Parse URL file with format: url output_path"""
@@ -81,14 +149,20 @@ class ParallelDownloader:
             return False
     
     def filter_existing_files(self, urls_and_paths: List[Tuple[str, str]]) -> List[Tuple[str, str]]:
-        """Filter out URLs where output files already exist and are valid"""
+        """Filter out URLs where output files already exist and are valid, considering timestamps"""
         filtered = []
         
         for url, output_path in urls_and_paths:
-            if os.path.exists(output_path) and os.path.getsize(output_path) > 0:
-                if self.validate_file_content(output_path):
-                    self.skipped += 1
-                    continue
+            file_exists = os.path.exists(output_path) and os.path.getsize(output_path) > 0
+            
+            # Check if file should be re-downloaded due to timestamp update
+            should_redownload = self._should_redownload_file(output_path)
+            
+            if file_exists and self.validate_file_content(output_path) and not should_redownload:
+                self.skipped += 1
+                continue
+            elif file_exists and should_redownload:
+                self.force_redownloaded += 1
             
             filtered.append((url, output_path))
         
@@ -212,6 +286,7 @@ def main():
     parser.add_argument('--max-concurrent', type=int, default=10, help='Maximum concurrent downloads (default: 10)')
     parser.add_argument('--content-type', type=str, default='json', choices=['json', 'kml'], help='Content type for validation (default: json)')
     parser.add_argument('--http-method', type=str, default='POST', choices=['GET', 'POST'], help='HTTP method to use (default: POST)')
+    parser.add_argument('--timestamp-file', type=str, help='JSON file containing timestamp data for comparison')
     
     args = parser.parse_args()
     
@@ -222,7 +297,8 @@ def main():
         max_delay=args.max_delay,
         max_concurrent=args.max_concurrent,
         content_type=args.content_type,
-        http_method=args.http_method
+        http_method=args.http_method,
+        timestamp_file=args.timestamp_file
     )
     
     # Parse URLs
@@ -232,8 +308,13 @@ def main():
     
     # Filter existing files
     print("Filtering existing valid files...")
+    if downloader.timestamp_file:
+        print(f"Using timestamp file: {downloader.timestamp_file}")
+        print(f"Loaded {len(downloader.timestamps_data)} timestamp entries")
     urls_to_download = downloader.filter_existing_files(urls_and_paths)
     print(f"Skipped {downloader.skipped} existing files")
+    if downloader.force_redownloaded > 0:
+        print(f"Force re-downloading {downloader.force_redownloaded} files due to timestamp updates")
     print(f"Need to download {len(urls_to_download)} files")
     
     if urls_to_download:
@@ -244,6 +325,8 @@ def main():
     print("\nDownload Summary:")
     print(f"  Downloaded: {downloader.downloaded}")
     print(f"  Skipped (existing): {downloader.skipped}")
+    if downloader.force_redownloaded > 0:
+        print(f"  Force re-downloaded (timestamp updates): {downloader.force_redownloaded}")
     print(f"  Failed: {downloader.failed}")
     print(f"  Total processed: {downloader.downloaded + downloader.skipped + downloader.failed}")
 

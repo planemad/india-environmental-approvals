@@ -50,6 +50,18 @@ echo "Generating URL list for parallel downloading..."
 # Remove old URL file if it exists
 rm -f "$URL_FILE"
 
+# Create combined timestamp file for comparison
+if [ -n "$STATE" ]; then
+  TIMESTAMP_FILE="timestamps_${STATE}.json"
+else
+  TIMESTAMP_FILE="timestamps_all.json"
+fi
+
+echo "Creating combined timestamp file: $TIMESTAMP_FILE"
+
+# Use jq to combine all search files into one with all data arrays merged
+jq -s '{"data": ([.[] | .data // []] | add)}' $SEARCH_DIR/*.json > "$TIMESTAMP_FILE" 2>/dev/null || echo '{"data":[]}' > "$TIMESTAMP_FILE"
+
 # First pass: count total proposals and generate URL file
 total_proposals_all=0
 for clearance in {1..4}; do
@@ -103,12 +115,14 @@ python3 request.py "$URL_FILE" \
   --max-batch-size "$MAX_BATCH_SIZE" \
   --min-delay "$MIN_DELAY" \
   --max-delay "$MAX_DELAY" \
-  --max-concurrent "$MAX_CONCURRENT"
+  --max-concurrent "$MAX_CONCURRENT" \
+  --timestamp-file "$TIMESTAMP_FILE"
 
 download_exit_code=$?
 
-# Clean up URL file
+# Clean up temporary files
 rm -f "$URL_FILE"
+rm -f "$TIMESTAMP_FILE"
 
 if [ $download_exit_code -eq 0 ]; then
   echo ""
