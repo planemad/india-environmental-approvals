@@ -186,6 +186,7 @@ def extract_values(data: Dict[str, Any]) -> Dict[str, Any]:
         'Organization Name': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'organization_name'),
         'Project Category (Code)': ('data', 'clearence', 'project_category'),
         'Project Category': ('data', 'clearence', 'environmentClearanceProjectActivityDetails', 0, 'activities', 'name'),
+        
         # Geographic information fields
         
         'Plot Number': ('data', 'proponentApplications', 'projectDetailDto', 'commonFormDetails', 0, 'cafKML', 0, 'cafKMLPlots', 0, 'plot_no'),
@@ -403,7 +404,9 @@ def main():
     # Replace newlines with semicolons in string columns
     for col in df.columns:
         if df[col].dtype == pl.Utf8:
-            df = df.with_columns(pl.col(col).str.replace_all("\n", ";"))
+            df = df.with_columns(
+                pl.col(col).str.strip_chars().alias(col)
+            )
     
     # Reorder columns - put specified columns first, then remaining columns
     preferred_order = [
