@@ -411,6 +411,7 @@ def main():
     # Reorder columns - put specified columns first, then remaining columns
     preferred_order = [
         'ID',
+        'Project Description',
         'Proposal Type',
         'Proposal Number',
         'Application Date',
