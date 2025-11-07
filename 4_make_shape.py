@@ -80,31 +80,33 @@ def batch_download_kmls(url_file_path: str) -> bool:
         return False
 
 def parse_kml_coordinates(coord_string: str) -> List[List[float]]:
-    """Parse KML coordinate string into list of [lon, lat] pairs"""
+    """Parse KML coordinate string into list of [lon, lat] pairs
+    
+    KML coordinates are formatted as: lon1,lat1,alt1 lon2,lat2,alt2 lon3,lat3,alt3
+    where coordinate triplets are separated by whitespace, and values within
+    a triplet are separated by commas.
+    """
     coordinates = []
     
     # Clean up the coordinate string
     coord_string = coord_string.strip()
     
-    # Split by whitespace and/or commas
-    coord_parts = coord_string.replace(',', ' ').split()
+    # Split by whitespace to get individual coordinate triplets
+    coord_triplets = coord_string.split()
     
-    # Group coordinates by 3 (lon, lat, alt) or 2 (lon, lat)
-    i = 0
-    while i < len(coord_parts):
+    for triplet in coord_triplets:
+        # Split each triplet by commas to get lon, lat, and optionally altitude
+        parts = triplet.split(',')
+        
         try:
-            lon = float(coord_parts[i])
-            lat = float(coord_parts[i + 1])
-            coordinates.append([lon, lat])
-            
-            # Skip altitude if present
-            if i + 2 < len(coord_parts) and coord_parts[i + 2].replace('.', '').replace('-', '').isdigit():
-                i += 3
-            else:
-                i += 2
-                
+            if len(parts) >= 2:
+                lon = float(parts[0])
+                lat = float(parts[1])
+                # Ignore altitude (parts[2]) if present
+                coordinates.append([lon, lat])
         except (ValueError, IndexError):
-            i += 1
+            # Skip invalid coordinate triplets
+            continue
             
     return coordinates
 
@@ -179,10 +181,18 @@ def kml_to_geojson_feature(kml_path: Path, csv_row: Dict[str, Any]) -> List[Dict
             if linestring is not None and linestring.text:
                 coords = parse_kml_coordinates(linestring.text)
                 if coords:
-                    feature["geometry"] = {
-                        "type": "LineString",
-                        "coordinates": coords
-                    }
+                    # Validate LineString has at least 2 points
+                    if len(coords) >= 2:
+                        feature["geometry"] = {
+                            "type": "LineString",
+                            "coordinates": coords
+                        }
+                    elif len(coords) == 1:
+                        # Convert single-point LineString to Point
+                        feature["geometry"] = {
+                            "type": "Point",
+                            "coordinates": coords[0]
+                        }
             
             # Polygon
             polygon = placemark.find('.//kml:Polygon', ns)
