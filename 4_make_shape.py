@@ -207,27 +207,32 @@ def kml_to_geojson_feature(kml_path: Path, csv_row: Dict[str, Any]) -> List[Dict
                 if outer_coords is not None and outer_coords.text:
                     coords = parse_kml_coordinates(outer_coords.text)
                     if coords:
-                        # Close the polygon if not already closed
-                        if coords[0] != coords[-1]:
-                            coords.append(coords[0])
-                        
-                        feature["geometry"] = {
-                            "type": "Polygon",
-                            "coordinates": [coords]
-                        }
-                        
-                        # Handle inner boundaries (holes)
-                        inner_boundaries = polygon.findall('.//kml:innerBoundaryIs/kml:LinearRing/kml:coordinates', ns)
-                        if not inner_boundaries:
-                            inner_boundaries = polygon.findall('.//innerBoundaryIs/LinearRing/coordinates')
-                        
-                        for inner in inner_boundaries:
-                            if inner.text:
-                                inner_coords = parse_kml_coordinates(inner.text)
-                                if inner_coords:
-                                    if inner_coords[0] != inner_coords[-1]:
-                                        inner_coords.append(inner_coords[0])
-                                    feature["geometry"]["coordinates"].append(inner_coords)
+                        # Validate polygon has at least 3 unique points (4 including closure)
+                        if len(coords) >= 3:
+                            # Close the polygon if not already closed
+                            if coords[0] != coords[-1]:
+                                coords.append(coords[0])
+                            
+                            # Final validation - must have at least 4 points after closing
+                            if len(coords) >= 4:
+                                feature["geometry"] = {
+                                    "type": "Polygon",
+                                    "coordinates": [coords]
+                                }
+                                
+                                # Handle inner boundaries (holes)
+                                inner_boundaries = polygon.findall('.//kml:innerBoundaryIs/kml:LinearRing/kml:coordinates', ns)
+                                if not inner_boundaries:
+                                    inner_boundaries = polygon.findall('.//innerBoundaryIs/LinearRing/coordinates')
+                                
+                                for inner in inner_boundaries:
+                                    if inner.text:
+                                        inner_coords = parse_kml_coordinates(inner.text)
+                                        if inner_coords and len(inner_coords) >= 3:
+                                            if inner_coords[0] != inner_coords[-1]:
+                                                inner_coords.append(inner_coords[0])
+                                            if len(inner_coords) >= 4:
+                                                feature["geometry"]["coordinates"].append(inner_coords)
             
             # Only add features with valid geometry
             if feature["geometry"] is not None:
