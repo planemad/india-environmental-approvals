@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Environmental Approvals Tracker</title>
+<style>
+:root {
+  --bg: #f7f7f5; --panel: #ffffff; --text: #1c1f23; --muted: #6b7280; --border: #e2e4e8;
+  --accent: #1d6f5c; --accent-soft: #e3f1ed;
+  --add-bg: #e6f6ea; --add-fg: #14632d; --del-bg: #fdecec; --del-fg: #a12525; --upd-bg: #fff6d9; --upd-fg: #7a5b00;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14171a; --panel: #1c2024; --text: #e8eaed; --muted: #98a0ab; --border: #2c3238;
+    --accent: #4cc2a5; --accent-soft: #1b3a33;
+    --add-bg: #173324; --add-fg: #7fd99b; --del-bg: #3a1c1c; --del-fg: #f19a9a; --upd-bg: #3a3116; --upd-fg: #f0cf72;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+header { background: var(--panel); border-bottom: 1px solid var(--border); padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+header h1 { font-size: 16px; margin: 0; flex: 1 1 240px; }
+header h1 small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; }
+main { padding: 16px; max-width: 1600px; margin: 0 auto; }
+select, input[type=search], button, summary { font: inherit; color: var(--text); background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; }
+button { cursor: pointer; }
+button:hover:not(:disabled) { border-color: var(--accent); }
+button:disabled { opacity: .4; cursor: default; }
+a { color: var(--accent); }
+.bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+.bar .spacer { flex: 1; }
+.version { flex: 1 1 320px; min-width: 0; }
+.meta { color: var(--muted); font-size: 12px; margin: 0 0 12px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.chip { border-radius: 999px; padding: 3px 12px; border: 1px solid var(--border); background: var(--panel); cursor: pointer; font-size: 13px; }
+.chip.on { outline: 2px solid var(--accent); }
+.chip.added { background: var(--add-bg); color: var(--add-fg); }
+.chip.removed { background: var(--del-bg); color: var(--del-fg); }
+.chip.updated { background: var(--upd-bg); color: var(--upd-fg); }
+.chip.trans { font-size: 12px; background: var(--accent-soft); }
+label.inline { display: inline-flex; gap: 6px; align-items: center; color: var(--muted); }
+details.cols { position: relative; }
+details.cols > div { position: absolute; right: 0; z-index: 5; max-height: 320px; overflow: auto; background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 8px; width: 280px; margin-top: 4px; }
+details.cols label { display: block; padding: 2px 0; }
+.wrap { overflow: auto; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; max-height: 70vh; }
+table { border-collapse: collapse; width: 100%; }
+th, td { padding: 6px 10px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; max-width: 320px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+th { position: sticky; top: 0; background: var(--panel); cursor: pointer; user-select: none; z-index: 1; }
+th.sorted::after { content: " ▲"; font-size: 10px; }
+th.sorted.desc::after { content: " ▼"; }
+tr.item { cursor: pointer; }
+tr.item:hover td { filter: brightness(.97); }
+tr.added td { background: var(--add-bg); }
+tr.removed td { background: var(--del-bg); color: var(--del-fg); text-decoration: line-through; }
+td.mark { width: 22px; padding-right: 0; font-weight: 700; }
+tr.added td.mark { color: var(--add-fg); }
+tr.removed td.mark { color: var(--del-fg); }
+tr.updated td.mark { color: var(--upd-fg); }
+td.chg { background: var(--upd-bg); white-space: normal; }
+.old { background: var(--del-bg); color: var(--del-fg); text-decoration: line-through; padding: 0 3px; border-radius: 3px; margin-right: 4px; }
+.new { background: var(--add-bg); color: var(--add-fg); padding: 0 3px; border-radius: 3px; }
+.empty { font-style: italic; opacity: .7; }
+tr.detail td { white-space: normal; background: var(--bg); max-width: none; }
+.fields { display: grid; grid-template-columns: minmax(140px, 220px) 1fr; gap: 2px 12px; font-size: 13px; }
+.fields .k { color: var(--muted); }
+.fields .v { overflow-wrap: anywhere; }
+.pager { display: flex; gap: 8px; align-items: center; justify-content: center; padding: 12px; color: var(--muted); }
+.msg { padding: 32px; text-align: center; color: var(--muted); }
+.msg.err { color: var(--del-fg); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Environmental Approvals Tracker<small>Changes to Parivesh clearance records between each update</small></h1>
+  <label class="inline">State
+    <select id="state"></select>
+  </label>
+</header>
+<main>
+  <div class="bar" id="nav" hidden>
+    <button id="older" title="Older version (←)">‹ Older</button>
+    <select id="version" class="version"></select>
+    <button id="newer" title="Newer version (→)">Newer ›</button>
+  </div>
+  <p class="meta" id="meta"></p>
+  <div class="chips" id="chips"></div>
+  <div class="chips" id="trans"></div>
+  <div class="bar" id="controls" hidden>
+    <input type="search" id="q" placeholder="Search rows…" size="28">
+    <label class="inline"><input type="checkbox" id="unchanged"> Show unchanged rows</label>
+    <span class="spacer"></span>
+    <details class="cols"><summary>Columns</summary><div id="colpick"></div></details>
+  </div>
+  <div id="status" class="msg">Select a state to begin.</div>
+  <div class="wrap" id="tablewrap" hidden><table id="tbl"></table></div>
+  <div class="pager" id="pager"></div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script>
+const REPO = 'planemad/india-environmental-approvals';
+const PAGE_SIZE = 100;
+const STATUS_FIELD = 'Last Visible Status';
+const DEFAULT_COLS = ['Proposal Number', 'Project Name', 'Organization Name', 'District', 'Proposal Type', STATUS_FIELD, 'Application Date', 'Grant Date', 'Total Cost (Lakhs)'];
+const STATES = {
+  1: 'Jammu And Kashmir', 2: 'Himachal Pradesh', 3: 'Punjab', 4: 'Chandigarh', 5: 'Uttarakhand', 6: 'Haryana', 7: 'Delhi',
+  8: 'Rajasthan', 9: 'Uttar Pradesh', 10: 'Bihar', 11: 'Sikkim', 12: 'Arunachal Pradesh', 13: 'Nagaland', 14: 'Manipur',
+  15: 'Mizoram', 16: 'Tripura', 17: 'Meghalaya', 18: 'Assam', 19: 'West Bengal', 20: 'Jharkhand', 21: 'Odisha',
+  22: 'Chhattisgarh', 23: 'Madhya Pradesh', 24: 'Gujarat', 27: 'Maharashtra', 28: 'Andhra Pradesh', 29: 'Karnataka',
+  30: 'Goa', 31: 'Lakshadweep', 32: 'Kerala', 33: 'Tamil Nadu', 34: 'Puducherry', 35: 'Andaman And Nicobar Islands',
+  36: 'Telangana', 37: 'Ladakh', 38: 'Dadra And Nagar Haveli And Daman And Diu'
+};
+const MARKS = { added: '+', removed: '−', updated: '~', same: '' };
+
+const $ = id => document.getElementById(id);
+const st = { code: null, commits: [], idx: 0, cur: null, diff: null, items: [], shown: [], cols: [], filter: 'all', transition: null, sort: null, page: 0, expanded: new Set(), tok: 0 };
+const csvCache = new Map();
+
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const fmtDate = d => new Date(d).toISOString().slice(0, 10);
+const norm = s => s.trim().replace(/\s+/g, ' ');
+const csvPath = code => `csv/Projects_${code}.csv`;
+
+async function getCommits(code) {
+  const key = `commits:${code}`;
+  try {
+    const hit = JSON.parse(sessionStorage.getItem(key));
+    if (hit) return hit;
+  } catch (e) {}
+  const res = await fetch(`https://api.github.com/repos/${REPO}/commits?path=${csvPath(code)}&per_page=100`);
+  if (!res.ok) throw new Error(res.status === 403 ? 'GitHub API rate limit reached. Try again later.' : `GitHub API error ${res.status}`);
+  const commits = (await res.json()).map(c => ({ sha: c.sha, date: c.commit.committer.date, msg: c.commit.message.split('\n')[0] }));
+  try { sessionStorage.setItem(key, JSON.stringify(commits)); } catch (e) {}
+  return commits;
+}
+
+function loadCsv(sha, code) {
+  const key = `${sha}:${code}`;
+  if (csvCache.has(key)) return csvCache.get(key);
+  const p = fetch(`https://raw.githubusercontent.com/${REPO}/${sha}/${csvPath(code)}`)
+    .then(r => {
+      if (!r.ok) throw new Error(`Could not load CSV (${r.status})`);
+      return r.text();
+    })
+    .then(text => {
+      const parsed = Papa.parse(text, { header: true, skipEmptyLines: true });
+      const rows = new Map();
+      parsed.data.forEach((row, i) => rows.set(row.ID || `row-${i}`, row));
+      return { fields: parsed.meta.fields || [], rows };
+    });
+  p.catch(() => csvCache.delete(key));
+  csvCache.set(key, p);
+  if (csvCache.size > 4) csvCache.delete(csvCache.keys().next().value);
+  return p;
+}
+
+function computeDiff(cur, prev) {
+  const diff = { added: new Set(), updated: new Map(), removed: [], newFields: [], goneFields: [], hasPrev: !!prev };
+  if (!prev) return diff;
+  const shared = cur.fields.filter(f => prev.fields.includes(f));
+  diff.newFields = cur.fields.filter(f => !prev.fields.includes(f));
+  diff.goneFields = prev.fields.filter(f => !cur.fields.includes(f));
+  for (const [id, row] of cur.rows) {
+    const before = prev.rows.get(id);
+    if (!before) { diff.added.add(id); continue; }
+    const changes = [];
+    for (const f of shared) {
+      const a = before[f] ?? '', b = row[f] ?? '';
+      if (a !== b && norm(a) !== norm(b)) changes.push({ f, a, b });
+    }
+    if (changes.length) diff.updated.set(id, changes);
+  }
+  for (const [id, row] of prev.rows) if (!cur.rows.has(id)) diff.removed.push({ id, row });
+  return diff;
+}
+
+function buildItems() {
+  const { cur, diff } = st;
+  const items = [];
+  for (const [id, row] of cur.rows) {
+    const changes = diff.updated.get(id);
+    const item = { id, row, type: diff.added.has(id) ? 'added' : changes ? 'updated' : 'same' };
+    if (changes) {
+      item.changes = changes;
+      item.changeMap = Object.fromEntries(changes.map(c => [c.f, c]));
+      const s = item.changeMap[STATUS_FIELD];
+      if (s) item.transition = `${s.a || '(none)'} → ${s.b || '(none)'}`;
+    }
+    items.push(item);
+  }
+  diff.removed.forEach(r => items.push({ id: r.id, row: r.row, type: 'removed' }));
+  return items;
+}
+
+function counts() {
+  const c = { added: 0, updated: 0, removed: 0, same: 0 };
+  st.items.forEach(i => c[i.type]++);
+  return c;
+}
+
+function applyFilters() {
+  const q = $('q').value.trim().toLowerCase();
+  const showAll = $('unchanged').checked || !st.diff.hasPrev;
+  let list = st.items.filter(it => {
+    if (!showAll && it.type === 'same') return false;
+    if (st.filter !== 'all' && it.type !== st.filter) return false;
+    if (st.transition && it.transition !== st.transition) return false;
+    if (q) {
+      it.hay ??= Object.values(it.row).join('\t').toLowerCase();
+      if (!it.hay.includes(q)) return false;
+    }
+    return true;
+  });
+  if (st.sort) {
+    const { f, dir } = st.sort;
+    list = list.slice().sort((x, y) => {
+      const a = x.row[f] ?? '', b = y.row[f] ?? '';
+      const na = parseFloat(a), nb = parseFloat(b);
+      const cmp = !isNaN(na) && !isNaN(nb) && String(na) === a.trim() && String(nb) === b.trim() ? na - nb : a.localeCompare(b);
+      return cmp * dir;
+    });
+  }
+  st.shown = list;
+}
+
+function renderNav() {
+  $('nav').hidden = false;
+  $('version').innerHTML = st.commits.map((c, i) =>
+    `<option value="${i}"${i === st.idx ? ' selected' : ''}>${fmtDate(c.date)} · ${esc(c.msg)} · ${c.sha.slice(0, 7)}${i === 0 ? ' (latest)' : ''}</option>`).join('');
+  $('older').disabled = st.idx >= st.commits.length - 1;
+  $('newer').disabled = st.idx <= 0;
+}
+
+function renderSummary() {
+  const c = counts(), d = st.diff;
+  const chip = (key, label, n) => `<button class="chip ${key}${st.filter === key ? ' on' : ''}" data-filter="${key}">${label} ${n}</button>`;
+  $('chips').innerHTML = d.hasPrev
+    ? chip('all', 'All', st.items.length) + chip('added', '+ Added', c.added) + chip('updated', '~ Updated', c.updated) + chip('removed', '− Removed', c.removed)
+    : '';
+  const tally = {};
+  st.items.forEach(i => { if (i.transition) tally[i.transition] = (tally[i.transition] || 0) + 1; });
+  $('trans').innerHTML = Object.entries(tally).sort((a, b) => b[1] - a[1]).slice(0, 10)
+    .map(([t, n]) => `<button class="chip trans${st.transition === t ? ' on' : ''}" data-trans="${esc(t)}">${esc(t)} · ${n}</button>`).join('');
+  const commit = st.commits[st.idx], parent = st.commits[st.idx + 1];
+  let meta = `${STATES[st.code]} · ${st.cur.rows.size} projects · <a href="https://github.com/${REPO}/commit/${commit.sha}" target="_blank" rel="noopener">${commit.sha.slice(0, 7)}</a> on ${fmtDate(commit.date)}`;
+  meta += parent ? ` · compared with ${fmtDate(parent.date)}` : ' · oldest version, nothing to compare';
+  if (d.newFields.length) meta += ` · new columns: ${esc(d.newFields.join(', '))}`;
+  if (d.goneFields.length) meta += ` · dropped columns: ${esc(d.goneFields.join(', '))}`;
+  $('meta').innerHTML = meta;
+}
+
+function cellHtml(it, f) {
+  const v = it.row[f] ?? '';
+  const ch = it.changeMap?.[f];
+  if (ch) {
+    const old = ch.a === '' ? '<span class="old empty">empty</span>' : `<span class="old">${esc(ch.a)}</span>`;
+    const nu = ch.b === '' ? '<span class="new empty">empty</span>' : `<span class="new">${esc(ch.b)}</span>`;
+    return old + nu;
+  }
+  if (f === 'Proposal Number' && it.row.proposal_url) return `<a href="${esc(it.row.proposal_url)}" target="_blank" rel="noopener">${esc(v)}</a>`;
+  return esc(v);
+}
+
+function detailHtml(it) {
+  const rows = it.type === 'updated'
+    ? it.changes.map(c => `<div class="k">${esc(c.f)}</div><div class="v"><span class="old${c.a === '' ? ' empty' : ''}">${c.a === '' ? 'empty' : esc(c.a)}</span><span class="new${c.b === '' ? ' empty' : ''}">${c.b === '' ? 'empty' : esc(c.b)}</span></div>`)
+    : Object.entries(it.row).filter(([, v]) => v !== '' && v != null).map(([k, v]) => `<div class="k">${esc(k)}</div><div class="v">${esc(v)}</div>`);
+  return `<div class="fields">${rows.join('')}</div>`;
+}
+
+function renderTable() {
+  applyFilters();
+  const pages = Math.max(1, Math.ceil(st.shown.length / PAGE_SIZE));
+  st.page = Math.min(st.page, pages - 1);
+  const slice = st.shown.slice(st.page * PAGE_SIZE, (st.page + 1) * PAGE_SIZE);
+  const head = `<tr><th style="width:22px"></th>${st.cols.map(f => `<th data-sort="${esc(f)}" class="${st.sort?.f === f ? 'sorted' + (st.sort.dir < 0 ? ' desc' : '') : ''}">${esc(f)}</th>`).join('')}</tr>`;
+  const body = slice.map(it => {
+    const k = `${it.type}:${it.id}`;
+    const open = st.expanded.has(k);
+    const tds = st.cols.map(f => `<td class="${it.changeMap?.[f] ? 'chg' : ''}" title="${esc(it.row[f])}">${cellHtml(it, f)}</td>`).join('');
+    const detail = open ? `<tr class="detail"><td colspan="${st.cols.length + 1}">${detailHtml(it)}</td></tr>` : '';
+    return `<tr class="item ${it.type}" data-key="${esc(k)}"><td class="mark">${MARKS[it.type]}</td>${tds}</tr>${detail}`;
+  }).join('');
+  $('tbl').innerHTML = `<thead>${head}</thead><tbody>${body}</tbody>`;
+  $('tablewrap').hidden = !slice.length;
+  $('status').hidden = !!slice.length;
+  if (!slice.length) $('status').textContent = st.diff.hasPrev && !$('unchanged').checked ? 'No changed rows match the current filters.' : 'No rows match the current filters.';
+  $('pager').innerHTML = pages > 1
+    ? `<button id="prevp" ${st.page === 0 ? 'disabled' : ''}>‹</button> Page ${st.page + 1} of ${pages} · ${st.shown.length} rows <button id="nextp" ${st.page >= pages - 1 ? 'disabled' : ''}>›</button>`
+    : (slice.length ? `${st.shown.length} rows` : '');
+}
+
+function renderColPicker() {
+  $('colpick').innerHTML = st.cur.fields.map(f => `<label><input type="checkbox" value="${esc(f)}"${st.cols.includes(f) ? ' checked' : ''}> ${esc(f)}</label>`).join('');
+}
+
+function setStatus(text, err) {
+  const s = $('status');
+  s.hidden = false;
+  s.className = 'msg' + (err ? ' err' : '');
+  s.textContent = text;
+  $('tablewrap').hidden = true;
+  $('pager').innerHTML = '';
+}
+
+function syncHash() {
+  const sha = st.commits[st.idx]?.sha.slice(0, 7);
+  history.replaceState(null, '', `#s=${st.code}${sha && st.idx > 0 ? `&v=${sha}` : ''}`);
+}
+
+async function showVersion() {
+  const tok = ++st.tok;
+  const commit = st.commits[st.idx], parent = st.commits[st.idx + 1];
+  renderNav();
+  syncHash();
+  setStatus('Loading version…');
+  try {
+    const [cur, prev] = await Promise.all([loadCsv(commit.sha, st.code), parent ? loadCsv(parent.sha, st.code) : null]);
+    if (tok !== st.tok) return;
+    st.cur = cur;
+    st.diff = computeDiff(cur, prev);
+    st.items = buildItems();
+    st.filter = 'all';
+    st.transition = null;
+    st.page = 0;
+    st.expanded.clear();
+    st.cols = DEFAULT_COLS.filter(f => cur.fields.includes(f));
+    if (!st.cols.length) st.cols = cur.fields.slice(0, 8);
+    $('controls').hidden = false;
+    renderColPicker();
+    renderSummary();
+    renderTable();
+    const grand = st.commits[st.idx + 2];
+    if (grand) loadCsv(grand.sha, st.code).catch(() => {});
+  } catch (e) {
+    if (tok === st.tok) setStatus(e.message, true);
+  }
+}
+
+async function selectState(code, sha) {
+  st.code = code;
+  st.commits = [];
+  ['nav', 'controls'].forEach(id => $(id).hidden = true);
+  ['chips', 'trans', 'meta'].forEach(id => $(id).innerHTML = '');
+  if (!code) { setStatus('Select a state to begin.'); return; }
+  setStatus('Loading history…');
+  try {
+    st.commits = await getCommits(code);
+  } catch (e) {
+    setStatus(e.message, true);
+    return;
+  }
+  if (!st.commits.length) { setStatus(`No data published yet for ${STATES[code]}.`); return; }
+  const i = sha ? st.commits.findIndex(c => c.sha.startsWith(sha)) : 0;
+  st.idx = Math.max(0, i);
+  showVersion();
+}
+
+function go(delta) {
+  const next = st.idx + delta;
+  if (next < 0 || next >= st.commits.length) return;
+  st.idx = next;
+  showVersion();
+}
+
+$('state').innerHTML = '<option value="">Select a state…</option>' + Object.entries(STATES).map(([c, n]) => `<option value="${c}">${n} (${c})</option>`).join('');
+$('state').addEventListener('change', e => selectState(e.target.value));
+$('older').addEventListener('click', () => go(1));
+$('newer').addEventListener('click', () => go(-1));
+$('version').addEventListener('change', e => { st.idx = +e.target.value; showVersion(); });
+$('q').addEventListener('input', () => { st.page = 0; renderTable(); });
+$('unchanged').addEventListener('change', () => { st.page = 0; renderTable(); });
+$('colpick').addEventListener('change', () => {
+  st.cols = [...$('colpick').querySelectorAll('input:checked')].map(i => i.value);
+  renderTable();
+});
+$('chips').addEventListener('click', e => {
+  const b = e.target.closest('[data-filter]');
+  if (!b) return;
+  st.filter = b.dataset.filter;
+  st.page = 0;
+  renderSummary();
+  renderTable();
+});
+$('trans').addEventListener('click', e => {
+  const b = e.target.closest('[data-trans]');
+  if (!b) return;
+  st.transition = st.transition === b.dataset.trans ? null : b.dataset.trans;
+  st.page = 0;
+  renderSummary();
+  renderTable();
+});
+$('tbl').addEventListener('click', e => {
+  const th = e.target.closest('th[data-sort]');
+  if (th) {
+    const f = th.dataset.sort;
+    st.sort = st.sort?.f === f ? (st.sort.dir === 1 ? { f, dir: -1 } : null) : { f, dir: 1 };
+    renderTable();
+    return;
+  }
+  const tr = e.target.closest('tr.item');
+  if (!tr || e.target.closest('a')) return;
+  const k = tr.dataset.key;
+  st.expanded.has(k) ? st.expanded.delete(k) : st.expanded.add(k);
+  renderTable();
+});
+$('pager').addEventListener('click', e => {
+  if (e.target.id === 'prevp') st.page--;
+  else if (e.target.id === 'nextp') st.page++;
+  else return;
+  renderTable();
+  $('tablewrap').scrollTop = 0;
+});
+document.addEventListener('keydown', e => {
+  if (!st.commits.length || e.target.matches('input, select, textarea')) return;
+  if (e.key === 'ArrowLeft') go(1);
+  else if (e.key === 'ArrowRight') go(-1);
+});
+
+const hash = new URLSearchParams(location.hash.slice(1));
+if (STATES[hash.get('s')]) {
+  $('state').value = hash.get('s');
+  selectState(hash.get('s'), hash.get('v'));
+}
+</script>
+</body>
+</html>
