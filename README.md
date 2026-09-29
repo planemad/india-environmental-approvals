@@ -54,6 +54,17 @@ For example, to run for Goa:
 ./run.sh 30
 ```
 
+### CSV Only
+
+Set `CSV_ONLY=1` to skip the shape generation and GeoPackage steps (4 and 5) and only update `csv/Projects_<LGD_CODE>.csv`:
+```bash
+CSV_ONLY=1 ./run.sh 30
+```
+
+### Scheduled Updates
+
+[`.github/workflows/update-csv.yml`](.github/workflows/update-csv.yml) runs every Sunday and Wednesday (20:30 UTC) with `CSV_ONLY=1` for every state and commits the updated CSVs. The `raw/` folder is kept in the GitHub Actions cache between runs so only changed projects are refetched. It can also be triggered manually from the Actions tab with an optional comma-separated list of state codes.
+
 ### State Codes
 
 | LGD Code | State Name |
@@ -114,8 +125,6 @@ The fetch script sources data from Parivesh (https://parivesh.nic.in/)
 
 ## TODO
 
-- Automatically fetch new projects at regular intervals
-- Optimize refetching of updated projects
 - Additional CSVs and datapoints from projects
 - Visualization of datasets
 

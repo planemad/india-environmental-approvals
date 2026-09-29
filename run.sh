@@ -92,21 +92,23 @@ if [ $# -eq 1 ]; then
     echo "✓ Data processing completed"
     echo
 
-    # Step 4: Generate GeoJSON
-    echo "Step 4: Processing data and generating CSV for $STATE ($STATENAME)..."
-    python3 4_make_shape.py $STATE
-    echo "✓ Shape generation completed"
-    echo
+    if [ -z "$CSV_ONLY" ]; then
+        # Step 4: Generate GeoJSON
+        echo "Step 4: Processing data and generating CSV for $STATE ($STATENAME)..."
+        python3 4_make_shape.py $STATE
+        echo "✓ Shape generation completed"
+        echo
 
-    # Step 5: Combine
-    echo "Step 5: Combine shapes..."
-    python3  5_combine_geojson.py
-    echo "✓ Shapes combined"
-    echo
+        # Step 5: Combine
+        echo "Step 5: Combine shapes..."
+        python3  5_combine_geojson.py
+        echo "✓ Shapes combined"
+        echo
+    fi
 
     echo "===================================="
     echo "Pipeline completed successfully!"
-    echo "Data saved to: geojson/Projects_$STATE.geojson"
+    echo "Data saved to: csv/Projects_$STATE.csv"
     echo "===================================="
 
 else
@@ -144,22 +146,25 @@ else
         echo "✓ Data processing completed for $STATE ($STATENAME)"
         echo
 
-        # Step 4: Generate GeoJSON
-        echo "Step 4: Processing data and generating CSV for $STATE ($STATENAME)..."
-        python3 4_make_shape.py $STATE
-        echo "✓ Shape generation completed for $STATE ($STATENAME)"
-        echo
+        if [ -z "$CSV_ONLY" ]; then
+            # Step 4: Generate GeoJSON
+            echo "Step 4: Processing data and generating CSV for $STATE ($STATENAME)..."
+            python3 4_make_shape.py $STATE
+            echo "✓ Shape generation completed for $STATE ($STATENAME)"
+            echo
+        fi
 
         echo "Completed processing for state $STATE ($STATENAME)"
-        echo "Data saved to: geojson/Projects_$STATE.geojson"
         echo
     done
 
-    # Step 5: Combine (only once after all states are processed)
-    echo "Step 5: Combine shapes for all states..."
-    python3  5_combine_geojson.py
-    echo "✓ Shapes combined for all states"
-    echo
+    if [ -z "$CSV_ONLY" ]; then
+        # Step 5: Combine (only once after all states are processed)
+        echo "Step 5: Combine shapes for all states..."
+        python3  5_combine_geojson.py
+        echo "✓ Shapes combined for all states"
+        echo
+    fi
 
     echo "===================================="
     echo "Pipeline completed successfully for all states!"
