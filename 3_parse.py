@@ -513,6 +513,14 @@ def main():
         
         # Forest Clearance
         'Forest Clearance Present Owners',
+
+        'District',
+        'Plot Number',
+        'KML URLs',
+        'Village Code',
+        'proposal_url',
+        'Employment (Construction)',
+        'Employment (Operational)',
     ]
     
     # Get columns that exist in the dataframe from the preferred order
