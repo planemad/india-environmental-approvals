@@ -23,6 +23,8 @@
 body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
 header { background: var(--panel); border-bottom: 1px solid var(--border); padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 header h1 { font-size: 16px; margin: 0; flex: 1 1 240px; }
+header h1 a.home { color: inherit; text-decoration: none; }
+header h1 a.home:hover { text-decoration: underline; }
 header h1 small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; }
 main { padding: 16px; max-width: 1600px; margin: 0 auto; }
 select, input[type=search], button, summary { font: inherit; color: var(--text); background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; }
@@ -71,6 +73,14 @@ tr.detail td { white-space: normal; background: var(--bg); max-width: none; }
 .msg { padding: 32px; text-align: center; color: var(--muted); }
 .msg.err { color: var(--del-fg); }
 
+.picker { position: sticky; top: 0; z-index: 10; display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding: 10px 16px; background: var(--accent-soft); border-bottom: 1px solid var(--border); }
+.picker label { font-weight: 600; color: var(--accent); font-size: 15px; }
+.picker select { font-size: 16px; font-weight: 600; padding: 8px 12px; border: 2px solid var(--accent); min-width: min(320px, 100%); cursor: pointer; }
+#dash > :first-child { margin-top: 0; }
+details.sec { margin-top: 24px; }
+details.sec > summary { border: 0; background: none; padding: 0; cursor: pointer; font-size: 15px; font-weight: 600; }
+details.sec[open] > summary { margin-bottom: 8px; }
+details.sec > summary small { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 6px; }
 h2 { font-size: 15px; margin: 24px 0 8px; }
 h2 small { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 6px; }
 .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
@@ -85,7 +95,9 @@ h2 small { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 
 .pill.failed { background: var(--del-bg); color: var(--bad); }
 .pill.no_data, .pill.not_run, .pill.outdated { background: var(--upd-bg); color: var(--warn); }
 .runbar { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; margin-bottom: 12px; }
-.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 16px; }
+.runbar a + a { margin-left: 4px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 16px; margin-top: 24px; align-items: start; }
+.grid2 > details.sec { margin-top: 0; }
 .dtable { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; overflow: auto; }
 .dtable table td { white-space: normal; max-width: 360px; }
 .dtable td.num, .dtable th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
@@ -115,15 +127,16 @@ h2 small { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 
 </head>
 <body>
 <header>
-  <h1>Parivesh Dashboard<small>A public data mirror of <a href="https://parivesh.nic.in" target="_blank" rel="noopener">PARIVESH</a>, India's environmental clearance portal. Data is refreshed weekly, with project stats and change history for every state. <a href="https://parivesh.nic.in" target="_blank" rel="noopener">Visit parivesh.nic.in</a> for the official records.</small></h1>
-  <label class="inline">State
-    <select id="state"></select>
-  </label>
+  <h1><a class="home" href="./">Parivesh Dashboard</a><small>A public data mirror of <a href="https://parivesh.nic.in" target="_blank" rel="noopener">PARIVESH</a>, India's environmental clearance portal. Data is refreshed weekly, with project stats and change history for every state. <a href="https://parivesh.nic.in" target="_blank" rel="noopener">Visit parivesh.nic.in</a> for the official records.</small></h1>
 </header>
+<nav class="picker">
+  <label for="state">Browse by state</label>
+  <select id="state"></select>
+</nav>
 <main>
   <section id="dash"></section>
-  <section id="viewer" hidden>
-  <h2>Change history <small>Row-level diffs between each published update</small></h2>
+  <details class="sec" id="viewer" hidden>
+  <summary>Change history <small>Row-level diffs between each published update</small></summary>
   <div class="bar" id="nav" hidden>
     <button id="older" title="Older version (←)">‹ Older</button>
     <select id="version" class="version"></select>
@@ -141,7 +154,7 @@ h2 small { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 
   <div id="status" class="msg">Select a state to begin.</div>
   <div class="wrap" id="tablewrap" hidden><table id="tbl"></table></div>
   <div class="pager" id="pager"></div>
-  </section>
+  </details>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <script>
@@ -157,6 +170,15 @@ const STATES = {
   30: 'Goa', 31: 'Lakshadweep', 32: 'Kerala', 33: 'Tamil Nadu', 34: 'Puducherry', 35: 'Andaman And Nicobar Islands',
   36: 'Telangana', 37: 'Ladakh', 38: 'Dadra And Nagar Haveli And Daman And Diu'
 };
+const LAYERS = {
+  1: 'jammu-and-kashmir', 2: 'himachal-pradesh', 3: 'punjab', 4: 'chandigarh', 5: 'uttarakhand', 6: 'haryana', 7: 'delhi',
+  8: 'rajasthan', 9: 'uttar-pradesh', 10: 'bihar', 11: 'sikkim', 12: 'arunachal-pradesh', 13: 'nagaland', 14: 'manipur',
+  15: 'mizoram', 16: 'tripura', 17: 'meghalaya', 18: 'assam', 19: 'west-bengal', 20: 'jharkhand', 21: 'odisha',
+  22: 'chhattisgarh', 23: 'madhya-pradesh', 24: 'gujarat', 27: 'maharashtra', 28: 'andhra-pradesh', 29: 'karnataka',
+  30: 'goa', 31: 'lakshadweep', 32: 'kerala-parivesh-kerala', 33: 'tamil-nadu', 34: 'puducherry', 35: 'andaman-nicobar',
+  36: 'telangana', 37: 'ladakh', 38: 'dnh-dd'
+};
+const MAP_LAYERS = ['jammu-and-kashmir', 'himachal-pradesh', 'punjab', 'chandigarh', 'uttarakhand', 'haryana', 'delhi', 'rajasthan', 'ladakh', 'uttar-pradesh', 'madhya-pradesh', 'chhattisgarh', 'bihar', 'jharkhand', 'odisha', 'west-bengal', 'sikkim', 'arunachal-pradesh', 'nagaland', 'manipur', 'mizoram', 'tripura', 'meghalaya', 'assam', 'gujarat', 'maharashtra', 'dnh-dd', 'andhra-pradesh', 'karnataka', 'tamil-nadu', 'telangana', 'puducherry', 'andaman-nicobar', 'lakshadweep', 'kerala-parivesh-kerala'];
 const MARKS = { added: '+', removed: '−', updated: '~', same: '' };
 
 const $ = id => document.getElementById(id);
@@ -167,6 +189,13 @@ const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '
 const fmtDate = d => new Date(d).toISOString().slice(0, 10);
 const norm = s => s.trim().replace(/\s+/g, ' ');
 const csvPath = code => `csv/Projects_${code}.csv`;
+const csvUrl = code => code ? `https://github.com/${REPO}/blob/main/${csvPath(code)}` : `https://github.com/${REPO}/tree/main/csv`;
+const mapUrl = code => {
+  const own = LAYERS[code];
+  const layers = own ? [own, ...MAP_LAYERS.filter(l => l !== own)] : MAP_LAYERS;
+  return `https://amche.in/?atlas=parivesh&layers=${['mapbox-admin-lines', ...layers, 'mapbox-satellite'].join(',')}${own ? '' : '&geolocate=true'}`;
+};
+const linksHtml = code => `<div class="runbar"><a href="${csvUrl(code)}" target="_blank" rel="noopener">CSV data on GitHub</a><a href="${mapUrl(code)}" target="_blank" rel="noopener">Map view</a></div>`;
 
 async function getCommits(code) {
   const key = `commits:${code}`;
@@ -389,6 +418,7 @@ async function selectState(code, sha) {
   st.commits = [];
   st.tok++;
   $('viewer').hidden = !code;
+  $('viewer').open = !!sha;
   renderDash(code);
   ['nav', 'controls'].forEach(id => $(id).hidden = true);
   ['chips', 'trans', 'meta'].forEach(id => $(id).innerHTML = '');
@@ -422,6 +452,8 @@ const TOPS = [
 const STALE_DAYS = 7;
 const RUN_LABELS = { outdated: 'Outdated', ok: 'Updated', failed: 'Failed', no_data: 'No data', not_run: 'Not run yet' };
 let dashPromise = null;
+const openSecs = new Set();
+const sec = (key, title, note, body) => `<details class="sec" data-sec="${key}"${openSecs.has(key) ? ' open' : ''}><summary>${title}${note ? ` <small>${note}</small>` : ''}</summary>${body}</details>`;
 
 const nf = n => Number(n).toLocaleString('en-IN', { maximumFractionDigits: 0 });
 const dateOrDash = d => d ? fmtDate(d) : '—';
@@ -527,14 +559,14 @@ function changesHtml(sc, all) {
   const table = list.length
     ? `<div class="dtable" style="margin-top:10px"><table><thead><tr><th>Change</th><th>Project</th>${all ? '<th>State</th>' : ''}<th class="num">Cost</th></tr></thead><tbody>${rows}</tbody></table></div>`
     : '';
-  return `<h2>Recent changes <small>${since}</small></h2>${tiles}${table}`;
+  return sec('changes', 'Recent changes', since, tiles + table);
 }
 
 function statusBars(sc) {
   const list = sc.status.slice(0, 10), max = Math.max(1, ...list.map(x => x[1]));
   if (!list.length) return '';
-  return `<h2>Projects by status <small>top ${list.length}</small></h2><div class="bars">${list.map(([l, n]) =>
-    `<div class="bar-row"><span class="lbl" title="${esc(l)}">${esc(l)}</span><span class="track"><span class="fill" style="display:block;width:${n / max * 100}%"></span></span><span class="val">${nf(n)}</span></div>`).join('')}</div>`;
+  return sec('status', 'Projects by status', `top ${list.length}`, `<div class="bars">${list.map(([l, n]) =>
+    `<div class="bar-row"><span class="lbl" title="${esc(l)}">${esc(l)}</span><span class="track"><span class="fill" style="display:block;width:${n / max * 100}%"></span></span><span class="val">${nf(n)}</span></div>`).join('')}</div>`);
 }
 
 let stateSort = { f: 'projects', dir: -1 };
@@ -563,9 +595,9 @@ function stateCards(scopes) {
 function statesTable(scopes) {
   const rows = stateRows(scopes), { f, dir } = stateSort;
   const cols = [['name', 'State'], ['status', 'Data run'], ['projects', 'Projects', 1], ['granted', 'EC granted', 1], ['cost', 'Total cost', 1], ['added', 'New', 1], ['status_changes', 'Status changes', 1], ['latest', 'Latest application']];
-  const head = cols.map(([k, l, n]) => `<th data-sortstate="${k}" class="${n ? 'num ' : ''}${f === k ? 'sorted' + (dir < 0 ? ' desc' : '') : ''}">${l}</th>`).join('');
-  const body = rows.map(r => `<tr class="click" data-code="${r.code}"><td>${esc(r.name)}</td><td><span class="pill ${r.status}">${RUN_LABELS[r.status] || r.status}</span></td><td class="num">${r.projects ? nf(r.projects) : '—'}</td><td class="num">${r.projects ? nf(r.granted) : '—'}</td><td class="num">${r.projects ? fmtCost(r.cost) : '—'}</td><td class="num">${r.projects ? nf(r.added) : '—'}</td><td class="num">${r.projects ? nf(r.status_changes) : '—'}</td><td>${dateOrDash(r.latest)}</td></tr>`).join('');
-  return `<h2>Data runs by state <small>click a state for its dashboard and change history</small></h2><div class="dtable"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+  const head = cols.map(([k, l, n]) => `<th data-sortstate="${k}" class="${n ? 'num ' : ''}${f === k ? 'sorted' + (dir < 0 ? ' desc' : '') : ''}">${l}</th>`).join('') + '<th>Links</th>';
+  const body = rows.map(r => `<tr class="click" data-code="${r.code}"><td>${esc(r.name)}</td><td><span class="pill ${r.status}">${RUN_LABELS[r.status] || r.status}</span></td><td class="num">${r.projects ? nf(r.projects) : '—'}</td><td class="num">${r.projects ? nf(r.granted) : '—'}</td><td class="num">${r.projects ? fmtCost(r.cost) : '—'}</td><td class="num">${r.projects ? nf(r.added) : '—'}</td><td class="num">${r.projects ? nf(r.status_changes) : '—'}</td><td>${dateOrDash(r.latest)}</td><td>${r.projects ? `<a href="${csvUrl(r.code)}" target="_blank" rel="noopener">CSV</a> · ` : ''}<a href="${mapUrl(r.code)}" target="_blank" rel="noopener">Map</a></td></tr>`).join('');
+  return sec('states-table', 'Data runs by state', 'click a state for its dashboard and change history', `<div class="dtable"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`);
 }
 
 async function renderDash(code) {
@@ -578,14 +610,20 @@ async function renderDash(code) {
   const sc = scopes[all ? 'all' : code];
   const title = all ? 'All India' : STATES[code];
   if (!sc || !+sc.stat.projects) {
-    el.innerHTML = `<h2>${esc(title)}</h2>${sc ? runHtml(sc, all) : ''}<div class="msg">No data published yet for ${esc(title)}.</div>` + (all ? stateCards(scopes) + statesTable(scopes) : '');
+    el.innerHTML = (all ? stateCards(scopes) + statesTable(scopes) : '') + `<h2>${esc(title)}</h2>${sc ? runHtml(sc, all) : ''}${linksHtml(code)}<div class="msg">No data published yet for ${esc(title)}.</div>`;
     return;
   }
-  const tops = TOPS.map(([key, heading, vh, fn]) => `<div><h2>${heading} <small>top 10</small></h2>${listTable(sc.lists[key], all, vh, fn)}</div>`).join('');
-  el.innerHTML = `<h2 style="margin-top:0">${esc(title)} <small>overview</small></h2>${runHtml(sc, all)}${statsHtml(sc)}${changesHtml(sc, all)}${statusBars(sc)}<div class="grid2">${tops}</div>${all ? stateCards(scopes) + statesTable(scopes) : ''}`;
+  const tops = TOPS.map(([key, heading, vh, fn]) => sec(key, heading, 'top 10', listTable(sc.lists[key], all, vh, fn))).join('');
+  el.innerHTML = `${all ? stateCards(scopes) + statesTable(scopes) : ''}<h2>${esc(title)} <small>overview</small></h2>${runHtml(sc, all)}${linksHtml(code)}${statsHtml(sc)}${changesHtml(sc, all)}${statusBars(sc)}<div class="grid2">${tops}</div>`;
 }
 
+$('dash').addEventListener('toggle', e => {
+  const key = e.target.dataset?.sec;
+  if (key) e.target.open ? openSecs.add(key) : openSecs.delete(key);
+}, true);
+
 $('dash').addEventListener('click', e => {
+  if (e.target.closest('a')) return;
   const th = e.target.closest('th[data-sortstate]');
   if (th) {
     const f = th.dataset.sortstate;
