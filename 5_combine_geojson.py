@@ -17,7 +17,7 @@ def find_geojson_files(geojson_dir: str = "geojson") -> List[str]:
     geojson_files = glob.glob(geojson_pattern)
     return sorted(geojson_files)
 
-def combine_geojson_to_gpkg(geojson_files: List[str], output_path: str = "india-environmental-approvals.gpkg"):
+def combine_geojson_to_gpkg(geojson_files: List[str], output_path: str = "parivesh-dashboard.gpkg"):
     """Combine multiple GeoJSON files into a single GeoPackage"""
     
     if not geojson_files:
@@ -248,7 +248,7 @@ def main():
     
     # Set up paths
     geojson_dir = "geojson"
-    output_path = "india-environmental-approvals.gpkg"
+    output_path = "parivesh-dashboard.gpkg"
     
     # Allow custom output path as command line argument
     if len(sys.argv) > 1:

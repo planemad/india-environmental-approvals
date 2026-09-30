@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Parivesh - India Environmental Approvals Data Collection Pipeline
+# Parivesh Dashboard - Data Collection Pipeline
 # This script runs the complete data collection pipeline for 
 # a specified state or all states
 
@@ -68,7 +68,7 @@ if [ $# -eq 1 ]; then
     STATENAME=$(get_state_name "$STATE")
     
     echo "===================================="
-    echo "India Environmental Approvals Data"
+    echo "Parivesh Dashboard Data"
     echo "===================================="
     echo "Running for state code: $STATE"
     echo "State Name: $STATENAME"

@@ -1,8 +1,8 @@
-# india-environmental-approvals
+# parivesh-dashboard
 
 GIS dataset of environmental clearance applications for projects in India. Sourced from [Parivesh](https://parivesh.nic.in/).
 
-Browse the dataset: <https://flatgithub.com/Vonter/india-environmental-approvals?filename=csv/Projects.csv&stickyColumnName=Project%20Name&sort=Application%20Date%2Cdesc>
+Browse the dataset: <https://flatgithub.com/publicmap/parivesh-dashboard?filename=csv/Projects.csv&stickyColumnName=Project%20Name&sort=Application%20Date%2Cdesc>
 
 ## Dataset
 
@@ -16,7 +16,7 @@ The complete dataset is available as CSV files under the [csv/](csv) folder in t
 - [2_fetch.sh](2_fetch.sh): Fetches the details of each project
 - [3_parse.py](3_parse.py): Parses the project files, and saves project details as a CSV file
 - [4_make_shape.py](4_make_shape.py): Downloads the linked kml for each application and compiles it into a single geojson with all the csv attributes
-- [5_combine_geojson.py](5_combine_geojson.py): Combines the geojson for every state into a single `india-environmental-approvals.gpkg`
+- [5_combine_geojson.py](5_combine_geojson.py): Combines the geojson for every state into a single `parivesh-dashboard.gpkg`
 - [6_dashboard.py](6_dashboard.py): Builds `csv/Dashboard.csv`, a consolidated long-format summary (per-state and all-India stats, run status, changes since the previous version, top-10 lists) used by the front page of `index.html`. Run automatically by the update workflow. Cost figures above 1e7 lakhs are treated as unit errors and excluded from totals and rankings; delisted/removed projects are excluded from cost/land totals and top-10 lists.
 
 ## Running an update manually
@@ -39,7 +39,7 @@ To run locally instead: `bash run.sh 30` (one state) or `bash run.sh` (all), the
 
 ## License
 
-This india-environmental-approvals dataset is made available under the Open Database License: http://opendatacommons.org/licenses/odbl/1.0/. 
+This parivesh-dashboard dataset is made available under the Open Database License: http://opendatacommons.org/licenses/odbl/1.0/. 
 Users of this data should attribute Parivesh: https://parivesh.nic.in/
 
 You are free:
@@ -149,9 +149,9 @@ The fetch script sources data from Parivesh (https://parivesh.nic.in/)
 
 ## Issues
 
-Found an error in the data processing, have a question, or looking for data aggregated differently? Create an [issue](https://github.com/Vonter/india-environmental-approvals/issues) with the details.
+Found an error in the data processing, have a question, or looking for data aggregated differently? Create an [issue](https://github.com/publicmap/parivesh-dashboard/issues) with the details.
 
-The information in this repository is intended to be updated regularly. In case the data has not been updated for multiple months, create an [issue](https://github.com/Vonter/india-environmental-approvals/issues)
+The information in this repository is intended to be updated regularly. In case the data has not been updated for multiple months, create an [issue](https://github.com/publicmap/parivesh-dashboard/issues)
 
 ## Credits
 

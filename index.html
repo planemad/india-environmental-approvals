@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Environmental Approvals Tracker</title>
+<title>Parivesh Dashboard</title>
 <style>
 :root {
   --bg: #f7f7f5; --panel: #ffffff; --text: #1c1f23; --muted: #6b7280; --border: #e2e4e8;
@@ -83,7 +83,7 @@ h2 small { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 
 .pill { display: inline-block; border-radius: 999px; padding: 1px 10px; font-size: 12px; font-weight: 600; background: var(--accent-soft); color: var(--accent); }
 .pill.ok { background: var(--add-bg); color: var(--ok); }
 .pill.failed { background: var(--del-bg); color: var(--bad); }
-.pill.no_data, .pill.not_run { background: var(--upd-bg); color: var(--warn); }
+.pill.no_data, .pill.not_run, .pill.outdated { background: var(--upd-bg); color: var(--warn); }
 .runbar { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; margin-bottom: 12px; }
 .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 16px; }
 .dtable { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; overflow: auto; }
@@ -94,6 +94,17 @@ h2 small { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 
 .dtable tr.click { cursor: pointer; }
 .dtable tr.click:hover td { background: var(--accent-soft); }
 .dtable .empty-row { color: var(--muted); padding: 12px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
+.scard { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; text-align: left; font: inherit; color: inherit; }
+.scard:hover { border-color: var(--accent); }
+.scard.idle { opacity: .65; }
+.scard .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.scard .name { font-weight: 600; }
+.scard .when { color: var(--muted); font-size: 12px; }
+.scard .kv { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.scard .kv .n { font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.scard .kv .l { color: var(--muted); font-size: 11px; }
+.scard .chg { font-size: 12px; color: var(--muted); }
 .bars { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
 .bar-row { display: grid; grid-template-columns: minmax(120px, 240px) 1fr 56px; gap: 8px; align-items: center; font-size: 12px; padding: 2px 0; }
 .bar-row .track { background: var(--accent-soft); border-radius: 3px; height: 10px; }
@@ -104,7 +115,7 @@ h2 small { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 
 </head>
 <body>
 <header>
-  <h1>Environmental Approvals Tracker<small>Status of data runs, project stats and changes to Parivesh clearance records</small></h1>
+  <h1>Parivesh Dashboard<small>A public data mirror of <a href="https://parivesh.nic.in" target="_blank" rel="noopener">PARIVESH</a>, India's environmental clearance portal. Data is refreshed weekly, with project stats and change history for every state. <a href="https://parivesh.nic.in" target="_blank" rel="noopener">Visit parivesh.nic.in</a> for the official records.</small></h1>
   <label class="inline">State
     <select id="state"></select>
   </label>
@@ -134,7 +145,7 @@ h2 small { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <script>
-const REPO = 'planemad/india-environmental-approvals';
+const REPO = 'publicmap/parivesh-dashboard';
 const PAGE_SIZE = 100;
 const STATUS_FIELD = 'Last Visible Status';
 const DEFAULT_COLS = ['Proposal Number', 'Project Name', 'Organization Name', 'District', 'Proposal Type', STATUS_FIELD, 'Application Date', 'Grant Date', 'Total Cost (Lakhs)'];
@@ -408,7 +419,8 @@ const TOPS = [
   ['top_cost', 'Highest project cost', 'Cost', r => fmtCost(r.total_cost_lakhs)],
   ['top_land', 'Largest land requirement', 'Land', r => fmtHa(r.land_ha)],
 ];
-const RUN_LABELS = { ok: 'Updated', failed: 'Failed', no_data: 'No data', not_run: 'Not run yet' };
+const STALE_DAYS = 7;
+const RUN_LABELS = { outdated: 'Outdated', ok: 'Updated', failed: 'Failed', no_data: 'No data', not_run: 'Not run yet' };
 let dashPromise = null;
 
 const nf = n => Number(n).toLocaleString('en-IN', { maximumFractionDigits: 0 });
@@ -424,6 +436,10 @@ function fmtCost(lakhs) {
 function fmtHa(ha) {
   const v = parseFloat(ha);
   return isNaN(v) ? '—' : `${v >= 100 ? nf(v) : v.toLocaleString('en-IN', { maximumFractionDigits: 2 })} ha`;
+}
+function effStatus(status, date) {
+  const days = (Date.now() - new Date(date)) / 864e5;
+  return status === 'ok' && days > STALE_DAYS ? 'outdated' : status;
 }
 function ago(d) {
   const days = Math.floor((Date.now() - new Date(d)) / 864e5);
@@ -462,7 +478,7 @@ function tileHtml(n, label, cls = '') {
 }
 
 function runHtml(sc, all) {
-  const r = sc.run, status = r.run_status || 'not_run';
+  const r = sc.run, status = effStatus(r.run_status || 'not_run', r.run_date);
   const link = r.run_url ? ` · <a href="${esc(r.run_url)}" target="_blank" rel="noopener">workflow run</a>` : '';
   const when = r.run_date ? `Last run ${fmtDate(r.run_date)} (${ago(r.run_date)})` : 'No run recorded yet';
   const howto = ` · <a href="https://github.com/${REPO}/blob/main/README.md#running-an-update-manually" target="_blank" rel="noopener">How to trigger an update</a>`;
@@ -522,15 +538,30 @@ function statusBars(sc) {
 }
 
 let stateSort = { f: 'projects', dir: -1 };
-function statesTable(scopes) {
+function stateRows(scopes) {
   const rows = Object.entries(STATES).map(([code, name]) => {
     const sc = scopes[code] || { stat: {}, run: {} };
-    return { code, name, status: sc.run.run_status || 'not_run', runDate: sc.run.run_date || '', projects: +sc.stat.projects || 0,
+    return { code, name, status: effStatus(sc.run.run_status || 'not_run', sc.run.run_date), runDate: sc.run.run_date || '', projects: +sc.stat.projects || 0,
       granted: +sc.stat.ec_granted || 0, cost: +sc.stat.total_cost_lakhs || 0, added: +sc.stat.changes_added || 0,
       status_changes: +sc.stat.changes_status || 0, latest: sc.stat.latest_application || '' };
   });
   const { f, dir } = stateSort;
   rows.sort((a, b) => (typeof a[f] === 'string' ? a[f].localeCompare(b[f]) : a[f] - b[f]) * dir || a.name.localeCompare(b.name));
+  return rows;
+}
+
+function stateCards(scopes) {
+  const cards = stateRows(scopes).map(r => {
+    const has = r.projects > 0, run = r.runDate ? `${fmtDate(r.runDate)} (${ago(r.runDate)})` : 'never run';
+    const kv = (n, l) => `<div><div class="n">${has ? n : '—'}</div><div class="l">${l}</div></div>`;
+    const chg = has ? `+${nf(r.added)} new · ${nf(r.status_changes)} status changes` : 'No data yet';
+    return `<button class="scard${has ? '' : ' idle'}" data-code="${r.code}"><div class="top"><span class="name">${esc(r.name)}</span><span class="pill ${r.status}">${RUN_LABELS[r.status] || r.status}</span></div><div class="when">Last run ${run}</div><div class="kv">${kv(nf(r.projects), 'Projects')}${kv(nf(r.granted), 'EC granted')}${kv(fmtCost(r.cost), 'Cost')}</div><div class="chg">${chg}</div></button>`;
+  }).join('');
+  return `<h2>States <small>run status and headline stats · click for details</small></h2><div class="cards">${cards}</div>`;
+}
+
+function statesTable(scopes) {
+  const rows = stateRows(scopes), { f, dir } = stateSort;
   const cols = [['name', 'State'], ['status', 'Data run'], ['projects', 'Projects', 1], ['granted', 'EC granted', 1], ['cost', 'Total cost', 1], ['added', 'New', 1], ['status_changes', 'Status changes', 1], ['latest', 'Latest application']];
   const head = cols.map(([k, l, n]) => `<th data-sortstate="${k}" class="${n ? 'num ' : ''}${f === k ? 'sorted' + (dir < 0 ? ' desc' : '') : ''}">${l}</th>`).join('');
   const body = rows.map(r => `<tr class="click" data-code="${r.code}"><td>${esc(r.name)}</td><td><span class="pill ${r.status}">${RUN_LABELS[r.status] || r.status}</span></td><td class="num">${r.projects ? nf(r.projects) : '—'}</td><td class="num">${r.projects ? nf(r.granted) : '—'}</td><td class="num">${r.projects ? fmtCost(r.cost) : '—'}</td><td class="num">${r.projects ? nf(r.added) : '—'}</td><td class="num">${r.projects ? nf(r.status_changes) : '—'}</td><td>${dateOrDash(r.latest)}</td></tr>`).join('');
@@ -547,11 +578,11 @@ async function renderDash(code) {
   const sc = scopes[all ? 'all' : code];
   const title = all ? 'All India' : STATES[code];
   if (!sc || !+sc.stat.projects) {
-    el.innerHTML = `<h2>${esc(title)}</h2>${sc ? runHtml(sc, all) : ''}<div class="msg">No data published yet for ${esc(title)}.</div>` + (all ? statesTable(scopes) : '');
+    el.innerHTML = `<h2>${esc(title)}</h2>${sc ? runHtml(sc, all) : ''}<div class="msg">No data published yet for ${esc(title)}.</div>` + (all ? stateCards(scopes) + statesTable(scopes) : '');
     return;
   }
   const tops = TOPS.map(([key, heading, vh, fn]) => `<div><h2>${heading} <small>top 10</small></h2>${listTable(sc.lists[key], all, vh, fn)}</div>`).join('');
-  el.innerHTML = `<h2 style="margin-top:0">${esc(title)} <small>overview</small></h2>${runHtml(sc, all)}${statsHtml(sc)}${changesHtml(sc, all)}${statusBars(sc)}<div class="grid2">${tops}</div>${all ? statesTable(scopes) : ''}`;
+  el.innerHTML = `<h2 style="margin-top:0">${esc(title)} <small>overview</small></h2>${runHtml(sc, all)}${statsHtml(sc)}${changesHtml(sc, all)}${statusBars(sc)}<div class="grid2">${tops}</div>${all ? stateCards(scopes) + statesTable(scopes) : ''}`;
 }
 
 $('dash').addEventListener('click', e => {
@@ -562,7 +593,7 @@ $('dash').addEventListener('click', e => {
     renderDash('');
     return;
   }
-  const tr = e.target.closest('tr[data-code]');
+  const tr = e.target.closest('[data-code]');
   if (tr) { $('state').value = tr.dataset.code; selectState(tr.dataset.code); }
 });
 
