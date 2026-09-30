@@ -53,6 +53,16 @@ jobs:
           name: csv-${{ matrix.state }}
           path: csv/Projects_${{ matrix.state }}.csv
           if-no-files-found: ignore
+      - name: Record state outcome
+        if: ${{ always() }}
+        run: |
+          mkdir -p status
+          echo "${{ job.status }}" > status/${{ matrix.state }}.txt
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: status-${{ matrix.state }}
+          path: status/${{ matrix.state }}.txt
 
   commit:
     needs: fetch
@@ -62,11 +72,20 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/download-artifact@v4
         with:
           pattern: csv-*
           path: csv
           merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: status-*
+          path: status
+          merge-multiple: true
+      - name: Build dashboard CSV
+        run: python3 6_dashboard.py --status-dir status --run-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

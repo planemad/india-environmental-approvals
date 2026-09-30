@@ -17,6 +17,25 @@ The complete dataset is available as CSV files under the [csv/](csv) folder in t
 - [3_parse.py](3_parse.py): Parses the project files, and saves project details as a CSV file
 - [4_make_shape.py](4_make_shape.py): Downloads the linked kml for each application and compiles it into a single geojson with all the csv attributes
 - [5_combine_geojson.py](5_combine_geojson.py): Combines the geojson for every state into a single `india-environmental-approvals.gpkg`
+- [6_dashboard.py](6_dashboard.py): Builds `csv/Dashboard.csv`, a consolidated long-format summary (per-state and all-India stats, run status, changes since the previous version, top-10 lists) used by the front page of `index.html`. Run automatically by the update workflow. Cost figures above 1e7 lakhs are treated as unit errors and excluded from totals and rankings; delisted/removed projects are excluded from cost/land totals and top-10 lists.
+
+## Running an update manually
+
+The [Update environmental approvals CSVs](.github/workflows/update-csv.yml) workflow runs automatically every Wednesday and Sunday (20:30 UTC). To trigger it yourself:
+
+**From GitHub:** open the repo's **Actions** tab, select **Update environmental approvals CSVs**, click **Run workflow**, optionally enter comma-separated state codes (blank = all states, e.g. `30` for Goa or `30,32` for Goa and Kerala), and confirm.
+
+**From the command line:**
+
+```bash
+gh workflow run update-csv.yml                    # all states
+gh workflow run update-csv.yml -f states=30,32    # selected states
+gh run watch                                      # follow progress
+```
+
+State codes are the LGD codes listed in [run.sh](run.sh). A run fetches each state, commits the updated CSVs and rebuilds `csv/Dashboard.csv`. States left out of a partial run keep their previous run status on the dashboard.
+
+To run locally instead: `bash run.sh 30` (one state) or `bash run.sh` (all), then `python3 6_dashboard.py`. Set `CSV_ONLY=1` to skip the GeoJSON steps.
 
 ## License
 

@@ -8,12 +8,14 @@
 :root {
   --bg: #f7f7f5; --panel: #ffffff; --text: #1c1f23; --muted: #6b7280; --border: #e2e4e8;
   --accent: #1d6f5c; --accent-soft: #e3f1ed;
+  --ok: #14632d; --bad: #a12525; --warn: #7a5b00;
   --add-bg: #e6f6ea; --add-fg: #14632d; --del-bg: #fdecec; --del-fg: #a12525; --upd-bg: #fff6d9; --upd-fg: #7a5b00;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #14171a; --panel: #1c2024; --text: #e8eaed; --muted: #98a0ab; --border: #2c3238;
     --accent: #4cc2a5; --accent-soft: #1b3a33;
+    --ok: #7fd99b; --bad: #f19a9a; --warn: #f0cf72;
     --add-bg: #173324; --add-fg: #7fd99b; --del-bg: #3a1c1c; --del-fg: #f19a9a; --upd-bg: #3a3116; --upd-fg: #f0cf72;
   }
 }
@@ -68,16 +70,49 @@ tr.detail td { white-space: normal; background: var(--bg); max-width: none; }
 .pager { display: flex; gap: 8px; align-items: center; justify-content: center; padding: 12px; color: var(--muted); }
 .msg { padding: 32px; text-align: center; color: var(--muted); }
 .msg.err { color: var(--del-fg); }
+
+h2 { font-size: 15px; margin: 24px 0 8px; }
+h2 small { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 6px; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.tile { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
+.tile .n { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.tile .l { color: var(--muted); font-size: 12px; }
+.tile.added .n { color: var(--add-fg); }
+.tile.removed .n { color: var(--del-fg); }
+.tile.updated .n { color: var(--upd-fg); }
+.pill { display: inline-block; border-radius: 999px; padding: 1px 10px; font-size: 12px; font-weight: 600; background: var(--accent-soft); color: var(--accent); }
+.pill.ok { background: var(--add-bg); color: var(--ok); }
+.pill.failed { background: var(--del-bg); color: var(--bad); }
+.pill.no_data, .pill.not_run { background: var(--upd-bg); color: var(--warn); }
+.runbar { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; margin-bottom: 12px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 16px; }
+.dtable { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; overflow: auto; }
+.dtable table td { white-space: normal; max-width: 360px; }
+.dtable td.num, .dtable th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.dtable td a { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.dtable td small { display: block; color: var(--muted); }
+.dtable tr.click { cursor: pointer; }
+.dtable tr.click:hover td { background: var(--accent-soft); }
+.dtable .empty-row { color: var(--muted); padding: 12px; }
+.bars { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
+.bar-row { display: grid; grid-template-columns: minmax(120px, 240px) 1fr 56px; gap: 8px; align-items: center; font-size: 12px; padding: 2px 0; }
+.bar-row .track { background: var(--accent-soft); border-radius: 3px; height: 10px; }
+.bar-row .fill { background: var(--accent); height: 100%; border-radius: 3px; }
+.bar-row .lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bar-row .val { text-align: right; font-variant-numeric: tabular-nums; }
 </style>
 </head>
 <body>
 <header>
-  <h1>Environmental Approvals Tracker<small>Changes to Parivesh clearance records between each update</small></h1>
+  <h1>Environmental Approvals Tracker<small>Status of data runs, project stats and changes to Parivesh clearance records</small></h1>
   <label class="inline">State
     <select id="state"></select>
   </label>
 </header>
 <main>
+  <section id="dash"></section>
+  <section id="viewer" hidden>
+  <h2>Change history <small>Row-level diffs between each published update</small></h2>
   <div class="bar" id="nav" hidden>
     <button id="older" title="Older version (←)">‹ Older</button>
     <select id="version" class="version"></select>
@@ -95,6 +130,7 @@ tr.detail td { white-space: normal; background: var(--bg); max-width: none; }
   <div id="status" class="msg">Select a state to begin.</div>
   <div class="wrap" id="tablewrap" hidden><table id="tbl"></table></div>
   <div class="pager" id="pager"></div>
+  </section>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <script>
@@ -113,7 +149,7 @@ const STATES = {
 const MARKS = { added: '+', removed: '−', updated: '~', same: '' };
 
 const $ = id => document.getElementById(id);
-const st = { code: null, commits: [], idx: 0, cur: null, diff: null, items: [], shown: [], cols: [], filter: 'all', transition: null, sort: null, page: 0, expanded: new Set(), tok: 0 };
+const st = { code: null, commits: [], idx: 0, cur: null, diff: null, items: [], shown: [], cols: [], filter: 'all', transition: null, sort: null, page: 0, expanded: new Set(), tok: 0, dashTok: 0 };
 const csvCache = new Map();
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -340,9 +376,12 @@ async function showVersion() {
 async function selectState(code, sha) {
   st.code = code;
   st.commits = [];
+  st.tok++;
+  $('viewer').hidden = !code;
+  renderDash(code);
   ['nav', 'controls'].forEach(id => $(id).hidden = true);
   ['chips', 'trans', 'meta'].forEach(id => $(id).innerHTML = '');
-  if (!code) { setStatus('Select a state to begin.'); return; }
+  if (!code) { history.replaceState(null, '', location.pathname + location.search); return; }
   setStatus('Loading history…');
   try {
     st.commits = await getCommits(code);
@@ -363,7 +402,171 @@ function go(delta) {
   showVersion();
 }
 
-$('state').innerHTML = '<option value="">Select a state…</option>' + Object.entries(STATES).map(([c, n]) => `<option value="${c}">${n} (${c})</option>`).join('');
+const DASH_URLS = ['csv/Dashboard.csv', `https://raw.githubusercontent.com/${REPO}/main/csv/Dashboard.csv`];
+const TOPS = [
+  ['top_recent_ec', 'Most recent EC granted', 'Grant date', r => fmtDate(r.grant_date)],
+  ['top_cost', 'Highest project cost', 'Cost', r => fmtCost(r.total_cost_lakhs)],
+  ['top_land', 'Largest land requirement', 'Land', r => fmtHa(r.land_ha)],
+];
+const RUN_LABELS = { ok: 'Updated', failed: 'Failed', no_data: 'No data', not_run: 'Not run yet' };
+let dashPromise = null;
+
+const nf = n => Number(n).toLocaleString('en-IN', { maximumFractionDigits: 0 });
+const dateOrDash = d => d ? fmtDate(d) : '—';
+function fmtCost(lakhs) {
+  const v = parseFloat(lakhs);
+  if (isNaN(v)) return '—';
+  const cr = v / 100;
+  if (cr >= 1e5) return `₹${(cr / 1e5).toFixed(2)} lakh cr`;
+  if (cr >= 1) return `₹${nf(cr)} cr`;
+  return `₹${nf(v)} lakh`;
+}
+function fmtHa(ha) {
+  const v = parseFloat(ha);
+  return isNaN(v) ? '—' : `${v >= 100 ? nf(v) : v.toLocaleString('en-IN', { maximumFractionDigits: 2 })} ha`;
+}
+function ago(d) {
+  const days = Math.floor((Date.now() - new Date(d)) / 864e5);
+  if (isNaN(days)) return '';
+  return days <= 0 ? 'today' : days === 1 ? 'yesterday' : `${days} days ago`;
+}
+
+function loadDashboard() {
+  dashPromise ??= (async () => {
+    let lastErr;
+    for (const url of DASH_URLS) {
+      try {
+        const res = await fetch(url, { cache: 'no-cache' });
+        if (!res.ok) throw new Error(`Could not load dashboard data (${res.status})`);
+        const rows = Papa.parse(await res.text(), { header: true, skipEmptyLines: true }).data;
+        const scopes = {};
+        for (const r of rows) {
+          const key = r.scope === 'all' ? 'all' : r.state_code;
+          const sc = scopes[key] ??= { stat: {}, run: {}, status: [], lists: {} };
+          if (r.section === 'stat') sc.stat[r.label] = r.value;
+          else if (r.section === 'run') sc.run[r.label] = r.value;
+          else if (r.section === 'status') sc.status.push([r.label, +r.value]);
+          else (sc.lists[r.section] ??= []).push(r);
+        }
+        return scopes;
+      } catch (e) { lastErr = e; }
+    }
+    dashPromise = null;
+    throw lastErr;
+  })();
+  return dashPromise;
+}
+
+function tileHtml(n, label, cls = '') {
+  return `<div class="tile ${cls}"><div class="n">${n}</div><div class="l">${label}</div></div>`;
+}
+
+function runHtml(sc, all) {
+  const r = sc.run, status = r.run_status || 'not_run';
+  const link = r.run_url ? ` · <a href="${esc(r.run_url)}" target="_blank" rel="noopener">workflow run</a>` : '';
+  const when = r.run_date ? `Last run ${fmtDate(r.run_date)} (${ago(r.run_date)})` : 'No run recorded yet';
+  const howto = ` · <a href="https://github.com/${REPO}/blob/main/README.md#running-an-update-manually" target="_blank" rel="noopener">How to trigger an update</a>`;
+  const states = all
+    ? ` · ${r.states_ok} updated · ${r.states_failed} failed · ${r.states_no_data} no data · ${r.states_not_run} not run yet`
+    : '';
+  return `<div class="runbar"><span class="pill ${status}">${RUN_LABELS[status] || status}</span><span>${when}${states}${link}${howto}</span></div>`;
+}
+
+function statsHtml(sc) {
+  const s = sc.stat, outliers = +s.cost_outliers_excluded || 0;
+  return `<div class="tiles">
+    ${tileHtml(nf(s.projects), 'Projects tracked')}
+    ${tileHtml(nf(s.active_projects), 'Active (not delisted/removed)')}
+    ${tileHtml(nf(s.ec_granted), 'EC granted')}
+    ${tileHtml(nf(s.ec_rejected), 'EC rejected')}
+    ${tileHtml(fmtCost(s.total_cost_lakhs), `Total cost of active projects${outliers ? ` (${outliers} implausible excluded)` : ''}`)}
+    ${tileHtml(fmtHa(s.total_land_ha), 'Total land requirement (active)')}
+    ${tileHtml(dateOrDash(s.latest_application), 'Latest application')}
+    ${tileHtml(dateOrDash(s.latest_grant), 'Latest EC grant')}
+  </div>`;
+}
+
+function projectCell(r) {
+  const name = esc(r.project_name || r.proposal_number);
+  const title = r.proposal_url ? `<a href="${esc(r.proposal_url)}" target="_blank" rel="noopener">${name}</a>` : name;
+  return `${title}<small>${esc(r.proposal_number)} · ${esc(r.organization)}</small>`;
+}
+
+function listTable(rows, all, valueHead, valueFn) {
+  if (!rows?.length) return '<div class="dtable"><div class="empty-row">Nothing to show yet.</div></div>';
+  const body = rows.map(r => `<tr><td>${r.rank}</td><td>${projectCell(r)}</td>${all ? `<td>${esc(r.state)}</td>` : `<td>${esc(r.district)}</td>`}<td class="num">${valueFn(r)}</td></tr>`).join('');
+  return `<div class="dtable"><table><thead><tr><th>#</th><th>Project</th><th>${all ? 'State' : 'District'}</th><th class="num">${valueHead}</th></tr></thead><tbody>${body}</tbody></table></div>`;
+}
+
+function changesHtml(sc, all) {
+  const s = sc.stat, list = sc.lists.recent_change || [];
+  const since = s.compared_with ? `since ${fmtDate(s.compared_with)}` : 'no earlier version to compare';
+  const tiles = `<div class="tiles">
+    ${tileHtml(nf(s.changes_added), 'New projects', 'added')}
+    ${tileHtml(nf(s.changes_updated), 'Rows updated', 'updated')}
+    ${tileHtml(nf(s.changes_status), 'Status changes', 'updated')}
+    ${tileHtml(nf(s.changes_removed), 'Rows removed', 'removed')}
+  </div>`;
+  const rows = list.map(r => `<tr><td>${esc(r.label)}</td><td>${projectCell(r)}</td>${all ? `<td>${esc(r.state)}</td>` : ''}<td class="num">${fmtCost(r.total_cost_lakhs)}</td></tr>`).join('');
+  const table = list.length
+    ? `<div class="dtable" style="margin-top:10px"><table><thead><tr><th>Change</th><th>Project</th>${all ? '<th>State</th>' : ''}<th class="num">Cost</th></tr></thead><tbody>${rows}</tbody></table></div>`
+    : '';
+  return `<h2>Recent changes <small>${since}</small></h2>${tiles}${table}`;
+}
+
+function statusBars(sc) {
+  const list = sc.status.slice(0, 10), max = Math.max(1, ...list.map(x => x[1]));
+  if (!list.length) return '';
+  return `<h2>Projects by status <small>top ${list.length}</small></h2><div class="bars">${list.map(([l, n]) =>
+    `<div class="bar-row"><span class="lbl" title="${esc(l)}">${esc(l)}</span><span class="track"><span class="fill" style="display:block;width:${n / max * 100}%"></span></span><span class="val">${nf(n)}</span></div>`).join('')}</div>`;
+}
+
+let stateSort = { f: 'projects', dir: -1 };
+function statesTable(scopes) {
+  const rows = Object.entries(STATES).map(([code, name]) => {
+    const sc = scopes[code] || { stat: {}, run: {} };
+    return { code, name, status: sc.run.run_status || 'not_run', runDate: sc.run.run_date || '', projects: +sc.stat.projects || 0,
+      granted: +sc.stat.ec_granted || 0, cost: +sc.stat.total_cost_lakhs || 0, added: +sc.stat.changes_added || 0,
+      status_changes: +sc.stat.changes_status || 0, latest: sc.stat.latest_application || '' };
+  });
+  const { f, dir } = stateSort;
+  rows.sort((a, b) => (typeof a[f] === 'string' ? a[f].localeCompare(b[f]) : a[f] - b[f]) * dir || a.name.localeCompare(b.name));
+  const cols = [['name', 'State'], ['status', 'Data run'], ['projects', 'Projects', 1], ['granted', 'EC granted', 1], ['cost', 'Total cost', 1], ['added', 'New', 1], ['status_changes', 'Status changes', 1], ['latest', 'Latest application']];
+  const head = cols.map(([k, l, n]) => `<th data-sortstate="${k}" class="${n ? 'num ' : ''}${f === k ? 'sorted' + (dir < 0 ? ' desc' : '') : ''}">${l}</th>`).join('');
+  const body = rows.map(r => `<tr class="click" data-code="${r.code}"><td>${esc(r.name)}</td><td><span class="pill ${r.status}">${RUN_LABELS[r.status] || r.status}</span></td><td class="num">${r.projects ? nf(r.projects) : '—'}</td><td class="num">${r.projects ? nf(r.granted) : '—'}</td><td class="num">${r.projects ? fmtCost(r.cost) : '—'}</td><td class="num">${r.projects ? nf(r.added) : '—'}</td><td class="num">${r.projects ? nf(r.status_changes) : '—'}</td><td>${dateOrDash(r.latest)}</td></tr>`).join('');
+  return `<h2>Data runs by state <small>click a state for its dashboard and change history</small></h2><div class="dtable"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+}
+
+async function renderDash(code) {
+  const el = $('dash'), tok = ++st.dashTok;
+  const all = !code;
+  el.innerHTML = '<div class="msg">Loading dashboard…</div>';
+  let scopes;
+  try { scopes = await loadDashboard(); } catch (e) { if (tok === st.dashTok) el.innerHTML = `<div class="msg err">${esc(e.message)}</div>`; return; }
+  if (tok !== st.dashTok) return;
+  const sc = scopes[all ? 'all' : code];
+  const title = all ? 'All India' : STATES[code];
+  if (!sc || !+sc.stat.projects) {
+    el.innerHTML = `<h2>${esc(title)}</h2>${sc ? runHtml(sc, all) : ''}<div class="msg">No data published yet for ${esc(title)}.</div>` + (all ? statesTable(scopes) : '');
+    return;
+  }
+  const tops = TOPS.map(([key, heading, vh, fn]) => `<div><h2>${heading} <small>top 10</small></h2>${listTable(sc.lists[key], all, vh, fn)}</div>`).join('');
+  el.innerHTML = `<h2 style="margin-top:0">${esc(title)} <small>overview</small></h2>${runHtml(sc, all)}${statsHtml(sc)}${changesHtml(sc, all)}${statusBars(sc)}<div class="grid2">${tops}</div>${all ? statesTable(scopes) : ''}`;
+}
+
+$('dash').addEventListener('click', e => {
+  const th = e.target.closest('th[data-sortstate]');
+  if (th) {
+    const f = th.dataset.sortstate;
+    stateSort = stateSort.f === f ? { f, dir: -stateSort.dir } : { f, dir: f === 'name' || f === 'status' ? 1 : -1 };
+    renderDash('');
+    return;
+  }
+  const tr = e.target.closest('tr[data-code]');
+  if (tr) { $('state').value = tr.dataset.code; selectState(tr.dataset.code); }
+});
+
+$('state').innerHTML = '<option value="">All India</option>' + Object.entries(STATES).map(([c, n]) => `<option value="${c}">${n} (${c})</option>`).join('');
 $('state').addEventListener('change', e => selectState(e.target.value));
 $('older').addEventListener('click', () => go(1));
 $('newer').addEventListener('click', () => go(-1));
@@ -421,6 +624,8 @@ const hash = new URLSearchParams(location.hash.slice(1));
 if (STATES[hash.get('s')]) {
   $('state').value = hash.get('s');
   selectState(hash.get('s'), hash.get('v'));
+} else {
+  selectState('');
 }
 </script>
 </body>
