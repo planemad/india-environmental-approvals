@@ -1,21 +1,21 @@
 scope,state_code,state,section,rank,label,value,proposal_number,project_name,organization,district,status,application_date,grant_date,total_cost_lakhs,land_ha,proposal_url
-all,,All India,stat,,projects,8853,,,,,,,,,,
-all,,All India,stat,,active_projects,5533,,,,,,,,,,
+all,,All India,stat,,projects,8842,,,,,,,,,,
+all,,All India,stat,,active_projects,5524,,,,,,,,,,
 all,,All India,stat,,ec_granted,938,,,,,,,,,,
 all,,All India,stat,,ec_rejected,81,,,,,,,,,,
-all,,All India,stat,,delisted_or_removed,3320,,,,,,,,,,
-all,,All India,stat,,total_cost_lakhs,705236571.63,,,,,,,,,,
+all,,All India,stat,,delisted_or_removed,3318,,,,,,,,,,
+all,,All India,stat,,total_cost_lakhs,705159052.63,,,,,,,,,,
 all,,All India,stat,,cost_outliers_excluded,78,,,,,,,,,,
-all,,All India,stat,,total_land_ha,7376858.107,,,,,,,,,,
+all,,All India,stat,,total_land_ha,7376860.8159,,,,,,,,,,
 all,,All India,stat,,latest_application,2026-09-26T06:34:55.901+00:00,,,,,,,,,,
 all,,All India,stat,,latest_grant,2026-07-24T13:57:14.784+00:00,,,,,,,,,,
-all,,All India,stat,,changes_added,10,,,,,,,,,,
-all,,All India,stat,,changes_removed,1,,,,,,,,,,
-all,,All India,stat,,changes_updated,9,,,,,,,,,,
+all,,All India,stat,,changes_added,17,,,,,,,,,,
+all,,All India,stat,,changes_removed,19,,,,,,,,,,
+all,,All India,stat,,changes_updated,12,,,,,,,,,,
 all,,All India,stat,,changes_status,9,,,,,,,,,,
-all,,All India,stat,,compared_with,2026-09-30T01:53:42+05:30,,,,,,,,,,
-all,,All India,status,,DELISTED_BY_SYSTEM,2402,,,,,,,,,,
-all,,All India,status,,(none),1127,,,,,,,,,,
+all,,All India,stat,,compared_with,2026-09-30T11:00:37+05:30,,,,,,,,,,
+all,,All India,status,,DELISTED_BY_SYSTEM,2400,,,,,,,,,,
+all,,All India,status,,(none),1121,,,,,,,,,,
 all,,All India,status,,EC Granted,938,,,,,,,,,,
 all,,All India,status,,REMOVED,918,,,,,,,,,,
 all,,All India,status,,Final Diversion Order Issued,737,,,,,,,,,,
@@ -24,10 +24,10 @@ all,,All India,status,,Pending at UA for Compensatory Levies Payment and Complia
 all,,All India,status,,Pending on UA for Compensatory Levies Payment,196,,,,,,,,,,
 all,,All India,status,,Pending at UA for Compliance Report,166,,,,,,,,,,
 all,,All India,status,,Pending at DFO for Scrutiny and Recommendation,152,,,,,,,,,,
+all,,All India,status,,ToR Granted,116,,,,,,,,,,
 all,,All India,status,,Proposal Accepted and Referred to SEAC,115,,,,,,,,,,
-all,,All India,status,,ToR Granted,110,,,,,,,,,,
 all,,All India,status,,EDS raised,104,,,,,,,,,,
-all,,All India,status,,Under Examination,85,,,,,,,,,,
+all,,All India,status,,Under Examination,84,,,,,,,,,,
 all,,All India,status,,Referred to SEAC,84,,,,,,,,,,
 all,,All India,status,,EC Rejected,81,,,,,,,,,,
 all,,All India,status,,Pending at UA due to EDS by DFO,74,,,,,,,,,,
@@ -49,12 +49,12 @@ all,,All India,status,,Stage-II Accorded,24,,,,,,,,,,
 all,,All India,status,,Withdrawal Request Accepted,22,,,,,,,,,,
 all,,All India,status,,Pending at MS for Acceptance in PSC-I,22,,,,,,,,,,
 all,,All India,status,,Pending at DFO for Compensatory Levies,21,,,,,,,,,,
-all,,All India,status,,Proposal pulled back (withdrawn),21,,,,,,,,,,
-all,,All India,status,,CRZ Granted,21,,,,,,,,,,
 all,,All India,status,,Pending at MS SEIAA,20,,,,,,,,,,
+all,,All India,status,,Proposal pulled back (withdrawn),20,,,,,,,,,,
 all,,All India,status,,REJECTED,16,,,,,,,,,,
 all,,All India,status,,Forwarded to MS,16,,,,,,,,,,
-all,,All India,status,,Referred to SCZMA,16,,,,,,,,,,
+all,,All India,status,,Referred to SCZMA,15,,,,,,,,,,
+all,,All India,status,,CRZ Granted,15,,,,,,,,,,
 all,,All India,status,,TOR GRANTED,14,,,,,,,,,,
 all,,All India,status,,Pending at UA for CA Payment and Compliance Report,12,,,,,,,,,,
 all,,All India,status,,Raised/Forwarded EDS to UA,11,,,,,,,,,,
@@ -121,8 +121,8 @@ all,,All India,status,,Proposal Forwarded to SCZMA,1,,,,,,,,,,
 all,,All India,status,,Pending at UA due to EDS raised by DFO,1,,,,,,,,,,
 all,,All India,status,,Pending at Nodal Officer due to Demand Modification Request By UA,1,,,,,,,,,,
 all,,All India,run,,run_status,ok,,,,,,,,,,
-all,,All India,run,,run_date,2026-09-30T04:58:08Z,,,,,,,,,,
-all,,All India,run,,run_url,,,,,,,,,,,
+all,,All India,run,,run_date,2026-09-30T06:14:04Z,,,,,,,,,,
+all,,All India,run,,run_url,https://github.com/publicmap/parivesh-dashboard/actions/runs/36676877498,,,,,,,,,,
 all,,All India,run,,states_ok,12,,,,,,,,,,
 all,,All India,run,,states_failed,0,,,,,,,,,,
 all,,All India,run,,states_no_data,0,,,,,,,,,,
@@ -182,7 +182,7 @@ state,1,Jammu And Kashmir,stat,,changes_added,0,,,,,,,,,,
 state,1,Jammu And Kashmir,stat,,changes_removed,0,,,,,,,,,,
 state,1,Jammu And Kashmir,stat,,changes_updated,0,,,,,,,,,,
 state,1,Jammu And Kashmir,stat,,changes_status,0,,,,,,,,,,
-state,1,Jammu And Kashmir,stat,,compared_with,2026-09-30T01:53:42+05:30,,,,,,,,,,
+state,1,Jammu And Kashmir,stat,,compared_with,2026-09-30T11:00:37+05:30,,,,,,,,,,
 state,1,Jammu And Kashmir,status,,DELISTED_BY_SYSTEM,907,,,,,,,,,,
 state,1,Jammu And Kashmir,status,,Final Diversion Order Issued,567,,,,,,,,,,
 state,1,Jammu And Kashmir,status,,REMOVED,528,,,,,,,,,,
@@ -282,7 +282,7 @@ state,2,Himachal Pradesh,stat,,changes_added,0,,,,,,,,,,
 state,2,Himachal Pradesh,stat,,changes_removed,0,,,,,,,,,,
 state,2,Himachal Pradesh,stat,,changes_updated,0,,,,,,,,,,
 state,2,Himachal Pradesh,stat,,changes_status,0,,,,,,,,,,
-state,2,Himachal Pradesh,stat,,compared_with,2026-09-30T01:53:42+05:30,,,,,,,,,,
+state,2,Himachal Pradesh,stat,,compared_with,2026-09-30T11:00:37+05:30,,,,,,,,,,
 state,2,Himachal Pradesh,status,,DELISTED_BY_SYSTEM,895,,,,,,,,,,
 state,2,Himachal Pradesh,status,,REMOVED,330,,,,,,,,,,
 state,2,Himachal Pradesh,status,,EC Granted,284,,,,,,,,,,
@@ -511,7 +511,7 @@ state,7,Delhi,stat,,changes_added,0,,,,,,,,,,
 state,7,Delhi,stat,,changes_removed,0,,,,,,,,,,
 state,7,Delhi,stat,,changes_updated,0,,,,,,,,,,
 state,7,Delhi,stat,,changes_status,0,,,,,,,,,,
-state,7,Delhi,stat,,compared_with,2026-09-30T01:53:42+05:30,,,,,,,,,,
+state,7,Delhi,stat,,compared_with,2026-09-30T11:00:37+05:30,,,,,,,,,,
 state,7,Delhi,status,,DELISTED_BY_SYSTEM,60,,,,,,,,,,
 state,7,Delhi,status,,EC Granted,54,,,,,,,,,,
 state,7,Delhi,status,,Under Examination,31,,,,,,,,,,
@@ -642,7 +642,7 @@ state,11,Sikkim,stat,,changes_added,0,,,,,,,,,,
 state,11,Sikkim,stat,,changes_removed,0,,,,,,,,,,
 state,11,Sikkim,stat,,changes_updated,0,,,,,,,,,,
 state,11,Sikkim,stat,,changes_status,0,,,,,,,,,,
-state,11,Sikkim,stat,,compared_with,2026-09-30T01:53:42+05:30,,,,,,,,,,
+state,11,Sikkim,stat,,compared_with,2026-09-30T11:00:37+05:30,,,,,,,,,,
 state,11,Sikkim,status,,DELISTED_BY_SYSTEM,58,,,,,,,,,,
 state,11,Sikkim,status,,(none),45,,,,,,,,,,
 state,11,Sikkim,status,,Pending at DFO for Scrutiny and Recommendation,17,,,,,,,,,,
@@ -1011,7 +1011,7 @@ state,30,Goa,stat,,changes_added,0,,,,,,,,,,
 state,30,Goa,stat,,changes_removed,0,,,,,,,,,,
 state,30,Goa,stat,,changes_updated,0,,,,,,,,,,
 state,30,Goa,stat,,changes_status,0,,,,,,,,,,
-state,30,Goa,stat,,compared_with,2026-09-30T01:53:42+05:30,,,,,,,,,,
+state,30,Goa,stat,,compared_with,2026-09-30T11:00:37+05:30,,,,,,,,,,
 state,30,Goa,status,,EC Granted,86,,,,,,,,,,
 state,30,Goa,status,,(none),73,,,,,,,,,,
 state,30,Goa,status,,DELISTED_BY_SYSTEM,42,,,,,,,,,,
@@ -1087,51 +1087,53 @@ state,30,Goa,top_land,7,,,IA/GA/MIN/583503/2026,Block 1- Bicholim Mineral Block 
 state,30,Goa,top_land,8,,,IA/GA/MIN/442593/2023,Block 1- Bicholim Mineral Block for Iron Ore,VEDANTA LIMITED,North Goa,EC Granted,2023-08-31T12:55:47.849+00:00,2024-01-23T11:57:41.431+00:00,25000.0,478.5206,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=8886191
 state,30,Goa,top_land,9,,,FP/GA/MIND/551274/2025,"Application for approval of forest land under clause (iii) of sub section (1) section 2 of the Van (Sanrakshan Evam Samvardhan) Adhiniyam, 1980 for Signing of lease Agreement in Respect of  ""Codli Mineral Block-XII"" by M/s JSW Steel Ltd. under South Goa District/Division of Goa.",JSW STEEL LTD,South Goa,Pending at MS for Acceptance in PSC-I,2025-09-11T12:19:32.598+00:00,,50000.0,377.0881,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=136118155
 state,30,Goa,top_land,10,,,IA/GA/MIN/552475/2025,"Codli Mineral Block - XII, Auctioned Block Area: 377.0881 ha with Iron Ore production 3.50 Million TPA, OB/Waste 8.21 Million TPA (Total Excavation: 11.71 Million TPA) along with Installation 04 Crusher (3 Primary Crusher of 1 x 250 TPH & 2 x 90 TPH and 1 Secondary Crusher of 150 TPH) and 600 TPH Dry & 2 x 300 TPH Wet Beneficiation Plant with Throughput Capacity 3.50 Million TPA located at Village: Codli, Taluka: Dharbandora, District: South Goa (Goa) by JSW Steel Limited.",JSW STEEL LTD,South Goa,EDS Raised,2025-09-21T03:24:16.146+00:00,,50000.0,377.0881,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=136690198
-state,31,Lakshadweep,stat,,projects,30,,,,,,,,,,
-state,31,Lakshadweep,stat,,active_projects,28,,,,,,,,,,
+state,31,Lakshadweep,stat,,projects,19,,,,,,,,,,
+state,31,Lakshadweep,stat,,active_projects,19,,,,,,,,,,
 state,31,Lakshadweep,stat,,ec_granted,0,,,,,,,,,,
 state,31,Lakshadweep,stat,,ec_rejected,0,,,,,,,,,,
-state,31,Lakshadweep,stat,,delisted_or_removed,2,,,,,,,,,,
-state,31,Lakshadweep,stat,,total_cost_lakhs,392198.0,,,,,,,,,,
+state,31,Lakshadweep,stat,,delisted_or_removed,0,,,,,,,,,,
+state,31,Lakshadweep,stat,,total_cost_lakhs,314679.0,,,,,,,,,,
 state,31,Lakshadweep,stat,,cost_outliers_excluded,0,,,,,,,,,,
-state,31,Lakshadweep,stat,,total_land_ha,35.5582,,,,,,,,,,
-state,31,Lakshadweep,stat,,latest_application,2025-06-27T10:17:51.519+00:00,,,,,,,,,,
+state,31,Lakshadweep,stat,,total_land_ha,38.2671,,,,,,,,,,
+state,31,Lakshadweep,stat,,latest_application,2026-03-09T07:16:40.219+00:00,,,,,,,,,,
 state,31,Lakshadweep,stat,,latest_grant,,,,,,,,,,,
-state,31,Lakshadweep,stat,,changes_added,0,,,,,,,,,,
-state,31,Lakshadweep,stat,,changes_removed,0,,,,,,,,,,
-state,31,Lakshadweep,stat,,changes_updated,0,,,,,,,,,,
+state,31,Lakshadweep,stat,,changes_added,7,,,,,,,,,,
+state,31,Lakshadweep,stat,,changes_removed,18,,,,,,,,,,
+state,31,Lakshadweep,stat,,changes_updated,3,,,,,,,,,,
 state,31,Lakshadweep,stat,,changes_status,0,,,,,,,,,,
-state,31,Lakshadweep,stat,,compared_with,,,,,,,,,,,
-state,31,Lakshadweep,status,,(none),15,,,,,,,,,,
-state,31,Lakshadweep,status,,CRZ Granted,6,,,,,,,,,,
-state,31,Lakshadweep,status,,ToR Granted,4,,,,,,,,,,
-state,31,Lakshadweep,status,,DELISTED_BY_SYSTEM,2,,,,,,,,,,
-state,31,Lakshadweep,status,,Under Examination,1,,,,,,,,,,
-state,31,Lakshadweep,status,,Proposal pulled back (withdrawn),1,,,,,,,,,,
-state,31,Lakshadweep,status,,Referred to SCZMA,1,,,,,,,,,,
+state,31,Lakshadweep,stat,,compared_with,2026-09-30T11:00:37+05:30,,,,,,,,,,
+state,31,Lakshadweep,status,,ToR Granted,10,,,,,,,,,,
+state,31,Lakshadweep,status,,(none),9,,,,,,,,,,
 state,31,Lakshadweep,run,,run_status,ok,,,,,,,,,,
-state,31,Lakshadweep,run,,run_date,2026-09-30T04:58:08Z,,,,,,,,,,
-state,31,Lakshadweep,run,,run_url,,,,,,,,,,,
+state,31,Lakshadweep,run,,run_date,2026-09-30T06:14:04Z,,,,,,,,,,
+state,31,Lakshadweep,run,,run_url,https://github.com/publicmap/parivesh-dashboard/actions/runs/36676877498,,,,,,,,,,
 state,31,Lakshadweep,top_cost,1,,,WL/LD/CommPost/438185/2023,Test26July,Department of Land Resources,Agra,,2023-07-26T12:18:52.032+00:00,,213123.0,0.001,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=7125166
-state,31,Lakshadweep,top_cost,2,,,IA/LD/INFRA1/491993/2024,Development of Marine and Land facilities at Androth Island in Lakshadweep, DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2024-08-09T06:11:59.393+00:00,2025-05-04T10:26:54.272+00:00,76571.0,0.51,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=91873839
-state,31,Lakshadweep,top_cost,3,,,IA/LD/CRZ/542963/2025,"Construction of passenger jetty and associated landside facilities on the eastern side of the Kadmath Island, Lakshadweep.", DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,CRZ Granted,2025-06-27T09:50:37.255+00:00,2025-08-08T12:24:02.348+00:00,25655.0,0.5,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=130946666
-state,31,Lakshadweep,top_cost,4,,,IA/LD/CRZ/540326/2025," Construction of passenger jetty and associated landside facilities on the eastern side of the Kalpeni island, Lakshadweep.", DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,CRZ Granted,2025-06-05T04:29:42.753+00:00,2025-08-08T12:12:00.334+00:00,23700.0,0.5,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=129235856
-state,31,Lakshadweep,top_cost,5,,,IA/LD/CRZ/540336/2025,"Construction of passenger jetty and associated landside facilities on the western side of the Kalpeni island, Lakshadweep", DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,CRZ Granted,2025-06-05T06:06:29.491+00:00,2025-08-08T12:19:22.294+00:00,10200.0,0.5,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=129244699
-state,31,Lakshadweep,top_cost,6,,,IA/LD/CRZ/542968/2025,"Construction of passenger jetty and associated landside facilities on the western side of the Kadmath Island, Lakshadweep.", DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,CRZ Granted,2025-06-27T10:17:51.519+00:00,2025-08-08T12:27:38.014+00:00,7840.0,0.16,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=130951793
-state,31,Lakshadweep,top_cost,7,,,IA/LD/CRZ/541088/2025,Re-Design of Helibase with Night Landing Facilities at Kavaratti Island Lakshadweep ,Kavaratti Smart city Ltd,Lakshadweep,Under Examination,2025-06-11T12:55:05.995+00:00,,7840.0,1.5021,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=129762744
-state,31,Lakshadweep,top_cost,8,,,IA/LD/CRZ/504098/2024,Floating Solar PV Power Plant for Lakshadweep Island (Kavaratti), SOLAR ENERGY CORPORATION OF INDIA LIMITED,Lakshadweep,CRZ Granted,2024-11-05T10:34:10.148+00:00,2025-04-09T08:25:22.617+00:00,7013.0,4.8,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=110840102
-state,31,Lakshadweep,top_cost,9,,,IA/LD/CRZ/456452/2023,Floating Solar PV Power Plant for Lakshadweep Island (Agatti ), SOLAR ENERGY CORPORATION OF INDIA LIMITED,Lakshadweep,CRZ Granted,2023-12-22T10:54:50.360+00:00,2025-04-09T08:32:05.973+00:00,6610.0,12.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=33146043
-state,31,Lakshadweep,top_cost,10,,,IA/LD/CRZ/503476/2024,cfewfefevf, SOLAR ENERGY CORPORATION OF INDIA LIMITED,Lakshadweep,Referred to SCZMA,2024-10-29T06:52:01.096+00:00,,5000.0,3.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=110490919
-state,31,Lakshadweep,top_land,1,,,IA/LD/CRZ/456452/2023,Floating Solar PV Power Plant for Lakshadweep Island (Agatti ), SOLAR ENERGY CORPORATION OF INDIA LIMITED,Lakshadweep,CRZ Granted,2023-12-22T10:54:50.360+00:00,2025-04-09T08:32:05.973+00:00,6610.0,12.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=33146043
-state,31,Lakshadweep,top_land,2,,,IA/LD/CRZ/504098/2024,Floating Solar PV Power Plant for Lakshadweep Island (Kavaratti), SOLAR ENERGY CORPORATION OF INDIA LIMITED,Lakshadweep,CRZ Granted,2024-11-05T10:34:10.148+00:00,2025-04-09T08:25:22.617+00:00,7013.0,4.8,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=110840102
+state,31,Lakshadweep,top_cost,2,,,IA/LD/INFRA1/491993/2024,Development of Marine and Land facilities at Androth Island in Lakshadweep,DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2024-08-09T06:11:59.393+00:00,2025-05-04T10:26:54.272+00:00,76571.0,0.51,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=91873839
+state,31,Lakshadweep,top_cost,3,,,IA/LD/INFRA1/571339/2026,"Dredging of the Existing Navigational Channel and Turning Circle on the Western Side of Kadmath Island, Lakshadweep.",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2026-03-05T11:01:25.129+00:00,2026-06-12T07:17:12.105+00:00,5253.0,9.6,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1220937060
+state,31,Lakshadweep,top_cost,4,,,IA/LD/INFRA1/571442/2026,"Dredging of the existing navigational channel and turning circle on the western side of  Kalpeni Island, Lakshadweep.",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2026-03-06T08:51:13.203+00:00,2026-06-12T07:12:47.052+00:00,5253.0,20.705,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1221018038
+state,31,Lakshadweep,top_cost,5,,,IA/LD/INFRA2/572037/2026,"Development of Water Aerodrome at Minicoy Island, Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2023-12-13T15:48:27.981+00:00,2026-06-08T07:52:50.016+00:00,2000.0,0.149,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1221491432
+state,31,Lakshadweep,top_cost,6,,,IA/LD/INFRA2/455461/2024,"Development of Water Aerodrome at Minicoy Island, Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2023-12-13T15:48:27.981+00:00,2024-09-02T05:17:21.074+00:00,2000.0,0.149,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=31515046
+state,31,Lakshadweep,top_cost,7,,,IA/LD/INFRA2/540783/2026,"Development of Water Aerodrome at Kavaratti Island, Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2023-12-26T10:33:52.112+00:00,2026-06-08T08:05:44.137+00:00,2000.0,0.2,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=129568653
+state,31,Lakshadweep,top_cost,8,,,IA/LD/INFRA2/456736/2024,"Development of Water Aerodrome at Kavaratti Island, Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2023-12-26T10:33:52.112+00:00,2024-09-02T05:10:35.752+00:00,2000.0,0.2,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=34131205
+state,31,Lakshadweep,top_cost,9,,,IA/LD/INFRA2/571264/2026,"Development of Water Aerodrome at Kalpeni Island, UT of Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2026-03-05T05:15:20.565+00:00,2026-06-08T07:47:28.393+00:00,2000.0,0.0333,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1220815854
+state,31,Lakshadweep,top_cost,10,,,IA/LD/INFRA2/571313/2026,"Development of Water Aerodrome at Kiltan Island, UT of Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2026-03-05T09:16:59.131+00:00,2026-06-08T07:40:09.916+00:00,2000.0,0.0587,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1220922215
+state,31,Lakshadweep,top_land,1,,,IA/LD/INFRA1/571442/2026,"Dredging of the existing navigational channel and turning circle on the western side of  Kalpeni Island, Lakshadweep.",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2026-03-06T08:51:13.203+00:00,2026-06-12T07:12:47.052+00:00,5253.0,20.705,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1221018038
+state,31,Lakshadweep,top_land,2,,,IA/LD/INFRA1/571339/2026,"Dredging of the Existing Navigational Channel and Turning Circle on the Western Side of Kadmath Island, Lakshadweep.",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2026-03-05T11:01:25.129+00:00,2026-06-12T07:17:12.105+00:00,5253.0,9.6,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1220937060
 state,31,Lakshadweep,top_land,3,,,WL/LD/INFRA/438865/2023,Test1Aug2023,Department of Land Resources,Tirupati,,2023-08-01T17:12:53.906+00:00,,131.0,3.3,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=7280903
-state,31,Lakshadweep,top_land,4,,,IA/LD/CRZ/503476/2024,cfewfefevf, SOLAR ENERGY CORPORATION OF INDIA LIMITED,Lakshadweep,Referred to SCZMA,2024-10-29T06:52:01.096+00:00,,5000.0,3.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=110490919
-state,31,Lakshadweep,top_land,5,,,WL/LD/FVC/438294/2023,WL_27072023,Department of Land Resources,Kota,,2023-07-27T09:47:45.991+00:00,,1.0,2.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=7149403
-state,31,Lakshadweep,top_land,6,,,WL/LD/SRY/438284/2023,WL_27072023,Department of Land Resources,Kota,,2023-07-27T09:14:48.262+00:00,,1.0,2.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=7146785
-state,31,Lakshadweep,top_land,7,,,IA/LD/CRZ/541088/2025,Re-Design of Helibase with Night Landing Facilities at Kavaratti Island Lakshadweep ,Kavaratti Smart city Ltd,Lakshadweep,Under Examination,2025-06-11T12:55:05.995+00:00,,7840.0,1.5021,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=129762744
-state,31,Lakshadweep,top_land,8,,,WL/LD/CommPost/438479/2023,Test29July,Department of Land Resources,Tirupati,,2023-07-28T12:47:02.346+00:00,,131.0,1.44,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=7191306
-state,31,Lakshadweep,top_land,9,,,WL/LD/IRRIG/438571/2023,Test30July,Department of Land Resources,Tirupati,,2023-07-29T12:06:58.510+00:00,,342.0,1.333,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=7207852
-state,31,Lakshadweep,top_land,10,,,IA/LD/CRZ/530999/2025,"Praveg Atoll""s Resort, Bangaram",PRAVEG LIMITED,Lakshadweep,Proposal pulled back (withdrawn),2025-03-24T05:14:23.052+00:00,,1800.0,1.246,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=123165904
+state,31,Lakshadweep,top_land,4,,,WL/LD/SRY/438284/2023,WL_27072023,Department of Land Resources,Kota,,2023-07-27T09:14:48.262+00:00,,1.0,2.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=7146785
+state,31,Lakshadweep,top_land,5,,,WL/LD/IRRIG/438571/2023,Test30July,Department of Land Resources,Tirupati,,2023-07-29T12:06:58.510+00:00,,342.0,1.333,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=7207852
+state,31,Lakshadweep,top_land,6,,,IA/LD/INFRA1/491993/2024,Development of Marine and Land facilities at Androth Island in Lakshadweep,DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2024-08-09T06:11:59.393+00:00,2025-05-04T10:26:54.272+00:00,76571.0,0.51,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=91873839
+state,31,Lakshadweep,top_land,7,,,IA/LD/INFRA2/540783/2026,"Development of Water Aerodrome at Kavaratti Island, Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2023-12-26T10:33:52.112+00:00,2026-06-08T08:05:44.137+00:00,2000.0,0.2,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=129568653
+state,31,Lakshadweep,top_land,8,,,IA/LD/INFRA2/456736/2024,"Development of Water Aerodrome at Kavaratti Island, Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2023-12-26T10:33:52.112+00:00,2024-09-02T05:10:35.752+00:00,2000.0,0.2,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=34131205
+state,31,Lakshadweep,top_land,9,,,IA/LD/INFRA2/572037/2026,"Development of Water Aerodrome at Minicoy Island, Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2023-12-13T15:48:27.981+00:00,2026-06-08T07:52:50.016+00:00,2000.0,0.149,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1221491432
+state,31,Lakshadweep,top_land,10,,,IA/LD/INFRA2/455461/2024,"Development of Water Aerodrome at Minicoy Island, Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2023-12-13T15:48:27.981+00:00,2024-09-02T05:17:21.074+00:00,2000.0,0.149,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=31515046
+state,31,Lakshadweep,recent_change,1,added,,IA/LD/INFRA2/571709/2026,"Development of Water Aerodrome at Kadmat Island, UT of Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2026-03-09T07:16:40.219+00:00,2026-06-08T06:34:10.344+00:00,2000.0,0.024,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1221191183
+state,31,Lakshadweep,recent_change,2,added,,IA/LD/INFRA1/571442/2026,"Dredging of the existing navigational channel and turning circle on the western side of  Kalpeni Island, Lakshadweep.",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2026-03-06T08:51:13.203+00:00,2026-06-12T07:12:47.052+00:00,5253.0,20.705,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1221018038
+state,31,Lakshadweep,recent_change,3,added,,IA/LD/INFRA1/571339/2026,"Dredging of the Existing Navigational Channel and Turning Circle on the Western Side of Kadmath Island, Lakshadweep.",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2026-03-05T11:01:25.129+00:00,2026-06-12T07:17:12.105+00:00,5253.0,9.6,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1220937060
+state,31,Lakshadweep,recent_change,4,added,,IA/LD/INFRA2/571313/2026,"Development of Water Aerodrome at Kiltan Island, UT of Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2026-03-05T09:16:59.131+00:00,2026-06-08T07:40:09.916+00:00,2000.0,0.0587,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1220922215
+state,31,Lakshadweep,recent_change,5,added,,IA/LD/INFRA2/571264/2026,"Development of Water Aerodrome at Kalpeni Island, UT of Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2026-03-05T05:15:20.565+00:00,2026-06-08T07:47:28.393+00:00,2000.0,0.0333,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1220815854
+state,31,Lakshadweep,recent_change,6,added,,IA/LD/INFRA2/540783/2026,"Development of Water Aerodrome at Kavaratti Island, Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2023-12-26T10:33:52.112+00:00,2026-06-08T08:05:44.137+00:00,2000.0,0.2,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=129568653
+state,31,Lakshadweep,recent_change,7,added,,IA/LD/INFRA2/572037/2026,"Development of Water Aerodrome at Minicoy Island, Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2023-12-13T15:48:27.981+00:00,2026-06-08T07:52:50.016+00:00,2000.0,0.149,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1221491432
 state,32,Kerala,stat,,projects,2093,,,,,,,,,,
 state,32,Kerala,stat,,active_projects,1735,,,,,,,,,,
 state,32,Kerala,stat,,ec_granted,377,,,,,,,,,,
@@ -1146,7 +1148,7 @@ state,32,Kerala,stat,,changes_added,0,,,,,,,,,,
 state,32,Kerala,stat,,changes_removed,0,,,,,,,,,,
 state,32,Kerala,stat,,changes_updated,0,,,,,,,,,,
 state,32,Kerala,stat,,changes_status,0,,,,,,,,,,
-state,32,Kerala,stat,,compared_with,2026-09-30T01:53:42+05:30,,,,,,,,,,
+state,32,Kerala,stat,,compared_with,2026-09-30T11:00:37+05:30,,,,,,,,,,
 state,32,Kerala,status,,(none),416,,,,,,,,,,
 state,32,Kerala,status,,EC Granted,377,,,,,,,,,,
 state,32,Kerala,status,,DELISTED_BY_SYSTEM,336,,,,,,,,,,
@@ -1340,7 +1342,7 @@ state,35,Andaman And Nicobar Islands,stat,,changes_added,0,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,stat,,changes_removed,0,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,stat,,changes_updated,0,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,stat,,changes_status,0,,,,,,,,,,
-state,35,Andaman And Nicobar Islands,stat,,compared_with,2026-09-30T01:53:42+05:30,,,,,,,,,,
+state,35,Andaman And Nicobar Islands,stat,,compared_with,2026-09-30T11:00:37+05:30,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,status,,Final Diversion Order Issued,27,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,status,,DELISTED_BY_SYSTEM,21,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,status,,REMOVED,15,,,,,,,,,,
@@ -1481,7 +1483,7 @@ state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,changes_added,0,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,changes_removed,0,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,changes_updated,0,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,changes_status,0,,,,,,,,,,
-state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,compared_with,2026-09-30T01:53:42+05:30,,,,,,,,,,
+state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,compared_with,2026-09-30T11:00:37+05:30,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,status,,DELISTED_BY_SYSTEM,36,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,status,,(none),21,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,status,,REMOVED,14,,,,,,,,,,
