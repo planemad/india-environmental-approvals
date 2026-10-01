@@ -3,6 +3,7 @@ import csv
 import glob
 import io
 import os
+import re
 import subprocess
 from datetime import datetime, timezone
 
@@ -18,6 +19,7 @@ STATES = {
 }
 INACTIVE = {'DELISTED_BY_SYSTEM', 'REMOVED'}
 GRANTED = 'EC Granted'
+CLOSED = re.compile(r'reject|withdraw|returned|pulled back', re.I)
 STATUS = 'Last Visible Status'
 COST = 'Total Cost (Lakhs)'
 LAND = 'Project Land Requirement (Hectares)'
@@ -106,9 +108,21 @@ def scope_rows(scope, code, name, rows, diff, run, compared):
                     'label': label, 'value': value, **extra})
 
     active = [r for r in rows if r.get(STATUS) not in INACTIVE]
-    granted = [r for r in rows if r.get(STATUS) == GRANTED]
+    granted = [r for r in rows if r.get('Grant Date')]
+    applications = [r for r in rows if r.get('Grant Date') or r.get(STATUS) not in INACTIVE]
+    pending = [r for r in applications if not r.get('Grant Date') and not CLOSED.search(r.get(STATUS) or '')]
+    applied = {}
+    for r in applications:
+        y = (r.get('Application Date') or '')[:4]
+        if y.isdigit():
+            applied[y] = applied.get(y, 0) + 1
+    years = {}
+    for r in granted:
+        y = r['Grant Date'][:4]
+        years[y] = years.get(y, 0) + 1
     stats = [
-        ('projects', len(rows)), ('active_projects', len(active)), ('ec_granted', len(granted)),
+        ('projects', len(rows)), ('active_projects', len(active)), ('applications', len(applications)),
+        ('ec_granted', len(granted)), ('ec_pending', len(pending)),
         ('ec_rejected', sum(1 for r in rows if r.get(STATUS) == 'EC Rejected')),
         ('delisted_or_removed', len(rows) - len(active)),
         ('total_cost_lakhs', round(sum(cost(r) for r in active), 2)),
@@ -128,6 +142,10 @@ def scope_rows(scope, code, name, rows, diff, run, compared):
         counts[s] = counts.get(s, 0) + 1
     for s, n in sorted(counts.items(), key=lambda x: -x[1]):
         add('status', s, n)
+    for y in sorted(applied):
+        add('applications_by_year', y, applied[y])
+    for y in sorted(years):
+        add('grants_by_year', y, years[y])
     for k, v in run.items():
         add('run', k, v)
     tops = [

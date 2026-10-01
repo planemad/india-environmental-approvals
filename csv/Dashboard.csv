@@ -1,19 +1,21 @@
 scope,state_code,state,section,rank,label,value,proposal_number,project_name,organization,district,status,application_date,grant_date,total_cost_lakhs,land_ha,proposal_url
 all,,All India,stat,,projects,10620,,,,,,,,,,
 all,,All India,stat,,active_projects,6423,,,,,,,,,,
-all,,All India,stat,,ec_granted,938,,,,,,,,,,
+all,,All India,stat,,applications,6426,,,,,,,,,,
+all,,All India,stat,,ec_granted,2399,,,,,,,,,,
+all,,All India,stat,,ec_pending,3908,,,,,,,,,,
 all,,All India,stat,,ec_rejected,81,,,,,,,,,,
 all,,All India,stat,,delisted_or_removed,4197,,,,,,,,,,
 all,,All India,stat,,total_cost_lakhs,817200643.64,,,,,,,,,,
 all,,All India,stat,,cost_outliers_excluded,99,,,,,,,,,,
 all,,All India,stat,,total_land_ha,7419763.1797,,,,,,,,,,
 all,,All India,stat,,latest_application,2026-09-26T06:34:55.901+00:00,,,,,,,,,,
-all,,All India,stat,,latest_grant,2026-07-24T13:57:14.784+00:00,,,,,,,,,,
+all,,All India,stat,,latest_grant,2026-09-28T11:58:22.368+00:00,,,,,,,,,,
 all,,All India,stat,,changes_added,17,,,,,,,,,,
 all,,All India,stat,,changes_removed,19,,,,,,,,,,
 all,,All India,stat,,changes_updated,12,,,,,,,,,,
 all,,All India,stat,,changes_status,9,,,,,,,,,,
-all,,All India,stat,,compared_with,2026-09-30T06:14:05Z,,,,,,,,,,
+all,,All India,stat,,compared_with,2026-09-30T16:00:09+05:30,,,,,,,,,,
 all,,All India,status,,DELISTED_BY_SYSTEM,3260,,,,,,,,,,
 all,,All India,status,,(none),1121,,,,,,,,,,
 all,,All India,status,,Final Diversion Order Issued,1040,,,,,,,,,,
@@ -133,6 +135,16 @@ all,,All India,status,,Query Raised,1,,,,,,,,,,
 all,,All India,status,,Proposal Forwarded to SCZMA,1,,,,,,,,,,
 all,,All India,status,,Pending at UA due to EDS raised by DFO,1,,,,,,,,,,
 all,,All India,status,,Pending at Nodal Officer due to Demand Modification Request By UA,1,,,,,,,,,,
+all,,All India,applications_by_year,,2022,416,,,,,,,,,,
+all,,All India,applications_by_year,,2023,2680,,,,,,,,,,
+all,,All India,applications_by_year,,2024,1697,,,,,,,,,,
+all,,All India,applications_by_year,,2025,1407,,,,,,,,,,
+all,,All India,applications_by_year,,2026,226,,,,,,,,,,
+all,,All India,grants_by_year,,2022,4,,,,,,,,,,
+all,,All India,grants_by_year,,2023,285,,,,,,,,,,
+all,,All India,grants_by_year,,2024,884,,,,,,,,,,
+all,,All India,grants_by_year,,2025,1162,,,,,,,,,,
+all,,All India,grants_by_year,,2026,64,,,,,,,,,,
 all,,All India,run,,run_status,ok,,,,,,,,,,
 all,,All India,run,,run_date,2026-09-30T08:25:35Z,,,,,,,,,,
 all,,All India,run,,run_url,https://github.com/publicmap/parivesh-dashboard/actions/runs/36687572860,,,,,,,,,,
@@ -141,16 +153,16 @@ all,,All India,run,,states_failed,0,,,,,,,,,,
 all,,All India,run,,states_no_data,0,,,,,,,,,,
 all,,All India,run,,states_not_run,23,,,,,,,,,,
 all,,All India,run,,states_total,36,,,,,,,,,,
-all,4,Chandigarh,top_recent_ec,1,,,SIA/CH/INFRA2/527491/2026,Berkeley Square by M/s RSA motors pvt. ltd.,RSA MOTORS PRIVATE LIMITED,Chandigarh,EC Granted,2025-03-04T09:35:59.450+00:00,2026-07-24T13:57:14.784+00:00,1951.5,0.447,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=121561284
-all,4,Chandigarh,top_recent_ec,2,,,SIA/CH/INFRA2/573706/2026,"Proposed 2nd Fruit, Vegetable and Grain Market at Sector 39, Chandigarh by State Agricultural Marketing Board, U.T. Chandigarh",Chandigarh State Agriculture Marketing Board,Chandigarh,EC Granted,2026-03-26T11:32:57.825+00:00,2026-07-24T13:42:36.584+00:00,23455.0,30.01,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1222704895
-all,4,Chandigarh,top_recent_ec,3,,,SIA/CH/INFRA2/547811/2025,"Proposed “New Model Jail” located at Sector 51 Adjoining Main Jail on campus ‘A’ land, Model Jail, Chandigarh by C.P. Division No. 6, U.T., Chandigarh",Ministry of Defense,Chandigarh,EC Granted,2025-08-12T04:48:51.418+00:00,2026-05-01T16:37:27.250+00:00,4422.0,12.14,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=133864867
-all,4,Chandigarh,top_recent_ec,4,,,SIA/CH/INFRA2/574160/2026,Advanced Mother & Child Centre (Phase-I) By Post Graduate Institute of Medical Education & Research (PGIMER),POST GRADUATE INSTITUTE OF MEDICAL EDUCATION AND RESEARCH CHANDIGARH,Amritsar,EC Granted,2026-03-31T06:02:10.113+00:00,2026-04-27T12:23:01.709+00:00,30300.0,1.086,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1223014739
-all,4,Chandigarh,top_recent_ec,5,,,SIA/CH/INFRA2/455379/2023,BERKELEY SQUARE,RSA MOTORS PRIVATE LIMITED,Chandigarh,EC Granted,2023-12-13T07:18:17.437+00:00,2026-02-06T12:24:42.582+00:00,2000.0,0.447,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=31489848
-all,4,Chandigarh,top_recent_ec,6,,,SIA/CH/INFRA2/561039/2025,"Advanced Neuroscience Centre located at Sector 12, Chandigarh by M/s Post Graduate Institute of Medical Education & Research (PGIMER)",POST GRADUATE INSTITUTE OF MEDICAL EDUCATION AND RESEARCH CHANDIGARH,Chandigarh,EC Granted,2025-12-08T11:56:18.896+00:00,2026-02-06T06:24:38.599+00:00,15.0,1.145,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=894872778
-all,4,Chandigarh,top_recent_ec,7,,,SIA/CH/INFRA2/551190/2025,"Critical Care Block (CCB) by M/s Post Graduate Institute of Medical Education & Research (PGIMER) at PGIMER, Sector-12, Chandigarh",POST GRADUATE INSTITUTE OF MEDICAL EDUCATION AND RESEARCH CHANDIGARH,Chandigarh,EC Granted,2025-09-11T08:25:15.305+00:00,2025-12-24T10:41:12.068+00:00,24381.0,1.1791,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=136087189
-all,1,Jammu And Kashmir,top_recent_ec,8,,,IA/JK/IND1/495948/2025,Expansion of Cement Plant capacity from 3.3 Lakhs TPA to 6.6 Lakhs TPA and clinker production from 3.135 Lakh TPA to 6.27 Lakh TPA by M/s Trumboo Industries Pvt. Ltd. (TIPL),Trumboo Industries Private Limited,Pulwama,EC Granted,2024-09-09T10:30:32.770+00:00,2025-10-26T07:44:46.069+00:00,25052.0,12.38,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=101148013
-all,32,Kerala,top_recent_ec,9,,,IA/KL/INFRA2/532766/2025,Environmental Clearance for the Proposed I.T. Office Building Construction under QUAD Project to be developed by M/s Electronics Technology Parks – Kerala (fully owned by Government of Kerala).,ELECTRONICS TECHNOLOGY PARKS - KERALA,Thiruvananthapuram,EC Granted,2025-04-04T05:21:46.349+00:00,2025-10-15T13:57:21.670+00:00,38395.0,2.2516,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=124204708
-all,32,Kerala,top_recent_ec,10,,,IA/KL/INFRA2/533395/2025,Environmental Clearance for proposed Residential project to be developed by M/s Spatium Ventures Pvt. Ltd.,spatium ventures private limited,Kozhikode,EC Granted,2025-04-09T08:20:22.803+00:00,2025-10-14T12:10:08.659+00:00,4933.0,0.5927,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=124531018
+all,29,Karnataka,top_recent_ec,1,,,FP/KA/TRANS/464544/2024,"Construction of 66KV Single Circuit line on Double Circuit Tower by creating 01 number of 66KV Line Terminal bay at Existing 66/11KV Sub-station Kalsapura for a distance of about 10.267Kms for Establishing 2x12.5 MVA , 66/11KV Sub-station at Ganadalu village in Chickmagaluru Taluk,Chickmagaluru District.",KARNATAKA POWER TRANSMISSION CORPORATION LIMITED,Chikkamagaluru,Pending at State Government for Diversion Letter,2024-02-29T13:17:03.181+00:00,2026-09-28T11:58:22.368+00:00,1486.27,18.3919,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=50518394
+all,29,Karnataka,top_recent_ec,2,,,FP/KA/Canal/434346/2023,"The  Proposal for construction of MS Raising Main Pipe line  of  KYK Main feeding to Kanakagiri, Koppal, and Tavargera Branch & Bleeder line to Shakhapur tank under Koppal Lift Irrigation Scheme  Package-II work  in forest  land  diversion  area  requirement  in Sy.No:57/1 of Shakhapur village of Kushtagi Taluk of Koppal Dist",KRISHNA BHAGYA JALA NIGAM LIMITED,Koppal,Final Diversion Order Issued,2023-06-22T12:09:15.038+00:00,2026-09-21T07:28:46.200+00:00,71332.34,77.396,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=6293886
+all,29,Karnataka,top_recent_ec,3,,,FP/KA/ROAD/434465/2023,Widening to two lane with paved shoulders from deisgn Km 410.600 (existing Km 413.740) to design Km 441.900 (existing Km 447.610) (Hiriyur-Huliyar section) of NH-150A in the State of Karnataka on EPC mode. (Job No NH-150A-KNT-2021-22-936),"REGIONAL OFFICE, MINISTRY OF ROAD TRANSPORT & HIGHWAYS (MORT&H), GOVT OF INDIA, KARNATAKA",Chitradurga,Final Diversion Order Issued,2023-06-23T12:49:55.916+00:00,2026-09-18T09:47:40.016+00:00,13988.0,8.0926,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=6318872
+all,29,Karnataka,top_recent_ec,4,,,FP/KA/WATER/526533/2025,"Improvements to Existing Water Supply Scheme to Haliyal Town with Kali River as Source and Remodelling of Water Supply Distribution Network System to Dandeli City, Uttara Kannada District, Karnataka, including Operation & Maintenance for a Period of 5 Years (Including 1 Year DLP) through Design, Build, Operation, and Transfer (DBOT) Mode",TOWN MUNCIPAL COUNCIL HALIYAL,Uttara Kannada,Stage-II Accorded,2025-02-28T11:49:09.153+00:00,2026-09-11T10:55:36.502+00:00,11666.68,1.8262,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=121258281
+all,29,Karnataka,top_recent_ec,5,,,FP/KA/Pipeline/446989/2023,"Proposal for diversion of 0.1480 ha. of forest land in Sy No.155 of Batbelkunda Village, Basavakalyan Hobli, Basavakalyan Tq. Bidar District and Division for extension of Rising Main (MS Pipe) to feed water to Balkunda, Partapur, Thripurant, Narayanpur and Shivapur tanks & Others 5 tanks from CH: 16+975 to CH: 18+550 in Batbelkunda in the state of Karnataka.",Department of Irrigation,Bidar,Final Diversion Order Issued,2023-10-04T16:13:03.137+00:00,2026-09-04T06:55:41.829+00:00,18800.0,18.424,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=14575254
+all,30,Goa,top_recent_ec,6,,,SIA/GA/INFRA2/589467/2026,"Proposed expansion of existing infrastructure at BITS Pilani, K K Birla Goa Campus located at village Sancoale, Mormugao, South Goa, Goa",BIRLA INSTITUTE OF TECHNOLOGY AND SCIENCE,South Goa,ToR Granted,2026-08-19T07:04:19.642+00:00,2026-09-04T06:19:27.575+00:00,40000.0,67.55,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1238768297
+all,29,Karnataka,top_recent_ec,7,,,FP/KA/WATER/473066/2024,"Diversion of forest area for the improvement of water supply system to Anavatti Town with RDW & SD as source under AMRUT 2.0 Scheme in Anavatti Village and Talluru Village, Anavatti Hobli, Soraba Taluk, Shivamogga District.",town panchayath anavatti,Shivamogga,Final Diversion Order Issued,2024-05-15T12:30:16.865+00:00,2026-09-03T06:24:17.362+00:00,4560.0,0.6287,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=68373459
+all,29,Karnataka,top_recent_ec,8,,,FP/KA/Canal/547603/2025,Diversion of forest land for the construction of canal to provide the irrigation facilities to 1201 Ha agricultural land in Haveri Taluk of Haveri district by Karnataka Neeravari Nigam Limited.,Karnataka Neeravari Nigam Limited,Haveri,Final Diversion Order Issued,2025-08-09T07:42:38.298+00:00,2026-08-25T10:20:53.654+00:00,720.0,22.3713,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=133755217
+all,29,Karnataka,top_recent_ec,9,,,FP/KA/ROAD/454606/2023,Widening to two lane with paved shoulders from existing Intermediate lane from Km 15.980 to 30.750 (Megravalli to Agumbe) of NH-169A on Thirthahalli-Malpe section in the State of Karnataka on EPC mode,"REGIONAL OFFICE, MINISTRY OF ROAD TRANSPORT & HIGHWAYS (MORT&H), GOVT OF INDIA, KARNATAKA",Shivamogga,Final Diversion Order Issued,2023-12-06T16:23:29.742+00:00,2026-08-04T07:20:06.941+00:00,9620.0,11.0791,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=29731919
+all,29,Karnataka,top_recent_ec,10,,,FP/KA/OFC/458845/2024,"PROPOSAL FOR OPTICAL FIBER CABLE LAYING BY BHARATH SANCHAR NIGAM LTD FOR CONNECTIVITY TO 4G TOWERS UNDER 4G SATURATION PROJECT WITH EXTENT OF 0.5 M IN FOREST/NON FOREST AREA FOR SITE AT HEBBAIL VILLAGE,KUMTA TALUK,UK",MAHESH NAIR,Uttara Kannada,Final Diversion Order Issued,2024-01-15T17:56:28.701+00:00,2026-08-04T07:15:29.754+00:00,90.0,0.3282,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=39126268
 all,29,Karnataka,top_cost,1,,,FP/KA/ROAD/590655/2026,"Diversion of forest land for Upgradation and Development of village road from Halsala Village Bridge to Jataga village road in Khanapur taluk, Belagavi district",KARNATAKA RURAL INFRASTRUCTURE DEVELOPMENT LIMITED,Belagavi,Pending at UA for DFO EDS Reply,2026-08-31T06:41:50.689+00:00,,10000000.0,0.9946,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1239727138
 all,29,Karnataka,top_cost,2,,,FP/KA/HYD/IRRIG/430397/2023,"Construction of Ghataprabha right bank canal, distributaries and minors in kalabandakeri, Hangaragi, Shirur and 17 other villages in Bagalkote district in favour of Executive Engineer MBC division 1 Gaddanakeri Camp, Bagalkote",KARNATAKA NEERAVARI NIGAM LIMITED,Belagavi,Pending at DFO/CF after acceptance in PSC-I,2023-05-23T07:30:49.265+00:00,,9990000.0,1036.5343,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=5552659
 all,35,Andaman And Nicobar Islands,top_cost,3,,,FP/AN/OTHERS/473423/2024,"Construction of Check Weir, Pump house, Pipeline & 01 No. CWR (2.45 Lakh) at Shoalbay-14 under RCD, APWD, Wimberlygunj, South Andaman.",EXECUTIVE ENGINEER RCD APWD WIMBERLYGUNJ,South Andaman,Pending at CF for Compliance Review,2024-05-17T12:33:45.302+00:00,,9839331.0,0.245,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=68800279
@@ -183,7 +195,9 @@ all,4,Chandigarh,recent_change,9,status: EDS Raised → Proposal returned in pre
 all,4,Chandigarh,recent_change,10,added,,IA/CH/INFRA2/581771/2026,Berkeley Square by M/s RSA Motors Pvt. Ltd.,RSA MOTORS PRIVATE LIMITED,Chandigarh,Proposal pulled back (withdrawn),2026-06-10T09:27:25.134+00:00,,1951.5,0.447,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1231643791
 state,1,Jammu And Kashmir,stat,,projects,3045,,,,,,,,,,
 state,1,Jammu And Kashmir,stat,,active_projects,1610,,,,,,,,,,
-state,1,Jammu And Kashmir,stat,,ec_granted,104,,,,,,,,,,
+state,1,Jammu And Kashmir,stat,,applications,1611,,,,,,,,,,
+state,1,Jammu And Kashmir,stat,,ec_granted,717,,,,,,,,,,
+state,1,Jammu And Kashmir,stat,,ec_pending,885,,,,,,,,,,
 state,1,Jammu And Kashmir,stat,,ec_rejected,9,,,,,,,,,,
 state,1,Jammu And Kashmir,stat,,delisted_or_removed,1435,,,,,,,,,,
 state,1,Jammu And Kashmir,stat,,total_cost_lakhs,24263041.12,,,,,,,,,,
@@ -195,7 +209,7 @@ state,1,Jammu And Kashmir,stat,,changes_added,0,,,,,,,,,,
 state,1,Jammu And Kashmir,stat,,changes_removed,0,,,,,,,,,,
 state,1,Jammu And Kashmir,stat,,changes_updated,0,,,,,,,,,,
 state,1,Jammu And Kashmir,stat,,changes_status,0,,,,,,,,,,
-state,1,Jammu And Kashmir,stat,,compared_with,2026-09-30T06:14:05Z,,,,,,,,,,
+state,1,Jammu And Kashmir,stat,,compared_with,2026-09-30T16:00:09+05:30,,,,,,,,,,
 state,1,Jammu And Kashmir,status,,DELISTED_BY_SYSTEM,907,,,,,,,,,,
 state,1,Jammu And Kashmir,status,,Final Diversion Order Issued,567,,,,,,,,,,
 state,1,Jammu And Kashmir,status,,REMOVED,528,,,,,,,,,,
@@ -248,6 +262,13 @@ state,1,Jammu And Kashmir,status,,Pending at DFO/CF/Nodal Officer after acceptan
 state,1,Jammu And Kashmir,status,,Pending at MS for Acceptance in PSC-I,1,,,,,,,,,,
 state,1,Jammu And Kashmir,status,,Forwarded,1,,,,,,,,,,
 state,1,Jammu And Kashmir,status,,EDS Raised,1,,,,,,,,,,
+state,1,Jammu And Kashmir,applications_by_year,,2022,62,,,,,,,,,,
+state,1,Jammu And Kashmir,applications_by_year,,2023,1130,,,,,,,,,,
+state,1,Jammu And Kashmir,applications_by_year,,2024,318,,,,,,,,,,
+state,1,Jammu And Kashmir,applications_by_year,,2025,101,,,,,,,,,,
+state,1,Jammu And Kashmir,grants_by_year,,2023,18,,,,,,,,,,
+state,1,Jammu And Kashmir,grants_by_year,,2024,219,,,,,,,,,,
+state,1,Jammu And Kashmir,grants_by_year,,2025,480,,,,,,,,,,
 state,1,Jammu And Kashmir,run,,run_status,ok,,,,,,,,,,
 state,1,Jammu And Kashmir,run,,run_date,2026-09-30T04:58:08Z,,,,,,,,,,
 state,1,Jammu And Kashmir,run,,run_url,,,,,,,,,,,
@@ -256,11 +277,11 @@ state,1,Jammu And Kashmir,top_recent_ec,2,,,SIA/JK/MIN/542199/2025,"Minor Minera
 state,1,Jammu And Kashmir,top_recent_ec,3,,,SIA/JK/MIN/542187/2025,"Minor Mineral (River Bed Material) Mining Project Block-26, Area of 5.0 ha At River Chenab,Downstream Baradari Bridge (Kans Khosan Area) , Tehsil & District Reasi, J&K U.T. in favor of Shri Karanvir Singh S/O Shri Surinder Singh",KARANVIR SINGH,Reasi,EC Granted,2025-06-20T08:00:42.158+00:00,2025-10-10T09:42:08.380+00:00,300.0,5.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=130399585
 state,1,Jammu And Kashmir,top_recent_ec,4,,,SIA/JK/MIN/542179/2025,"Minor Mineral (River Bed Material) Mining Project, Block-4, Area of 3.85 ha; at Anji Khad Upstream Sula Park Bridge, District - Reasi, JK UT in favor of Shri Karanvir Singh R/O Lane No-3, Shaheed Udham Singh Nagar,Pathankot, Punjab",KARANVIR SINGH,Reasi,EC Granted,2025-06-20T07:39:19.797+00:00,2025-10-10T09:34:07.136+00:00,117.81,3.85,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=130395933
 state,1,Jammu And Kashmir,top_recent_ec,5,,,SIA/JK/MIN/542181/2025,"Minor Mineral (River Bed Material) Mining Project Block-2, Area of 7.91 ha at Tanda, Seri Khad, Village-Tanda, District-Reasi (J&K) U.T. in favor of M/S Sai Mines R/O Logate, Kathua, J&K U.T.",SAI MINES,Jammu,EC Granted,2025-06-20T07:44:49.043+00:00,2025-10-10T09:27:52.959+00:00,114.51,7.91,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=130396886
-state,1,Jammu And Kashmir,top_recent_ec,6,,,SIA/JK/MIN/538665/2025,"Minor Mineral Block Gypsum Mining at Village – Sumerbogh Hodog (Pralanka), District-Ramban, J&K in favour of M/s J&K Minerals Ltd.",J&K MINERAL LTD,Ramban,EC Granted,2025-05-22T12:13:39.968+00:00,2025-09-15T09:20:40.912+00:00,139.38,10.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=127654549
-state,1,Jammu And Kashmir,top_recent_ec,7,,,SIA/JK/MIN/515814/2025,"Proposed Minor Mineral (Nallah Muck) Block-4/J Mining ProjectBlock-4/J, an area of 4.90; , At Tawi River, Village - Malhori Jagir, District- Jammu, J&K",CHOUDHARY POWER PROJECTS PRIVATE LIMITED,Jammu,EC Granted,2024-12-23T11:59:41.324+00:00,2025-09-15T09:18:24.034+00:00,603.91,4.9,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=115613987
-state,1,Jammu And Kashmir,top_recent_ec,8,,,SIA/JK/MIN/499857/2024,"Minor Mineral RBM (River Bed Material) Block Doda-IV an area of 2.07 ha at Right Bank of River Chenab, Located at Tehsil-Mohalla, District-Doda J&K (U.T.) in favor of Smt. Poonam Verma, R/O- H.No.-85, Sector-7, Trikuta Nagar, District- Jammu, J&K",POONAM VERMA,Doda,EC Granted,2024-10-05T08:07:37.205+00:00,2025-08-19T10:57:46.580+00:00,701.65,2.07,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=108479423
-state,1,Jammu And Kashmir,top_recent_ec,9,,,SIA/JK/IND1/476598/2024,"Expansion of the existing unit by installing 01 no. Induction furnace of 25 TPH capacity and one Continuous Casting Machine at SIDCO Industrial Estate, Bari Brahmana, Samba Jammu & Kashmir by M/s Kashmir Ispat for production of 1,19,000 TPA of Steel Ingots/Billets and to enhance the capacity of rolling mill to increase the production of Round, Angle, Channel, TMT Bars and Flats from 85,876 TPA to 1,13,050 TPA.",KASHMIR ISPAT,Samba,EC Granted,2024-05-28T07:52:18.785+00:00,2025-08-19T10:53:30.690+00:00,3196.39,2.365,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=71655580
-state,1,Jammu And Kashmir,top_recent_ec,10,,,SIA/JK/INFRA2/505195/2024,Development of Inter Modal Station (IMS) at Katra,NATIONAL HIGHWAYS LOGISTICS MANAGEMENT LIMITED,Reasi,EC Granted,2024-11-08T10:33:24.261+00:00,2025-08-19T10:49:27.973+00:00,42482.5941,11.1,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=111150518
+state,1,Jammu And Kashmir,top_recent_ec,6,,,FP/JK/WATER/440300/2023,WSS KALSOTE,Jal Shakti Department,Udhampur,Final Diversion Order Issued,2023-08-13T08:26:55.779+00:00,2025-10-06T10:06:53.297+00:00,850.0,0.919,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=7933195
+state,1,Jammu And Kashmir,top_recent_ec,7,,,FP/JK/WATER/408194/2022,ARIZAL Zampora,PHE DIVISION BUDGAM,Badgam,Final Diversion Order Issued,2022-11-27T14:24:39.499+00:00,2025-10-06T09:34:08.123+00:00,445.0,0.16,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1742081
+state,1,Jammu And Kashmir,top_recent_ec,8,,,FP/JK/CommPost/504782/2024,4G Saturation Project Deharna,MAHESH NAIR,Kishtwar,Final Diversion Order Issued,2024-11-07T07:29:28.849+00:00,2025-10-01T04:35:18.258+00:00,24.0,0.023,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=111024566
+state,1,Jammu And Kashmir,top_recent_ec,9,,,FP/JK/CommPost/528940/2025,4G Saturation Project Kandal,MAHESH NAIR,Udhampur,Final Diversion Order Issued,2025-03-11T12:34:09.851+00:00,2025-09-26T16:46:23.063+00:00,24.0,0.0186,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=122218155
+state,1,Jammu And Kashmir,top_recent_ec,10,,,FP/JK/TELE_TRANS/511271/2024,OVERHEAD OFC LAYING ROUTE THROUGH FOREST AREA UPTO KANDRAH 4G SATURATION SITE,MAHESH NAIR,Udhampur,Final Diversion Order Issued,2024-12-02T06:17:35.096+00:00,2025-09-26T16:44:42.911+00:00,12.0,0.0652,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=113457800
 state,1,Jammu And Kashmir,top_cost,1,,,FP/JK/TRANS/427059/2023,Permanent restoration of Tower no 131 of 220 kV D/c Salal-KIshenpur 1&2 line,POWER GRID CORPORATION OF INDIA LTD,Jammu,Final Diversion Order Issued,2023-04-24T12:01:49.592+00:00,2024-07-14T16:06:40.098+00:00,4851298.0,1.503,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=4821698
 state,1,Jammu And Kashmir,top_cost,2,,,FP/JK/OFC/537944/2025,LAYING OF UNDERGROUND OPTICAL FIBER CABLE FROM IKHALA TO MARGI VIA MARWAH,VINDHYA TELELINKS LTD,Kishtwar,Pending at UA for Compliance Report,2025-05-16T10:15:29.348+00:00,,4000000.0,3.945,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=127105573
 state,1,Jammu And Kashmir,top_cost,3,,,WL/JK/DRKWATER/538149/2025,WSS. Kasnard Sangnard Pannard,Jal Shakti Department,Anantnag,,2025-05-19T03:57:43.862+00:00,,3713000.0,0.065,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=127225310
@@ -283,19 +304,21 @@ state,1,Jammu And Kashmir,top_land,9,,,FP/JK/PWR_TRANS/547731/2025,Construction 
 state,1,Jammu And Kashmir,top_land,10,,,FP/JK/HYD/IRRIG/402507/2022,Kirthai-II Hydroelectric Project,CHENAB VALLEY POWER PROJECTS LIMITED,Kishtwar,"Pending at Technical Officer - MoEFCC, HQ",2022-10-08T05:29:24.429+00:00,,979882.0,264.85,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1058403
 state,2,Himachal Pradesh,stat,,projects,2140,,,,,,,,,,
 state,2,Himachal Pradesh,stat,,active_projects,915,,,,,,,,,,
-state,2,Himachal Pradesh,stat,,ec_granted,284,,,,,,,,,,
+state,2,Himachal Pradesh,stat,,applications,915,,,,,,,,,,
+state,2,Himachal Pradesh,stat,,ec_granted,369,,,,,,,,,,
+state,2,Himachal Pradesh,stat,,ec_pending,537,,,,,,,,,,
 state,2,Himachal Pradesh,stat,,ec_rejected,5,,,,,,,,,,
 state,2,Himachal Pradesh,stat,,delisted_or_removed,1225,,,,,,,,,,
 state,2,Himachal Pradesh,stat,,total_cost_lakhs,14572638.18,,,,,,,,,,
 state,2,Himachal Pradesh,stat,,cost_outliers_excluded,5,,,,,,,,,,
 state,2,Himachal Pradesh,stat,,total_land_ha,252263.2914,,,,,,,,,,
 state,2,Himachal Pradesh,stat,,latest_application,2025-11-07T06:51:02.661+00:00,,,,,,,,,,
-state,2,Himachal Pradesh,stat,,latest_grant,2025-05-30T04:40:03.717+00:00,,,,,,,,,,
+state,2,Himachal Pradesh,stat,,latest_grant,2025-09-19T05:22:18.383+00:00,,,,,,,,,,
 state,2,Himachal Pradesh,stat,,changes_added,0,,,,,,,,,,
 state,2,Himachal Pradesh,stat,,changes_removed,0,,,,,,,,,,
 state,2,Himachal Pradesh,stat,,changes_updated,0,,,,,,,,,,
 state,2,Himachal Pradesh,stat,,changes_status,0,,,,,,,,,,
-state,2,Himachal Pradesh,stat,,compared_with,2026-09-30T06:14:05Z,,,,,,,,,,
+state,2,Himachal Pradesh,stat,,compared_with,2026-09-30T16:00:09+05:30,,,,,,,,,,
 state,2,Himachal Pradesh,status,,DELISTED_BY_SYSTEM,895,,,,,,,,,,
 state,2,Himachal Pradesh,status,,REMOVED,330,,,,,,,,,,
 state,2,Himachal Pradesh,status,,EC Granted,284,,,,,,,,,,
@@ -353,19 +376,27 @@ state,2,Himachal Pradesh,status,,"Pending at Additional Director General of Fore
 state,2,Himachal Pradesh,status,,Pending at Technical Officer - IRO,1,,,,,,,,,,
 state,2,Himachal Pradesh,status,,Forwarded to AS,1,,,,,,,,,,
 state,2,Himachal Pradesh,status,,Proposal Accepted and Referred to EAC,1,,,,,,,,,,
+state,2,Himachal Pradesh,applications_by_year,,2022,71,,,,,,,,,,
+state,2,Himachal Pradesh,applications_by_year,,2023,241,,,,,,,,,,
+state,2,Himachal Pradesh,applications_by_year,,2024,267,,,,,,,,,,
+state,2,Himachal Pradesh,applications_by_year,,2025,336,,,,,,,,,,
+state,2,Himachal Pradesh,grants_by_year,,2022,2,,,,,,,,,,
+state,2,Himachal Pradesh,grants_by_year,,2023,60,,,,,,,,,,
+state,2,Himachal Pradesh,grants_by_year,,2024,88,,,,,,,,,,
+state,2,Himachal Pradesh,grants_by_year,,2025,219,,,,,,,,,,
 state,2,Himachal Pradesh,run,,run_status,ok,,,,,,,,,,
 state,2,Himachal Pradesh,run,,run_date,2026-09-30T04:58:08Z,,,,,,,,,,
 state,2,Himachal Pradesh,run,,run_url,,,,,,,,,,,
-state,2,Himachal Pradesh,top_recent_ec,1,,,IA/HP/IND1/532020/2025,"Expansion in the existing secondary metallurgical unit for increase in the production of MS Ingots from 19,200 TPA to 96,600 TPA by installation of an additional Induction furnace having capacity 15 TPH alongside the existing Induction Furnace having capacity 7 TPH and to install Continuous casting machine followed by rolling mill to produce 77,280 TPA of Round /Angle/Channel/TMT Bars/Flats by M/s Goyal Furnace Pvt Ltd",GOYAL FURNACE PRIVATE LIMITED,Kangra,EC Granted,2025-03-29T11:59:39.448+00:00,2025-05-30T04:40:03.717+00:00,0.0,1.7995,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=123873242
-state,2,Himachal Pradesh,top_recent_ec,2,,,SIA/HP/MIN/537976/2025,"Mining of Sand, Stone & Bajri from riverbed of Swan River situated in Mauza Mubarikpur, Mohal Kanshipur, Tehsil Ghanari, District Una, Himachal Pradesh proposed by Sh. Ruby Kumar, S/O Sh. Avtar Singh prop. M/s Thakur Stone crusher.",RUBY KUMAR,Una,EC Granted,2025-05-16T12:04:30.999+00:00,2025-05-27T12:04:56.099+00:00,10.0,4.1291,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=127124646
-state,2,Himachal Pradesh,top_recent_ec,3,,,SIA/HP/MIN/536420/2025,"Mining of Sand, Stone & Bajri from Sarsa River proposed by Sh. Madhuri Saini Prop. M/s Manjholi Stone Crusher",Madhuri Saini,Solan,EC Granted,2025-05-05T04:55:49.595+00:00,2025-05-27T12:02:09.598+00:00,55.0,59.39,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=126249406
-state,2,Himachal Pradesh,top_recent_ec,4,,,SIA/HP/MIN/532890/2025,"Transfer of Environmental Clearance for Extraction/collection of Sand, Stone and Bajri from an area of 4.9035 Ha (Pvt. Land- River bed) having Khasra Nos. 2926/1 & 2927/1, Mauza/Mohal Indora, Tehsil Indora, District Kangra, H.P. by Sh. Gagan Singh, S/o Sh. Sh. Bijlu Ram, R/o V.P.O. & Tehsil Indora, District Kangra, H.P. in favour of Sh. Mankaran Singh, S/o Lt. Sh. Dharminder Singh, Prop. M/s Shiv Shankar Industries Stone Crusher, R/o Village Pail, P.O. Lodhwan, Teh. Indora, District Kangra, H.P.",MANKARAN SINGH,Kangra,EC Granted,2025-04-04T11:59:37.989+00:00,2025-05-27T11:59:06.566+00:00,25.0,4.9035,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=124258157
-state,2,Himachal Pradesh,top_recent_ec,5,,,SIA/HP/MIN/531332/2025,Boulder sand and Bajri Mining Project,HARIKrishan Sharma,Sirmaur,EC Granted,2025-03-26T06:03:18.822+00:00,2025-05-27T11:51:58.961+00:00,12.0,8.4377,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=123491417
-state,2,Himachal Pradesh,top_recent_ec,6,,,SIA/HP/INFRA2/532975/2025,Nirvana Woods & Hotels Private Limited,NIRVANA WOODS & HOTELS PRIVATE LIMITED,Shimla,EC Granted,2025-04-05T09:02:31.174+00:00,2025-05-27T11:50:21.569+00:00,9900.0,4.6599,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=124301319
-state,2,Himachal Pradesh,top_recent_ec,7,,,SIA/HP/MIN/531078/2025,"Transfer of prior Environmental Clearance granted in favor of “Sh. Dev Dutt over an area of 19-13-00 Bighas (Hill- Slope) Khasra No. 117/76/3 located at Mauza Lana Kansar (Upsampda Lana Kansar Sarahan) Tehsil Pachhad, District- Sirmaur, Himachal Pradesh in the name of Sh. Yashpal Chauhan S/o Sh. Rattan Singh Chauhan C/o Gitika Niwas, Parimahal, Shimla-09.”",yashpal chauhan,Sirmaur,EC Granted,2025-03-24T09:55:40.797+00:00,2025-05-27T11:47:07.782+00:00,20.0,1.48,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=123204426
-state,2,Himachal Pradesh,top_recent_ec,8,,,SIA/HP/INFRA2/484379/2025,"Extension in the validity of Environmental Clearance of Construction Project “Amravati Apartments” by M/s Amar Nath Aggarwal Builders Pvt. Ltd. at Village- Baddi, Tehsil- Nalagarh, District- Solan, Himachal Pradesh",AMRAVATI APARTMENTS,Solan,EC Granted,2024-06-27T12:23:18.772+00:00,2025-05-27T11:43:49.460+00:00,96.13,8.79,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=79222873
-state,2,Himachal Pradesh,top_recent_ec,9,,,SIA/HP/MIN/529118/2025,"Extension in the validity of Environmental Clearance for Extraction/collection of Sand, Stone and Bajri for an area of 01-69-23 Ha (Pvt. Land- Hill Slope) by Sh. Arun Kumar & Sh. Naresh Kumar, Partners M/s Krishna Stone Crusher located in Khasra no. 119, falling in Mauza & Mohal Tatehra, Up -Tehsil Gagret Kaloh, Tehsil Ghanari, District Una, H.P.",KRISHNA STONE CRUSHER,Una,EC Granted,2025-03-12T08:07:57.124+00:00,2025-05-27T11:39:22.583+00:00,1.6,1.6923,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=122271376
-state,2,Himachal Pradesh,top_recent_ec,10,,,SIA/HP/MIN/525513/2025,"Extraction of Sand, Stone & Bajri from Khasra No. 2324, 2325, 2332, 2328, 6217/2326, 6219/2327, 6218/2326 & 6220/2327, measuring an area 06-10-00 Bighas (Private land, Terrace Deposit) falling in Mauza/Mohal Neether Tehsil Neether,  District Kullu, Himachal Pradesh, proposed by Sh. Avinash Chauhan S/o Mahender Paul Chauhan",avinash,Shimla,EC Granted,2025-02-24T09:27:40.830+00:00,2025-05-27T11:35:34.378+00:00,20.0,0.4612,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=120866214
+state,2,Himachal Pradesh,top_recent_ec,1,,,IA/HP/INFRA2/550530/2025,Expansion of All India Institute of Medical Sciences (AIIMS),ALL - INDIA INSTITUTE OF MEDICAL SCIENCES - BILASPUR,Solan,Standard ToR Granted,2025-09-05T06:06:23.442+00:00,2025-09-19T05:22:18.383+00:00,2221000.0,100.23,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=135707870
+state,2,Himachal Pradesh,top_recent_ec,2,,,FP/HP/MIN/QRY/421697/2023,RENEWAL OF MINING LEASE FOREST CLEARENCE,CEMENT CORPORATION OF INDIA LIMITED,Sirmaur,Pending at SS for Diversion Letter,2023-03-11T04:34:36.957+00:00,2025-08-01T10:13:01.230+00:00,2000000.0,172.3,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=3862027
+state,2,Himachal Pradesh,top_recent_ec,3,,,FP/HP/SCH/452671/2023,Additional land for C/o  Dr. Radhakrishnan Government Medical College at Hamirpur.,Health and Family Welfare Department Himachal Pradesh,Hamirpur,Final Diversion Order Issued,2023-11-18T11:30:07.957+00:00,2025-06-26T12:14:36.007+00:00,67500.0,15.532,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=25143859
+state,2,Himachal Pradesh,top_recent_ec,4,,,FP/HP/OTHERS/478851/2024,Eco-Tourism Society Kullu (ETSK) Centre,eco tourism society kullu,Kullu,Final Diversion Order Issued,2024-06-04T09:48:45.787+00:00,2025-06-18T16:46:04.514+00:00,300.0,0.0519,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=73609491
+state,2,Himachal Pradesh,top_recent_ec,5,,,FP/HP/ROAD/418138/2023,Construction of Link Road from Bheron to Adi Badri Km 2/660 to 4/915,PUBLIC WORKS DEPARTMENT NAHAN,Sirmaur,Final Diversion Order Issued,2023-02-13T13:06:38.918+00:00,2025-05-30T05:11:55.377+00:00,160400000.0,1.923,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=3043333
+state,2,Himachal Pradesh,top_recent_ec,6,,,IA/HP/IND1/532020/2025,"Expansion in the existing secondary metallurgical unit for increase in the production of MS Ingots from 19,200 TPA to 96,600 TPA by installation of an additional Induction furnace having capacity 15 TPH alongside the existing Induction Furnace having capacity 7 TPH and to install Continuous casting machine followed by rolling mill to produce 77,280 TPA of Round /Angle/Channel/TMT Bars/Flats by M/s Goyal Furnace Pvt Ltd",GOYAL FURNACE PRIVATE LIMITED,Kangra,EC Granted,2025-03-29T11:59:39.448+00:00,2025-05-30T04:40:03.717+00:00,0.0,1.7995,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=123873242
+state,2,Himachal Pradesh,top_recent_ec,7,,,SIA/HP/MIN/537976/2025,"Mining of Sand, Stone & Bajri from riverbed of Swan River situated in Mauza Mubarikpur, Mohal Kanshipur, Tehsil Ghanari, District Una, Himachal Pradesh proposed by Sh. Ruby Kumar, S/O Sh. Avtar Singh prop. M/s Thakur Stone crusher.",RUBY KUMAR,Una,EC Granted,2025-05-16T12:04:30.999+00:00,2025-05-27T12:04:56.099+00:00,10.0,4.1291,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=127124646
+state,2,Himachal Pradesh,top_recent_ec,8,,,SIA/HP/MIN/536420/2025,"Mining of Sand, Stone & Bajri from Sarsa River proposed by Sh. Madhuri Saini Prop. M/s Manjholi Stone Crusher",Madhuri Saini,Solan,EC Granted,2025-05-05T04:55:49.595+00:00,2025-05-27T12:02:09.598+00:00,55.0,59.39,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=126249406
+state,2,Himachal Pradesh,top_recent_ec,9,,,SIA/HP/MIN/532890/2025,"Transfer of Environmental Clearance for Extraction/collection of Sand, Stone and Bajri from an area of 4.9035 Ha (Pvt. Land- River bed) having Khasra Nos. 2926/1 & 2927/1, Mauza/Mohal Indora, Tehsil Indora, District Kangra, H.P. by Sh. Gagan Singh, S/o Sh. Sh. Bijlu Ram, R/o V.P.O. & Tehsil Indora, District Kangra, H.P. in favour of Sh. Mankaran Singh, S/o Lt. Sh. Dharminder Singh, Prop. M/s Shiv Shankar Industries Stone Crusher, R/o Village Pail, P.O. Lodhwan, Teh. Indora, District Kangra, H.P.",MANKARAN SINGH,Kangra,EC Granted,2025-04-04T11:59:37.989+00:00,2025-05-27T11:59:06.566+00:00,25.0,4.9035,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=124258157
+state,2,Himachal Pradesh,top_recent_ec,10,,,SIA/HP/MIN/531332/2025,Boulder sand and Bajri Mining Project,HARIKrishan Sharma,Sirmaur,EC Granted,2025-03-26T06:03:18.822+00:00,2025-05-27T11:51:58.961+00:00,12.0,8.4377,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=123491417
 state,2,Himachal Pradesh,top_cost,1,,,FP/HP/HYD/IRRIG/504746/2024,"C/O Additional Forest land Required for Ropeway Platform And Approach Road to Colony, Additional Dumping Site and Spilway Outfall for Chanju-III, HEP District Chamba H.P.",HIMACHAL PRADESH POWER CORPORATION LIMITED,Chamba,Pending at Nodal Officer for Recommendation,2024-11-07T06:28:17.541+00:00,,4185700.0,4.475,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=111013704
 state,2,Himachal Pradesh,top_cost,2,,,IA/HP/INFRA2/550530/2025,Expansion of All India Institute of Medical Sciences (AIIMS),ALL - INDIA INSTITUTE OF MEDICAL SCIENCES - BILASPUR,Solan,Standard ToR Granted,2025-09-05T06:06:23.442+00:00,2025-09-19T05:22:18.383+00:00,2221000.0,100.23,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=135707870
 state,2,Himachal Pradesh,top_cost,3,,,FP/HP/OTHERS/418270/2023,Establishment of Electric Vehicle Charging Station  at M/s Donbusche HP center Tapri,SATEESH NEGI,Kinnaur,Pending at DFO for Compensatory Levies,2023-02-14T10:30:17.359+00:00,,2000000.0,0.0808,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=3061090
@@ -388,7 +419,9 @@ state,2,Himachal Pradesh,top_land,9,,,WL/HP/ROAD/516727/2024,C/O Bathri Sundla L
 state,2,Himachal Pradesh,top_land,10,,,IA/HP/INFRA1/450106/2023,"Proposed “Bulk Drug Park” at Villages Kuthar Beet, Pollian Beet, Tibbian, Jodian, Janani and Malluwal, Teh. Haroli, Distt. Una, Himachal Pradesh by M/s Himachal Pradesh Bulk Drug Park Infrastructure Ltd. under Department of Industries, Government of Himachal Pradesh",HIMACHAL PRADESH BULK DRUG PARK INFRASTRUCTURE LIMITED,Una,ToR Granted,2023-10-25T09:54:13.802+00:00,2024-08-01T08:23:46.459+00:00,192300.0,568.75,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=19475745
 state,3,Punjab,stat,,projects,0,,,,,,,,,,
 state,3,Punjab,stat,,active_projects,0,,,,,,,,,,
+state,3,Punjab,stat,,applications,0,,,,,,,,,,
 state,3,Punjab,stat,,ec_granted,0,,,,,,,,,,
+state,3,Punjab,stat,,ec_pending,0,,,,,,,,,,
 state,3,Punjab,stat,,ec_rejected,0,,,,,,,,,,
 state,3,Punjab,stat,,delisted_or_removed,0,,,,,,,,,,
 state,3,Punjab,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -406,7 +439,9 @@ state,3,Punjab,run,,run_date,,,,,,,,,,,
 state,3,Punjab,run,,run_url,,,,,,,,,,,
 state,4,Chandigarh,stat,,projects,39,,,,,,,,,,
 state,4,Chandigarh,stat,,active_projects,26,,,,,,,,,,
-state,4,Chandigarh,stat,,ec_granted,8,,,,,,,,,,
+state,4,Chandigarh,stat,,applications,26,,,,,,,,,,
+state,4,Chandigarh,stat,,ec_granted,14,,,,,,,,,,
+state,4,Chandigarh,stat,,ec_pending,8,,,,,,,,,,
 state,4,Chandigarh,stat,,ec_rejected,0,,,,,,,,,,
 state,4,Chandigarh,stat,,delisted_or_removed,13,,,,,,,,,,
 state,4,Chandigarh,stat,,total_cost_lakhs,2710744.77,,,,,,,,,,
@@ -433,17 +468,26 @@ state,4,Chandigarh,status,,Proposal returned in present form,1,,,,,,,,,,
 state,4,Chandigarh,status,,Referred to SEAC,1,,,,,,,,,,
 state,4,Chandigarh,status,,Pending at DFO for Scrutiny and Recommendation,1,,,,,,,,,,
 state,4,Chandigarh,status,,Pending at MS SEIAA,1,,,,,,,,,,
+state,4,Chandigarh,applications_by_year,,2023,3,,,,,,,,,,
+state,4,Chandigarh,applications_by_year,,2024,4,,,,,,,,,,
+state,4,Chandigarh,applications_by_year,,2025,11,,,,,,,,,,
+state,4,Chandigarh,applications_by_year,,2026,8,,,,,,,,,,
+state,4,Chandigarh,grants_by_year,,2023,1,,,,,,,,,,
+state,4,Chandigarh,grants_by_year,,2025,5,,,,,,,,,,
+state,4,Chandigarh,grants_by_year,,2026,8,,,,,,,,,,
 state,4,Chandigarh,run,,run_status,ok,,,,,,,,,,
 state,4,Chandigarh,run,,run_date,2026-09-30T04:58:08Z,,,,,,,,,,
 state,4,Chandigarh,run,,run_url,,,,,,,,,,,
 state,4,Chandigarh,top_recent_ec,1,,,SIA/CH/INFRA2/527491/2026,Berkeley Square by M/s RSA motors pvt. ltd.,RSA MOTORS PRIVATE LIMITED,Chandigarh,EC Granted,2025-03-04T09:35:59.450+00:00,2026-07-24T13:57:14.784+00:00,1951.5,0.447,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=121561284
 state,4,Chandigarh,top_recent_ec,2,,,SIA/CH/INFRA2/573706/2026,"Proposed 2nd Fruit, Vegetable and Grain Market at Sector 39, Chandigarh by State Agricultural Marketing Board, U.T. Chandigarh",Chandigarh State Agriculture Marketing Board,Chandigarh,EC Granted,2026-03-26T11:32:57.825+00:00,2026-07-24T13:42:36.584+00:00,23455.0,30.01,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1222704895
-state,4,Chandigarh,top_recent_ec,3,,,SIA/CH/INFRA2/547811/2025,"Proposed “New Model Jail” located at Sector 51 Adjoining Main Jail on campus ‘A’ land, Model Jail, Chandigarh by C.P. Division No. 6, U.T., Chandigarh",Ministry of Defense,Chandigarh,EC Granted,2025-08-12T04:48:51.418+00:00,2026-05-01T16:37:27.250+00:00,4422.0,12.14,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=133864867
-state,4,Chandigarh,top_recent_ec,4,,,SIA/CH/INFRA2/574160/2026,Advanced Mother & Child Centre (Phase-I) By Post Graduate Institute of Medical Education & Research (PGIMER),POST GRADUATE INSTITUTE OF MEDICAL EDUCATION AND RESEARCH CHANDIGARH,Amritsar,EC Granted,2026-03-31T06:02:10.113+00:00,2026-04-27T12:23:01.709+00:00,30300.0,1.086,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1223014739
-state,4,Chandigarh,top_recent_ec,5,,,SIA/CH/INFRA2/455379/2023,BERKELEY SQUARE,RSA MOTORS PRIVATE LIMITED,Chandigarh,EC Granted,2023-12-13T07:18:17.437+00:00,2026-02-06T12:24:42.582+00:00,2000.0,0.447,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=31489848
-state,4,Chandigarh,top_recent_ec,6,,,SIA/CH/INFRA2/561039/2025,"Advanced Neuroscience Centre located at Sector 12, Chandigarh by M/s Post Graduate Institute of Medical Education & Research (PGIMER)",POST GRADUATE INSTITUTE OF MEDICAL EDUCATION AND RESEARCH CHANDIGARH,Chandigarh,EC Granted,2025-12-08T11:56:18.896+00:00,2026-02-06T06:24:38.599+00:00,15.0,1.145,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=894872778
-state,4,Chandigarh,top_recent_ec,7,,,SIA/CH/INFRA2/551190/2025,"Critical Care Block (CCB) by M/s Post Graduate Institute of Medical Education & Research (PGIMER) at PGIMER, Sector-12, Chandigarh",POST GRADUATE INSTITUTE OF MEDICAL EDUCATION AND RESEARCH CHANDIGARH,Chandigarh,EC Granted,2025-09-11T08:25:15.305+00:00,2025-12-24T10:41:12.068+00:00,24381.0,1.1791,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=136087189
-state,4,Chandigarh,top_recent_ec,8,,,IA/CH/INFRA2/518478/2025,"Integrated Solid Waste Management System at Dadu Majra, Chandigarh",MUNICIPAL CORPORATION CHANDIGARH,Chandigarh,EC Granted,2025-01-14T09:24:12.581+00:00,2025-02-21T04:35:24.002+00:00,40000.0,18.255,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=117505902
+state,4,Chandigarh,top_recent_ec,3,,,SIA/CH/INFRA2/578710/2026,"Expansion of Existing Common Bio- Medical Waste Management Treatment Facility (CBWTF) at Plot No. 182/9, Industrial Area, Phase 1, Chandigarh",ALLIANCE ENVIROCARE COMPANY PRIVATE LIMITED,Chandigarh,Standard ToR Granted,2026-05-12T07:23:54.869+00:00,2026-07-05T06:58:10.147+00:00,1419.0,0.5,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1227340486
+state,4,Chandigarh,top_recent_ec,4,,,SIA/CH/INFRA2/547811/2025,"Proposed “New Model Jail” located at Sector 51 Adjoining Main Jail on campus ‘A’ land, Model Jail, Chandigarh by C.P. Division No. 6, U.T., Chandigarh",Ministry of Defense,Chandigarh,EC Granted,2025-08-12T04:48:51.418+00:00,2026-05-01T16:37:27.250+00:00,4422.0,12.14,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=133864867
+state,4,Chandigarh,top_recent_ec,5,,,SIA/CH/INFRA2/574160/2026,Advanced Mother & Child Centre (Phase-I) By Post Graduate Institute of Medical Education & Research (PGIMER),POST GRADUATE INSTITUTE OF MEDICAL EDUCATION AND RESEARCH CHANDIGARH,Amritsar,EC Granted,2026-03-31T06:02:10.113+00:00,2026-04-27T12:23:01.709+00:00,30300.0,1.086,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1223014739
+state,4,Chandigarh,top_recent_ec,6,,,SIA/CH/INFRA2/573416/2026,Bulk Material Market by Estate Office Chandigarh,Estate Office,Chandigarh,Standard ToR Granted,2026-03-24T08:16:12.278+00:00,2026-04-06T12:07:49.877+00:00,2226.0,33.18,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1222487313
+state,4,Chandigarh,top_recent_ec,7,,,SIA/CH/INFRA2/455379/2023,BERKELEY SQUARE,RSA MOTORS PRIVATE LIMITED,Chandigarh,EC Granted,2023-12-13T07:18:17.437+00:00,2026-02-06T12:24:42.582+00:00,2000.0,0.447,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=31489848
+state,4,Chandigarh,top_recent_ec,8,,,SIA/CH/INFRA2/561039/2025,"Advanced Neuroscience Centre located at Sector 12, Chandigarh by M/s Post Graduate Institute of Medical Education & Research (PGIMER)",POST GRADUATE INSTITUTE OF MEDICAL EDUCATION AND RESEARCH CHANDIGARH,Chandigarh,EC Granted,2025-12-08T11:56:18.896+00:00,2026-02-06T06:24:38.599+00:00,15.0,1.145,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=894872778
+state,4,Chandigarh,top_recent_ec,9,,,SIA/CH/INFRA2/551190/2025,"Critical Care Block (CCB) by M/s Post Graduate Institute of Medical Education & Research (PGIMER) at PGIMER, Sector-12, Chandigarh",POST GRADUATE INSTITUTE OF MEDICAL EDUCATION AND RESEARCH CHANDIGARH,Chandigarh,EC Granted,2025-09-11T08:25:15.305+00:00,2025-12-24T10:41:12.068+00:00,24381.0,1.1791,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=136087189
+state,4,Chandigarh,top_recent_ec,10,,,SIA/CH/INFRA2/508510/2024,"Critical Care Block (CCB) by M/s Post Graduate Institute of Medical Education & Research (PGIMER) at PGIMER, Sector-12, Chandigarh.",POST GRADUATE INSTITUTE OF MEDICAL EDUCATION AND RESEARCH CHANDIGARH,Chandigarh,Withdrawal Request Accepted,2024-11-27T06:49:26.431+00:00,2025-04-03T09:03:17.533+00:00,24381.0,1.0454,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=112592624
 state,4,Chandigarh,top_cost,1,,,FP/CH/ROAD/501286/2024,Proposal for diversion of forest land i.e. 0.2159 Ha adjoining to rock garden at Pb. & Hry high court,CONSTRUCTION CIRCLE 2 UT CHANDIGARH,Chandigarh,Final Diversion Order Issued,2024-10-16T09:18:53.615+00:00,2025-01-16T11:56:27.622+00:00,2000000.0,0.2159,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=109732843
 state,4,Chandigarh,top_cost,2,,,FP/CH/OTHERS/564394/2026,PROVIDING STREET LIGHTING THROUGH UNDERGROUND CABLE ON ROAD ALONG DHANAS LAKE,ENGINEERING DEPARTMENT (ELECTRICAL),Chandigarh,Pending at DFO for Scrutiny and Recommendation,2026-01-06T07:04:52.333+00:00,,378829.0,0.0235,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1214913678
 state,4,Chandigarh,top_cost,3,,,SIA/CH/INFRA2/539539/2025,Sheraton Chandigarh Hotel,JOY HOTEL AND RESORTS PRIVATE LIMITED,Chandigarh,Referred to SEAC,2025-05-29T06:23:55.404+00:00,,45521.0,0.8941,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=128423873
@@ -476,7 +520,9 @@ state,4,Chandigarh,recent_change,9,status: EDS Raised → Proposal returned in p
 state,4,Chandigarh,recent_change,10,added,,IA/CH/INFRA2/581771/2026,Berkeley Square by M/s RSA Motors Pvt. Ltd.,RSA MOTORS PRIVATE LIMITED,Chandigarh,Proposal pulled back (withdrawn),2026-06-10T09:27:25.134+00:00,,1951.5,0.447,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1231643791
 state,5,Uttarakhand,stat,,projects,0,,,,,,,,,,
 state,5,Uttarakhand,stat,,active_projects,0,,,,,,,,,,
+state,5,Uttarakhand,stat,,applications,0,,,,,,,,,,
 state,5,Uttarakhand,stat,,ec_granted,0,,,,,,,,,,
+state,5,Uttarakhand,stat,,ec_pending,0,,,,,,,,,,
 state,5,Uttarakhand,stat,,ec_rejected,0,,,,,,,,,,
 state,5,Uttarakhand,stat,,delisted_or_removed,0,,,,,,,,,,
 state,5,Uttarakhand,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -494,7 +540,9 @@ state,5,Uttarakhand,run,,run_date,,,,,,,,,,,
 state,5,Uttarakhand,run,,run_url,,,,,,,,,,,
 state,6,Haryana,stat,,projects,0,,,,,,,,,,
 state,6,Haryana,stat,,active_projects,0,,,,,,,,,,
+state,6,Haryana,stat,,applications,0,,,,,,,,,,
 state,6,Haryana,stat,,ec_granted,0,,,,,,,,,,
+state,6,Haryana,stat,,ec_pending,0,,,,,,,,,,
 state,6,Haryana,stat,,ec_rejected,0,,,,,,,,,,
 state,6,Haryana,stat,,delisted_or_removed,0,,,,,,,,,,
 state,6,Haryana,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -512,19 +560,21 @@ state,6,Haryana,run,,run_date,,,,,,,,,,,
 state,6,Haryana,run,,run_url,,,,,,,,,,,
 state,7,Delhi,stat,,projects,230,,,,,,,,,,
 state,7,Delhi,stat,,active_projects,170,,,,,,,,,,
-state,7,Delhi,stat,,ec_granted,54,,,,,,,,,,
+state,7,Delhi,stat,,applications,170,,,,,,,,,,
+state,7,Delhi,stat,,ec_granted,75,,,,,,,,,,
+state,7,Delhi,stat,,ec_pending,84,,,,,,,,,,
 state,7,Delhi,stat,,ec_rejected,0,,,,,,,,,,
 state,7,Delhi,stat,,delisted_or_removed,60,,,,,,,,,,
 state,7,Delhi,stat,,total_cost_lakhs,14706955.83,,,,,,,,,,
 state,7,Delhi,stat,,cost_outliers_excluded,0,,,,,,,,,,
 state,7,Delhi,stat,,total_land_ha,47584.8759,,,,,,,,,,
 state,7,Delhi,stat,,latest_application,2025-10-16T16:51:52.448+00:00,,,,,,,,,,
-state,7,Delhi,stat,,latest_grant,2025-06-18T09:16:25.141+00:00,,,,,,,,,,
+state,7,Delhi,stat,,latest_grant,2025-07-28T03:16:28.331+00:00,,,,,,,,,,
 state,7,Delhi,stat,,changes_added,0,,,,,,,,,,
 state,7,Delhi,stat,,changes_removed,0,,,,,,,,,,
 state,7,Delhi,stat,,changes_updated,0,,,,,,,,,,
 state,7,Delhi,stat,,changes_status,0,,,,,,,,,,
-state,7,Delhi,stat,,compared_with,2026-09-30T06:14:05Z,,,,,,,,,,
+state,7,Delhi,stat,,compared_with,2026-09-30T16:00:09+05:30,,,,,,,,,,
 state,7,Delhi,status,,DELISTED_BY_SYSTEM,60,,,,,,,,,,
 state,7,Delhi,status,,EC Granted,54,,,,,,,,,,
 state,7,Delhi,status,,Under Examination,31,,,,,,,,,,
@@ -554,19 +604,26 @@ state,7,Delhi,status,,Pending at DFO due to EDS by CF,1,,,,,,,,,,
 state,7,Delhi,status,,Forwarded to DD,1,,,,,,,,,,
 state,7,Delhi,status,,Pending at Technical Officer,1,,,,,,,,,,
 state,7,Delhi,status,,Pending at MS for Acceptance in PSC-I,1,,,,,,,,,,
+state,7,Delhi,applications_by_year,,2022,23,,,,,,,,,,
+state,7,Delhi,applications_by_year,,2023,40,,,,,,,,,,
+state,7,Delhi,applications_by_year,,2024,55,,,,,,,,,,
+state,7,Delhi,applications_by_year,,2025,52,,,,,,,,,,
+state,7,Delhi,grants_by_year,,2023,17,,,,,,,,,,
+state,7,Delhi,grants_by_year,,2024,33,,,,,,,,,,
+state,7,Delhi,grants_by_year,,2025,25,,,,,,,,,,
 state,7,Delhi,run,,run_status,ok,,,,,,,,,,
 state,7,Delhi,run,,run_date,2026-09-30T04:58:08Z,,,,,,,,,,
 state,7,Delhi,run,,run_url,,,,,,,,,,,
-state,7,Delhi,top_recent_ec,1,,,IA/DL/THE/536932/2025,"Proposed Waste to Energy Project 50 MW, DSIIDC Industrial Area, sector-5, Bawana, Delhi-110039 by M/s Jindal Urban Waste Management (Bawana) Limited.",JINDAL URBAN WASTE MANAGEMENT (BAWANA) LIMITED,North,EC Granted,2025-05-08T15:42:28.686+00:00,2025-06-18T09:16:25.141+00:00,66000.0,6.07,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=126546966
-state,7,Delhi,top_recent_ec,2,,,IA/DL/INFRA2/515776/2024,Amendment in existing Environment Clearance of Indira Gandhi International Airport,DELHI INTERNATIONAL AIRPORT LIMITED,New Delhi,EC Granted,2024-12-23T09:25:47.237+00:00,2025-04-11T05:19:17.850+00:00,1600000.0,2066.325,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=115578887
-state,7,Delhi,top_recent_ec,3,,,IA/DL/INFRA2/514212/2024,"Proposed Medical College attached to Atal Bihari Vajpayee Institute of Medical Sciences & Dr. Ram Manohar Lohia Hospital at Baba Kharak Singh Marg Area, New Delhi","Ministry of Health & Family Welfare Dept.,Govt. of India",New Delhi,EC Granted,2024-12-11T07:04:01.102+00:00,2025-03-03T06:01:36.862+00:00,47500.0,1.2183,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=114481284
-state,7,Delhi,top_recent_ec,4,,,IA/DL/INFRA2/479971/2024,"Modification and Expansion of Indian Insititute of Technology located at Hauz Khas, Delhi by Indian Insititute of Technology",INDIAN INSTITUTE OF TECHNOLOGY,South,EC Granted,2024-06-08T10:25:26.864+00:00,2025-02-21T04:54:46.171+00:00,96396.0,126.47,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=74746945
-state,7,Delhi,top_recent_ec,5,,,IA/DL/INFRA2/508662/2024,"Construction of Supreme Court Building for Creating Additional Court Rooms Including Constitutional Court, Chambers for the Hon’ble Judges and Facilities for Lawyers & Litigants",Central Public Works Department,New Delhi,EC Granted,2024-11-27T10:47:30.537+00:00,2025-02-12T04:53:41.745+00:00,44500.0,2.25,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=112643610
-state,7,Delhi,top_recent_ec,6,,,IA/DL/INFRA2/509182/2024,"Creation of New Infrastructure at Surajmal Vihar Campus, University of Delhi (Phase I)",University of Delhi,Shahdara,EC Granted,2024-11-28T12:39:01.615+00:00,2025-02-10T09:07:24.687+00:00,21721.0,6.1674,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=112842459
-state,7,Delhi,top_recent_ec,7,,,IA/DL/INFRA2/500695/2024,"Proposed IT/ITES Building At Plot No. 37, Block A, Mohan Cooperative Industrial Estate New Delhi",TEJASWANI DEVELOPERS PRIVATE LIMITED,South East,EC Granted,2024-10-11T08:02:11.487+00:00,2025-01-20T13:14:00.513+00:00,11700.0,0.5784,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=109521672
-state,7,Delhi,top_recent_ec,8,,,IA/DL/INFRA2/500438/2024,Motel cum Commercial Project by M/s Penguin Farms Private Limited,PENGUIN FARMS P LTD,New Delhi,EC Granted,2024-10-09T11:21:24.523+00:00,2025-01-20T11:31:30.660+00:00,15000.0,1.07,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=109431681
-state,7,Delhi,top_recent_ec,9,,,IA/DL/INFRA2/503073/2024,"Development of Vasant Vihar Bus Depot at Vasant Vihar, New Delhi","Delhi Transport Corporation, Delhi (DTC), Govt. of Delhi",New Delhi,EC Granted,2024-10-25T12:35:37.521+00:00,2025-01-20T11:05:30.161+00:00,37486.0,2.023,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=110341815
-state,7,Delhi,top_recent_ec,10,,,IA/DL/INFRA2/481309/2024,Group Housing by R R Texknit LLP.,R R Texknit LLP,South,EC Granted,2024-06-14T11:37:08.385+00:00,2025-01-13T06:40:39.949+00:00,14500.0,0.5353,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=76663047
+state,7,Delhi,top_recent_ec,1,,,FP/DL/ROAD/409016/2022,Construction of six lane RCC bridge on downstream of existing bridge on Chhawla Najafgarh Road,IRRIGATION & FLOOD CONTROL DEPARTMENT,South West,Final Diversion Order Issued,2022-12-02T09:01:54.662+00:00,2025-07-28T03:16:28.331+00:00,2721.01,0.7279,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1834264
+state,7,Delhi,top_recent_ec,2,,,IA/DL/THE/536932/2025,"Proposed Waste to Energy Project 50 MW, DSIIDC Industrial Area, sector-5, Bawana, Delhi-110039 by M/s Jindal Urban Waste Management (Bawana) Limited.",JINDAL URBAN WASTE MANAGEMENT (BAWANA) LIMITED,North,EC Granted,2025-05-08T15:42:28.686+00:00,2025-06-18T09:16:25.141+00:00,66000.0,6.07,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=126546966
+state,7,Delhi,top_recent_ec,3,,,IA/DL/INFRA2/515776/2024,Amendment in existing Environment Clearance of Indira Gandhi International Airport,DELHI INTERNATIONAL AIRPORT LIMITED,New Delhi,EC Granted,2024-12-23T09:25:47.237+00:00,2025-04-11T05:19:17.850+00:00,1600000.0,2066.325,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=115578887
+state,7,Delhi,top_recent_ec,4,,,IA/DL/INFRA2/514212/2024,"Proposed Medical College attached to Atal Bihari Vajpayee Institute of Medical Sciences & Dr. Ram Manohar Lohia Hospital at Baba Kharak Singh Marg Area, New Delhi","Ministry of Health & Family Welfare Dept.,Govt. of India",New Delhi,EC Granted,2024-12-11T07:04:01.102+00:00,2025-03-03T06:01:36.862+00:00,47500.0,1.2183,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=114481284
+state,7,Delhi,top_recent_ec,5,,,IA/DL/INFRA2/479971/2024,"Modification and Expansion of Indian Insititute of Technology located at Hauz Khas, Delhi by Indian Insititute of Technology",INDIAN INSTITUTE OF TECHNOLOGY,South,EC Granted,2024-06-08T10:25:26.864+00:00,2025-02-21T04:54:46.171+00:00,96396.0,126.47,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=74746945
+state,7,Delhi,top_recent_ec,6,,,FP/DL/PWR_TRANS/448829/2023,LILO OF 765 KV Meerut-Bhiwani Tranmission Line at Narela,POWERGRID NARELA TRANSMISSION LIMITED,North,Final Diversion Order Issued,2023-10-14T06:30:33.825+00:00,2025-02-21T04:53:25.612+00:00,10877.0,27.5906,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=16928662
+state,7,Delhi,top_recent_ec,7,,,FP/DL/TRANS/441848/2023,765kV Khetri-Narela transmission line,POWERGRID NARELA TRANSMISSION LIMITED,North,Final Diversion Order Issued,2023-08-25T12:16:14.136+00:00,2025-02-19T12:47:55.514+00:00,64700.0,47.7576,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=8717324
+state,7,Delhi,top_recent_ec,8,,,IA/DL/INFRA2/508662/2024,"Construction of Supreme Court Building for Creating Additional Court Rooms Including Constitutional Court, Chambers for the Hon’ble Judges and Facilities for Lawyers & Litigants",Central Public Works Department,New Delhi,EC Granted,2024-11-27T10:47:30.537+00:00,2025-02-12T04:53:41.745+00:00,44500.0,2.25,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=112643610
+state,7,Delhi,top_recent_ec,9,,,IA/DL/INFRA2/509182/2024,"Creation of New Infrastructure at Surajmal Vihar Campus, University of Delhi (Phase I)",University of Delhi,Shahdara,EC Granted,2024-11-28T12:39:01.615+00:00,2025-02-10T09:07:24.687+00:00,21721.0,6.1674,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=112842459
+state,7,Delhi,top_recent_ec,10,,,IA/DL/INFRA2/514066/2024,"Amendment in EC For Expansion of Group Housing colony  at Plot No.: B-319, Okhla Ind. area, Ph-1 New Delhi BY M/S GODREJ VESTAMARK LLP",GODREJ VESTAMARK LLP,South East,Proposal Withdrawal Request Accepted,2024-12-10T06:40:50.306+00:00,2025-02-04T06:52:55.628+00:00,86300.0,2.0879,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=114372085
 state,7,Delhi,top_cost,1,,,SIA/DL/INFRA2/418874/2023,Proposed addition in commercial complex’ namely ‘Cross River Mall’,STC DEVELOPERS PRIVATE LIMITED,Shahdara,,2023-02-17T14:29:18.618+00:00,,3144890.7,12380.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=3149360
 state,7,Delhi,top_cost,2,,,IA/DL/INFRA2/515776/2024,Amendment in existing Environment Clearance of Indira Gandhi International Airport,DELHI INTERNATIONAL AIRPORT LIMITED,New Delhi,EC Granted,2024-12-23T09:25:47.237+00:00,2025-04-11T05:19:17.850+00:00,1600000.0,2066.325,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=115578887
 state,7,Delhi,top_cost,3,,,IA/DL/INFRA2/544162/2025,"Proposed Expansion of Redevelopment of All India Institute of Medical Sciences (AIIMS), New Delhi by All India Institute of Medical Sciences, New Delhi",ALL INDIA INSTITUTE OF MEDICAL SCIENCE,South East,Under Examination,2025-07-08T11:25:49.431+00:00,,1568092.0,61.7347,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=131738027
@@ -589,7 +646,9 @@ state,7,Delhi,top_land,9,,,IA/DL/INFRA2/470534/2024,"Construction of Boys Hostel
 state,7,Delhi,top_land,10,,,IA/DL/INFRA2/483998/2024,"Modification and Expansion of Indian Insititute of Technology located at Hauz Khas, Delhi by Indian Insititute of Technology",INDIAN INSTITUTE OF TECHNOLOGY,South,ToR Granted,2023-11-02T11:50:13.996+00:00,2024-10-28T12:53:27.793+00:00,96396.0,126.47,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=78880055
 state,8,Rajasthan,stat,,projects,0,,,,,,,,,,
 state,8,Rajasthan,stat,,active_projects,0,,,,,,,,,,
+state,8,Rajasthan,stat,,applications,0,,,,,,,,,,
 state,8,Rajasthan,stat,,ec_granted,0,,,,,,,,,,
+state,8,Rajasthan,stat,,ec_pending,0,,,,,,,,,,
 state,8,Rajasthan,stat,,ec_rejected,0,,,,,,,,,,
 state,8,Rajasthan,stat,,delisted_or_removed,0,,,,,,,,,,
 state,8,Rajasthan,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -607,7 +666,9 @@ state,8,Rajasthan,run,,run_date,,,,,,,,,,,
 state,8,Rajasthan,run,,run_url,,,,,,,,,,,
 state,9,Uttar Pradesh,stat,,projects,0,,,,,,,,,,
 state,9,Uttar Pradesh,stat,,active_projects,0,,,,,,,,,,
+state,9,Uttar Pradesh,stat,,applications,0,,,,,,,,,,
 state,9,Uttar Pradesh,stat,,ec_granted,0,,,,,,,,,,
+state,9,Uttar Pradesh,stat,,ec_pending,0,,,,,,,,,,
 state,9,Uttar Pradesh,stat,,ec_rejected,0,,,,,,,,,,
 state,9,Uttar Pradesh,stat,,delisted_or_removed,0,,,,,,,,,,
 state,9,Uttar Pradesh,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -625,7 +686,9 @@ state,9,Uttar Pradesh,run,,run_date,,,,,,,,,,,
 state,9,Uttar Pradesh,run,,run_url,,,,,,,,,,,
 state,10,Bihar,stat,,projects,0,,,,,,,,,,
 state,10,Bihar,stat,,active_projects,0,,,,,,,,,,
+state,10,Bihar,stat,,applications,0,,,,,,,,,,
 state,10,Bihar,stat,,ec_granted,0,,,,,,,,,,
+state,10,Bihar,stat,,ec_pending,0,,,,,,,,,,
 state,10,Bihar,stat,,ec_rejected,0,,,,,,,,,,
 state,10,Bihar,stat,,delisted_or_removed,0,,,,,,,,,,
 state,10,Bihar,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -643,19 +706,21 @@ state,10,Bihar,run,,run_date,,,,,,,,,,,
 state,10,Bihar,run,,run_url,,,,,,,,,,,
 state,11,Sikkim,stat,,projects,229,,,,,,,,,,
 state,11,Sikkim,stat,,active_projects,164,,,,,,,,,,
-state,11,Sikkim,stat,,ec_granted,5,,,,,,,,,,
+state,11,Sikkim,stat,,applications,164,,,,,,,,,,
+state,11,Sikkim,stat,,ec_granted,14,,,,,,,,,,
+state,11,Sikkim,stat,,ec_pending,141,,,,,,,,,,
 state,11,Sikkim,stat,,ec_rejected,0,,,,,,,,,,
 state,11,Sikkim,stat,,delisted_or_removed,65,,,,,,,,,,
 state,11,Sikkim,stat,,total_cost_lakhs,45909641.89,,,,,,,,,,
 state,11,Sikkim,stat,,cost_outliers_excluded,7,,,,,,,,,,
 state,11,Sikkim,stat,,total_land_ha,2173.5155,,,,,,,,,,
 state,11,Sikkim,stat,,latest_application,2025-11-06T10:59:55.987+00:00,,,,,,,,,,
-state,11,Sikkim,stat,,latest_grant,2025-05-06T10:51:46.250+00:00,,,,,,,,,,
+state,11,Sikkim,stat,,latest_grant,2025-08-07T12:32:27.591+00:00,,,,,,,,,,
 state,11,Sikkim,stat,,changes_added,0,,,,,,,,,,
 state,11,Sikkim,stat,,changes_removed,0,,,,,,,,,,
 state,11,Sikkim,stat,,changes_updated,0,,,,,,,,,,
 state,11,Sikkim,stat,,changes_status,0,,,,,,,,,,
-state,11,Sikkim,stat,,compared_with,2026-09-30T06:14:05Z,,,,,,,,,,
+state,11,Sikkim,stat,,compared_with,2026-09-30T16:00:09+05:30,,,,,,,,,,
 state,11,Sikkim,status,,DELISTED_BY_SYSTEM,58,,,,,,,,,,
 state,11,Sikkim,status,,(none),45,,,,,,,,,,
 state,11,Sikkim,status,,Pending at DFO for Scrutiny and Recommendation,17,,,,,,,,,,
@@ -694,14 +759,26 @@ state,11,Sikkim,status,,Raised/Forwarded EDS to UA,1,,,,,,,,,,
 state,11,Sikkim,status,,Pending at MS for Recommendation in PSC-II,1,,,,,,,,,,
 state,11,Sikkim,status,,Forwarded to MS,1,,,,,,,,,,
 state,11,Sikkim,status,,Under Verification,1,,,,,,,,,,
+state,11,Sikkim,applications_by_year,,2022,15,,,,,,,,,,
+state,11,Sikkim,applications_by_year,,2023,43,,,,,,,,,,
+state,11,Sikkim,applications_by_year,,2024,52,,,,,,,,,,
+state,11,Sikkim,applications_by_year,,2025,54,,,,,,,,,,
+state,11,Sikkim,grants_by_year,,2023,1,,,,,,,,,,
+state,11,Sikkim,grants_by_year,,2024,5,,,,,,,,,,
+state,11,Sikkim,grants_by_year,,2025,8,,,,,,,,,,
 state,11,Sikkim,run,,run_status,ok,,,,,,,,,,
 state,11,Sikkim,run,,run_date,2026-09-30T04:58:08Z,,,,,,,,,,
 state,11,Sikkim,run,,run_url,,,,,,,,,,,
-state,11,Sikkim,top_recent_ec,1,,,SIA/SK/INFRA2/498459/2024,Proposed roof-top Swimming Pool of “WEST POINT” - Integrated Commercial cum MLCP Complex,MESASO INFRASTRUCTURE PVT. LTD.,East District,EC Granted,2024-09-26T11:37:19.544+00:00,2025-05-06T10:51:46.250+00:00,29820.0,0.5665,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=105837998
-state,11,Sikkim,top_recent_ec,2,,,SIA/SK/INFRA2/494796/2024,"NIT Sikkim Campus at Dung Dung, Khamdong near Gangtok, District East Sikkim",NBCC (INDIA) LIMITED,South District,EC Granted,2024-08-30T12:19:58.463+00:00,2025-04-08T11:22:33.816+00:00,68576.0,40.4685,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=98262423
-state,11,Sikkim,top_recent_ec,3,,,IA/SK/RIV/499039/2024,Teesta Hydroelectric Project Stage-III (1200 MW),SIKKIM URJA LIMITED,North  District,EC Granted,2024-09-30T09:28:17.119+00:00,2025-03-15T05:13:31.518+00:00,418951.0,213.8831,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=106980286
-state,11,Sikkim,top_recent_ec,4,,,SIA/SK/INFRA2/472756/2024,"Regional sanitary landfill facility at Mangan, North Sikkim",UDD GOVT OF SIKKIM,North  District,EC Granted,2024-05-13T13:06:28.603+00:00,2024-08-19T10:00:37.381+00:00,15.99,2.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=67774662
-state,11,Sikkim,top_recent_ec,5,,,IA/SK/INFRA2/417703/2023,Proposed Vertical Expansion by 3 Floors of “WEST POINT” - Integrated Commercial cum MLCP Complex by  Mesaso Infrastructure Pvt. Ltd.,WEST POINT INFRASTRUCTURE PRIVATE LIMITED,East District,EC Granted,2023-02-10T06:59:04.399+00:00,2023-08-23T04:51:00.262+00:00,29820.0,0.5665,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=2986606
+state,11,Sikkim,top_recent_ec,1,,,FP/SK/REDIV/490390/2024,Re-diversion of 0.4542 ha forest land due to technical realignment of underground steel lined pressure shaft of Rongnichu Hydro Electric Project by surrendering 1.5158 ha of already diverted forest land by Madhya Bharat Power Co. Ltd,MADHYA BHARAT POWER CORPORATION LIMITED,East District,Pending at SS for Diversion Letter,2024-07-30T08:46:09.202+00:00,2025-08-07T12:32:27.591+00:00,161230.0,0.4542,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=88889385
+state,11,Sikkim,top_recent_ec,2,,,FP/SK/CommPost/477114/2024,Diversion process of Forest Land measuring 0.09 Ha for the construction of Office cum Residential Complex at Chujachen gorucharan under Rongli (T) Range.,SUBSIDIARY INTELLIGENCE BUREAU GANGTOK,East District,Pending at State Government for Diversion Letter,2024-05-29T11:21:11.681+00:00,2025-07-29T04:16:14.728+00:00,400.0,0.09,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=72114217
+state,11,Sikkim,top_recent_ec,3,,,FP/SK/CommPost/476951/2024,Rumtek diversion process,SUBSIDIARY INTELLIGENCE BUREAU GANGTOK,East District,Pending at State Government for Diversion Letter,2024-05-29T06:49:19.179+00:00,2025-07-29T04:09:08.589+00:00,400.0,0.075,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=72057279
+state,11,Sikkim,top_recent_ec,4,,,FP/SK/OTHERS/436073/2023,"Diversion of 1.8115 ha of Forest Land for Muck Dumping at Thalthaley, Pamphok for Teesta-VI HE Project (500 MW)",LANCO TEESTA HYDRO POWER LIMITED,South District,Final Diversion Order Issued,2023-07-08T10:56:36.379+00:00,2025-06-17T03:02:41.461+00:00,563.0,1.8115,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=6644229
+state,11,Sikkim,top_recent_ec,5,,,SIA/SK/INFRA2/498459/2024,Proposed roof-top Swimming Pool of “WEST POINT” - Integrated Commercial cum MLCP Complex,MESASO INFRASTRUCTURE PVT. LTD.,East District,EC Granted,2024-09-26T11:37:19.544+00:00,2025-05-06T10:51:46.250+00:00,29820.0,0.5665,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=105837998
+state,11,Sikkim,top_recent_ec,6,,,IA/SK/RIV/527111/2025,Chakung Chu HEP,KUNDAN HYDRO (GANGTOK)  PRIVATE LIMITED,North  District,ToR Granted,2025-03-03T05:28:40.825+00:00,2025-04-15T12:55:07.912+00:00,69509.0,42.24,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=121424631
+state,11,Sikkim,top_recent_ec,7,,,SIA/SK/INFRA2/494796/2024,"NIT Sikkim Campus at Dung Dung, Khamdong near Gangtok, District East Sikkim",NBCC (INDIA) LIMITED,South District,EC Granted,2024-08-30T12:19:58.463+00:00,2025-04-08T11:22:33.816+00:00,68576.0,40.4685,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=98262423
+state,11,Sikkim,top_recent_ec,8,,,IA/SK/RIV/499039/2024,Teesta Hydroelectric Project Stage-III (1200 MW),SIKKIM URJA LIMITED,North  District,EC Granted,2024-09-30T09:28:17.119+00:00,2025-03-15T05:13:31.518+00:00,418951.0,213.8831,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=106980286
+state,11,Sikkim,top_recent_ec,9,,,IA/SK/RIV/500977/2024,Teesta Hydroelectric Project Stage-III (1200 MW),SIKKIM URJA LIMITED,North  District,Granted,2024-10-14T11:56:30.502+00:00,2024-11-16T07:27:01.959+00:00,5705.55,196.967,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=109616592
+state,11,Sikkim,top_recent_ec,10,,,IA/SK/RIV/493596/2024,Rangit-II Hydro Electric Project,SIKKIM HYDRO POWER VENTURES LIMITED,West District,ToR Granted,2024-08-22T05:14:55.739+00:00,2024-10-21T03:47:24.698+00:00,49644.0,33.294,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=95594654
 state,11,Sikkim,top_cost,1,,,WL/SK/DEF/448185/2023,Diversion of Forest Land  of 1.25 Ha from Doka La to Gurmail Hill  inside Pangolakha Wild Life Sanctuary,17   Mountain Division,Gangtok,,2023-10-06T12:42:33.204+00:00,,9500000.0,1.25,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=15992315
 state,11,Sikkim,top_cost,2,,,WL/SK/DEF/447934/2023,Diversion of Forest Land  of 1.686Ha from Doka La – LBR - UBR  inside Pangolakha Wild Life Sanctuary,17   Mountain Division,Gangtok,,2023-10-06T12:42:33.204+00:00,,7885000.0,1.686,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=15991813
 state,11,Sikkim,top_cost,3,,,FP/SK/ROAD/424460/2023,Diversion of Forest land of 0.3287 Ha for construction of road from Pelling Dentam road to Sardung Upper Lungjik  in Gyalshing District of Sikkim by Roads & Bridges Department.,Public Works Department,West District,Pending at State Secretary for Recommendation and In-Principle Approval (Stage-I),2023-04-01T10:55:50.253+00:00,,4238496.0,0.3287,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=4355156
@@ -724,7 +801,9 @@ state,11,Sikkim,top_land,9,,,FP/SK/TRANS/400225/2022,132KV D/C Dikchupool to Per
 state,11,Sikkim,top_land,10,,,FP/SK/TRANS/400227/2022,132KV D/C Dikchupool to Perbing Transmission line,ENERGY POWER DEPARTMENT SIKKIM,East District,Pending at CF for Compliance Review,2022-09-09T06:40:39.331+00:00,,217.0,60.6435,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=724829
 state,12,Arunachal Pradesh,stat,,projects,0,,,,,,,,,,
 state,12,Arunachal Pradesh,stat,,active_projects,0,,,,,,,,,,
+state,12,Arunachal Pradesh,stat,,applications,0,,,,,,,,,,
 state,12,Arunachal Pradesh,stat,,ec_granted,0,,,,,,,,,,
+state,12,Arunachal Pradesh,stat,,ec_pending,0,,,,,,,,,,
 state,12,Arunachal Pradesh,stat,,ec_rejected,0,,,,,,,,,,
 state,12,Arunachal Pradesh,stat,,delisted_or_removed,0,,,,,,,,,,
 state,12,Arunachal Pradesh,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -742,7 +821,9 @@ state,12,Arunachal Pradesh,run,,run_date,,,,,,,,,,,
 state,12,Arunachal Pradesh,run,,run_url,,,,,,,,,,,
 state,13,Nagaland,stat,,projects,0,,,,,,,,,,
 state,13,Nagaland,stat,,active_projects,0,,,,,,,,,,
+state,13,Nagaland,stat,,applications,0,,,,,,,,,,
 state,13,Nagaland,stat,,ec_granted,0,,,,,,,,,,
+state,13,Nagaland,stat,,ec_pending,0,,,,,,,,,,
 state,13,Nagaland,stat,,ec_rejected,0,,,,,,,,,,
 state,13,Nagaland,stat,,delisted_or_removed,0,,,,,,,,,,
 state,13,Nagaland,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -760,7 +841,9 @@ state,13,Nagaland,run,,run_date,,,,,,,,,,,
 state,13,Nagaland,run,,run_url,,,,,,,,,,,
 state,14,Manipur,stat,,projects,0,,,,,,,,,,
 state,14,Manipur,stat,,active_projects,0,,,,,,,,,,
+state,14,Manipur,stat,,applications,0,,,,,,,,,,
 state,14,Manipur,stat,,ec_granted,0,,,,,,,,,,
+state,14,Manipur,stat,,ec_pending,0,,,,,,,,,,
 state,14,Manipur,stat,,ec_rejected,0,,,,,,,,,,
 state,14,Manipur,stat,,delisted_or_removed,0,,,,,,,,,,
 state,14,Manipur,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -778,7 +861,9 @@ state,14,Manipur,run,,run_date,,,,,,,,,,,
 state,14,Manipur,run,,run_url,,,,,,,,,,,
 state,15,Mizoram,stat,,projects,0,,,,,,,,,,
 state,15,Mizoram,stat,,active_projects,0,,,,,,,,,,
+state,15,Mizoram,stat,,applications,0,,,,,,,,,,
 state,15,Mizoram,stat,,ec_granted,0,,,,,,,,,,
+state,15,Mizoram,stat,,ec_pending,0,,,,,,,,,,
 state,15,Mizoram,stat,,ec_rejected,0,,,,,,,,,,
 state,15,Mizoram,stat,,delisted_or_removed,0,,,,,,,,,,
 state,15,Mizoram,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -796,7 +881,9 @@ state,15,Mizoram,run,,run_date,,,,,,,,,,,
 state,15,Mizoram,run,,run_url,,,,,,,,,,,
 state,16,Tripura,stat,,projects,0,,,,,,,,,,
 state,16,Tripura,stat,,active_projects,0,,,,,,,,,,
+state,16,Tripura,stat,,applications,0,,,,,,,,,,
 state,16,Tripura,stat,,ec_granted,0,,,,,,,,,,
+state,16,Tripura,stat,,ec_pending,0,,,,,,,,,,
 state,16,Tripura,stat,,ec_rejected,0,,,,,,,,,,
 state,16,Tripura,stat,,delisted_or_removed,0,,,,,,,,,,
 state,16,Tripura,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -814,7 +901,9 @@ state,16,Tripura,run,,run_date,,,,,,,,,,,
 state,16,Tripura,run,,run_url,,,,,,,,,,,
 state,17,Meghalaya,stat,,projects,0,,,,,,,,,,
 state,17,Meghalaya,stat,,active_projects,0,,,,,,,,,,
+state,17,Meghalaya,stat,,applications,0,,,,,,,,,,
 state,17,Meghalaya,stat,,ec_granted,0,,,,,,,,,,
+state,17,Meghalaya,stat,,ec_pending,0,,,,,,,,,,
 state,17,Meghalaya,stat,,ec_rejected,0,,,,,,,,,,
 state,17,Meghalaya,stat,,delisted_or_removed,0,,,,,,,,,,
 state,17,Meghalaya,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -832,7 +921,9 @@ state,17,Meghalaya,run,,run_date,,,,,,,,,,,
 state,17,Meghalaya,run,,run_url,,,,,,,,,,,
 state,18,Assam,stat,,projects,0,,,,,,,,,,
 state,18,Assam,stat,,active_projects,0,,,,,,,,,,
+state,18,Assam,stat,,applications,0,,,,,,,,,,
 state,18,Assam,stat,,ec_granted,0,,,,,,,,,,
+state,18,Assam,stat,,ec_pending,0,,,,,,,,,,
 state,18,Assam,stat,,ec_rejected,0,,,,,,,,,,
 state,18,Assam,stat,,delisted_or_removed,0,,,,,,,,,,
 state,18,Assam,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -850,7 +941,9 @@ state,18,Assam,run,,run_date,,,,,,,,,,,
 state,18,Assam,run,,run_url,,,,,,,,,,,
 state,19,West Bengal,stat,,projects,0,,,,,,,,,,
 state,19,West Bengal,stat,,active_projects,0,,,,,,,,,,
+state,19,West Bengal,stat,,applications,0,,,,,,,,,,
 state,19,West Bengal,stat,,ec_granted,0,,,,,,,,,,
+state,19,West Bengal,stat,,ec_pending,0,,,,,,,,,,
 state,19,West Bengal,stat,,ec_rejected,0,,,,,,,,,,
 state,19,West Bengal,stat,,delisted_or_removed,0,,,,,,,,,,
 state,19,West Bengal,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -868,7 +961,9 @@ state,19,West Bengal,run,,run_date,,,,,,,,,,,
 state,19,West Bengal,run,,run_url,,,,,,,,,,,
 state,20,Jharkhand,stat,,projects,0,,,,,,,,,,
 state,20,Jharkhand,stat,,active_projects,0,,,,,,,,,,
+state,20,Jharkhand,stat,,applications,0,,,,,,,,,,
 state,20,Jharkhand,stat,,ec_granted,0,,,,,,,,,,
+state,20,Jharkhand,stat,,ec_pending,0,,,,,,,,,,
 state,20,Jharkhand,stat,,ec_rejected,0,,,,,,,,,,
 state,20,Jharkhand,stat,,delisted_or_removed,0,,,,,,,,,,
 state,20,Jharkhand,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -886,7 +981,9 @@ state,20,Jharkhand,run,,run_date,,,,,,,,,,,
 state,20,Jharkhand,run,,run_url,,,,,,,,,,,
 state,21,Odisha,stat,,projects,0,,,,,,,,,,
 state,21,Odisha,stat,,active_projects,0,,,,,,,,,,
+state,21,Odisha,stat,,applications,0,,,,,,,,,,
 state,21,Odisha,stat,,ec_granted,0,,,,,,,,,,
+state,21,Odisha,stat,,ec_pending,0,,,,,,,,,,
 state,21,Odisha,stat,,ec_rejected,0,,,,,,,,,,
 state,21,Odisha,stat,,delisted_or_removed,0,,,,,,,,,,
 state,21,Odisha,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -904,7 +1001,9 @@ state,21,Odisha,run,,run_date,,,,,,,,,,,
 state,21,Odisha,run,,run_url,,,,,,,,,,,
 state,22,Chhattisgarh,stat,,projects,0,,,,,,,,,,
 state,22,Chhattisgarh,stat,,active_projects,0,,,,,,,,,,
+state,22,Chhattisgarh,stat,,applications,0,,,,,,,,,,
 state,22,Chhattisgarh,stat,,ec_granted,0,,,,,,,,,,
+state,22,Chhattisgarh,stat,,ec_pending,0,,,,,,,,,,
 state,22,Chhattisgarh,stat,,ec_rejected,0,,,,,,,,,,
 state,22,Chhattisgarh,stat,,delisted_or_removed,0,,,,,,,,,,
 state,22,Chhattisgarh,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -922,7 +1021,9 @@ state,22,Chhattisgarh,run,,run_date,,,,,,,,,,,
 state,22,Chhattisgarh,run,,run_url,,,,,,,,,,,
 state,23,Madhya Pradesh,stat,,projects,0,,,,,,,,,,
 state,23,Madhya Pradesh,stat,,active_projects,0,,,,,,,,,,
+state,23,Madhya Pradesh,stat,,applications,0,,,,,,,,,,
 state,23,Madhya Pradesh,stat,,ec_granted,0,,,,,,,,,,
+state,23,Madhya Pradesh,stat,,ec_pending,0,,,,,,,,,,
 state,23,Madhya Pradesh,stat,,ec_rejected,0,,,,,,,,,,
 state,23,Madhya Pradesh,stat,,delisted_or_removed,0,,,,,,,,,,
 state,23,Madhya Pradesh,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -940,7 +1041,9 @@ state,23,Madhya Pradesh,run,,run_date,,,,,,,,,,,
 state,23,Madhya Pradesh,run,,run_url,,,,,,,,,,,
 state,24,Gujarat,stat,,projects,0,,,,,,,,,,
 state,24,Gujarat,stat,,active_projects,0,,,,,,,,,,
+state,24,Gujarat,stat,,applications,0,,,,,,,,,,
 state,24,Gujarat,stat,,ec_granted,0,,,,,,,,,,
+state,24,Gujarat,stat,,ec_pending,0,,,,,,,,,,
 state,24,Gujarat,stat,,ec_rejected,0,,,,,,,,,,
 state,24,Gujarat,stat,,delisted_or_removed,0,,,,,,,,,,
 state,24,Gujarat,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -958,7 +1061,9 @@ state,24,Gujarat,run,,run_date,,,,,,,,,,,
 state,24,Gujarat,run,,run_url,,,,,,,,,,,
 state,27,Maharashtra,stat,,projects,0,,,,,,,,,,
 state,27,Maharashtra,stat,,active_projects,0,,,,,,,,,,
+state,27,Maharashtra,stat,,applications,0,,,,,,,,,,
 state,27,Maharashtra,stat,,ec_granted,0,,,,,,,,,,
+state,27,Maharashtra,stat,,ec_pending,0,,,,,,,,,,
 state,27,Maharashtra,stat,,ec_rejected,0,,,,,,,,,,
 state,27,Maharashtra,stat,,delisted_or_removed,0,,,,,,,,,,
 state,27,Maharashtra,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -976,7 +1081,9 @@ state,27,Maharashtra,run,,run_date,,,,,,,,,,,
 state,27,Maharashtra,run,,run_url,,,,,,,,,,,
 state,28,Andhra Pradesh,stat,,projects,0,,,,,,,,,,
 state,28,Andhra Pradesh,stat,,active_projects,0,,,,,,,,,,
+state,28,Andhra Pradesh,stat,,applications,0,,,,,,,,,,
 state,28,Andhra Pradesh,stat,,ec_granted,0,,,,,,,,,,
+state,28,Andhra Pradesh,stat,,ec_pending,0,,,,,,,,,,
 state,28,Andhra Pradesh,stat,,ec_rejected,0,,,,,,,,,,
 state,28,Andhra Pradesh,stat,,delisted_or_removed,0,,,,,,,,,,
 state,28,Andhra Pradesh,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -994,19 +1101,21 @@ state,28,Andhra Pradesh,run,,run_date,,,,,,,,,,,
 state,28,Andhra Pradesh,run,,run_url,,,,,,,,,,,
 state,29,Karnataka,stat,,projects,1778,,,,,,,,,,
 state,29,Karnataka,stat,,active_projects,899,,,,,,,,,,
-state,29,Karnataka,stat,,ec_granted,0,,,,,,,,,,
+state,29,Karnataka,stat,,applications,899,,,,,,,,,,
+state,29,Karnataka,stat,,ec_granted,305,,,,,,,,,,
+state,29,Karnataka,stat,,ec_pending,555,,,,,,,,,,
 state,29,Karnataka,stat,,ec_rejected,0,,,,,,,,,,
 state,29,Karnataka,stat,,delisted_or_removed,879,,,,,,,,,,
 state,29,Karnataka,stat,,total_cost_lakhs,112041591.01,,,,,,,,,,
 state,29,Karnataka,stat,,cost_outliers_excluded,21,,,,,,,,,,
 state,29,Karnataka,stat,,total_land_ha,42902.3638,,,,,,,,,,
 state,29,Karnataka,stat,,latest_application,2026-09-25T12:54:16.829+00:00,,,,,,,,,,
-state,29,Karnataka,stat,,latest_grant,,,,,,,,,,,
+state,29,Karnataka,stat,,latest_grant,2026-09-28T11:58:22.368+00:00,,,,,,,,,,
 state,29,Karnataka,stat,,changes_added,0,,,,,,,,,,
 state,29,Karnataka,stat,,changes_removed,0,,,,,,,,,,
 state,29,Karnataka,stat,,changes_updated,0,,,,,,,,,,
 state,29,Karnataka,stat,,changes_status,0,,,,,,,,,,
-state,29,Karnataka,stat,,compared_with,,,,,,,,,,,
+state,29,Karnataka,stat,,compared_with,2026-09-30T16:00:09+05:30,,,,,,,,,,
 state,29,Karnataka,status,,DELISTED_BY_SYSTEM,860,,,,,,,,,,
 state,29,Karnataka,status,,Final Diversion Order Issued,303,,,,,,,,,,
 state,29,Karnataka,status,,Pending at DFO for Scrutiny and Recommendation,76,,,,,,,,,,
@@ -1059,9 +1168,27 @@ state,29,Karnataka,status,,Pending at AIGF - RO,1,,,,,,,,,,
 state,29,Karnataka,status,,Pending at UA for Compensatory Levies Payment,1,,,,,,,,,,
 state,29,Karnataka,status,,Pending at DFO for Issue Approval letter,1,,,,,,,,,,
 state,29,Karnataka,status,,Pending at State Secretary for Recommendation and Approval Letter,1,,,,,,,,,,
+state,29,Karnataka,applications_by_year,,2022,29,,,,,,,,,,
+state,29,Karnataka,applications_by_year,,2023,348,,,,,,,,,,
+state,29,Karnataka,applications_by_year,,2024,216,,,,,,,,,,
+state,29,Karnataka,applications_by_year,,2025,168,,,,,,,,,,
+state,29,Karnataka,applications_by_year,,2026,138,,,,,,,,,,
+state,29,Karnataka,grants_by_year,,2024,123,,,,,,,,,,
+state,29,Karnataka,grants_by_year,,2025,134,,,,,,,,,,
+state,29,Karnataka,grants_by_year,,2026,48,,,,,,,,,,
 state,29,Karnataka,run,,run_status,ok,,,,,,,,,,
 state,29,Karnataka,run,,run_date,2026-09-30T08:25:35Z,,,,,,,,,,
 state,29,Karnataka,run,,run_url,https://github.com/publicmap/parivesh-dashboard/actions/runs/36687572860,,,,,,,,,,
+state,29,Karnataka,top_recent_ec,1,,,FP/KA/TRANS/464544/2024,"Construction of 66KV Single Circuit line on Double Circuit Tower by creating 01 number of 66KV Line Terminal bay at Existing 66/11KV Sub-station Kalsapura for a distance of about 10.267Kms for Establishing 2x12.5 MVA , 66/11KV Sub-station at Ganadalu village in Chickmagaluru Taluk,Chickmagaluru District.",KARNATAKA POWER TRANSMISSION CORPORATION LIMITED,Chikkamagaluru,Pending at State Government for Diversion Letter,2024-02-29T13:17:03.181+00:00,2026-09-28T11:58:22.368+00:00,1486.27,18.3919,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=50518394
+state,29,Karnataka,top_recent_ec,2,,,FP/KA/Canal/434346/2023,"The  Proposal for construction of MS Raising Main Pipe line  of  KYK Main feeding to Kanakagiri, Koppal, and Tavargera Branch & Bleeder line to Shakhapur tank under Koppal Lift Irrigation Scheme  Package-II work  in forest  land  diversion  area  requirement  in Sy.No:57/1 of Shakhapur village of Kushtagi Taluk of Koppal Dist",KRISHNA BHAGYA JALA NIGAM LIMITED,Koppal,Final Diversion Order Issued,2023-06-22T12:09:15.038+00:00,2026-09-21T07:28:46.200+00:00,71332.34,77.396,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=6293886
+state,29,Karnataka,top_recent_ec,3,,,FP/KA/ROAD/434465/2023,Widening to two lane with paved shoulders from deisgn Km 410.600 (existing Km 413.740) to design Km 441.900 (existing Km 447.610) (Hiriyur-Huliyar section) of NH-150A in the State of Karnataka on EPC mode. (Job No NH-150A-KNT-2021-22-936),"REGIONAL OFFICE, MINISTRY OF ROAD TRANSPORT & HIGHWAYS (MORT&H), GOVT OF INDIA, KARNATAKA",Chitradurga,Final Diversion Order Issued,2023-06-23T12:49:55.916+00:00,2026-09-18T09:47:40.016+00:00,13988.0,8.0926,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=6318872
+state,29,Karnataka,top_recent_ec,4,,,FP/KA/WATER/526533/2025,"Improvements to Existing Water Supply Scheme to Haliyal Town with Kali River as Source and Remodelling of Water Supply Distribution Network System to Dandeli City, Uttara Kannada District, Karnataka, including Operation & Maintenance for a Period of 5 Years (Including 1 Year DLP) through Design, Build, Operation, and Transfer (DBOT) Mode",TOWN MUNCIPAL COUNCIL HALIYAL,Uttara Kannada,Stage-II Accorded,2025-02-28T11:49:09.153+00:00,2026-09-11T10:55:36.502+00:00,11666.68,1.8262,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=121258281
+state,29,Karnataka,top_recent_ec,5,,,FP/KA/Pipeline/446989/2023,"Proposal for diversion of 0.1480 ha. of forest land in Sy No.155 of Batbelkunda Village, Basavakalyan Hobli, Basavakalyan Tq. Bidar District and Division for extension of Rising Main (MS Pipe) to feed water to Balkunda, Partapur, Thripurant, Narayanpur and Shivapur tanks & Others 5 tanks from CH: 16+975 to CH: 18+550 in Batbelkunda in the state of Karnataka.",Department of Irrigation,Bidar,Final Diversion Order Issued,2023-10-04T16:13:03.137+00:00,2026-09-04T06:55:41.829+00:00,18800.0,18.424,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=14575254
+state,29,Karnataka,top_recent_ec,6,,,FP/KA/WATER/473066/2024,"Diversion of forest area for the improvement of water supply system to Anavatti Town with RDW & SD as source under AMRUT 2.0 Scheme in Anavatti Village and Talluru Village, Anavatti Hobli, Soraba Taluk, Shivamogga District.",town panchayath anavatti,Shivamogga,Final Diversion Order Issued,2024-05-15T12:30:16.865+00:00,2026-09-03T06:24:17.362+00:00,4560.0,0.6287,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=68373459
+state,29,Karnataka,top_recent_ec,7,,,FP/KA/Canal/547603/2025,Diversion of forest land for the construction of canal to provide the irrigation facilities to 1201 Ha agricultural land in Haveri Taluk of Haveri district by Karnataka Neeravari Nigam Limited.,Karnataka Neeravari Nigam Limited,Haveri,Final Diversion Order Issued,2025-08-09T07:42:38.298+00:00,2026-08-25T10:20:53.654+00:00,720.0,22.3713,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=133755217
+state,29,Karnataka,top_recent_ec,8,,,FP/KA/ROAD/454606/2023,Widening to two lane with paved shoulders from existing Intermediate lane from Km 15.980 to 30.750 (Megravalli to Agumbe) of NH-169A on Thirthahalli-Malpe section in the State of Karnataka on EPC mode,"REGIONAL OFFICE, MINISTRY OF ROAD TRANSPORT & HIGHWAYS (MORT&H), GOVT OF INDIA, KARNATAKA",Shivamogga,Final Diversion Order Issued,2023-12-06T16:23:29.742+00:00,2026-08-04T07:20:06.941+00:00,9620.0,11.0791,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=29731919
+state,29,Karnataka,top_recent_ec,9,,,FP/KA/OFC/458845/2024,"PROPOSAL FOR OPTICAL FIBER CABLE LAYING BY BHARATH SANCHAR NIGAM LTD FOR CONNECTIVITY TO 4G TOWERS UNDER 4G SATURATION PROJECT WITH EXTENT OF 0.5 M IN FOREST/NON FOREST AREA FOR SITE AT HEBBAIL VILLAGE,KUMTA TALUK,UK",MAHESH NAIR,Uttara Kannada,Final Diversion Order Issued,2024-01-15T17:56:28.701+00:00,2026-08-04T07:15:29.754+00:00,90.0,0.3282,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=39126268
+state,29,Karnataka,top_recent_ec,10,,,FP/KA/OFC/503304/2024,"Proposal for Underground OFC laying under USO 4G saturation project Belur village(Karwar range), Karwar Taluk, UttaraKannada dist",MAHESH NAIR,Uttara Kannada,Final Diversion Order Issued,2024-10-27T12:03:19.256+00:00,2026-08-04T07:02:22.887+00:00,50.0,0.0905,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=110405050
 state,29,Karnataka,top_cost,1,,,FP/KA/ROAD/590655/2026,"Diversion of forest land for Upgradation and Development of village road from Halsala Village Bridge to Jataga village road in Khanapur taluk, Belagavi district",KARNATAKA RURAL INFRASTRUCTURE DEVELOPMENT LIMITED,Belagavi,Pending at UA for DFO EDS Reply,2026-08-31T06:41:50.689+00:00,,10000000.0,0.9946,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1239727138
 state,29,Karnataka,top_cost,2,,,FP/KA/HYD/IRRIG/430397/2023,"Construction of Ghataprabha right bank canal, distributaries and minors in kalabandakeri, Hangaragi, Shirur and 17 other villages in Bagalkote district in favour of Executive Engineer MBC division 1 Gaddanakeri Camp, Bagalkote",KARNATAKA NEERAVARI NIGAM LIMITED,Belagavi,Pending at DFO/CF after acceptance in PSC-I,2023-05-23T07:30:49.265+00:00,,9990000.0,1036.5343,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=5552659
 state,29,Karnataka,top_cost,3,,,FP/KA/ROAD/590720/2026,Diversion of forest land for the Upgradation and Development of road from Warkada village to Panaji - Belagavi NH-4A main Road in Khanapura Taluk of Belagavi district,KARNATAKA RURAL INFRASTRUCTURE DEVELOPMENT LIMITED,Belagavi,Pending at UA for DFO EDS Reply,2026-08-31T10:20:44.844+00:00,,6000000.0,0.6526,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1239765043
@@ -1084,19 +1211,21 @@ state,29,Karnataka,top_land,9,,,FP/KA/Canal/431945/2023,"Renewal of FC lease for
 state,29,Karnataka,top_land,10,,,FP/KA/SRY/405400/2022,"Preliminary Exploration for Gold over an extent of 905.174 Ha of forest land in amalgamated Ajjanahalli Block situated in Sira Taluk, Tumkur District.",KUNDAN CARE PRODUCTS LIMITED,Tumakuru,Pending at UA due to EDS by MS after PSC-I,2022-11-04T10:59:12.437+00:00,,1228.79,949.164,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1404962
 state,30,Goa,stat,,projects,421,,,,,,,,,,
 state,30,Goa,stat,,active_projects,377,,,,,,,,,,
-state,30,Goa,stat,,ec_granted,86,,,,,,,,,,
+state,30,Goa,stat,,applications,377,,,,,,,,,,
+state,30,Goa,stat,,ec_granted,146,,,,,,,,,,
+state,30,Goa,stat,,ec_pending,225,,,,,,,,,,
 state,30,Goa,stat,,ec_rejected,4,,,,,,,,,,
 state,30,Goa,stat,,delisted_or_removed,44,,,,,,,,,,
 state,30,Goa,stat,,total_cost_lakhs,156890844.02,,,,,,,,,,
 state,30,Goa,stat,,cost_outliers_excluded,15,,,,,,,,,,
 state,30,Goa,stat,,total_land_ha,29690.8448,,,,,,,,,,
 state,30,Goa,stat,,latest_application,2026-09-26T06:34:55.901+00:00,,,,,,,,,,
-state,30,Goa,stat,,latest_grant,2025-10-01T11:16:16.445+00:00,,,,,,,,,,
+state,30,Goa,stat,,latest_grant,2026-09-04T06:19:27.575+00:00,,,,,,,,,,
 state,30,Goa,stat,,changes_added,0,,,,,,,,,,
 state,30,Goa,stat,,changes_removed,0,,,,,,,,,,
 state,30,Goa,stat,,changes_updated,0,,,,,,,,,,
 state,30,Goa,stat,,changes_status,0,,,,,,,,,,
-state,30,Goa,stat,,compared_with,2026-09-30T06:14:05Z,,,,,,,,,,
+state,30,Goa,stat,,compared_with,2026-09-30T16:00:09+05:30,,,,,,,,,,
 state,30,Goa,status,,EC Granted,86,,,,,,,,,,
 state,30,Goa,status,,(none),73,,,,,,,,,,
 state,30,Goa,status,,DELISTED_BY_SYSTEM,42,,,,,,,,,,
@@ -1139,19 +1268,28 @@ state,30,Goa,status,,Standard ToR Granted,1,,,,,,,,,,
 state,30,Goa,status,,Proposal pulled back (withdrawn),1,,,,,,,,,,
 state,30,Goa,status,,Proposal Accepted and Referred to EAC,1,,,,,,,,,,
 state,30,Goa,status,,Forwarded to DD,1,,,,,,,,,,
+state,30,Goa,applications_by_year,,2022,14,,,,,,,,,,
+state,30,Goa,applications_by_year,,2023,116,,,,,,,,,,
+state,30,Goa,applications_by_year,,2024,100,,,,,,,,,,
+state,30,Goa,applications_by_year,,2025,85,,,,,,,,,,
+state,30,Goa,applications_by_year,,2026,62,,,,,,,,,,
+state,30,Goa,grants_by_year,,2023,43,,,,,,,,,,
+state,30,Goa,grants_by_year,,2024,40,,,,,,,,,,
+state,30,Goa,grants_by_year,,2025,62,,,,,,,,,,
+state,30,Goa,grants_by_year,,2026,1,,,,,,,,,,
 state,30,Goa,run,,run_status,ok,,,,,,,,,,
 state,30,Goa,run,,run_date,2026-09-30T04:58:08Z,,,,,,,,,,
 state,30,Goa,run,,run_url,,,,,,,,,,,
-state,30,Goa,top_recent_ec,1,,,SIA/GA/INFRA2/531160/2025,M/S NANU ESTATES Pvt Ltd,nanu Estates Private Limited,South Goa,EC Granted,2025-03-24T18:16:11.723+00:00,2025-10-01T11:16:16.445+00:00,7000.0,0.7411,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=123284004
-state,30,Goa,top_recent_ec,2,,,SIA/GA/MIN/517609/2025,"Laterite Stone Quarry with a lease area of 5.00 Ha located on land bearing Survey No. 31/1 of Vaguriem Village, Sattari Taluka, North Goa by Gurudas Mone .",GURUDAS MONE,North Goa,EC Granted,2025-01-07T10:07:38.826+00:00,2025-10-01T09:17:41.167+00:00,15.0,5.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=116910497
-state,30,Goa,top_recent_ec,3,,,SIA/GA/INFRA2/535866/2025,"Construction of the residential-cum-commercial project 'Ferrum Heights' on property bearing Chalta Nos. 7, 8, and 24 of PT Sheet No. 25 in Margao, Salcete, Goa, by M/s Edifice Developers.",EDIFICE DEVELOPERS,South Goa,EC Granted,2025-04-30T06:20:06.375+00:00,2025-09-18T10:30:30.220+00:00,6800.0,0.3595,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=125883285
-state,30,Goa,top_recent_ec,4,,,SIA/GA/INFRA2/548571/2025,"Proposed Maharashtra Academy of Engineering and Educational Research at S.No.88, Sub-Division No. 1-B, Thivim Village of Bardez Taluka, Goa by M/S. Maharashtra Academy of Engineering and Educational Research Detail",MAHARASHTRA ACADEMY OF ENGINEERING AND EDUCATIONAL RESEARCH PUNE,North Goa,EC Granted,2025-08-19T08:24:03.627+00:00,2025-09-12T13:49:19.029+00:00,18000.0,20.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=134299434
-state,30,Goa,top_recent_ec,5,,,SIA/GA/INFRA2/529519/2025,PROPOSED PM EKTA MALL BY GOA TOURISM DEVELOPMENT CORPORATION,MURUGAMPALAYAM PONNAMALEI BALAN,North Goa,EC Granted,2025-03-15T05:09:07.270+00:00,2025-09-12T13:33:28.262+00:00,13223.27,2.5,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=122438739
-state,30,Goa,top_recent_ec,6,,,IA/GA/MIN/529454/2025,Block IV – Kalay Mineral Block,FOMENTO RESOURCES PRIVATE LIMITED,South Goa,EC Granted,2025-03-14T07:05:44.332+00:00,2025-08-22T17:20:17.910+00:00,3680.0,152.5073,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=122412295
-state,30,Goa,top_recent_ec,7,,,SIA/GA/MIN/517162/2025,"Basalt Stone Quarry with a lease area of 4.82 Ha located on land bearing Survey No. 9/2 in Sal Village, Bicholim Taluka, North Goa.",AGNELO PASCOAL FERNANDES,North Goa,EC Granted,2025-01-03T12:18:14.216+00:00,2025-08-07T05:20:51.016+00:00,13.25,4.82,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=116652870
-state,30,Goa,top_recent_ec,8,,,SIA/GA/INFRA2/526809/2025,"Proposed construction of a Residential Cum Commercial development - ""Priority Magnum"" by M/s. Priority Constructions Pvt. Ltd. and Mr. Haroon Ebrahim on plot bearing Survey No 104/1, 104/2 (Part), 103/2-A, and 103/5, Taleigao Village, Tiswadi Taluka, North Goa.",PRIORITY CONSTRUCTIONS,North Goa,EC Granted,2025-03-01T09:14:01.495+00:00,2025-06-24T07:15:19.099+00:00,4076706.0,1.3268,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=121338565
-state,30,Goa,top_recent_ec,9,,,SIA/GA/INFRA2/473585/2024,"Proposed Construction of Residential cum Commercial Project on plot bearing Survey No. 291/1-A (Part) of Village Carambolim, Tiswadi Taluka, North Goa for M/s. Jai Bhuvan Builders Private Limited with a built-up area of 45,678.73 sqm on the total plot area of 11793 sqm",JAI BHUVAN BUILDERS PRIVATE LIMITED,North Goa,EC Granted,2024-05-18T10:13:04.619+00:00,2025-06-02T10:45:30.508+00:00,8788.472,1.1793,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=69089006
-state,30,Goa,top_recent_ec,10,,,SIA/GA/INFRA2/531605/2025,Five star hotel,GOA TOURISM DEVELOPMENT CORPORATION LIMITED,North Goa,EC Granted,2025-03-27T11:16:32.208+00:00,2025-05-26T08:43:41.901+00:00,37318.0,1.9677,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=123667734
+state,30,Goa,top_recent_ec,1,,,SIA/GA/INFRA2/589467/2026,"Proposed expansion of existing infrastructure at BITS Pilani, K K Birla Goa Campus located at village Sancoale, Mormugao, South Goa, Goa",BIRLA INSTITUTE OF TECHNOLOGY AND SCIENCE,South Goa,ToR Granted,2026-08-19T07:04:19.642+00:00,2026-09-04T06:19:27.575+00:00,40000.0,67.55,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1238768297
+state,30,Goa,top_recent_ec,2,,,SIA/GA/INFRA2/531160/2025,M/S NANU ESTATES Pvt Ltd,nanu Estates Private Limited,South Goa,EC Granted,2025-03-24T18:16:11.723+00:00,2025-10-01T11:16:16.445+00:00,7000.0,0.7411,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=123284004
+state,30,Goa,top_recent_ec,3,,,SIA/GA/MIN/517609/2025,"Laterite Stone Quarry with a lease area of 5.00 Ha located on land bearing Survey No. 31/1 of Vaguriem Village, Sattari Taluka, North Goa by Gurudas Mone .",GURUDAS MONE,North Goa,EC Granted,2025-01-07T10:07:38.826+00:00,2025-10-01T09:17:41.167+00:00,15.0,5.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=116910497
+state,30,Goa,top_recent_ec,4,,,SIA/GA/INFRA2/535866/2025,"Construction of the residential-cum-commercial project 'Ferrum Heights' on property bearing Chalta Nos. 7, 8, and 24 of PT Sheet No. 25 in Margao, Salcete, Goa, by M/s Edifice Developers.",EDIFICE DEVELOPERS,South Goa,EC Granted,2025-04-30T06:20:06.375+00:00,2025-09-18T10:30:30.220+00:00,6800.0,0.3595,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=125883285
+state,30,Goa,top_recent_ec,5,,,IA/GA/CRZ/478182/2024,Westin Goa Majorda Beach Resort and Spa,EASTERN INTERNATIONAL HOTELS LIMITED,South Goa,ADS Raised to SCZMA,2024-06-01T08:18:24.935+00:00,2025-09-15T12:07:09.396+00:00,10500.0,8.4025,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=72578861
+state,30,Goa,top_recent_ec,6,,,IA/GA/MIN/471378/2024,Block IX Surla Sonshi Mineral Block,JSW STEEL LTD,North Goa,ToR Granted,2024-05-02T10:29:39.867+00:00,2025-09-14T19:10:22.722+00:00,2900.0,254.51,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=65053241
+state,30,Goa,top_recent_ec,7,,,SIA/GA/INFRA2/548571/2025,"Proposed Maharashtra Academy of Engineering and Educational Research at S.No.88, Sub-Division No. 1-B, Thivim Village of Bardez Taluka, Goa by M/S. Maharashtra Academy of Engineering and Educational Research Detail",MAHARASHTRA ACADEMY OF ENGINEERING AND EDUCATIONAL RESEARCH PUNE,North Goa,EC Granted,2025-08-19T08:24:03.627+00:00,2025-09-12T13:49:19.029+00:00,18000.0,20.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=134299434
+state,30,Goa,top_recent_ec,8,,,SIA/GA/INFRA2/529519/2025,PROPOSED PM EKTA MALL BY GOA TOURISM DEVELOPMENT CORPORATION,MURUGAMPALAYAM PONNAMALEI BALAN,North Goa,EC Granted,2025-03-15T05:09:07.270+00:00,2025-09-12T13:33:28.262+00:00,13223.27,2.5,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=122438739
+state,30,Goa,top_recent_ec,9,,,IA/GA/IND2/546260/2025,"Greenfield 2 x 300 KLPD Grain based Ethanol/ENA Plant, 2 x 7.0 MW Co-generation Power plant in both phases & Bottling plant of 870 Bottles/Minute in Phase-1",CENTREAL BIOFUELS LIMITED,North Goa,Standard ToR Granted,2025-07-28T10:01:21.415+00:00,2025-09-08T10:47:13.196+00:00,76338.0,26.2664,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=132931425
+state,30,Goa,top_recent_ec,10,,,IA/GA/MIN/529454/2025,Block IV – Kalay Mineral Block,FOMENTO RESOURCES PRIVATE LIMITED,South Goa,EC Granted,2025-03-14T07:05:44.332+00:00,2025-08-22T17:20:17.910+00:00,3680.0,152.5073,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=122412295
 state,30,Goa,top_cost,1,,,WL/GA/VELEC/589629/2026,"Work of releasing of 1Ph power supply to 05nos. of applicants as per the new connection request received from Shri. Bhairu J. Rekdo, Shri. Bomi J. Rekdo, Shri. Navlo J. Rekdo, Shri. Kondo J. Rekdo, Shri. Anant M. Gaonkar for a connected load of 440W, 940W, 840W, 500W and 740W respectively under the jurisdiction of Elect. Sub Division-IV, Curchorem, Div-VII, Curchorem Goa",GOA ELECTRICITY DEPARTMENT,South Goa,,2026-08-20T07:25:43.418+00:00,,9447327.0,0.0416,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1238879133
 state,30,Goa,top_cost,2,,,FP/GA/OTHERS/589685/2026,"Work of releasing of 1Ph power supply to 05nos. of applicants as per the new connection request received from Shri. Bhairu J. Rekdo, Shri. Bomi J. Rekdo, Shri. Navlo J. Rekdo, Shri. Kondo J. Rekdo, Shri. Anant M. Gaonkar for a connected load of 440W, 940W, 840W, 500W and 740W respectively under the jurisdiction of Elect. Sub Division-IV, Curchorem, Div-VII, Curchorem Goa",GOA ELECTRICITY DEPARTMENT,South Goa,Pending at DFO for Scrutiny and Recommendation,2026-08-20T10:36:32.157+00:00,,9447327.0,0.0416,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1238908547
 state,30,Goa,top_cost,3,,,FP/GA/CommPost/576403/2026,GoI USOF BSNL 4G Saturation Project at Verlem for laying of O/H ADSS OFC,MAHESH NAIR,South Goa,Pending at DFO for Scrutiny and Recommendation,2026-04-20T12:47:37.309+00:00,,6802850.0,0.0026,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1224948871
@@ -1174,14 +1312,16 @@ state,30,Goa,top_land,9,,,FP/GA/MIND/551274/2025,"Application for approval of fo
 state,30,Goa,top_land,10,,,IA/GA/MIN/552475/2025,"Codli Mineral Block - XII, Auctioned Block Area: 377.0881 ha with Iron Ore production 3.50 Million TPA, OB/Waste 8.21 Million TPA (Total Excavation: 11.71 Million TPA) along with Installation 04 Crusher (3 Primary Crusher of 1 x 250 TPH & 2 x 90 TPH and 1 Secondary Crusher of 150 TPH) and 600 TPH Dry & 2 x 300 TPH Wet Beneficiation Plant with Throughput Capacity 3.50 Million TPA located at Village: Codli, Taluka: Dharbandora, District: South Goa (Goa) by JSW Steel Limited.",JSW STEEL LTD,South Goa,EDS Raised,2025-09-21T03:24:16.146+00:00,,50000.0,377.0881,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=136690198
 state,31,Lakshadweep,stat,,projects,19,,,,,,,,,,
 state,31,Lakshadweep,stat,,active_projects,19,,,,,,,,,,
-state,31,Lakshadweep,stat,,ec_granted,0,,,,,,,,,,
+state,31,Lakshadweep,stat,,applications,19,,,,,,,,,,
+state,31,Lakshadweep,stat,,ec_granted,10,,,,,,,,,,
+state,31,Lakshadweep,stat,,ec_pending,9,,,,,,,,,,
 state,31,Lakshadweep,stat,,ec_rejected,0,,,,,,,,,,
 state,31,Lakshadweep,stat,,delisted_or_removed,0,,,,,,,,,,
 state,31,Lakshadweep,stat,,total_cost_lakhs,314679.0,,,,,,,,,,
 state,31,Lakshadweep,stat,,cost_outliers_excluded,0,,,,,,,,,,
 state,31,Lakshadweep,stat,,total_land_ha,38.2671,,,,,,,,,,
 state,31,Lakshadweep,stat,,latest_application,2026-03-09T07:16:40.219+00:00,,,,,,,,,,
-state,31,Lakshadweep,stat,,latest_grant,,,,,,,,,,,
+state,31,Lakshadweep,stat,,latest_grant,2026-06-12T07:17:12.105+00:00,,,,,,,,,,
 state,31,Lakshadweep,stat,,changes_added,7,,,,,,,,,,
 state,31,Lakshadweep,stat,,changes_removed,18,,,,,,,,,,
 state,31,Lakshadweep,stat,,changes_updated,3,,,,,,,,,,
@@ -1189,9 +1329,25 @@ state,31,Lakshadweep,stat,,changes_status,0,,,,,,,,,,
 state,31,Lakshadweep,stat,,compared_with,2025-09-22T10:48:43+05:30,,,,,,,,,,
 state,31,Lakshadweep,status,,ToR Granted,10,,,,,,,,,,
 state,31,Lakshadweep,status,,(none),9,,,,,,,,,,
+state,31,Lakshadweep,applications_by_year,,2023,13,,,,,,,,,,
+state,31,Lakshadweep,applications_by_year,,2024,1,,,,,,,,,,
+state,31,Lakshadweep,applications_by_year,,2026,5,,,,,,,,,,
+state,31,Lakshadweep,grants_by_year,,2024,2,,,,,,,,,,
+state,31,Lakshadweep,grants_by_year,,2025,1,,,,,,,,,,
+state,31,Lakshadweep,grants_by_year,,2026,7,,,,,,,,,,
 state,31,Lakshadweep,run,,run_status,ok,,,,,,,,,,
 state,31,Lakshadweep,run,,run_date,2026-09-30T06:14:04Z,,,,,,,,,,
 state,31,Lakshadweep,run,,run_url,https://github.com/publicmap/parivesh-dashboard/actions/runs/36676877498,,,,,,,,,,
+state,31,Lakshadweep,top_recent_ec,1,,,IA/LD/INFRA1/571339/2026,"Dredging of the Existing Navigational Channel and Turning Circle on the Western Side of Kadmath Island, Lakshadweep.",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2026-03-05T11:01:25.129+00:00,2026-06-12T07:17:12.105+00:00,5253.0,9.6,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1220937060
+state,31,Lakshadweep,top_recent_ec,2,,,IA/LD/INFRA1/571442/2026,"Dredging of the existing navigational channel and turning circle on the western side of  Kalpeni Island, Lakshadweep.",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2026-03-06T08:51:13.203+00:00,2026-06-12T07:12:47.052+00:00,5253.0,20.705,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1221018038
+state,31,Lakshadweep,top_recent_ec,3,,,IA/LD/INFRA2/540783/2026,"Development of Water Aerodrome at Kavaratti Island, Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2023-12-26T10:33:52.112+00:00,2026-06-08T08:05:44.137+00:00,2000.0,0.2,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=129568653
+state,31,Lakshadweep,top_recent_ec,4,,,IA/LD/INFRA2/572037/2026,"Development of Water Aerodrome at Minicoy Island, Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2023-12-13T15:48:27.981+00:00,2026-06-08T07:52:50.016+00:00,2000.0,0.149,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1221491432
+state,31,Lakshadweep,top_recent_ec,5,,,IA/LD/INFRA2/571264/2026,"Development of Water Aerodrome at Kalpeni Island, UT of Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2026-03-05T05:15:20.565+00:00,2026-06-08T07:47:28.393+00:00,2000.0,0.0333,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1220815854
+state,31,Lakshadweep,top_recent_ec,6,,,IA/LD/INFRA2/571313/2026,"Development of Water Aerodrome at Kiltan Island, UT of Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2026-03-05T09:16:59.131+00:00,2026-06-08T07:40:09.916+00:00,2000.0,0.0587,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1220922215
+state,31,Lakshadweep,top_recent_ec,7,,,IA/LD/INFRA2/571709/2026,"Development of Water Aerodrome at Kadmat Island, UT of Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2026-03-09T07:16:40.219+00:00,2026-06-08T06:34:10.344+00:00,2000.0,0.024,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1221191183
+state,31,Lakshadweep,top_recent_ec,8,,,IA/LD/INFRA1/491993/2024,Development of Marine and Land facilities at Androth Island in Lakshadweep,DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2024-08-09T06:11:59.393+00:00,2025-05-04T10:26:54.272+00:00,76571.0,0.51,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=91873839
+state,31,Lakshadweep,top_recent_ec,9,,,IA/LD/INFRA2/455461/2024,"Development of Water Aerodrome at Minicoy Island, Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2023-12-13T15:48:27.981+00:00,2024-09-02T05:17:21.074+00:00,2000.0,0.149,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=31515046
+state,31,Lakshadweep,top_recent_ec,10,,,IA/LD/INFRA2/456736/2024,"Development of Water Aerodrome at Kavaratti Island, Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2023-12-26T10:33:52.112+00:00,2024-09-02T05:10:35.752+00:00,2000.0,0.2,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=34131205
 state,31,Lakshadweep,top_cost,1,,,WL/LD/CommPost/438185/2023,Test26July,Department of Land Resources,Agra,,2023-07-26T12:18:52.032+00:00,,213123.0,0.001,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=7125166
 state,31,Lakshadweep,top_cost,2,,,IA/LD/INFRA1/491993/2024,Development of Marine and Land facilities at Androth Island in Lakshadweep,DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2024-08-09T06:11:59.393+00:00,2025-05-04T10:26:54.272+00:00,76571.0,0.51,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=91873839
 state,31,Lakshadweep,top_cost,3,,,IA/LD/INFRA1/571339/2026,"Dredging of the Existing Navigational Channel and Turning Circle on the Western Side of Kadmath Island, Lakshadweep.",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2026-03-05T11:01:25.129+00:00,2026-06-12T07:17:12.105+00:00,5253.0,9.6,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1220937060
@@ -1221,7 +1377,9 @@ state,31,Lakshadweep,recent_change,6,added,,IA/LD/INFRA2/540783/2026,"Developmen
 state,31,Lakshadweep,recent_change,7,added,,IA/LD/INFRA2/572037/2026,"Development of Water Aerodrome at Minicoy Island, Lakshadweep",DEPARTMENT OF PORT SHIPPING AND AVIATION UT OF LAKSHADWEEP,Lakshadweep,ToR Granted,2023-12-13T15:48:27.981+00:00,2026-06-08T07:52:50.016+00:00,2000.0,0.149,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1221491432
 state,32,Kerala,stat,,projects,2093,,,,,,,,,,
 state,32,Kerala,stat,,active_projects,1735,,,,,,,,,,
-state,32,Kerala,stat,,ec_granted,377,,,,,,,,,,
+state,32,Kerala,stat,,applications,1737,,,,,,,,,,
+state,32,Kerala,stat,,ec_granted,656,,,,,,,,,,
+state,32,Kerala,stat,,ec_pending,1059,,,,,,,,,,
 state,32,Kerala,stat,,ec_rejected,63,,,,,,,,,,
 state,32,Kerala,stat,,delisted_or_removed,358,,,,,,,,,,
 state,32,Kerala,stat,,total_cost_lakhs,245415264.88,,,,,,,,,,
@@ -1233,7 +1391,7 @@ state,32,Kerala,stat,,changes_added,0,,,,,,,,,,
 state,32,Kerala,stat,,changes_removed,0,,,,,,,,,,
 state,32,Kerala,stat,,changes_updated,0,,,,,,,,,,
 state,32,Kerala,stat,,changes_status,0,,,,,,,,,,
-state,32,Kerala,stat,,compared_with,2026-09-30T06:14:05Z,,,,,,,,,,
+state,32,Kerala,stat,,compared_with,2026-09-30T16:00:09+05:30,,,,,,,,,,
 state,32,Kerala,status,,(none),416,,,,,,,,,,
 state,32,Kerala,status,,EC Granted,377,,,,,,,,,,
 state,32,Kerala,status,,DELISTED_BY_SYSTEM,336,,,,,,,,,,
@@ -1300,6 +1458,13 @@ state,32,Kerala,status,,Proposal Withdraw Request Accepted,1,,,,,,,,,,
 state,32,Kerala,status,,Pending at Nodal for Compensatory Levies Review,1,,,,,,,,,,
 state,32,Kerala,status,,Pending at State Secretary for Recommendation and In-Principle Approval (Stage-I),1,,,,,,,,,,
 state,32,Kerala,status,,Approval Granted,1,,,,,,,,,,
+state,32,Kerala,applications_by_year,,2022,175,,,,,,,,,,
+state,32,Kerala,applications_by_year,,2023,560,,,,,,,,,,
+state,32,Kerala,applications_by_year,,2024,527,,,,,,,,,,
+state,32,Kerala,applications_by_year,,2025,475,,,,,,,,,,
+state,32,Kerala,grants_by_year,,2023,115,,,,,,,,,,
+state,32,Kerala,grants_by_year,,2024,336,,,,,,,,,,
+state,32,Kerala,grants_by_year,,2025,205,,,,,,,,,,
 state,32,Kerala,run,,run_status,ok,,,,,,,,,,
 state,32,Kerala,run,,run_date,2026-09-30T04:58:08Z,,,,,,,,,,
 state,32,Kerala,run,,run_url,,,,,,,,,,,
@@ -1311,8 +1476,8 @@ state,32,Kerala,top_recent_ec,5,,,IA/KL/INFRA2/527383/2025,"Environment Clearanc
 state,32,Kerala,top_recent_ec,6,,,IA/KL/INFRA2/514782/2024,Environment Clearance for proposed Residential project to be developed by M/s Veegaland Developers Pvt. Ltd.,VEEGALAND DEVELOPERS PRIVATE LIMITED,Thiruvananthapuram,EC Granted,2024-12-16T07:22:12.885+00:00,2025-10-03T07:34:54.321+00:00,10261.0,0.7144,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=114853921
 state,32,Kerala,top_recent_ec,7,,,IA/KL/INFRA2/529550/2025,"Environmental Clearance for proposed Residential project to be developed by M/s Sreerosh Developers Pvt. Ltd. with a total built-up area of 34,502.12 sq.m.",SREEROSH DEVELOPERS PRIVATE LIMITED,Kannur,EC Granted,2025-03-15T07:40:21.137+00:00,2025-10-03T07:21:22.702+00:00,8500.0,0.8522,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=122449846
 state,32,Kerala,top_recent_ec,8,,,IA/KL/INFRA2/529516/2025,"Environmental Clearance for proposed Residential project to be developed by M/s Favourite Constructions Pvt. Ltd. at Pallipuram Village, Andoorkonam Grama Panchayat, , Thiruvananthapuram, Kerala",FAVOURITE CONSTRUCTIONS PVT. LTD.,Thiruvananthapuram,EC Granted,2025-03-15T04:19:31.083+00:00,2025-10-03T06:44:49.553+00:00,6167.86,0.4891,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=122437064
-state,32,Kerala,top_recent_ec,9,,,IA/KL/INFRA2/538477/2025,Amendment in Development of additional RESA on either end on Runway 10-28 and relocation and augmentation of CNS facilities at Calicut Airport,AIRPORTS AUTHORITY OF INDIA,Malappuram,EC Granted,2025-05-21T08:20:23.907+00:00,2025-07-03T05:47:32.033+00:00,110162.9,156.63,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=127508058
-state,32,Kerala,top_recent_ec,10,,,IA/KL/INFRA1/458848/2024,Construction of Twin Tube Unidirectional Tunnel Road (2+2 Lane) with Four Lane Approach(from existing roads) for providing direct connectivity between Anakkampoyil-Kalladi -Meppadi in Kozhikode and Wayanad Districts of Kerala State,"EXECUTIVE ENGINEER KERALA PUBLIC WORKS DEPARTMENT ROADS DIVISION, KOZHIKODE",Kozhikode,EC Granted,2024-01-16T04:20:42.426+00:00,2025-06-17T09:14:05.211+00:00,204374.0,36.873,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=39153313
+state,32,Kerala,top_recent_ec,9,,,FP/KL/TRANS/441539/2023,"Providing Electricity Connection at Memala-Pothenthode area, Mangalamdam",KSEB LTD,Palakkad,Final Diversion Order Issued,2023-08-23T14:54:54.475+00:00,2025-10-03T05:01:59.144+00:00,15.0,0.9331,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=8243713
+state,32,Kerala,top_recent_ec,10,,,FP/KL/RainHarvest/433966/2023,JJM – WSS TO DEVIKULAM-CHINNAKANAL  PANCHAYATH IN IDUKKI DISTRICT,KERALA WATER AUTHORITY,Idukki,Final Diversion Order Issued,2023-06-20T05:38:03.349+00:00,2025-07-26T12:13:21.276+00:00,2332.0,0.1168,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=6217653
 state,32,Kerala,top_cost,1,,,SIA/KL/INFRA2/447418/2023,M/s Kent construction Pvt. Ltd.,KENT CONSTRUCTIONS PVT LTD,Ernakulam,Referred to SEIAA,2023-10-07T10:47:54.629+00:00,,8250000.0,1.1729,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=15286187
 state,32,Kerala,top_cost,2,,,SIA/KL/INFRA2/456451/2024,M/s Kent construction Pvt. Ltd.,KENT CONSTRUCTIONS PVT LTD,Ernakulam,,2023-12-22T10:48:05.826+00:00,,8250000.0,1.1729,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=33145498
 state,32,Kerala,top_cost,3,,,SIA/KL/MIN/491628/2024,Building Stone Quarry of Sri.Manoj.K,Kuzhikkadan manoj,Malappuram,EC Rejected,2024-08-07T08:47:14.029+00:00,2025-02-25T07:19:55.007+00:00,8227952.0,0.6565,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=91289513
@@ -1335,7 +1500,9 @@ state,32,Kerala,top_land,9,,,WL/KL/DeReservation/490231/2024,Proposal for De-not
 state,32,Kerala,top_land,10,,,WL/KL/ROAD/401933/2022,4/6 Lanning of Palakkad - Kozhikode of NH-966(Greenfield) from Km.0.000 to Km.121.006 (Total length 121.006Km) in the state of Kerala under Bharatmala Parajoya,National Highways Authority of India,MALAPPURAM,,2022-09-30T11:11:39.956+00:00,,1081440.0,572.67,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=988242
 state,33,Tamil Nadu,stat,,projects,0,,,,,,,,,,
 state,33,Tamil Nadu,stat,,active_projects,0,,,,,,,,,,
+state,33,Tamil Nadu,stat,,applications,0,,,,,,,,,,
 state,33,Tamil Nadu,stat,,ec_granted,0,,,,,,,,,,
+state,33,Tamil Nadu,stat,,ec_pending,0,,,,,,,,,,
 state,33,Tamil Nadu,stat,,ec_rejected,0,,,,,,,,,,
 state,33,Tamil Nadu,stat,,delisted_or_removed,0,,,,,,,,,,
 state,33,Tamil Nadu,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -1353,14 +1520,16 @@ state,33,Tamil Nadu,run,,run_date,,,,,,,,,,,
 state,33,Tamil Nadu,run,,run_url,,,,,,,,,,,
 state,34,Puducherry,stat,,projects,115,,,,,,,,,,
 state,34,Puducherry,stat,,active_projects,87,,,,,,,,,,
-state,34,Puducherry,stat,,ec_granted,7,,,,,,,,,,
+state,34,Puducherry,stat,,applications,87,,,,,,,,,,
+state,34,Puducherry,stat,,ec_granted,28,,,,,,,,,,
+state,34,Puducherry,stat,,ec_pending,58,,,,,,,,,,
 state,34,Puducherry,stat,,ec_rejected,0,,,,,,,,,,
 state,34,Puducherry,stat,,delisted_or_removed,28,,,,,,,,,,
 state,34,Puducherry,stat,,total_cost_lakhs,107167808.61,,,,,,,,,,
 state,34,Puducherry,stat,,cost_outliers_excluded,6,,,,,,,,,,
 state,34,Puducherry,stat,,total_land_ha,1992.4498,,,,,,,,,,
 state,34,Puducherry,stat,,latest_application,2025-07-28T11:57:15.718+00:00,,,,,,,,,,
-state,34,Puducherry,stat,,latest_grant,2025-07-05T14:35:59.214+00:00,,,,,,,,,,
+state,34,Puducherry,stat,,latest_grant,2025-07-26T13:07:55.212+00:00,,,,,,,,,,
 state,34,Puducherry,stat,,changes_added,0,,,,,,,,,,
 state,34,Puducherry,stat,,changes_removed,0,,,,,,,,,,
 state,34,Puducherry,stat,,changes_updated,0,,,,,,,,,,
@@ -1383,16 +1552,27 @@ state,34,Puducherry,status,,Proposal returned in present form,1,,,,,,,,,,
 state,34,Puducherry,status,,Raised/Forwarded EDS to UA,1,,,,,,,,,,
 state,34,Puducherry,status,,Pending at DFO for Scrutiny and Recommendation,1,,,,,,,,,,
 state,34,Puducherry,status,,EDS raised,1,,,,,,,,,,
+state,34,Puducherry,applications_by_year,,2022,7,,,,,,,,,,
+state,34,Puducherry,applications_by_year,,2023,21,,,,,,,,,,
+state,34,Puducherry,applications_by_year,,2024,33,,,,,,,,,,
+state,34,Puducherry,applications_by_year,,2025,26,,,,,,,,,,
+state,34,Puducherry,grants_by_year,,2022,1,,,,,,,,,,
+state,34,Puducherry,grants_by_year,,2023,8,,,,,,,,,,
+state,34,Puducherry,grants_by_year,,2024,9,,,,,,,,,,
+state,34,Puducherry,grants_by_year,,2025,10,,,,,,,,,,
 state,34,Puducherry,run,,run_status,ok,,,,,,,,,,
 state,34,Puducherry,run,,run_date,2026-09-30T04:58:08Z,,,,,,,,,,
 state,34,Puducherry,run,,run_url,,,,,,,,,,,
-state,34,Puducherry,top_recent_ec,1,,,IA/PY/IND2/538306/2025,Proposed Ethylene Dichloride (EDC) Manufacturing Unit , CHEMPLAST SANMAR LIMITED,Karaikal,EC Granted,2025-05-20T06:08:58.856+00:00,2025-07-05T14:35:59.214+00:00,80000.0,13.3146,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=127384892
-state,34,Puducherry,top_recent_ec,2,,,IA/PY/IND3/529760/2025,Proposed Difluoromethane (R-32) Manufacturing Unit, CHEMPLAST SANMAR LIMITED,Karaikal,EC Granted,2025-03-17T06:53:26.794+00:00,2025-06-18T16:38:04.170+00:00,80000.0,13.3146,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=122517439
-state,34,Puducherry,top_recent_ec,3,,,SIA/PY/INFRA2/449250/2023,Construction of 476 no.s regular bedded & 81 no.s Non-Complementary Bedded Hospital , JAWAHARLAL INSTITUTE OF POSTGRADUATE MEDICAL EDUCATION AND RESEARCH,Karaikal,EC Granted,2023-10-18T04:44:29.597+00:00,2024-07-31T11:29:40.730+00:00,45105.0,13.9,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=17839581
-state,34,Puducherry,top_recent_ec,4,,,SIA/PY/INFRA2/466936/2024,Proposed Expansion of Additional construction of Hospital components in the existing Medical College campus by M/s Sri Balaji Vidyapeeth, SRI BALAJI VIDYAPEETH,Puducherry,EC Granted,2024-03-22T07:20:08.205+00:00,2024-07-31T06:08:08.517+00:00,41914.0,18.6479,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=55060967
-state,34,Puducherry,top_recent_ec,5,,,IA/PY/IND3/432721/2023,"Environment Clearance for Proposed Project for Custom Manufactured Chemicals Division (CMCD) of Chemplast Sanmar Limited at Village Melavanjore, T. R. Pattinam, Karaikal,  Puducherry UT by M/s. Chemplast Sanmar Limited",CHEMPLAST SANMAR LIMITED,Karaikal,EC Granted,2023-06-08T11:43:59.642+00:00,2024-05-24T03:16:30.510+00:00,60000.0,3.1485,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=5978360
-state,34,Puducherry,top_recent_ec,6,,,IA/PY/INFRA2/440640/2023,"Establishment of Integrated Common  Hazardous Waste Treatment Storage Disposal and Recycling Facility  (ICHWTSDRF) at Village Polagam, District Karaikal, Pondicherry by M/s.  Karaikal Waste Management Project (a unit division of M/s. Re  Sustainability IWM Solution Ltd)", RE SUSTAINABILITY IWM SOLUTIONS LIMITED,Karaikal,EC Granted,2023-08-17T07:20:29.502+00:00,2023-11-02T12:42:37.336+00:00,3500.0,10.92,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=8032493
-state,34,Puducherry,top_recent_ec,7,,,IA/PY/IND3/408617/2022,Proposed Polymerization plant within the Existing Facility , SWATHI ORGANICS & SPECIALITIES PRIVATE LTD,Puducherry,EC Granted,2022-11-30T05:31:40.147+00:00,2023-02-24T00:00:00.000+00:00,668.0,0.643,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1787574
+state,34,Puducherry,top_recent_ec,1,,,IA/PY/CRZ/504431/2024,"6 MLD desalination plant along with associated sea water intake and outfall system at RS no. 206, Village Melavanjore, T.R. Pattinam, Karaikal, Puducherry UT by M/s. Chemplast Sanmar Limited", CHEMPLAST SANMAR LIMITED,Karaikal,CRZ Granted,2024-11-06T09:57:30.403+00:00,2025-07-26T13:07:55.212+00:00,13000.0,2.3022,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=110939289
+state,34,Puducherry,top_recent_ec,2,,,IA/PY/IND2/538306/2025,Proposed Ethylene Dichloride (EDC) Manufacturing Unit , CHEMPLAST SANMAR LIMITED,Karaikal,EC Granted,2025-05-20T06:08:58.856+00:00,2025-07-05T14:35:59.214+00:00,80000.0,13.3146,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=127384892
+state,34,Puducherry,top_recent_ec,3,,,IA/PY/IND3/529760/2025,Proposed Difluoromethane (R-32) Manufacturing Unit, CHEMPLAST SANMAR LIMITED,Karaikal,EC Granted,2025-03-17T06:53:26.794+00:00,2025-06-18T16:38:04.170+00:00,80000.0,13.3146,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=122517439
+state,34,Puducherry,top_recent_ec,4,,,IA/PY/CRZ/483454/2024,Proposed construction of two storeyed commercial (Guest Rooms - 18 Nos) Building with Stilt Floor.,FRANCIS JOSEPH ANAND ANTOOINE,Puducherry,CRZ Granted,2024-06-24T10:36:09.779+00:00,2025-05-31T06:51:59.912+00:00,64373109.0,0.0548,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=78241217
+state,34,Puducherry,top_recent_ec,5,,,SIA/PY/INFRA2/535101/2025,“PROPOSED ADDITIONAL CONSTRUCTION OF NEW BUILDINGS TO THE EXISTING BUILDINGS OF INDUSTRIAL BUILDINGS” IN THE NAME OF M/S. MRF LIMITED  ,M/S MRF LTD.,Puducherry,Standard ToR Granted,2025-04-24T05:18:56.230+00:00,2025-05-08T05:21:07.589+00:00,281852.0,31.12,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=125493663
+state,34,Puducherry,top_recent_ec,6,,,IA/PY/CRZ/488656/2024," Proposed 5 MLD Sea water (SWRO) Desalination Plant and laying of sea water intake and outfall pipeline. Product water pipeline (8 km) from Desalination plant to Caustic plant of Chemfab Alkalis Karaikal Limited, PIPDIC, Pologam Karaikal", CHEMFAB ALKALIS KARAIKAL LIMITED,Karaikal,CRZ Granted,2024-07-19T04:42:27.904+00:00,2025-04-17T07:47:57.902+00:00,3500.0,1.63,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=85658029
+state,34,Puducherry,top_recent_ec,7,,,IA/PY/CRZ/484403/2024,Proposed renovation of existing building and additional construction of hotel building (6-Rooms & Swimming pool) for M/s. Ethereal Hospitality,ethereal hospitality llp,Puducherry,CRZ Granted,2024-06-27T14:02:08.295+00:00,2025-04-17T06:59:38.199+00:00,9049468.0,9.29,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=79231676
+state,34,Puducherry,top_recent_ec,8,,,IA/PY/CRZ/486479/2024,Proposed construction of two storeyed residential building (1- Dwelling Unit & Office) with stilt floor ,arivazhagan,Puducherry,CRZ Granted,2024-07-08T04:58:19.619+00:00,2025-04-17T06:33:49.419+00:00,6061000.0,0.02,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=82400365
+state,34,Puducherry,top_recent_ec,9,,,IA/PY/IND2/518048/2025,Proposed Ethylene Dichloride (EDC) Manufacturing Unit , CHEMPLAST SANMAR LIMITED,Karaikal,Standard ToR Granted,2025-01-10T10:24:22.636+00:00,2025-01-22T07:34:07.022+00:00,80000.0,13.3146,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=117283558
+state,34,Puducherry,top_recent_ec,10,,,IA/PY/IND3/518091/2025,Proposed Difluoromethane (R-32) Manufacturing Unit, CHEMPLAST SANMAR LIMITED,Karaikal,Standard ToR Granted,2025-01-10T12:37:45.363+00:00,2025-01-17T03:09:10.635+00:00,80000.0,13.3146,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=117311571
 state,34,Puducherry,top_cost,1,,,IA/PY/CRZ/469767/2024,Proposed construction of four storied residential building (4-dwelling  units) with stilt floor ,dhritin tyagi,Puducherry,Recommend to Town Planner Authority,2024-04-18T05:13:23.943+00:00,,9521000.0,0.016,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=61493197
 state,34,Puducherry,top_cost,2,,,IA/PY/CRZ/505879/2024,Proposed Two Storeyed Commercial Building,Sujee a,Puducherry,Referred to SCZMA,2024-11-14T13:22:31.728+00:00,,9384000.0,0.011,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=111549543
 state,34,Puducherry,top_cost,3,,,IA/PY/CRZ/484403/2024,Proposed renovation of existing building and additional construction of hotel building (6-Rooms & Swimming pool) for M/s. Ethereal Hospitality,ethereal hospitality llp,Puducherry,CRZ Granted,2024-06-27T14:02:08.295+00:00,2025-04-17T06:59:38.199+00:00,9049468.0,9.29,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=79231676
@@ -1415,19 +1595,21 @@ state,34,Puducherry,top_land,9,,,SIA/PY/INFRA2/542030/2025,“PROPOSED ADDITIONA
 state,34,Puducherry,top_land,10,,,SIA/PY/INFRA2/535101/2025,“PROPOSED ADDITIONAL CONSTRUCTION OF NEW BUILDINGS TO THE EXISTING BUILDINGS OF INDUSTRIAL BUILDINGS” IN THE NAME OF M/S. MRF LIMITED  ,M/S MRF LTD.,Puducherry,Standard ToR Granted,2025-04-24T05:18:56.230+00:00,2025-05-08T05:21:07.589+00:00,281852.0,31.12,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=125493663
 state,35,Andaman And Nicobar Islands,stat,,projects,135,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,stat,,active_projects,99,,,,,,,,,,
-state,35,Andaman And Nicobar Islands,stat,,ec_granted,13,,,,,,,,,,
+state,35,Andaman And Nicobar Islands,stat,,applications,99,,,,,,,,,,
+state,35,Andaman And Nicobar Islands,stat,,ec_granted,41,,,,,,,,,,
+state,35,Andaman And Nicobar Islands,stat,,ec_pending,57,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,stat,,ec_rejected,0,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,stat,,delisted_or_removed,36,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,stat,,total_cost_lakhs,73144569.29,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,stat,,cost_outliers_excluded,0,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,stat,,total_land_ha,3950460.2151,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,stat,,latest_application,2026-05-02T06:03:30.257+00:00,,,,,,,,,,
-state,35,Andaman And Nicobar Islands,stat,,latest_grant,2025-03-18T12:28:27.824+00:00,,,,,,,,,,
+state,35,Andaman And Nicobar Islands,stat,,latest_grant,2025-08-14T12:18:46.425+00:00,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,stat,,changes_added,0,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,stat,,changes_removed,0,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,stat,,changes_updated,0,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,stat,,changes_status,0,,,,,,,,,,
-state,35,Andaman And Nicobar Islands,stat,,compared_with,2026-09-30T06:14:05Z,,,,,,,,,,
+state,35,Andaman And Nicobar Islands,stat,,compared_with,2026-09-30T16:00:09+05:30,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,status,,Final Diversion Order Issued,27,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,status,,DELISTED_BY_SYSTEM,21,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,status,,REMOVED,15,,,,,,,,,,
@@ -1456,19 +1638,27 @@ state,35,Andaman And Nicobar Islands,status,,Pending at DFO due to EDS by Nodal 
 state,35,Andaman And Nicobar Islands,status,,Proposal pulled back (withdrawn),1,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,status,,Pending at UA due to EDS by MS after PSC-I,1,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,status,,Pending at UA due to EDS raised by DFO,1,,,,,,,,,,
+state,35,Andaman And Nicobar Islands,applications_by_year,,2022,6,,,,,,,,,,
+state,35,Andaman And Nicobar Islands,applications_by_year,,2023,29,,,,,,,,,,
+state,35,Andaman And Nicobar Islands,applications_by_year,,2024,29,,,,,,,,,,
+state,35,Andaman And Nicobar Islands,applications_by_year,,2025,22,,,,,,,,,,
+state,35,Andaman And Nicobar Islands,applications_by_year,,2026,13,,,,,,,,,,
+state,35,Andaman And Nicobar Islands,grants_by_year,,2023,17,,,,,,,,,,
+state,35,Andaman And Nicobar Islands,grants_by_year,,2024,16,,,,,,,,,,
+state,35,Andaman And Nicobar Islands,grants_by_year,,2025,8,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,run,,run_status,ok,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,run,,run_date,2026-09-30T04:58:08Z,,,,,,,,,,
 state,35,Andaman And Nicobar Islands,run,,run_url,,,,,,,,,,,
-state,35,Andaman And Nicobar Islands,top_recent_ec,1,,,IA/AN/INFRA1/517388/2025,"Splitting & Transfer of EC & CRZ Clearance received vide letter dated 11.11.2022 for the Integrated Development of International Container Transshipment Terminal (ICTT) – 14.2 Million TEU, Township & Area Development, and  450 MVA Gas and Solar-based Power Plant in 16,610 ha. at Great Nicobar Islands, Nicobar District",ANDAMAN AND NICOBAR ISLANDS INTEGRATED DEVELOPMENT CORPORATION,Nicobars,EC Granted,2025-01-06T06:22:08.389+00:00,2025-03-18T12:28:27.824+00:00,7262200.0,16610.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=116792037
-state,35,Andaman And Nicobar Islands,top_recent_ec,2,,,IA/AN/INFRA1/517388/2025/S1,"Splitting & Transfer of EC & CRZ Clearance received vide letter dated 11.11.2022 for the Integrated Development of International Container Transshipment Terminal (ICTT) – 14.2 Million TEU, Township & Area Development, and  450 MVA Gas and Solar-based Power Plant in 16,610 ha. at Great Nicobar Islands, Nicobar District",ANDAMAN AND NICOBAR ISLANDS INTEGRATED DEVELOPMENT CORPORATION,Nicobars,EC Granted,2025-03-19T05:46:31.555+00:00,2025-03-18T12:28:27.824+00:00,7262200.0,16610.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=122708974
-state,35,Andaman And Nicobar Islands,top_recent_ec,3,,,SIA/AN/MIN/457731/2024,"Proposal for Environmental Clearance of Blocks A,B,C,D,E,F and G in Harinagar Quarry, Mayabunder",DEPUTY COMMISSIONER N&M ANDAMAN,North  & Middle Andaman,EC Granted,2024-01-04T14:01:39.065+00:00,2024-02-07T10:59:31.304+00:00,240.25,1.75,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=36537317
-state,35,Andaman And Nicobar Islands,top_recent_ec,4,,,SIA/AN/MIN/457694/2024,"Proposal for Environment Clearance of Blocks-A,B,C,D,E,F of Panchavati Village, Rangat",DEPUTY COMMISSIONER N&M ANDAMAN,North  & Middle Andaman,EC Granted,2024-01-04T10:28:40.564+00:00,2024-02-05T11:44:47.086+00:00,225.0,1.5,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=36524428
-state,35,Andaman And Nicobar Islands,top_recent_ec,5,,,SIA/AN/MIN/457732/2024,"Proposal for Environment Clearance of Non Explosive Block-A, B, C & D of Shyamnagar Quarry, Diglipur",DEPUTY COMMISSIONER N&M ANDAMAN,North  & Middle Andaman,EC Granted,2024-01-04T14:05:47.690+00:00,2024-02-05T10:37:47.401+00:00,134.25,1.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=36537401
-state,35,Andaman And Nicobar Islands,top_recent_ec,6,,,SIA/AN/MIN/457713/2024,"Proposal for Environmental Clearance of Madhupur Quarry Site, Diglipur",DEPUTY COMMISSIONER N&M ANDAMAN,North  & Middle Andaman,EC Granted,2024-01-04T11:49:30.780+00:00,2024-02-05T06:23:34.149+00:00,300.0,2.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=36531118
-state,35,Andaman And Nicobar Islands,top_recent_ec,7,,,SIA/AN/MIN/458035/2024,Hut Bay Stone Quarry (Non-Explosive Block),"Deputy Commissioner, South Andaman",South Andaman,EC Granted,2024-01-08T12:08:57.056+00:00,2024-02-05T05:44:44.811+00:00,17.1,0.25,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=37339184
-state,35,Andaman And Nicobar Islands,top_recent_ec,8,,,SIA/AN/MIN/457488/2024,Brookshabad Stone Quarry for A-Block (Non-Explosive),"Deputy Commissioner, South Andaman",South Andaman,EC Granted,2024-01-02T19:24:06.023+00:00,2024-02-01T13:30:24.075+00:00,150.5,1.435,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=35988059
-state,35,Andaman And Nicobar Islands,top_recent_ec,9,,,SIA/AN/MIN/457485/2024,Brookshabad Stone Quarry for B-Block (Explosive),"Deputy Commissioner, South Andaman",South Andaman,EC Granted,2024-01-02T17:50:14.354+00:00,2024-02-01T09:34:04.334+00:00,438.0,3.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=35987189
-state,35,Andaman And Nicobar Islands,top_recent_ec,10,,,IA/AN/INFRA2/426421/2023,"Development of Water Aerodrome at Swaraj Island, Andaman & Nicobar",ANDAMAN AND NICOBAR ADMINISTRATION,South Andaman,EC Granted,2023-04-17T09:10:56.034+00:00,2023-09-15T08:05:58.800+00:00,1141.0,0.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=4678161
+state,35,Andaman And Nicobar Islands,top_recent_ec,1,,,IA/AN/CRZ/460793/2024,"Re-construction of 15 meter high RCC Lighthouse tower with allied facilities like Paver block pathway, technical building, compound wall along the periphery of campus consisting of existing 3.5 meter high Lighthouse structure, chain link fencing, RCC pedestal for antenna in Rutland Island",DIRECTOR OF LIGHTHOUSES AND LIGHTSHIPS PORTBLAIR,South Andaman,CRZ Granted,2024-02-02T11:19:45.349+00:00,2025-08-14T12:18:46.425+00:00,169.0,0.0397,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=43429823
+state,35,Andaman And Nicobar Islands,top_recent_ec,2,,,FP/AN/REDIV/515813/2024,Proposal to divert 0.4707 ha of forest land for laying a 26.49 km OFC cable in Diglipur Forest Division under the USOF Project,OFFICE OF THE JOINT CONTROLLER OF COMMUNICATION ACCOUNTS DOT ANDAMAN AND NICOBAR CIRCLE,North  & Middle Andaman,Final Diversion Order Issued,2024-12-23T11:56:45.987+00:00,2025-08-12T06:10:51.492+00:00,105.0,0.824,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=115613203
+state,35,Andaman And Nicobar Islands,top_recent_ec,3,,,IA/AN/CRZ/468451/2024,Construction of seaport terminal at Shaheed Dweep (Neil Island) in Andaman & Nicobar Islands,"CE&A, ALHW, MOS, PORT BLAIR",South Andaman,CRZ Granted,2024-04-05T07:13:54.984+00:00,2025-07-31T15:46:52.035+00:00,3747.0,0.616,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=58881626
+state,35,Andaman And Nicobar Islands,top_recent_ec,4,,,FP/AN/OTHERS/469409/2024,Construction of Check Weirs across Nallah including 01 no Pump house at Tushnabad,EXECUTIVE ENGINEER RCD APWD WIMBERLYGUNJ,South Andaman,Final Diversion Order Issued,2024-04-16T05:40:18.442+00:00,2025-04-22T11:39:04.072+00:00,213.0,0.033,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=61168963
+state,35,Andaman And Nicobar Islands,top_recent_ec,5,,,IA/AN/CRZ/464771/2024,Extension of jetty by 150m x 20m and 8 Navigational aids at Long Island in Andaman & Nicobar Islands.,"CE&A, ALHW, MOS, PORT BLAIR",North  & Middle Andaman,CRZ Granted,2024-03-02T07:52:43.566+00:00,2025-03-19T10:09:45.685+00:00,9474.0,0.4,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=51037315
+state,35,Andaman And Nicobar Islands,top_recent_ec,6,,,IA/AN/INFRA1/517388/2025,"Splitting & Transfer of EC & CRZ Clearance received vide letter dated 11.11.2022 for the Integrated Development of International Container Transshipment Terminal (ICTT) – 14.2 Million TEU, Township & Area Development, and  450 MVA Gas and Solar-based Power Plant in 16,610 ha. at Great Nicobar Islands, Nicobar District",ANDAMAN AND NICOBAR ISLANDS INTEGRATED DEVELOPMENT CORPORATION,Nicobars,EC Granted,2025-01-06T06:22:08.389+00:00,2025-03-18T12:28:27.824+00:00,7262200.0,16610.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=116792037
+state,35,Andaman And Nicobar Islands,top_recent_ec,7,,,IA/AN/INFRA1/517388/2025/S1,"Splitting & Transfer of EC & CRZ Clearance received vide letter dated 11.11.2022 for the Integrated Development of International Container Transshipment Terminal (ICTT) – 14.2 Million TEU, Township & Area Development, and  450 MVA Gas and Solar-based Power Plant in 16,610 ha. at Great Nicobar Islands, Nicobar District",ANDAMAN AND NICOBAR ISLANDS INTEGRATED DEVELOPMENT CORPORATION,Nicobars,EC Granted,2025-03-19T05:46:31.555+00:00,2025-03-18T12:28:27.824+00:00,7262200.0,16610.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=122708974
+state,35,Andaman And Nicobar Islands,top_recent_ec,8,,,IA/AN/THE/517544/2025,"Splitting & Transfer of EC & CRZ Clearance received vide letter dated 11.11.2022 for the Integrated Development of International Container Transshipment Terminal (ICTT) – 14.2 Million TEU, Township & Area Development, and  450 MVA Gas and Solar-based Power Plant in 16,610 ha. at Great Nicobar Islands, Nicobar District",ANDAMAN AND NICOBAR ISLANDS INTEGRATED DEVELOPMENT CORPORATION,Nicobars,Proposal Withdrawal Request Accepted,2025-01-07T06:08:10.762+00:00,2025-02-06T06:11:10.437+00:00,7262200.0,16610.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=116871550
+state,35,Andaman And Nicobar Islands,top_recent_ec,9,,,FP/AN/OTHERS/469400/2024,Installation of One 4G Tower in South Andaman under USOF Project,OFFICE OF THE JOINT CONTROLLER OF COMMUNICATION ACCOUNTS DOT ANDAMAN AND NICOBAR CIRCLE,South Andaman,Final Diversion Order Issued,2024-04-16T04:50:50.281+00:00,2024-09-06T04:22:35.416+00:00,104.3,0.0422,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=61165784
+state,35,Andaman And Nicobar Islands,top_recent_ec,10,,,FP/AN/OTHERS/449196/2023,Installation of Three (3) 4G towers in Mayabunder Forest Division under USOF Project,OFFICE OF THE JOINT CONTROLLER OF COMMUNICATION ACCOUNTS DOT ANDAMAN AND NICOBAR CIRCLE,North  & Middle Andaman,Final Diversion Order Issued,2023-10-17T11:02:59.735+00:00,2024-07-04T04:18:35.776+00:00,313.5,0.125,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=17619436
 state,35,Andaman And Nicobar Islands,top_cost,1,,,FP/AN/OTHERS/473423/2024,"Construction of Check Weir, Pump house, Pipeline & 01 No. CWR (2.45 Lakh) at Shoalbay-14 under RCD, APWD, Wimberlygunj, South Andaman.",EXECUTIVE ENGINEER RCD APWD WIMBERLYGUNJ,South Andaman,Pending at CF for Compliance Review,2024-05-17T12:33:45.302+00:00,,9839331.0,0.245,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=68800279
 state,35,Andaman And Nicobar Islands,top_cost,2,,,FP/AN/OTHERS/476313/2024,"Construction of Check Weir, Pump house and pipeline & 01 No. CWR (2.45 Lakh) at Shoal Bay-11 under RCD, APWD, Wimberlygunj, South Andaman",EXECUTIVE ENGINEER RCD APWD WIMBERLYGUNJ,South Andaman,Pending at CF for Compliance Review,2024-05-27T10:16:01.910+00:00,,8656191.0,0.128,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=71269730
 state,35,Andaman And Nicobar Islands,top_cost,3,,,IA/AN/INFRA1/517388/2025,"Splitting & Transfer of EC & CRZ Clearance received vide letter dated 11.11.2022 for the Integrated Development of International Container Transshipment Terminal (ICTT) – 14.2 Million TEU, Township & Area Development, and  450 MVA Gas and Solar-based Power Plant in 16,610 ha. at Great Nicobar Islands, Nicobar District",ANDAMAN AND NICOBAR ISLANDS INTEGRATED DEVELOPMENT CORPORATION,Nicobars,EC Granted,2025-01-06T06:22:08.389+00:00,2025-03-18T12:28:27.824+00:00,7262200.0,16610.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=116792037
@@ -1491,7 +1681,9 @@ state,35,Andaman And Nicobar Islands,top_land,9,,,IA/AN/INFRA1/517388/2025,"Spli
 state,35,Andaman And Nicobar Islands,top_land,10,,,IA/AN/THE/517544/2025,"Splitting & Transfer of EC & CRZ Clearance received vide letter dated 11.11.2022 for the Integrated Development of International Container Transshipment Terminal (ICTT) – 14.2 Million TEU, Township & Area Development, and  450 MVA Gas and Solar-based Power Plant in 16,610 ha. at Great Nicobar Islands, Nicobar District",ANDAMAN AND NICOBAR ISLANDS INTEGRATED DEVELOPMENT CORPORATION,Nicobars,Proposal Withdrawal Request Accepted,2025-01-07T06:08:10.762+00:00,2025-02-06T06:11:10.437+00:00,7262200.0,16610.0,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=116871550
 state,36,Telangana,stat,,projects,0,,,,,,,,,,
 state,36,Telangana,stat,,active_projects,0,,,,,,,,,,
+state,36,Telangana,stat,,applications,0,,,,,,,,,,
 state,36,Telangana,stat,,ec_granted,0,,,,,,,,,,
+state,36,Telangana,stat,,ec_pending,0,,,,,,,,,,
 state,36,Telangana,stat,,ec_rejected,0,,,,,,,,,,
 state,36,Telangana,stat,,delisted_or_removed,0,,,,,,,,,,
 state,36,Telangana,stat,,total_cost_lakhs,0,,,,,,,,,,
@@ -1509,14 +1701,16 @@ state,36,Telangana,run,,run_date,,,,,,,,,,,
 state,36,Telangana,run,,run_url,,,,,,,,,,,
 state,37,Ladakh,stat,,projects,249,,,,,,,,,,
 state,37,Ladakh,stat,,active_projects,245,,,,,,,,,,
-state,37,Ladakh,stat,,ec_granted,0,,,,,,,,,,
+state,37,Ladakh,stat,,applications,245,,,,,,,,,,
+state,37,Ladakh,stat,,ec_granted,2,,,,,,,,,,
+state,37,Ladakh,stat,,ec_pending,237,,,,,,,,,,
 state,37,Ladakh,stat,,ec_rejected,0,,,,,,,,,,
 state,37,Ladakh,stat,,delisted_or_removed,4,,,,,,,,,,
 state,37,Ladakh,stat,,total_cost_lakhs,17103557.66,,,,,,,,,,
 state,37,Ladakh,stat,,cost_outliers_excluded,12,,,,,,,,,,
 state,37,Ladakh,stat,,total_land_ha,2626557.3711,,,,,,,,,,
 state,37,Ladakh,stat,,latest_application,2025-08-09T08:09:00.470+00:00,,,,,,,,,,
-state,37,Ladakh,stat,,latest_grant,,,,,,,,,,,
+state,37,Ladakh,stat,,latest_grant,2024-11-25T05:01:07.370+00:00,,,,,,,,,,
 state,37,Ladakh,stat,,changes_added,0,,,,,,,,,,
 state,37,Ladakh,stat,,changes_removed,0,,,,,,,,,,
 state,37,Ladakh,stat,,changes_updated,0,,,,,,,,,,
@@ -1531,9 +1725,16 @@ state,37,Ladakh,status,,Proposal Accepted and Referred to SEAC,1,,,,,,,,,,
 state,37,Ladakh,status,,Pending on UA for Compensatory Levies Payment,1,,,,,,,,,,
 state,37,Ladakh,status,,Pending at UA for Compliance Report,1,,,,,,,,,,
 state,37,Ladakh,status,,Proposal returned in present form,1,,,,,,,,,,
+state,37,Ladakh,applications_by_year,,2022,1,,,,,,,,,,
+state,37,Ladakh,applications_by_year,,2023,113,,,,,,,,,,
+state,37,Ladakh,applications_by_year,,2024,71,,,,,,,,,,
+state,37,Ladakh,applications_by_year,,2025,60,,,,,,,,,,
+state,37,Ladakh,grants_by_year,,2024,2,,,,,,,,,,
 state,37,Ladakh,run,,run_status,ok,,,,,,,,,,
 state,37,Ladakh,run,,run_date,2026-09-30T04:58:08Z,,,,,,,,,,
 state,37,Ladakh,run,,run_url,,,,,,,,,,,
+state,37,Ladakh,top_recent_ec,1,,,FP/LA/Pipeline/460138/2024,EXTENSION OF STP OUTLET PIPE UPTO DEWACHAN HOTEL AGLING,Department of Irrigation,Leh,Final Diversion Order Issued,2024-01-28T12:26:31.324+00:00,2024-11-25T05:01:07.370+00:00,113.65,0.117,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=42063026
+state,37,Ladakh,top_recent_ec,2,,,FP/LA/ROAD/401595/2022,Diversion of forest land for Widening/UP- gradation to 2 lane/Intermediate lane of NH-301 (Kargil-Zanskar Road) in the UT of Ladakh., NATIONAL HIGHWAYS & INFRASTRUCTURE DEVELOPMENT CORPORATION LIMITED,Kargil,Final Diversion Order Issued,2022-09-28T05:10:40.002+00:00,2024-11-04T13:30:26.883+00:00,114300.0,36.0895,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=945137
 state,37,Ladakh,top_cost,1,,,WL/LA/DEF/465822/2024,CONSTRUCTION AND INSTALLATION OF WASTE DISPOSAL AND PROCESSING PLANT AT HANLE VILLAGE (UT OF LADAKH),Ministry of Defense,Leh,,2024-03-13T07:21:29.221+00:00,,7994859.0,0.0151,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=53115249
 state,37,Ladakh,top_cost,2,,,WL/LA/DEF/479091/2024,ARMY SIGNALS MOBILE TELE COMMUNICATION TOWER (ASCON NODE) AT LUKUNG,Ministry of Defense,Leh,,2024-06-05T08:50:14.702+00:00,,2500000.0,0.023,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=73968647
 state,37,Ladakh,top_cost,3,,,WL/LA/SRY/468583/2024,ARMY SIGNALS MOBILE TELECOMMUNICATION TOWER (ASCON NODE) AT LUKUNG,Ministry of Defense,Leh,,2024-04-06T07:23:04.141+00:00,,2500000.0,0.24,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=59164451
@@ -1556,19 +1757,21 @@ state,37,Ladakh,top_land,9,,,WL/LA/DEF/531149/2025,FORMATION AMMUNITION STORAGE 
 state,37,Ladakh,top_land,10,,,WL/LA/DEF/530301/2025,BRIGADE HQADQUARTERS LOCATION AT CHUSHUL,Ministry of Defense,Leh,,2025-03-19T13:18:01.833+00:00,,857.0,46.3,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=122790234
 state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,projects,127,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,active_projects,77,,,,,,,,,,
-state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,ec_granted,0,,,,,,,,,,
+state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,applications,77,,,,,,,,,,
+state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,ec_granted,22,,,,,,,,,,
+state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,ec_pending,53,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,ec_rejected,0,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,delisted_or_removed,50,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,total_cost_lakhs,2959307.39,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,cost_outliers_excluded,0,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,total_land_ha,17787.7112,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,latest_application,2025-07-24T10:10:30.490+00:00,,,,,,,,,,
-state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,latest_grant,,,,,,,,,,,
+state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,latest_grant,2025-05-05T11:36:19.084+00:00,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,changes_added,0,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,changes_removed,0,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,changes_updated,0,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,changes_status,0,,,,,,,,,,
-state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,compared_with,2026-09-30T06:14:05Z,,,,,,,,,,
+state,38,Dadra And Nagar Haveli And Daman And Diu,stat,,compared_with,2026-09-30T16:00:09+05:30,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,status,,DELISTED_BY_SYSTEM,36,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,status,,(none),21,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,status,,REMOVED,14,,,,,,,,,,
@@ -1595,9 +1798,27 @@ state,38,Dadra And Nagar Haveli And Daman And Diu,status,,Pending at UA for Comp
 state,38,Dadra And Nagar Haveli And Daman And Diu,status,,Pending at UA due to EDS by MS after PSC-I,1,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,status,,Pending on UA for Levies Payment,1,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,status,,TOR GRANTED,1,,,,,,,,,,
+state,38,Dadra And Nagar Haveli And Daman And Diu,applications_by_year,,2022,13,,,,,,,,,,
+state,38,Dadra And Nagar Haveli And Daman And Diu,applications_by_year,,2023,23,,,,,,,,,,
+state,38,Dadra And Nagar Haveli And Daman And Diu,applications_by_year,,2024,24,,,,,,,,,,
+state,38,Dadra And Nagar Haveli And Daman And Diu,applications_by_year,,2025,17,,,,,,,,,,
+state,38,Dadra And Nagar Haveli And Daman And Diu,grants_by_year,,2022,1,,,,,,,,,,
+state,38,Dadra And Nagar Haveli And Daman And Diu,grants_by_year,,2023,5,,,,,,,,,,
+state,38,Dadra And Nagar Haveli And Daman And Diu,grants_by_year,,2024,11,,,,,,,,,,
+state,38,Dadra And Nagar Haveli And Daman And Diu,grants_by_year,,2025,5,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,run,,run_status,ok,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,run,,run_date,2026-09-30T04:58:08Z,,,,,,,,,,
 state,38,Dadra And Nagar Haveli And Daman And Diu,run,,run_url,,,,,,,,,,,
+state,38,Dadra And Nagar Haveli And Daman And Diu,top_recent_ec,1,,,SIA/DN/INFRA2/528373/2025,Krishna Tower ,Jay jalaram developers,Dadra & Nagar Haveli,Withdrawal Request Accepted,2025-03-08T10:07:57.877+00:00,2025-05-05T11:36:19.084+00:00,6681.68,1.06,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=121975875
+state,38,Dadra And Nagar Haveli And Daman And Diu,top_recent_ec,2,,,SIA/DN/INFRA2/459995/2024,Abhinandan Mountreea,CHETANKUMAR SHAH,Dadra & Nagar Haveli,Proposal Withdrawal Request Accepted,2024-01-27T06:23:17.472+00:00,2025-04-29T07:11:08.819+00:00,1282.0,3.7105,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=41799038
+state,38,Dadra And Nagar Haveli And Daman And Diu,top_recent_ec,3,,,FP/DN/TRANS/427484/2023,Diversion of Protected Forest land for the Laying of 11KV Underground HDD Electric Cable from Vaghchippa Substation to APJ Abdul Kalam College., DADRA AND NAGAR HAVELI AND DAMAN AND DIU POWER DISTRIBUTION CORPORATION LIM,Dadra & Nagar Haveli,Final Diversion Order Issued,2023-04-28T08:02:07.759+00:00,2025-02-19T11:13:06.555+00:00,50.0,0.0387,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=4928430
+state,38,Dadra And Nagar Haveli And Daman And Diu,top_recent_ec,4,,,SIA/DN/INFRA2/460848/2024,Palladium High Street,DIGVIJAYSINH PARMAR,Dadra & Nagar Haveli,Proposal Withdrawal Request Accepted,2024-02-03T06:09:16.001+00:00,2025-02-17T11:38:05.433+00:00,8036.23,1.6875,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=43686470
+state,38,Dadra And Nagar Haveli And Daman And Diu,top_recent_ec,5,,,IA/DN/IND1/506591/2025,POLYCAB INDIA LIMITED, POLYCAB INDIA LIMITED,Daman,Standard ToR Granted,2024-11-19T10:05:21.698+00:00,2025-01-06T07:21:41.653+00:00,32435.9,8.319,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=111847641
+state,38,Dadra And Nagar Haveli And Daman And Diu,top_recent_ec,6,,,IA/DN/IND2/500703/2024,Set up of Natural Gas Distribution pipeline Networks with associated facilities by M/s. Gujarat Gas Limited at Union Territory Dadara & Nagar Haveli,GUJARAT GAS LIMITED,Dadra & Nagar Haveli,ToR Granted,2024-10-11T08:31:11.765+00:00,2024-12-19T04:07:35.330+00:00,1300.0,0.3478,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=109523574
+state,38,Dadra And Nagar Haveli And Daman And Diu,top_recent_ec,7,,,FP/DN/ROAD/403082/2022,Widening of Existing road from SSR College (Ch4/0 to Canal Junction 5/5 Km.),EXECUTIVE ENGINEER ROAD DIVISION,Dadra & Nagar Haveli,Final Diversion Order Issued,2022-10-14T06:51:16.182+00:00,2024-11-18T16:40:55.198+00:00,2100.0,0.75,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=1135831
+state,38,Dadra And Nagar Haveli And Daman And Diu,top_recent_ec,8,,,FP/DN/TRANS/441454/2023,Diversion of Forest land (PF/RF) for the Laying of 11KV Underground HDD Electric Cables from Silli Substation to Kilvani via Galonda., DADRA AND NAGAR HAVELI AND DAMAN AND DIU POWER DISTRIBUTION CORPORATION LIM,Dadra & Nagar Haveli,Final Diversion Order Issued,2023-08-23T07:25:38.943+00:00,2024-11-18T16:39:21.605+00:00,135.0,0.2059,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=8222262
+state,38,Dadra And Nagar Haveli And Daman And Diu,top_recent_ec,9,,,FP/DN/TRANS/445128/2023,765 kV D/c Navsari-Padge Transmission line, POWER GRID CORPORATION OF INDIA LTD,Dadra & Nagar Haveli,Final Diversion Order Issued,2023-09-20T11:53:19.056+00:00,2024-10-15T05:34:32.702+00:00,89500.0,31.301,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=11323822
+state,38,Dadra And Nagar Haveli And Daman And Diu,top_recent_ec,10,,,FP/DN/TRANS/453597/2023,"Diversion of Forest Land for the laying of 11 KV HDD Underground Electric Cable for the Netaji Subhas Chandra Bose Military Academy, Randha.", DADRA AND NAGAR HAVELI AND DAMAN AND DIU POWER DISTRIBUTION CORPORATION LIM,Dadra & Nagar Haveli,Final Diversion Order Issued,2023-11-28T09:43:47.226+00:00,2024-10-07T11:14:56.651+00:00,65.0,0.0289,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=27595084
 state,38,Dadra And Nagar Haveli And Daman And Diu,top_cost,1,,,IA/DN/IND2/425936/2023,Expansion of Polyester manufacturing capacity and establishing r-PET unit, RELIANCE INDUSTRIES LIMITED,DADRA AND NAGAR HAVELI,,2023-04-13T05:40:50.473+00:00,,1160236.0,62.32,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=4596990
 state,38,Dadra And Nagar Haveli And Daman And Diu,top_cost,2,,,IA/DN/IND2/401672/2022,Expansion of Polyester manufacturing capacity and establishing r-PET unit, RELIANCE INDUSTRIES LIMITED,DADRA AND NAGAR HAVELI,TOR GRANTED,2022-09-28T11:56:23.616+00:00,2022-11-16T18:04:13.563+00:00,1160236.0,62.32,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=955272
 state,38,Dadra And Nagar Haveli And Daman And Diu,top_cost,3,,,IA/DN/CRZ/460231/2024,765 kV D/c Navsari-Padge Transmission line, POWER GRID CORPORATION OF INDIA LTD,Valsad,Under Examination with SCZMA,2024-01-29T13:10:53.569+00:00,,89500.0,31.301,https://parivesh.nic.in/newupgrade/#/report/ec?proposalId=42337606

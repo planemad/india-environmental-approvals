@@ -51,6 +51,9 @@ details.cols label { display: block; padding: 2px 0; }
 .wrap { overflow: auto; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; max-height: 70vh; }
 table { border-collapse: collapse; width: 100%; }
 th, td { padding: 6px 10px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; max-width: 320px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+thead tr:first-child th { height: 34px; }
+thead tr.filters th { top: 34px; cursor: default; padding: 3px 6px; font-weight: 400; }
+thead tr.filters input { width: 100%; min-width: 70px; padding: 2px 6px; font-size: 12px; }
 th { position: sticky; top: 0; background: var(--panel); cursor: pointer; user-select: none; z-index: 1; }
 th.sorted::after { content: " ▲"; font-size: 10px; }
 th.sorted.desc::after { content: " ▼"; }
@@ -74,7 +77,19 @@ tr.detail td { white-space: normal; background: var(--bg); max-width: none; }
 .msg { padding: 32px; text-align: center; color: var(--muted); }
 .msg.err { color: var(--del-fg); }
 
-.picker { position: sticky; top: 0; z-index: 10; display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding: 10px 16px; background: var(--accent-soft); border-bottom: 1px solid var(--border); }
+.picker {  display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding: 10px 16px; background: var(--accent-soft); border-bottom: 1px solid var(--border); }
+.state-head { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+.open-wrap { flex: 0 0 min(340px, 100%); display: flex; }
+.open-wrap .scard { flex: 1; }
+.state-ov { flex: 1 1 420px; min-width: 0; }
+.state-ov .runbar { background: var(--panel); }
+.scard .close { margin-left: auto; color: var(--muted); font-size: 16px; line-height: 1; padding: 2px 6px; }
+.scard.open:hover .close { color: var(--bad); }
+.scard.open svg.spark { height: 72px; }
+.scard .top .pill + .close { margin-left: 8px; }
+.picker #cards { flex: 1 1 100%; margin-top: 4px; }
+.picker [hidden], #browse[hidden] { display: none; }
+#browse { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
 .picker label { font-weight: 600; color: var(--accent); font-size: 15px; }
 .picker select { font-size: 16px; font-weight: 600; padding: 8px 12px; border: 2px solid var(--accent); min-width: min(320px, 100%); cursor: pointer; }
 #dash > :first-child { margin-top: 0; }
@@ -107,16 +122,28 @@ h2 small { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 
 .dtable tr.click { cursor: pointer; }
 .dtable tr.click:hover td { background: var(--accent-soft); }
 .dtable .empty-row { color: var(--muted); padding: 12px; }
+.group-head { font-size: 13px; font-weight: 600; color: var(--accent); margin: 12px 0 6px; }
+.group-head:first-child { margin-top: 0; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
 .scard { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; text-align: left; font: inherit; color: inherit; }
 .scard:hover { border-color: var(--accent); }
-.scard.idle { opacity: .65; }
+.scard:disabled { opacity: .55; cursor: default; }
+.scard:disabled:hover { border-color: var(--border); }
+.scard .pct { display: flex; align-items: baseline; gap: 6px; }
+.scard .pct .n { font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--ok); }
+.scard .pct .l { color: var(--muted); font-size: 12px; }
+.scard .pend { font-size: 13px; }
+.scard svg.spark { width: 100%; height: 32px; display: block; }
+.scard svg.spark rect.bar { fill: var(--border); }
+.scard svg.spark path.area { fill: var(--accent-soft); }
+.scard svg.spark path.line { fill: none; stroke: var(--accent); stroke-width: 1.5; }
+.scard .key { display: inline-flex; align-items: center; gap: 4px; line-height: 1; }
+.scard .key .sw { display: block; flex: none; }
+.scard .key .sw.box { width: 8px; height: 8px; background: var(--border); border: 1px solid var(--muted); margin-left: 0; }
+.scard .key .sw.ln { width: 12px; height: 0; border-top: 2px solid var(--accent); margin-left: 6px; }
+.scard .yrs { display: flex; justify-content: space-between; color: var(--muted); font-size: 10px; margin-top: -4px; align-items: center; }
 .scard .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
 .scard .name { font-weight: 600; }
-.scard .when { color: var(--muted); font-size: 12px; }
-.scard .kv { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
-.scard .kv .n { font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; }
-.scard .kv .l { color: var(--muted); font-size: 11px; }
 .scard .chg { font-size: 12px; color: var(--muted); }
 .bars { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
 .bar-row { display: grid; grid-template-columns: minmax(120px, 240px) 1fr 56px; gap: 8px; align-items: center; font-size: 12px; padding: 2px 0; }
@@ -130,14 +157,15 @@ h2 small { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 
 <header>
   <h1><a class="home" href="./">Parivesh Dashboard</a><small>A public data mirror of <a href="https://parivesh.nic.in" target="_blank" rel="noopener">PARIVESH</a>, India's environmental clearance portal. Data is refreshed weekly, with project stats and change history for every state. <a href="https://parivesh.nic.in" target="_blank" rel="noopener">Visit parivesh.nic.in</a> for the official records.</small></h1>
 </header>
-<nav class="picker">
-  <label for="state">Browse by state</label>
-  <select id="state"></select>
+<nav class="picker" id="picker">
+  <div id="browse"><label for="state">Browse by state</label>
+  <select id="state"></select></div>
+  <div id="cards"></div>
 </nav>
 <main>
   <section id="dash"></section>
-  <details class="sec" id="viewer" hidden>
-  <summary>Change history <small>Row-level diffs between each published update</small></summary>
+  <section id="viewer" hidden>
+  <h2>Project List <small>Row-level diffs between each published update</small></h2>
   <div class="bar" id="nav" hidden>
     <button id="older" title="Older version (←)">‹ Older</button>
     <select id="version" class="version"></select>
@@ -148,10 +176,9 @@ h2 small { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 
   <div class="chips" id="trans"></div>
   <div class="bar" id="controls" hidden>
     <input type="search" id="q" placeholder="Search rows…" size="28">
-    <label class="inline"><input type="checkbox" id="unchanged"> Show unchanged rows</label>
+    <label class="inline" id="onlychg-wrap" hidden><input type="checkbox" id="onlychg"> Showing only changes</label>
     <span class="spacer"></span>
     <a id="rawcsv" target="_blank" rel="noopener" title="This version's CSV file on GitHub">Raw CSV on GitHub</a>
-    <a id="mapview" target="_blank" rel="noopener" title="Open this state's layer on the map">Map view</a>
     <button id="allcols">Show all columns</button>
     <button id="dlcsv" title="Downloads the rows and columns currently shown">Download CSV</button>
     <details class="cols"><summary>Columns</summary><div id="colpick"></div></details>
@@ -159,10 +186,11 @@ h2 small { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 
   <div id="status" class="msg">Select a state to begin.</div>
   <div class="wrap" id="tablewrap" hidden><table id="tbl"></table></div>
   <div class="pager" id="pager"></div>
-  </details>
+  </section>
   <section id="dash2"></section>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <script src="photo-backdrop.js"></script>
 <script>
 $('header').photoBackdrop({
@@ -190,6 +218,7 @@ const STATES = {
   30: 'Goa', 31: 'Lakshadweep', 32: 'Kerala', 33: 'Tamil Nadu', 34: 'Puducherry', 35: 'Andaman And Nicobar Islands',
   36: 'Telangana', 37: 'Ladakh', 38: 'Dadra And Nagar Haveli And Daman And Diu'
 };
+const UTS = new Set([1, 4, 7, 31, 34, 35, 37, 38]);
 const LAYERS = {
   1: 'jammu-and-kashmir', 2: 'himachal-pradesh', 3: 'punjab', 4: 'chandigarh', 5: 'uttarakhand', 6: 'haryana', 7: 'delhi',
   8: 'rajasthan', 9: 'uttar-pradesh', 10: 'bihar', 11: 'sikkim', 12: 'arunachal-pradesh', 13: 'nagaland', 14: 'manipur',
@@ -202,7 +231,7 @@ const MAP_LAYERS = ['jammu-and-kashmir', 'himachal-pradesh', 'punjab', 'chandiga
 const MARKS = { added: '+', removed: '−', updated: '~', same: '' };
 
 const $ = id => document.getElementById(id);
-const st = { code: null, commits: [], idx: 0, cur: null, diff: null, items: [], shown: [], cols: [], filter: 'all', transition: null, sort: null, page: 0, expanded: new Set(), tok: 0, dashTok: 0 };
+const st = { code: null, commits: [], idx: 0, cur: null, diff: null, items: [], shown: [], cols: [], filter: 'all', transition: null, sort: null, page: 0, expanded: new Set(), tok: 0, dashTok: 0, colFilters: {} };
 const csvCache = new Map();
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -294,21 +323,29 @@ function counts() {
   return c;
 }
 
+const DEFAULT_SORT = { f: 'Application Date', dir: -1 };
+function hasChanges() {
+  const c = counts();
+  return st.diff.hasPrev && c.added + c.updated + c.removed > 0;
+}
+
 function applyFilters() {
+  const cf = Object.entries(st.colFilters).filter(([, v]) => v);
   const q = $('q').value.trim().toLowerCase();
-  const showAll = $('unchanged').checked || !st.diff.hasPrev;
+  const showAll = !hasChanges() || !$('onlychg').checked;
   let list = st.items.filter(it => {
     if (!showAll && it.type === 'same') return false;
     if (st.filter !== 'all' && it.type !== st.filter) return false;
     if (st.transition && it.transition !== st.transition) return false;
+    for (const [f, v] of cf) if (!String(it.row[f] ?? '').toLowerCase().includes(v.toLowerCase())) return false;
     if (q) {
       it.hay ??= Object.values(it.row).join('\t').toLowerCase();
       if (!it.hay.includes(q)) return false;
     }
     return true;
   });
-  if (st.sort) {
-    const { f, dir } = st.sort;
+  {
+    const { f, dir } = st.sort || DEFAULT_SORT;
     list = list.slice().sort((x, y) => {
       const a = x.row[f] ?? '', b = y.row[f] ?? '';
       const na = parseFloat(a), nb = parseFloat(b);
@@ -369,7 +406,9 @@ function renderTable() {
   const pages = Math.max(1, Math.ceil(st.shown.length / PAGE_SIZE));
   st.page = Math.min(st.page, pages - 1);
   const slice = st.shown.slice(st.page * PAGE_SIZE, (st.page + 1) * PAGE_SIZE);
-  const head = `<tr><th style="width:22px"></th>${st.cols.map(f => `<th data-sort="${esc(f)}" class="${st.sort?.f === f ? 'sorted' + (st.sort.dir < 0 ? ' desc' : '') : ''}">${esc(f)}</th>`).join('')}</tr>`;
+  const sort = st.sort || DEFAULT_SORT;
+  const head = `<tr><th style="width:22px"></th>${st.cols.map(f => `<th data-sort="${esc(f)}" class="${sort.f === f ? 'sorted' + (sort.dir < 0 ? ' desc' : '') : ''}">${esc(f)}</th>`).join('')}</tr>
+    <tr class="filters"><th></th>${st.cols.map(f => `<th><input type="search" data-cf="${esc(f)}" placeholder="Filter" value="${esc(st.colFilters[f] || '')}"></th>`).join('')}</tr>`;
   const body = slice.map(it => {
     const k = `${it.type}:${it.id}`;
     const open = st.expanded.has(k);
@@ -380,7 +419,7 @@ function renderTable() {
   $('tbl').innerHTML = `<thead>${head}</thead><tbody>${body}</tbody>`;
   $('tablewrap').hidden = !slice.length;
   $('status').hidden = !!slice.length;
-  if (!slice.length) $('status').textContent = st.diff.hasPrev && !$('unchanged').checked ? 'No changed rows match the current filters.' : 'No rows match the current filters.';
+  if (!slice.length) $('status').textContent = hasChanges() && $('onlychg').checked ? 'No changed rows match the current filters.' : 'No rows match the current filters.';
   $('pager').innerHTML = pages > 1
     ? `<button id="prevp" ${st.page === 0 ? 'disabled' : ''}>‹</button> Page ${st.page + 1} of ${pages} · ${st.shown.length} rows <button id="nextp" ${st.page >= pages - 1 ? 'disabled' : ''}>›</button>`
     : (slice.length ? `${st.shown.length} rows` : '');
@@ -420,10 +459,11 @@ async function showVersion() {
     st.transition = null;
     st.page = 0;
     st.expanded.clear();
+    $('onlychg-wrap').hidden = !hasChanges();
+    $('onlychg').checked = hasChanges();
     st.cols = DEFAULT_COLS.filter(f => cur.fields.includes(f));
     if (!st.cols.length) st.cols = cur.fields.slice(0, 8);
     $('rawcsv').href = `https://github.com/${REPO}/blob/${commit.sha}/${csvPath(st.code)}`;
-    $('mapview').href = mapUrl(st.code);
     $('controls').hidden = false;
     renderColPicker();
     renderSummary();
@@ -437,10 +477,11 @@ async function showVersion() {
 
 async function selectState(code, sha) {
   st.code = code;
+  st.colFilters = {};
+  st.sort = null;
   st.commits = [];
   st.tok++;
   $('viewer').hidden = !code;
-  $('viewer').open = !!sha;
   renderDash(code);
   ['nav', 'controls'].forEach(id => $(id).hidden = true);
   ['chips', 'trans', 'meta'].forEach(id => $(id).innerHTML = '');
@@ -542,18 +583,24 @@ function runHtml(sc, all) {
   return `<div class="runbar"><span class="pill ${status}">${RUN_LABELS[status] || status}</span><span>${when}${states}${link}${howto}</span></div>`;
 }
 
-function statsHtml(sc) {
+function statsHtml(sc, compact) {
   const s = sc.stat, outliers = +s.cost_outliers_excluded || 0;
   return `<div class="tiles">
-    ${tileHtml(nf(s.projects), 'Projects tracked')}
+    ${compact ? '' : tileHtml(nf(s.projects), 'Projects tracked')}
     ${tileHtml(nf(s.active_projects), 'Active (not delisted/removed)')}
-    ${tileHtml(nf(s.ec_granted), 'EC granted')}
+    ${compact ? '' : tileHtml(nf(s.ec_granted), 'EC granted')}
     ${tileHtml(nf(s.ec_rejected), 'EC rejected')}
     ${tileHtml(fmtCost(s.total_cost_lakhs), `Total cost of active projects${outliers ? ` (${outliers} implausible excluded)` : ''}`)}
     ${tileHtml(fmtHa(s.total_land_ha), 'Total land requirement (active)')}
     ${tileHtml(dateOrDash(s.latest_application), 'Latest application')}
     ${tileHtml(dateOrDash(s.latest_grant), 'Latest EC grant')}
   </div>`;
+}
+
+function stateOverview(code, sc) {
+  const r = sc.run, link = r.run_url ? ` · <a href="${esc(r.run_url)}" target="_blank" rel="noopener">workflow run</a>` : '';
+  const howto = ` · <a href="https://github.com/${REPO}/blob/main/README.md#running-an-update-manually" target="_blank" rel="noopener">How to trigger an update</a>`;
+  return `<div class="runbar"><a href="${mapUrl(code)}" target="_blank" rel="noopener">Map view</a>${link}${howto}</div>${statsHtml(sc, true)}`;
 }
 
 function projectCell(r) {
@@ -604,14 +651,55 @@ function stateRows(scopes) {
   return rows;
 }
 
-function stateCards(scopes) {
-  const cards = stateRows(scopes).map(r => {
-    const has = r.projects > 0, run = r.runDate ? `${fmtDate(r.runDate)} (${ago(r.runDate)})` : 'never run';
-    const kv = (n, l) => `<div><div class="n">${has ? n : '—'}</div><div class="l">${l}</div></div>`;
-    const chg = has ? `+${nf(r.added)} new · ${nf(r.status_changes)} status changes` : 'No data yet';
-    return `<button class="scard${has ? '' : ' idle'}" data-code="${r.code}"><div class="top"><span class="name">${esc(r.name)}</span><span class="pill ${r.status}">${RUN_LABELS[r.status] || r.status}</span></div><div class="when">Last run ${run}</div><div class="kv">${kv(nf(r.projects), 'Projects')}${kv(nf(r.granted), 'EC granted')}${kv(fmtCost(r.cost), 'Cost')}</div><div class="chg">${chg}</div></button>`;
-  }).join('');
-  return `<h2>States <small>run status and headline stats · click for details</small></h2><div class="cards">${cards}</div>`;
+const pct = (n, d) => {
+  const v = d ? n / d * 100 : 0;
+  return v > 0 && v < 1 ? '<1' : v.toFixed(0);
+};
+
+function sparkHtml(granted, applied, years) {
+  const series = list => new Map((list || []).map(r => [+r.label, +r.value]));
+  const g = series(granted), a = series(applied);
+  const ys = d3.range(years[0], years[1] + 1);
+  const data = ys.map(y => [y, g.get(y) || 0]), bars = ys.map(y => [y, a.get(y) || 0]);
+  const x = d3.scaleLinear(years, [2, 198]), y = d3.scaleLinear([0, d3.max([...data, ...bars], d => d[1]) || 1], [30, 3]);
+  const bw = Math.max(2, 196 / ys.length * .7);
+  const line = d3.line().x(d => x(d[0])).y(d => y(d[1])).curve(d3.curveMonotoneX);
+  const area = d3.area().x(d => x(d[0])).y0(30).y1(d => y(d[1])).curve(d3.curveMonotoneX);
+  const rects = bars.map(d => `<rect class="bar" x="${x(d[0]) - bw / 2}" y="${y(d[1])}" width="${bw}" height="${30 - y(d[1])}"/>`).join('');
+  const title = ys.map((yr, i) => `${yr}: ${bars[i][1]} applications, ${data[i][1]} EC granted`).join('\n');
+  return `<svg class="spark" viewBox="0 0 200 32" preserveAspectRatio="none" role="img" aria-label="Applications and EC granted per year"><title>${title}</title>${rects}<path class="area" d="${area(data)}"/><path class="line" d="${line(data)}"/></svg><div class="yrs"><span>${years[0]}</span><span class="key"><i class="sw box"></i>applied <i class="sw ln"></i>granted</span><span>${years[1]}</span></div>`;
+}
+
+function groupedStates() {
+  const sorted = Object.entries(STATES).sort((a, b) => a[1].localeCompare(b[1]));
+  return [['States', sorted.filter(([c]) => !UTS.has(+c))], ['Union Territories', sorted.filter(([c]) => UTS.has(+c))]];
+}
+
+function stateCards(scopes, open) {
+  const all = [...(scopes.all?.lists.grants_by_year || []), ...(scopes.all?.lists.applications_by_year || [])].map(r => +r.label);
+  const years = [d3.min(all) ?? new Date().getFullYear(), d3.max(all) ?? new Date().getFullYear()];
+  const card = ([code, name], expanded) => {
+    const sc = scopes[code] || { stat: {}, run: {}, lists: {} }, s = sc.stat;
+    const projects = +s.projects || 0;
+    if (!projects) return `<button class="scard" disabled><div class="top"><span class="name">${esc(name)}</span></div><div class="chg">No data yet</div></button>`;
+    const apps = +s.applications || 0, status = effStatus(sc.run.run_status || 'not_run', sc.run.run_date);
+    const pill = status === 'ok' ? '' : `<span class="pill ${status}">${RUN_LABELS[status] || status}</span>`;
+    const when = sc.run.run_date ? `Updated ${ago(sc.run.run_date)}` : 'Never updated';
+    const chg = `+${nf(s.changes_added)} new · ${nf(s.changes_status)} status changes · ${when}`;
+    const extra = expanded ? `<div class="pend">${nf(s.ec_granted)} granted · ${nf(s.ec_pending)} pending · ${nf(projects)} projects tracked</div>` : '';
+    const attrs = expanded ? `class="scard open" data-reset="1" title="Close and show all of India"` : `class="scard" data-code="${code}"`;
+    const close = expanded ? '<span class="close" aria-label="Close">✕</span>' : '';
+    return `<button ${attrs}><div class="top"><span class="name">${esc(name)}</span>${pill}${close}</div><div class="pct"><span class="n">${pct(+s.ec_granted, apps)}%</span><span class="l">EC granted</span></div><div class="pend">${pct(+s.ec_pending, apps)}% pending of ${nf(apps)} applications</div>${extra}${sparkHtml(sc.lists.grants_by_year, sc.lists.applications_by_year, years)}<div class="chg">${chg}</div></button>`;
+  };
+  if (open) return `<div class="open-wrap">${card([open, STATES[open]], true)}</div>`;
+  return groupedStates().map(([label, list]) => `<div class="group-head">${label}</div><div class="cards">${list.map(e => card(e)).join('')}</div>`).join('');
+}
+
+function syncPicker(scopes) {
+  const cur = $('state').value;
+  $('state').innerHTML = '<option value="">All India</option>' + groupedStates().map(([label, list]) =>
+    `<optgroup label="${label}">${list.map(([c, n]) => `<option value="${c}"${+scopes[c]?.stat.projects ? '' : ' disabled'}>${n}</option>`).join('')}</optgroup>`).join('');
+  $('state').value = cur;
 }
 
 function statesTable(scopes) {
@@ -627,17 +715,22 @@ async function renderDash(code) {
   const all = !code;
   el.innerHTML = '<div class="msg">Loading dashboard…</div>';
   $('dash2').innerHTML = '';
+  $('cards').innerHTML = '';
   let scopes;
   try { scopes = await loadDashboard(); } catch (e) { if (tok === st.dashTok) el.innerHTML = `<div class="msg err">${esc(e.message)}</div>`; return; }
   if (tok !== st.dashTok) return;
+  syncPicker(scopes);
+  const open = all || !+scopes[code]?.stat.projects ? null : code;
+  $('cards').innerHTML = open ? `<div class="state-head">${stateCards(scopes, open)}<div class="state-ov">${stateOverview(open, scopes[open])}</div></div>` : stateCards(scopes);
+  $('browse').hidden = !!open;
   const sc = scopes[all ? 'all' : code];
   const title = all ? 'All India' : STATES[code];
   if (!sc || !+sc.stat.projects) {
-    el.innerHTML = (all ? stateCards(scopes) + statesTable(scopes) : '') + `<h2>${esc(title)}</h2>${sc ? runHtml(sc, all) : ''}${linksHtml(code)}<div class="msg">No data published yet for ${esc(title)}.</div>`;
+    el.innerHTML = (all ? statesTable(scopes) : '') + `<h2>${esc(title)}</h2>${sc ? runHtml(sc, all) : ''}${linksHtml(code)}<div class="msg">No data published yet for ${esc(title)}.</div>`;
     return;
   }
   const tops = TOPS.map(([key, heading, vh, fn]) => sec(key, heading, 'top 10', listTable(sc.lists[key], all, vh, fn))).join('');
-  el.innerHTML = `${all ? stateCards(scopes) + statesTable(scopes) : ''}<h2>${esc(title)} <small>overview</small></h2>${runHtml(sc, all)}${linksHtml(code)}${statsHtml(sc)}`;
+  el.innerHTML = all ? `${statesTable(scopes)}<h2>${esc(title)} <small>overview</small></h2>${runHtml(sc, all)}${linksHtml(code)}${statsHtml(sc)}` : '';
   $('dash2').innerHTML = `${changesHtml(sc, all)}${statusBars(sc)}<div class="grid2">${tops}</div>`;
 }
 
@@ -647,6 +740,13 @@ for (const id of ['dash', 'dash2']) {
     if (key) e.target.open ? openSecs.add(key) : openSecs.delete(key);
   }, true);
 }
+
+$('cards').addEventListener('click', e => {
+  const b = e.target.closest('[data-code], [data-reset]');
+  if (!b) return;
+  $('state').value = b.dataset.code || '';
+  selectState(b.dataset.code || '');
+});
 
 $('dash').addEventListener('click', e => {
   if (e.target.closest('a')) return;
@@ -661,13 +761,13 @@ $('dash').addEventListener('click', e => {
   if (tr) { $('state').value = tr.dataset.code; selectState(tr.dataset.code); }
 });
 
-$('state').innerHTML = '<option value="">All India</option>' + Object.entries(STATES).map(([c, n]) => `<option value="${c}">${n} (${c})</option>`).join('');
+$('state').innerHTML = '<option value="">All India</option>' + groupedStates().map(([label, list]) => `<optgroup label="${label}">${list.map(([c, n]) => `<option value="${c}">${n}</option>`).join('')}</optgroup>`).join('');
 $('state').addEventListener('change', e => selectState(e.target.value));
 $('older').addEventListener('click', () => go(1));
 $('newer').addEventListener('click', () => go(-1));
 $('version').addEventListener('change', e => { st.idx = +e.target.value; showVersion(); });
 $('q').addEventListener('input', () => { st.page = 0; renderTable(); });
-$('unchanged').addEventListener('change', () => { st.page = 0; renderTable(); });
+$('onlychg').addEventListener('change', () => { st.page = 0; renderTable(); });
 $('colpick').addEventListener('change', () => {
   st.cols = [...$('colpick').querySelectorAll('input:checked')].map(i => i.value);
   renderTable();
@@ -701,11 +801,22 @@ $('trans').addEventListener('click', e => {
   renderSummary();
   renderTable();
 });
+$('tbl').addEventListener('input', e => {
+  const f = e.target.dataset?.cf;
+  if (f === undefined) return;
+  st.colFilters[f] = e.target.value;
+  st.page = 0;
+  renderTable();
+  const inp = [...$('tbl').querySelectorAll('input[data-cf]')].find(i => i.dataset.cf === f);
+  if (inp) { inp.focus(); inp.setSelectionRange(inp.value.length, inp.value.length); }
+});
 $('tbl').addEventListener('click', e => {
+  if (e.target.closest('input')) return;
   const th = e.target.closest('th[data-sort]');
   if (th) {
     const f = th.dataset.sort;
-    st.sort = st.sort?.f === f ? (st.sort.dir === 1 ? { f, dir: -1 } : null) : { f, dir: 1 };
+    const cur = st.sort || DEFAULT_SORT;
+    st.sort = cur.f === f ? (cur.dir === 1 ? { f, dir: -1 } : null) : { f, dir: 1 };
     renderTable();
     return;
   }
