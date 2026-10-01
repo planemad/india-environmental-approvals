@@ -2,10 +2,11 @@ import argparse
 import csv
 import glob
 import io
+import json
 import os
 import re
 import subprocess
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 STATES = {
     '1': 'Jammu And Kashmir', '2': 'Himachal Pradesh', '3': 'Punjab', '4': 'Chandigarh', '5': 'Uttarakhand',
@@ -17,9 +18,10 @@ STATES = {
     '35': 'Andaman And Nicobar Islands', '36': 'Telangana', '37': 'Ladakh',
     '38': 'Dadra And Nagar Haveli And Daman And Diu',
 }
-INACTIVE = {'DELISTED_BY_SYSTEM', 'REMOVED'}
 GRANTED = 'EC Granted'
-CLOSED = re.compile(r'reject|withdraw|returned|pulled back', re.I)
+PIPE = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'pipeline.json'), encoding='utf-8'))
+RULES = [(re.compile(r['re'], re.I), r['cat']) for r in PIPE['rules']]
+BAR_CATS = [c['id'] for c in PIPE['categories'] if c['bar']]
 STATUS = 'Last Visible Status'
 COST = 'Total Cost (Lakhs)'
 LAND = 'Project Land Requirement (Hectares)'
@@ -27,6 +29,7 @@ OUT = 'csv/Dashboard.csv'
 COLUMNS = ['scope', 'state_code', 'state', 'section', 'rank', 'label', 'value', 'proposal_number', 'project_name',
            'organization', 'district', 'status', 'application_date', 'grant_date', 'total_cost_lakhs', 'land_ha',
            'proposal_url']
+WINDOW_DAYS = 30
 MAX_COST_LAKHS = 1e7
 TOP = 10
 RECENT = 10
@@ -34,6 +37,11 @@ RECENT = 10
 
 def norm(v):
     return ' '.join((v or '').split())
+
+
+def classify(status):
+    s = norm(status)
+    return next(cat for rx, cat in RULES if rx.search(s))
 
 
 def cost(r):
@@ -49,8 +57,8 @@ def num(v):
 
 
 def git(*args):
-    r = subprocess.run(['git', *args], capture_output=True, text=True)
-    return r.stdout if r.returncode == 0 else None
+    r = subprocess.run(['git', *args], capture_output=True)
+    return r.stdout.decode('utf-8') if r.returncode == 0 else None
 
 
 def read_rows(text):
@@ -73,10 +81,20 @@ def load_baseline(path):
     return read_rows(head), date
 
 
-def diff_rows(cur, prev):
+def load_window(path, days=WINDOW_DAYS):
+    ref = (git('rev-list', '-1', f'--before={days} days ago', 'HEAD', '--', path) or '').strip()
+    if not ref:
+        ref = ((git('rev-list', '--reverse', 'HEAD', '--', path) or '').split() or [''])[0]
+    text = git('show', f'{ref}:{path}') if ref else None
+    if text is None:
+        return None, ''
+    return read_rows(text), (git('log', '-1', '--format=%aI', ref) or '').strip()
+
+
+def diff_rows(cur, prev, since=''):
     if prev is None:
         return {'added': [], 'removed': 0, 'updated': 0, 'status': []}
-    added = [r for i, r in cur.items() if i not in prev]
+    added = [r for i, r in cur.items() if i not in prev and (r.get('Application Date') or '')[:10] >= since[:10]]
     removed = sum(1 for i in prev if i not in cur)
     updated, status = 0, []
     for i, r in cur.items():
@@ -100,31 +118,27 @@ def project_cols(r):
     }
 
 
-def scope_rows(scope, code, name, rows, diff, run, compared):
+def scope_rows(scope, code, name, rows, diff, run, compared, win):
     out = []
 
     def add(section, label='', value='', rank='', **extra):
         out.append({'scope': scope, 'state_code': code, 'state': name, 'section': section, 'rank': rank,
                     'label': label, 'value': value, **extra})
 
-    active = [r for r in rows if r.get(STATUS) not in INACTIVE]
-    granted = [r for r in rows if r.get('Grant Date')]
-    applications = [r for r in rows if r.get('Grant Date') or r.get(STATUS) not in INACTIVE]
-    pending = [r for r in applications if not r.get('Grant Date') and not CLOSED.search(r.get(STATUS) or '')]
+    by = {c: [r for r in rows if r['_cat'] == c] for c in BAR_CATS + ['delisted']}
+    active = [r for r in rows if r['_cat'] != 'delisted']
+    granted = by['granted']
+    per_year = {c: {} for c in BAR_CATS}
     applied = {}
-    for r in applications:
+    for r in active:
         y = (r.get('Application Date') or '')[:4]
         if y.isdigit():
             applied[y] = applied.get(y, 0) + 1
-    years = {}
-    for r in granted:
-        y = r['Grant Date'][:4]
-        years[y] = years.get(y, 0) + 1
+            per_year[r['_cat']][y] = per_year[r['_cat']].get(y, 0) + 1
     stats = [
-        ('projects', len(rows)), ('active_projects', len(active)), ('applications', len(applications)),
-        ('ec_granted', len(granted)), ('ec_pending', len(pending)),
-        ('ec_rejected', sum(1 for r in rows if r.get(STATUS) == 'EC Rejected')),
-        ('delisted_or_removed', len(rows) - len(active)),
+        ('projects', len(rows)), ('active_projects', len(active)), ('applications', len(active)),
+        *[(f'ec_{c}', len(by[c])) for c in BAR_CATS],
+        ('delisted_or_removed', len(by['delisted'])),
         ('total_cost_lakhs', round(sum(cost(r) for r in active), 2)),
         ('cost_outliers_excluded', sum(1 for r in active if num(r.get(COST)) > MAX_COST_LAKHS)),
         ('total_land_ha', round(sum(num(r.get(LAND)) for r in active), 4)),
@@ -133,6 +147,7 @@ def scope_rows(scope, code, name, rows, diff, run, compared):
         ('changes_added', len(diff['added'])), ('changes_removed', diff['removed']),
         ('changes_updated', diff['updated']), ('changes_status', len(diff['status'])),
         ('compared_with', compared or ''),
+        ('window_added', len(win['added'])), ('window_updated', win['updated']), ('window_since', win['since']),
     ]
     for k, v in stats:
         add('stat', k, v)
@@ -144,8 +159,9 @@ def scope_rows(scope, code, name, rows, diff, run, compared):
         add('status', s, n)
     for y in sorted(applied):
         add('applications_by_year', y, applied[y])
-    for y in sorted(years):
-        add('grants_by_year', y, years[y])
+    for c in BAR_CATS:
+        for y in sorted(per_year[c]):
+            add(f'year_{c}', y, per_year[c][y])
     for k, v in run.items():
         add('run', k, v)
     tops = [
@@ -194,14 +210,19 @@ def main():
     args = ap.parse_args()
 
     prev_runs = previous_runs()
+    all_win = {'added': [], 'updated': 0, 'since': ''}
     all_rows, all_diff, per_state = [], {'added': [], 'removed': 0, 'updated': 0, 'status': []}, []
     for code, name in STATES.items():
         path = f'csv/Projects_{code}.csv'
         rows = list(read_rows(open(path, newline='', encoding='utf-8').read()).values()) if os.path.exists(path) else []
         for r in rows:
             r['_code'], r['_state'] = code, name
+            r['_cat'] = classify(r.get(STATUS))
         prev, compared = load_baseline(path) if rows else (None, None)
-        diff = diff_rows({r['ID']: r for r in rows}, prev)
+        diff = diff_rows({r['ID']: r for r in rows}, prev, compared or '')
+        wprev, wsince = load_window(path) if rows else (None, '')
+        win = diff_rows({r['ID']: r for r in rows}, wprev, (datetime.now(timezone.utc) - timedelta(days=WINDOW_DAYS)).strftime('%Y-%m-%d'))
+        win['since'] = wsince
         outcome = read_status(args.status_dir, code)
         if outcome is None and not args.status_dir:
             outcome = 'success' if rows else None
@@ -210,12 +231,15 @@ def main():
         else:
             state = 'failed' if outcome != 'success' else ('ok' if rows else 'no_data')
             run = {'run_status': state, 'run_date': args.run_date, 'run_url': args.run_url}
-        per_state.append((code, name, rows, diff, run, compared))
+        per_state.append((code, name, rows, diff, run, compared, win))
         all_rows += rows
         all_diff['added'] += diff['added']
         all_diff['removed'] += diff['removed']
         all_diff['updated'] += diff['updated']
         all_diff['status'] += diff['status']
+        all_win['added'] += win['added']
+        all_win['updated'] += win['updated']
+        all_win['since'] = max(all_win['since'], win['since'])
 
     statuses = [p[4]['run_status'] for p in per_state]
     all_run = {'run_status': 'failed' if 'failed' in statuses else 'ok', 'run_date': args.run_date,
@@ -223,9 +247,9 @@ def main():
                'states_no_data': statuses.count('no_data'), 'states_not_run': statuses.count('not_run'),
                'states_total': len(statuses)}
     compared_dates = [p[5] for p in per_state if p[5]]
-    out = scope_rows('all', '', 'All India', all_rows, all_diff, all_run, max(compared_dates, default=''))
-    for code, name, rows, diff, run, compared in per_state:
-        out += scope_rows('state', code, name, rows, diff, run, compared)
+    out = scope_rows('all', '', 'All India', all_rows, all_diff, all_run, max(compared_dates, default=''), all_win)
+    for code, name, rows, diff, run, compared, win in per_state:
+        out += scope_rows('state', code, name, rows, diff, run, compared, win)
 
     with open(OUT, 'w', newline='', encoding='utf-8') as f:
         w = csv.DictWriter(f, fieldnames=COLUMNS)

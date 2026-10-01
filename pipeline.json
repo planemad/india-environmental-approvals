@@ -1,0 +1,24 @@
+{
+  "categories": [
+    { "id": "granted", "label": "granted", "bar": true, "meaning": "Final clearance given: EC, CRZ, Stage-II / final diversion order, approval granted." },
+    { "id": "tor", "label": "ToR granted", "bar": true, "meaning": "Terms of Reference issued. Scoping is done, but the EC itself is still to come." },
+    { "id": "pending", "label": "pending", "bar": true, "meaning": "Still moving through the process, including drafts and proposals waiting on the applicant." },
+    { "id": "rejected", "label": "rejected", "bar": true, "meaning": "Rejected or revoked by the authority." },
+    { "id": "withdrawn", "label": "withdrawn", "bar": true, "meaning": "Closed without a decision: withdrawn by the applicant or sent back." },
+    { "id": "delisted", "label": "delisted", "bar": false, "meaning": "Removed from the portal by the system, usually because the application was left incomplete. Not counted as an application." }
+  ],
+  "stages": ["Submitted", "Scrutiny", "Appraisal", "Decision and compliance", "Outcome"],
+  "rules": [
+    { "re": "^(delisted(_by_system)?|removed)$", "cat": "delisted", "stage": 5 },
+    { "re": "reject|revoked", "cat": "rejected", "stage": 5 },
+    { "re": "^pending.*(compens|complian|levies|stage-ii|diversion|approval letter|final approval|demand|union minister|director general)|^stage-i fc awaited", "cat": "pending", "stage": 4 },
+    { "re": "^pending.*\\b(eds|ads|query)\\b|^pending (at|on) (ua|pp|dc|sdo)\\b|^pending at scrutiny", "cat": "pending", "stage": 2 },
+    { "re": "^pending", "cat": "pending", "stage": 3 },
+    { "re": "withdraw|pulled back|returned|^return to", "cat": "withdrawn", "stage": 5 },
+    { "re": "tor granted", "cat": "tor", "stage": 5 },
+    { "re": "^(ec granted|granted|approval granted|approved|crz granted|stage-ii accorded|final diversion order issued|ec form 9 (approved|accepted))$", "cat": "granted", "stage": 5 },
+    { "re": "^(eds|ads|query|raised/forwarded|under exam|public hearing)", "cat": "pending", "stage": 2 },
+    { "re": "^(under verification.*|ms verification|draft|submitted|scheduled for psc)?$", "cat": "pending", "stage": 1 },
+    { "re": ".*", "cat": "pending", "stage": 3 }
+  ]
+}
