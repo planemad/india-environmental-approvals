@@ -1,11 +1,11 @@
 {
   "categories": [
-    { "id": "granted", "label": "granted", "bar": true, "meaning": "Final clearance given: EC, CRZ, Stage-II / final diversion order, approval granted." },
-    { "id": "tor", "label": "ToR granted", "bar": true, "meaning": "Terms of Reference issued. Scoping is done, but the EC itself is still to come." },
-    { "id": "pending", "label": "pending", "bar": true, "meaning": "Still moving through the process, including drafts and proposals waiting on the applicant." },
-    { "id": "rejected", "label": "rejected", "bar": true, "meaning": "Rejected or revoked by the authority." },
-    { "id": "withdrawn", "label": "withdrawn", "bar": true, "meaning": "Closed without a decision: withdrawn by the applicant or sent back." },
-    { "id": "delisted", "label": "delisted", "bar": false, "meaning": "Removed from the portal by the system, usually because the application was left incomplete. Not counted as an application." }
+    { "id": "granted", "label": "Granted", "bar": true, "meaning": "Final clearance given: EC, CRZ, Stage-II / final diversion order, approval granted." },
+    { "id": "tor", "label": "ToR Granted", "bar": true, "meaning": "Terms of Reference issued. Scoping is done, but the EC itself is still to come." },
+    { "id": "pending", "label": "Pending", "bar": true, "meaning": "Still moving through the process, including drafts and proposals waiting on the applicant." },
+    { "id": "rejected", "label": "Rejected", "bar": true, "meaning": "Rejected or revoked by the authority." },
+    { "id": "withdrawn", "label": "Withdrawn", "bar": true, "meaning": "Closed without a decision: withdrawn by the applicant or sent back." },
+    { "id": "delisted", "label": "Delisted", "bar": false, "meaning": "Removed from the portal by the system, usually because the application was left incomplete. Not counted as an application." }
   ],
   "stages": ["Submitted", "Scrutiny", "Appraisal", "Decision and compliance", "Outcome"],
   "rules": [

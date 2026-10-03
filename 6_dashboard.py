@@ -23,6 +23,9 @@ PIPE = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '
 RULES = [(re.compile(r['re'], re.I), r['cat']) for r in PIPE['rules']]
 BAR_CATS = [c['id'] for c in PIPE['categories'] if c['bar']]
 STATUS = 'Last Visible Status'
+PCAT = 'Project Category (Code)'
+PC_CODES = ['A', 'B1', 'B2', 'OTHER']
+TYPE_CODES = ['ec', 'forest', 'wildlife', 'crz', 'other']
 COST = 'Total Cost (Lakhs)'
 LAND = 'Project Land Requirement (Hectares)'
 OUT = 'csv/Dashboard.csv'
@@ -37,6 +40,24 @@ RECENT = 10
 
 def norm(v):
     return ' '.join((v or '').split())
+
+
+def pc_code(r):
+    c = norm(r.get(PCAT)).upper()
+    return c if c in PC_CODES else 'OTHER'
+
+
+def type_code(r):
+    cat, desc = norm(r.get('Category')).upper(), norm(r.get('Description')).lower()
+    if cat == 'CRZ' or 'crz' in desc:
+        return 'crz'
+    if 'wildlife' in desc:
+        return 'wildlife'
+    if cat in ('EC', 'TOR'):
+        return 'ec'
+    if cat == 'OTHER' or 'pollution load' in desc or not desc:
+        return 'other'
+    return 'forest' if cat == '' else 'other'
 
 
 def classify(status):
@@ -94,18 +115,29 @@ def load_window(path, days=WINDOW_DAYS):
 def diff_rows(cur, prev, since=''):
     if prev is None:
         return {'added': [], 'removed': 0, 'updated': 0, 'status': []}
-    added = [r for i, r in cur.items() if i not in prev and (r.get('Application Date') or '')[:10] >= since[:10]]
+    added = [r for r in cur.values() if (r.get('Application Date') or '')[:10] >= since[:10]]
+    new_ids = {r['ID'] for r in added}
     removed = sum(1 for i in prev if i not in cur)
     updated, status = 0, []
     for i, r in cur.items():
         b = prev.get(i)
         if not b:
             continue
-        if any(norm(b.get(f)) != norm(r.get(f)) for f in r if f in b):
+        if i not in new_ids and any(norm(b.get(f)) != norm(r.get(f)) for f in r if f in b):
             updated += 1
         if norm(b.get(STATUS)) != norm(r.get(STATUS)):
             status.append((norm(b.get(STATUS)) or '(none)', r))
     return {'added': added, 'removed': removed, 'updated': updated, 'status': status}
+
+
+def active_only(m):
+    return {i: r for i, r in m.items() if classify(r.get(STATUS)) != 'delisted'}
+
+
+def diff_pair(cur, prev, since=''):
+    d = diff_rows(cur, prev, since)
+    d['a'] = diff_rows(active_only(cur), active_only(prev), since) if prev is not None else diff_rows(cur, None, since)
+    return d
 
 
 def project_cols(r):
@@ -130,14 +162,22 @@ def scope_rows(scope, code, name, rows, diff, run, compared, win):
     granted = by['granted']
     per_year = {c: {} for c in BAR_CATS}
     applied = {}
+    per_pc = {c: {} for c in PC_CODES}
+    cube = {}
     for r in active:
         y = (r.get('Application Date') or '')[:4]
         if y.isdigit():
             applied[y] = applied.get(y, 0) + 1
             per_year[r['_cat']][y] = per_year[r['_cat']].get(y, 0) + 1
+            pc = per_pc[pc_code(r)]
+            pc[y] = pc.get(y, 0) + 1
+            k = (y, r['_cat'], pc_code(r), type_code(r))
+            cube[k] = cube.get(k, 0) + 1
     stats = [
         ('projects', len(rows)), ('active_projects', len(active)), ('applications', len(active)),
         *[(f'ec_{c}', len(by[c])) for c in BAR_CATS],
+        *[(f'pc_{c}', sum(1 for r in active if pc_code(r) == c)) for c in PC_CODES],
+        *[(f'ty_{c}', sum(1 for r in active if type_code(r) == c)) for c in TYPE_CODES],
         ('delisted_or_removed', len(by['delisted'])),
         ('total_cost_lakhs', round(sum(cost(r) for r in active), 2)),
         ('cost_outliers_excluded', sum(1 for r in active if num(r.get(COST)) > MAX_COST_LAKHS)),
@@ -147,6 +187,9 @@ def scope_rows(scope, code, name, rows, diff, run, compared, win):
         ('changes_added', len(diff['added'])), ('changes_removed', diff['removed']),
         ('changes_updated', diff['updated']), ('changes_status', len(diff['status'])),
         ('compared_with', compared or ''),
+        ('changes_added_active', len(diff['a']['added'])), ('changes_removed_active', diff['a']['removed']),
+        ('changes_updated_active', diff['a']['updated']), ('changes_status_active', len(diff['a']['status'])),
+        ('window_added_active', len(win['a']['added'])), ('window_updated_active', win['a']['updated']),
         ('window_added', len(win['added'])), ('window_updated', win['updated']), ('window_since', win['since']),
     ]
     for k, v in stats:
@@ -162,6 +205,11 @@ def scope_rows(scope, code, name, rows, diff, run, compared, win):
     for c in BAR_CATS:
         for y in sorted(per_year[c]):
             add(f'year_{c}', y, per_year[c][y])
+    for c in PC_CODES:
+        for y in sorted(per_pc[c]):
+            add(f'year_pc_{c}', y, per_pc[c][y])
+    for k in sorted(cube):
+        add('cube', '|'.join(k), cube[k])
     for k, v in run.items():
         add('run', k, v)
     tops = [
@@ -210,8 +258,9 @@ def main():
     args = ap.parse_args()
 
     prev_runs = previous_runs()
-    all_win = {'added': [], 'updated': 0, 'since': ''}
-    all_rows, all_diff, per_state = [], {'added': [], 'removed': 0, 'updated': 0, 'status': []}, []
+    zero = lambda: {'added': [], 'removed': 0, 'updated': 0, 'status': []}
+    all_win = {**zero(), 'since': '', 'a': zero()}
+    all_rows, all_diff, per_state = [], {**zero(), 'a': zero()}, []
     for code, name in STATES.items():
         path = f'csv/Projects_{code}.csv'
         rows = list(read_rows(open(path, newline='', encoding='utf-8').read()).values()) if os.path.exists(path) else []
@@ -219,9 +268,9 @@ def main():
             r['_code'], r['_state'] = code, name
             r['_cat'] = classify(r.get(STATUS))
         prev, compared = load_baseline(path) if rows else (None, None)
-        diff = diff_rows({r['ID']: r for r in rows}, prev, compared or '')
+        diff = diff_pair({r['ID']: r for r in rows}, prev, compared or '')
         wprev, wsince = load_window(path) if rows else (None, '')
-        win = diff_rows({r['ID']: r for r in rows}, wprev, (datetime.now(timezone.utc) - timedelta(days=WINDOW_DAYS)).strftime('%Y-%m-%d'))
+        win = diff_pair({r['ID']: r for r in rows}, wprev, (datetime.now(timezone.utc) - timedelta(days=WINDOW_DAYS)).strftime('%Y-%m-%d'))
         win['since'] = wsince
         outcome = read_status(args.status_dir, code)
         if outcome is None and not args.status_dir:
@@ -233,12 +282,12 @@ def main():
             run = {'run_status': state, 'run_date': args.run_date, 'run_url': args.run_url}
         per_state.append((code, name, rows, diff, run, compared, win))
         all_rows += rows
-        all_diff['added'] += diff['added']
-        all_diff['removed'] += diff['removed']
-        all_diff['updated'] += diff['updated']
-        all_diff['status'] += diff['status']
-        all_win['added'] += win['added']
-        all_win['updated'] += win['updated']
+        for tot, d in ((all_diff, diff), (all_win, win)):
+            for g, src in ((tot, d), (tot['a'], d['a'])):
+                g['added'] += src['added']
+                g['removed'] += src['removed']
+                g['updated'] += src['updated']
+                g['status'] += src['status']
         all_win['since'] = max(all_win['since'], win['since'])
 
     statuses = [p[4]['run_status'] for p in per_state]

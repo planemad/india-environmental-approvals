@@ -9,7 +9,7 @@
   --bg: #f7f7f5; --panel: #ffffff; --text: #1c1f23; --muted: #6b7280; --border: #e2e4e8;
   --accent: #1d6f5c; --accent-soft: #e3f1ed;
   --ok: #14632d; --bad: #a12525; --warn: #7a5b00;
-  --c-granted: #14632d; --c-tor: #b7791f; --c-pending: #2b6cb0; --c-rejected: #a12525; --c-withdrawn: #6b7280;
+  --c-granted: #14632d; --c-tor: #c99700; --c-pending: #2b6cb0; --c-rejected: #a12525; --c-withdrawn: #6b7280;
   --add-bg: #e6f6ea; --add-fg: #14632d; --del-bg: #fdecec; --del-fg: #a12525; --upd-bg: #fff6d9; --upd-fg: #7a5b00;
 }
 @media (prefers-color-scheme: dark) {
@@ -23,15 +23,106 @@
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
-header { background: #1c1f23; border-bottom: 1px solid var(--border); padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; color: #fff; }
-header h1 { font-size: 20px; margin: 0; flex: 1 1 240px; text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+header .pb-layer { transition: filter .3s ease; }
+@media (hover: hover) { header:hover .pb-layer { filter: blur(8px) brightness(.55); } }
+@media (prefers-reduced-motion: reduce) { header .pb-layer { transition: none; } }
+header { background: #1c1f23; border-bottom: 1px solid var(--border); padding: 12px 16px; --hcols: 260px minmax(220px, 340px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); display: grid; grid-template-columns: var(--hcols); gap: 16px; align-items: stretch; color: #fff; }
+.sitebar { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,.3); min-width: 0; }
+.sitebar h1 { flex: 1 1 420px; min-width: 0; }
+.sbtools { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px 10px; margin-left: auto; }
+.sbtools .health, .sbtools .hfilter, .sbtools .aboutbtn { align-self: center; }
+.hspark { display: flex; flex-direction: column; justify-content: space-between; gap: 6px; min-width: 0; }
+.hspark[hidden] {  display: flex; visibility: hidden; }
+.pc-A { --c: #c084fc; } .pc-B1 { --c: #38bdf8; } .pc-B2 { --c: #2dd4bf; } .pc-OTHER { --c: #9ca3af; }
+.hspark .hs-title { font-size: 11px; color: rgba(255,255,255,.75); }
+.hspark .row { display: grid; grid-template-columns: 1fr auto; column-gap: 8px; align-items: baseline; font-size: 12px; }
+.hspark .row { transition: opacity .15s; }
+.hspark .row.byyear .t { color: #fff; font-weight: 700; }
+svg line.ymark { stroke: #fff; stroke-width: 1.5; stroke-opacity: .85; vector-effect: non-scaling-stroke; pointer-events: none; }
+.hspark .row.dim { opacity: .3; }
+.hspark .row .l { color: var(--c); font-weight: 600; cursor: help; justify-self: start; }
+.hspark .row .t { color: rgba(255,255,255,.85); font-variant-numeric: tabular-nums; }
+.hspark svg { grid-column: 1 / -1; width: 100%; height: 24px; display: block; }
+.hspark path.ar { fill: var(--c); fill-opacity: .25; }
+.hspark path.ln { fill: none; stroke: var(--c); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.hspark rect.hit { fill: transparent; }
+.hspark rect.hit:hover { fill: #fff; fill-opacity: .12; }
+.hspark .yrs { grid-column: 1 / -1; display: flex; justify-content: space-between; font-size: 10px; color: rgba(255,255,255,.55); margin-top: -2px; }
+.hmap { position: relative; min-height: 220px; }
+.hmap svg { width: 100%; height: calc(100% - 38px); margin-top: 38px; display: block; }
+.hmap .mlink { position: absolute; left: 0; top: 19px; font-size: 12px; font-weight: 600; color: #9fe3cf; text-decoration: none; z-index: 1; }
+.hmap .mlink:hover { text-decoration: underline; }
+.hmap .mh { position: absolute; left: 0; right: 0; top: 0; height: 18px; display: flex; align-items: center; gap: 8px; font-size: 11px; color: rgba(255,255,255,.75); z-index: 1; }
+.hmap .mh .mt.on { color: #fff; font-weight: 700; font-size: 12px; }
+.hmap .pie { transition: opacity .15s; }
+.hmap svg.focus .pie:not(.hovered) { opacity: .25; }
+.hmap .out { fill: rgba(255,255,255,.08); stroke: rgba(255,255,255,.35); stroke-width: .8; }
+.hmap .pie { cursor: pointer; }
+.hmap .pie path { fill: var(--c); stroke: rgba(0,0,0,.45); stroke-width: .5; }
+.hmap .pie .ring { fill: none; stroke: #0b0d10; stroke-width: 2.5; pointer-events: none; }
+.hmap .pie:hover .ring, .hmap .pie.hovered .ring { stroke: #fff; }
+.hmap .pie.sel .ring { stroke: #fff; stroke-width: 2.5; }
+.hmap .cap { position: absolute; left: 0; bottom: 0; display: flex; flex-wrap: wrap; gap: 2px 8px; font-size: 11px; color: rgba(255,255,255,.75); pointer-events: none; }
+.hmap .cap em { font-style: normal; opacity: .8; }
+
+@media (max-width: 900px) { header { --hcols: 1fr 1fr; } .hstate { grid-template-columns: 1fr; } .hmap, .allcard { grid-column: 1 / -1; } .hmap { min-height: 260px; } .allcard { width: 100%; max-width: 360px; } }
+header h1 { font-size: 20px; margin: 0; text-shadow: 0 1px 3px rgba(0,0,0,.6); }
 header h1 a { color: #fff; }
 header h1 .flag { height: 20px; width: auto; vertical-align: middle; margin-right: 10px; border: 1px solid rgba(255,255,255,.35); box-shadow: 0 1px 3px rgba(0,0,0,.5); }
 header h1 a.home { text-decoration: none; }
 header h1 a.home:hover { text-decoration: underline; }
-.health { margin-left: auto; align-self: flex-start; font-size: 12px; line-height: 1.5; color: rgba(255,255,255,.88); background: rgba(0,0,0,.35); border: 1px solid rgba(255,255,255,.25); border-radius: 8px; padding: 6px 10px; text-shadow: none; }
+.lockbar { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; font-size: 12px; color: #fff; }
+.lockbar[hidden] { display: none; }
+.lockchip { font: inherit; font-size: 12px; font-weight: 600; padding: 2px 8px; border: 1px solid rgba(255,255,255,.6); border-radius: 999px; background: rgba(255,255,255,.18); color: #fff; cursor: pointer; }
+.lockchip:hover { background: rgba(255,255,255,.35); }
+.hspark .row.locked .l { text-decoration: underline; text-underline-offset: 3px; }
+.datanav { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; color: #fff; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,.3); }
+.dn-ctx { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.dn-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: rgba(255,255,255,.75); }
+.dn-text { font-size: 13px; color: rgba(255,255,255,.9); }
+.dn-none { font-size: 12px; color: rgba(255,255,255,.65); }
+.datanav select { font: inherit; font-size: 15px; font-weight: 700; padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,.5); background: #fff; color: #1c1f23; cursor: pointer; }
+.dnbtn { font: inherit; font-size: 12px; font-weight: 700; padding: 3px 9px; border: 1px solid rgba(255,255,255,.6); border-radius: 999px; background: rgba(255,255,255,.18); color: #fff; cursor: pointer; }
+.dnbtn:hover { background: rgba(255,255,255,.35); }
+.dnbtn[hidden] { display: none; }
+.hexplore { display: flex; flex-direction: column; gap: 6px; min-width: 0; color: #fff; }
+.hexplore[hidden] { display: none; }
+.hexplore select { font: inherit; font-size: 12px; font-weight: 600; padding: 3px 6px; border-radius: 6px; border: 1px solid rgba(255,255,255,.5); background: #fff; color: #1c1f23; cursor: pointer; }
+.exlist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 3px; max-height: 300px; overflow-y: auto; }
+.exitem { position: relative; display: flex; justify-content: space-between; align-items: center; gap: 8px; width: 100%; text-align: left; font: inherit; font-size: 12px; padding: 3px 8px; border: 1px solid rgba(255,255,255,.25); border-radius: 6px; background: rgba(0,0,0,.4); color: #fff; cursor: pointer; overflow: hidden; }
+.exitem i { position: absolute; left: 0; top: 0; bottom: 0; background: rgba(255,255,255,.2); z-index: 0; }
+.exitem > span { position: relative; z-index: 1; }
+.exitem .exl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.exitem .exn { font-variant-numeric: tabular-nums; opacity: .85; flex: none; }
+.exitem:hover { border-color: #fff; }
+.exitem.on { background: rgba(255,255,255,.9); color: #1c1f23; font-weight: 700; border-color: #fff; }
+.exitem.on i { background: rgba(0,0,0,.12); }
+.exitem.on .exl::after { content: ' ✕'; }
+.verbtn { font-weight: 600; }
+.verbtn::after { content: ' ▾'; }
+.verbtn[aria-expanded=true]::after { content: ' ▴'; }
+.verbtn[aria-expanded=true] { border-color: var(--accent); color: var(--accent); }
+.verpanel { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; margin-bottom: 10px; }
+.verpanel[hidden] { display: none; }
+.verpanel .bar { margin-bottom: 4px; }
+#viewer:not(.diffmode) #tbl tr:not(.detail) > :first-child { display: none; }
+#viewer:not(.diffmode) tr.added td, #viewer:not(.diffmode) tr.updated td { background: transparent; }
+#viewer:not(.diffmode) td.chg { background: transparent; }
+#viewer.previewing #tablewrap { outline: 2px dashed var(--accent); outline-offset: 3px; }
+#viewer.previewing #pager::before { content: 'Previewing filter · '; color: var(--accent); font-weight: 600; }
+.exnone { font-size: 12px; color: rgba(255,255,255,.7); }
+header.stateview { --hcols: 260px minmax(220px, 340px) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(230px, 300px); }
+.hfilter { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #fff; background: rgba(0,0,0,.35); border: 1px solid rgba(255,255,255,.25); border-radius: 8px; padding: 4px 10px; cursor: pointer; text-shadow: none; }
+.health { align-self: flex-start; text-align: left; font-size: 12px; line-height: 1.5; color: rgba(255,255,255,.88); background: rgba(0,0,0,.35); border: 1px solid rgba(255,255,255,.25); border-radius: 8px; padding: 6px 10px; text-shadow: none; }
+.allcard { width: 100%; align-self: start; color: var(--text); text-shadow: none; }
+.allcard[hidden], .hmap[hidden] { display: block; visibility: hidden; }
+.allcard .scard { width: 100%; box-sizing: border-box; cursor: default; position: relative; }
+.allcard .scard:hover { border-color: var(--border); }
+.allcard select { width: 100%; font: inherit; font-weight: 600; padding: 4px 6px; border: 1px solid var(--border); border-radius: 6px; background: var(--panel); color: var(--text); cursor: pointer; }
 .health[hidden] { display: none; }
 .health a { color: #fff; }
+.health .hhgh { margin-left: auto; padding-left: 12px; display: inline-flex; color: #fff; }
+.health .hhgh:hover { color: #9fe3cf; }
 .health .hh { font-weight: 700; color: #fff; display: flex; align-items: center; gap: 6px; }
 .health .dot { width: 8px; height: 8px; border-radius: 50%; background: #9aa0a6; display: inline-block; }
 .health.ok .dot { background: #4ade80; }
@@ -49,6 +140,7 @@ a { color: var(--accent); }
 .version { flex: 1 1 320px; min-width: 0; }
 .meta { color: var(--muted); font-size: 12px; margin: 0 0 12px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.chiplabel { align-self: center; font-size: 12px; opacity: .7; margin-right: 2px; }
 .chip { border-radius: 999px; padding: 3px 12px; border: 1px solid var(--border); background: var(--panel); cursor: pointer; font-size: 13px; }
 .chip.on { outline: 2px solid var(--accent); }
 .chip.added { background: var(--add-bg); color: var(--add-fg); }
@@ -88,25 +180,18 @@ tr.detail td { white-space: normal; background: var(--bg); max-width: none; }
 .msg { padding: 32px; text-align: center; color: var(--muted); }
 .msg.err { color: var(--del-fg); }
 
-.picker {  display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding: 10px 16px; background: var(--accent-soft); border-bottom: 1px solid var(--border); }
 .state-head { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
 .open-wrap { flex: 0 0 min(340px, 100%); display: flex; }
 .open-wrap .scard { flex: 1; }
 .state-ov { flex: 1 1 420px; min-width: 0; }
-.state-ov .runbar { background: var(--panel); }
 .scard .close { margin-left: auto; color: var(--muted); font-size: 16px; line-height: 1; padding: 2px 6px; }
 .scard.open:hover .close { color: var(--bad); }
 .scard.open svg.spark { height: 72px; }
 .scard .top .pill + .close { margin-left: 8px; }
-.picker #cards { flex: 1 1 100%; margin-top: 4px; }
-.picker [hidden], #browse[hidden] { display: none; }
 #sortby { margin-left: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--accent); }
 #sortby[hidden] { display: none; }
 #sortby .chip { margin: 0; color: var(--text); font-weight: 400; }
 #sortby .chip.on { background: var(--accent); color: #fff; outline: none; border-color: var(--accent); font-weight: 600; }
-#browse { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
-.picker label { font-weight: 600; color: var(--accent); font-size: 15px; }
-.picker select { font-size: 16px; font-weight: 600; padding: 8px 12px; border: 2px solid var(--accent); min-width: min(320px, 100%); cursor: pointer; }
 #dash > :first-child { margin-top: 0; }
 details.sec { margin-top: 24px; }
 details.sec > summary { border: 0; background: none; padding: 0; cursor: pointer; font-size: 15px; font-weight: 600; }
@@ -114,19 +199,10 @@ details.sec[open] > summary { margin-bottom: 8px; }
 details.sec > summary small { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 6px; }
 h2 { font-size: 15px; margin: 24px 0 8px; }
 h2 small { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 6px; }
-.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
-.tile { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
-.tile .n { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
-.tile .l { color: var(--muted); font-size: 12px; }
-.tile.added .n { color: var(--add-fg); }
-.tile.removed .n { color: var(--del-fg); }
-.tile.updated .n { color: var(--upd-fg); }
 .pill { display: inline-block; border-radius: 999px; padding: 1px 10px; font-size: 12px; font-weight: 600; background: var(--accent-soft); color: var(--accent); }
 .pill.ok { background: var(--add-bg); color: var(--ok); }
 .pill.failed { background: var(--del-bg); color: var(--bad); }
 .pill.no_data, .pill.not_run, .pill.outdated { background: var(--upd-bg); color: var(--warn); }
-.runbar { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; margin-bottom: 12px; }
-.runbar a + a { margin-left: 4px; }
 .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 16px; margin-top: 24px; align-items: start; }
 .grid2 > details.sec { margin-top: 0; }
 .dtable { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; overflow: auto; }
@@ -142,8 +218,8 @@ h2 small { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
 .scard { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; text-align: left; font: inherit; color: inherit; }
 .scard:hover { border-color: var(--accent); }
-#cards .scard { transition: opacity .15s; }
-#cards.focus .scard:not(.hovered) { opacity: .3; }
+#minicards.focus .scard:not(.hovered) { opacity: .3; }
+#minicards .scard { transition: opacity .15s; }
 .scard:disabled { opacity: .55; cursor: default; }
 .scard:disabled:hover { border-color: var(--border); }
 .scard .pct { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; }
@@ -155,7 +231,7 @@ h2 small { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 
 .scard .pct .pn[hidden] { display: flex; visibility: hidden; }
 .scard .pct .n { font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--c); }
 .scard .pct .l { color: var(--c); font-size: 12px; font-weight: 600; }
-.scard .pend { font-size: 13px; min-height: 1.45em; }
+.scard .pend { font-size: 13px; min-height: 1.45em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .scard .top .apps { margin-left: auto; display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--muted); white-space: nowrap; }
 .scard .top .apps svg { flex: none; }
 .scard .top .apps b { color: var(--text); font-weight: 600; }
@@ -171,7 +247,43 @@ h2 small { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 
 .filterbar[hidden] { display: none; }
 .filterbar small { font-weight: 400; }
 .filterbar button { border-color: var(--upd-fg); font-weight: 600; margin-left: auto; }
-.cloudbox { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; }
+.hstate { grid-column: 1 / -1; display: grid; grid-template-columns: var(--hcols); gap: 8px 16px; align-items: start; }
+.hstate[hidden] { display: none; }
+.hstate .hsep { grid-column: 1 / -1; width: 100%; border: 0; border-top: 1px solid rgba(255,255,255,.3); margin: 0 0 4px; }
+.hs-name[hidden], .hs-explore[hidden] { display: none; }
+.hs-name { grid-column: 1 / span 2; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.hs-name .mclear { font: inherit; font-size: 22px; font-weight: 700; line-height: 1.2; padding: 4px 12px; text-shadow: 0 1px 3px rgba(0,0,0,.6); border: 1px solid rgba(255,255,255,.5); border-radius: 5px; background: rgba(255,255,255,.12); color: #fff; cursor: pointer; }
+.hs-name .mclear:hover { background: rgba(255,255,255,.3); }
+.hs-name .mclear b { margin-left: 6px; opacity: .8; font-size: 16px; }
+.hs-explore { grid-column: 3 / -1; min-width: 0; }
+.hs-mini { grid-column: 1 / -1; min-width: 0; }
+.hs-mini[hidden] { display: none; }
+.hs-head { margin: 0 0 6px; font-size: 15px; font-weight: 700; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+.hs-mini #sortby { margin: 0 0 6px; color: #fff; }
+.hs-mini #sortby .chip { font-size: 11px; padding: 1px 8px; color: var(--text); }
+#minicards { color: var(--text); }
+#minicards .cards { grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 6px; }
+#minicards .group-head { color: #fff; margin: 8px 0 4px; font-size: 12px; }
+#minicards .group-head:first-child { margin-top: 0; }
+.scard.mini { padding: 5px 7px; gap: 3px; border-radius: 6px; }
+.scard.mini .top { gap: 4px; }
+.scard.mini .name { font-size: 11px; line-height: 1.2; height: 2.4em; min-height: 2.4em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; text-overflow: ellipsis; overflow-wrap: anywhere; }
+.scard.mini svg.spark { height: 22px; }
+.scard.mini .pct { gap: 4px; }
+.scard.mini .pct .n { font-size: 14px; line-height: 1.1; }
+.scard.mini .pct .l { display: none; }
+.scard.mini .pct .pn { gap: 3px; }
+.scard.mini .pipe { height: 6px; margin: 0; }
+.scard.mini .pend { font-size: 9.5px; min-height: 1.3em; line-height: 1.3; }
+.scard.mini .yrs { display: none; }
+.hs-mini #minicards .scard.mini .chg { visibility: hidden; }
+.hs-mini #minicards.show-chg .scard.mini .chg { visibility: visible; }
+.allcard .scard .chg { cursor: help; }
+.scard.mini .chg { font-size: 9.5px; min-height: 0; line-height: 1.25; }
+.hs-explore .cloudhead { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-bottom: 6px; color: #fff; }
+.hs-explore .cloudhead .chips { margin: 0; }
+.hs-explore .cloudhead small { color: rgba(255,255,255,.7); margin: 0; }
+.hs-explore .chip { color: var(--text); }
 .cloudhead { font-weight: 600; font-size: 13px; }
 .cloudhead small { font-weight: 400; color: var(--muted); margin-left: 6px; }
 #cloud { width: 100%; display: block; }
@@ -184,14 +296,21 @@ td.gl { cursor: help; text-decoration: underline dotted var(--muted); text-under
 .scard svg.spark path.ar { fill: var(--c); fill-opacity: .18; }
 .scard svg.spark path.ln { fill: none; stroke: var(--muted); stroke-opacity: .5; stroke-width: 1; vector-effect: non-scaling-stroke; }
 .scard svg.spark path.ln.on { stroke: var(--c); stroke-opacity: 1; stroke-width: 1.5; }
-.about { background: var(--panel); border-bottom: 1px solid var(--border); padding: 8px 16px; max-height: 70vh; overflow-y: auto; position: relative; }
+.about { grid-column: 1 / -1; color: var(--text); text-shadow: none; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 8px 16px 12px; position: relative; }
+.about[hidden] { display: none; }
 .about .aboutclose { position: sticky; float: right; top: 0; font: inherit; font-size: 16px; line-height: 1; padding: 4px 8px; cursor: pointer; background: var(--panel); color: var(--muted); border: 1px solid var(--border); border-radius: 6px; }
 .about .aboutclose:hover { color: var(--text); border-color: var(--muted); }
-header h1 .aboutbtn { margin-left: 12px; vertical-align: middle; font: inherit; font-size: 12px; font-weight: 600; color: #fff; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.5); border-radius: 14px; padding: 2px 10px; cursor: pointer; text-shadow: none; }
-header h1 .aboutbtn:hover { background: rgba(255,255,255,.28); }
-header h1 .aboutbtn[aria-expanded=true] { background: #fff; color: #1c1f23; border-color: #fff; }
-header h1 .aboutbtn[aria-expanded=true]::after { content: ' ✕'; }
-#about { max-width: 900px; margin: 0 auto 0 0; }
+header .aboutbtn { align-self: flex-start; vertical-align: middle; font: inherit; font-size: 12px; font-weight: 600; color: #fff; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.5); border-radius: 14px; padding: 2px 10px; cursor: pointer; text-shadow: none; }
+header .aboutbtn:hover { background: rgba(255,255,255,.28); }
+header .aboutbtn[aria-expanded=true] { background: #fff; color: #1c1f23; border-color: #fff; }
+header .aboutbtn[aria-expanded=true]::after { content: ' ✕'; }
+#about { column-width: 320px; column-gap: 36px; column-rule: 1px solid var(--border); margin-right: 40px; }
+#about h2, #about h3 { break-after: avoid; }
+#about h2:first-child { margin-top: 6px; }
+#about table, #about ol > li, #about ul > li, #about p { break-inside: avoid; }
+#about table { width: 100%; table-layout: auto; font-size: 12px; }
+#about th, #about td { white-space: normal; overflow: visible; text-overflow: clip; max-width: none; overflow-wrap: break-word; hyphens: manual; }
+#about th:first-child, #about td:first-child { white-space: nowrap; }
 #about h2 { font-size: 16px; margin: 14px 0 6px; }
 #about table { border-collapse: collapse; margin: 8px 0; font-size: 13px; }
 #about th, #about td { border: 1px solid var(--border); padding: 4px 8px; text-align: left; vertical-align: top; }
@@ -216,45 +335,70 @@ td.prog { width: 1%; white-space: nowrap; }
 .bar-row .fill { background: var(--accent); height: 100%; border-radius: 3px; }
 .bar-row .lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .bar-row .val { text-align: right; font-variant-numeric: tabular-nums; }
+@media (max-width: 900px) { .hs-mini { grid-column: 1; } header.stateview { --hcols: 1fr 1fr; } .hexplore { grid-column: 1 / -1; } }
+@media (min-width: 901px) and (max-width: 1300px) { .hs-explore { grid-column: 3 / -1; } }
+.hstate.allmode { grid-template-columns: 1fr; }
 </style>
 </head>
 <body>
 <header>
-  <h1><img class="flag" src="https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_India.svg" alt="Flag of India" width="30" height="20"><a class="home" href="./">Parivesh Dashboard</a><button id="aboutbtn" class="aboutbtn" aria-expanded="false" aria-controls="aboutwrap">What is an environment clearance?</button><small>A public data mirror of <a href="https://parivesh.nic.in" target="_blank" rel="noopener">PARIVESH</a>, India's environmental clearance portal. Data is refreshed weekly, with project stats and change history for every state. <a href="https://parivesh.nic.in" target="_blank" rel="noopener">Visit parivesh.nic.in</a> for the official records.</small></h1>
+  <nav class="sitebar" aria-label="Site menu">
+    <h1><img class="flag" src="https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_India.svg" alt="Flag of India" width="30" height="20"><a class="home" href="./">Parivesh Dashboard</a><small>A public data mirror of <a href="https://parivesh.nic.in" target="_blank" rel="noopener">PARIVESH</a>, India's environmental clearance portal. Data is refreshed weekly, with project stats and change history for every state.</small></h1>
+    <div class="sbtools">
+    <button id="aboutbtn" class="aboutbtn" aria-expanded="false" aria-controls="aboutwrap">What is an environment clearance?</button>
   <div id="health" class="health" hidden>
-    <div class="hh"><i class="dot"></i>Data Health</div>
+    <div class="hh"><i class="dot"></i><span id="healthage"></span><a class="ghlink hhgh" href="https://github.com/publicmap/parivesh-dashboard" target="_blank" rel="noopener" title="Project on GitHub" aria-label="Project on GitHub"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a></div>
     <div>Source: <a href="https://parivesh.nic.in" target="_blank" rel="noopener">Parivesh, MoEFCC</a></div>
-    <div id="healthage"></div>
   </div>
+    </div>
+  </nav>
+  <section class="about" id="aboutwrap" hidden><button class="aboutclose" id="aboutclose" aria-label="Close" title="Close">✕</button><div id="about">Loading…</div></section>
+  <section class="datanav" id="datanav" aria-label="Data navigation">
+    <div class="dn-ctx"><span class="dn-label">Showing</span><select id="state" aria-label="Select state or All India"></select><button type="button" id="dnreset" class="dnbtn" hidden title="Back to All India">✕ All India</button><span id="dnctx" class="dn-text"></span></div>
+    <label class="hfilter" title="Delisted applications were removed from the portal by the system, usually because they were left incomplete. Turn this on to leave them out of every count, chart and table."><input type="checkbox" id="ignoredel"> Ignore delisted applications</label>
+    <div class="lockbar" id="lockbar"></div>
+  </section>
+  <div id="allcard" class="allcard" hidden></div>
+  <div class="hmap" id="hmap" hidden></div>
+  <div class="hspark" id="hspark" hidden></div>
+  <div class="hspark" id="hspark2" hidden></div>
+  <div class="hspark" id="hspark3" hidden></div>
+  <aside class="hexplore" id="hexplore" hidden>
+    <select id="exmode" aria-label="Explore projects by" title="Explore projects by"></select>
+    <ul class="exlist" id="exlist"></ul>
+  </aside>
+  <section class="hstate" id="hstate">
+    <hr class="hsep">
+    <div class="hs-mini" id="hsmini" hidden>
+      <h2 class="hs-head">Explore Applications By State</h2>
+    <div id="sortby" role="group" aria-label="Sort states by"><span>Sort by:</span><button data-sort="name" class="chip on" data-dir="↑">Name</button><button data-sort="granted" class="chip">Grant %</button><button data-sort="rejected" class="chip">Rejected %</button><button data-sort="apps" class="chip">Total Applications</button><button data-sort="changes" class="chip">Recent Changes</button></div>
+      <div id="minicards"></div>
+    </div>
+  </section>
 </header>
-<section class="about" id="aboutwrap" hidden><button class="aboutclose" id="aboutclose" aria-label="Close" title="Close">✕</button><div id="about">Loading…</div></section>
-<nav class="picker" id="picker">
-  <div id="browse"><label for="state">Browse by state</label>
-  <select id="state"></select></div>
-  <div id="sortby" role="group" aria-label="Sort states by"><span>Sort by:</span><button data-sort="name" class="chip on" data-dir="↑">Name</button><button data-sort="granted" class="chip">Grant %</button><button data-sort="rejected" class="chip">Rejected %</button><button data-sort="apps" class="chip">Total Applications</button><button data-sort="changes" class="chip">Recent Changes</button></div>
-  <div id="cards"></div>
-</nav>
 <main>
   <section id="dash"></section>
   <section id="viewer" hidden>
-  <h2>Project List <small>Row-level diffs between each published update</small></h2>
-  <div class="bar" id="nav" hidden>
-    <button id="older" title="Older version (←)">‹ Older</button>
-    <select id="version" class="version"></select>
-    <button id="newer" title="Newer version (→)">Newer ›</button>
-  </div>
-  <p class="meta" id="meta"></p>
-  <div class="chips" id="chips"></div>
-  <div class="chips" id="trans"></div>
-  <div class="cloudbox" id="cloudbox" hidden><div class="cloudhead">Word cloud <small>click an item to filter the list</small></div><div class="chips" id="cloudmodes"></div><svg id="cloud" role="img" aria-label="Word cloud of project descriptions"></svg></div>
+  <h2>Application Detail</h2>
   <div class="bar" id="controls" hidden>
     <input type="search" id="q" placeholder="Search rows…" size="28">
-    <label class="inline" id="onlychg-wrap" hidden><input type="checkbox" id="onlychg"> Showing only changes</label>
+    <button type="button" id="verbtn" class="verbtn" aria-expanded="false" aria-controls="verpanel" title="Compare with earlier snapshots of this state's data"></button>
     <span class="spacer"></span>
     <a id="rawcsv" target="_blank" rel="noopener" title="This version's CSV file on GitHub">Raw CSV on GitHub</a>
     <button id="allcols">Show all columns</button>
     <button id="dlcsv" title="Downloads the rows and columns currently shown">Download CSV</button>
     <details class="cols"><summary>Columns</summary><div id="colpick"></div></details>
+  </div>
+  <div class="verpanel" id="verpanel" hidden>
+    <div class="bar" id="nav" hidden>
+      <button id="older" title="Older version (←)">‹ Older</button>
+      <select id="version" class="version"></select>
+      <button id="newer" title="Newer version (→)">Newer ›</button>
+      <label class="inline" id="onlychg-wrap" hidden><input type="checkbox" id="onlychg"> Filter by data change (CSV diff)</label>
+    </div>
+    <p class="meta" id="meta"></p>
+    <div class="chips" id="chips"></div>
+    <div class="chips" id="trans"></div>
   </div>
   <div class="filterbar" id="filterbar" hidden></div>
   <div id="status" class="msg">Select a state to begin.</div>
@@ -265,7 +409,6 @@ td.prog { width: 1%; white-space: nowrap; }
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/d3-cloud@1.2.7/build/d3.layout.cloud.min.js"></script>
 <script src="photo-backdrop.js"></script>
 <script>
 $('header').photoBackdrop({
@@ -285,6 +428,15 @@ $('header').photoBackdrop({
 const REPO = 'publicmap/parivesh-dashboard';
 const PAGE_SIZE = 100;
 const STATUS_FIELD = 'Last Visible Status';
+let ignoreDel = true;
+try { ignoreDel = localStorage.getItem('ignoreDelisted') !== '0'; } catch (e) {}
+const isDelisted = status => classify(status)?.cat.id === 'delisted';
+function withoutDelisted(data) {
+  if (!ignoreDel || !data) return data;
+  const rows = new Map();
+  for (const [id, row] of data.rows) if (!isDelisted(row[STATUS_FIELD])) rows.set(id, row);
+  return { ...data, rows };
+}
 const DEFAULT_COLS = ['Proposal Number', 'Project Name', 'Organization Name', 'District', 'Proposal Type', STATUS_FIELD, 'Application Date', 'Grant Date', 'Total Cost (Lakhs)'];
 const STATES = {
   1: 'Jammu And Kashmir', 2: 'Himachal Pradesh', 3: 'Punjab', 4: 'Chandigarh', 5: 'Uttarakhand', 6: 'Haryana', 7: 'Delhi',
@@ -399,7 +551,6 @@ const mapUrl = code => {
   const layers = own ? [own] : MAP_LAYERS;
   return `https://amche.in/dev/?atlas=parivesh&layers=${['mapbox-admin-lines', ...layers, 'mapbox-satellite'].join(',')}${own ? `&zoomTo=${own}` : '&geolocate=true'}`;
 };
-const linksHtml = code => `<div class="runbar"><a href="${mapUrl(code)}" target="_blank" rel="noopener">Map view</a></div>`;
 
 async function getCommits(code) {
   const key = `commits:${code}`;
@@ -489,17 +640,16 @@ const CLOUD_MODES = [
   ['org', 'Organization Name', ['Organization Name'], false, 'Organization Name'],
 ];
 const STOP = new Set(('the and for with from that this are was were has have will been being into onto over under upon within between also such other than then them they their its our out not all any can may per via etc one two three new proposed proposal project projects located situated near taluka tal village villages district dist survey sy plot plots area areas total existing nos no sq mts mtr meter meters ha hectare hectares acres limited ltd pvt private m/s mrs shri smt sri bearing dated lease extent hereby under thereof wherein situate at of in on by to as is be or an a it if so up we us').split(/\s+/));
-let cloudTok = 0;
 let cloudMode = 'category';
 const cloudCol = () => CLOUD_MODES.find(m => m[0] === cloudMode)[4];
 const cloudTerms = () => parseTerms(st.colFilters[cloudCol()]);
 
-function cloudWords() {
+function cloudWords(items = st.items) {
   const [, , fields, split] = CLOUD_MODES.find(m => m[0] === cloudMode);
   const stateWords = new Set((STATES[st.code] || '').toLowerCase().split(/\s+/));
   const counts = new Map();
   const bump = (key, label) => { const c = counts.get(key); c ? c.n++ : counts.set(key, { key, label, n: 1 }); };
-  for (const it of st.items) {
+  for (const it of items) {
     const text = fields.map(f => it.row[f]).find(v => v && v.trim()) || '';
     if (!text && split) continue;
     if (!text) bump(BLANK, 'Unknown');
@@ -515,28 +665,19 @@ function cloudWords() {
     .map(c => ({ key: c.key, text: c.key, full: c.label, n: c.n, label: `${c.label.length > 36 ? c.label.slice(0, 35) + '…' : c.label} (${nf(c.n)})` }));
 }
 
-function updateCloudSel() {
-  const on = new Set(cloudTerms());
-  d3.select('#cloud').selectAll('text').classed('on', d => on.has(d.key));
-}
-
-function buildCloud() {
-  const tok = ++cloudTok, words = cloudWords(), box = $('cloudbox');
-  $('cloudmodes').innerHTML = CLOUD_MODES.map(([k, l]) => `<button class="chip${k === cloudMode ? ' on' : ''}" data-mode="${k}">${l}</button>`).join('');
+const EX_TOP = 14;
+function renderExplore() {
+  const box = $('hexplore');
+  if (!st.code || !st.cur) { box.hidden = true; return; }
+  const all = cloudWords(filterItems(cloudCol())), on = new Set(cloudTerms());
+  const top = all.slice(0, EX_TOP);
+  all.filter(w => on.has(w.key) && !top.includes(w)).forEach(w => top.push(w));
+  const max = Math.max(1, ...top.map(w => w.n));
+  $('exmode').innerHTML = CLOUD_MODES.map(([k, l]) => `<option value="${k}"${k === cloudMode ? ' selected' : ''}>${l}</option>`).join('');
+  $('exlist').innerHTML = top.length
+    ? top.map(w => `<li><button type="button" class="exitem${on.has(w.key) ? ' on' : ''}" data-key="${esc(w.key)}" title="${esc(w.full)} · ${w.n} projects"><i style="width:${w.n / max * 100}%"></i><span class="exl">${esc(w.full)}</span><span class="exn">${nf(w.n)}</span></button></li>`).join('')
+    : '<li class="exnone">Nothing to list for this field.</li>';
   box.hidden = false;
-  if (words.length < 3) { d3.select('#cloud').attr('height', 24).selectAll('*').remove(); d3.select('#cloud').append('text').attr('x', 4).attr('y', 16).attr('fill', 'currentColor').style('font-size', '12px').text('Not enough data for this field.'); return; }
-  const W = Math.max(300, box.clientWidth - 24), split = CLOUD_MODES.find(m => m[0] === cloudMode)[3], H = split ? 190 : Math.min(240, 80 + 8 * words.length);
-  const size = d3.scaleSqrt([words[words.length - 1].n, Math.max(words[0].n, words[words.length - 1].n + 1)], split ? [12, 40] : [11, 24]);
-  d3.layout.cloud().size([W, H]).words(words).padding(3).rotate(0).text(d => d.label).font('system-ui').fontWeight(600).fontSize(d => size(d.n)).spiral('rectangular')
-    .on('end', placed => {
-      if (tok !== cloudTok) return;
-      const svg = d3.select('#cloud').attr('viewBox', `0 0 ${W} ${H}`).attr('height', H);
-      svg.selectAll('*').remove();
-      svg.append('g').attr('transform', `translate(${W / 2},${H / 2})`).selectAll('text').data(placed).join('text')
-        .attr('class', 'cw').attr('text-anchor', 'middle').attr('transform', d => `translate(${d.x},${d.y})`)
-        .style('font-size', d => `${d.size}px`).text(d => d.label).append('title').text(d => `${d.full} · ${d.n} projects`);
-      updateCloudSel();
-    }).start();
 }
 
 const DEFAULT_SORT = { f: 'Application Date', dir: -1 };
@@ -545,14 +686,26 @@ function hasChanges() {
   return st.diff.hasPrev && c.added + c.updated + c.removed > 0;
 }
 
-function applyFilters() {
-  const cf = Object.entries(st.colFilters).filter(([, v]) => v);
+let prevCol = null, diffMode = false;
+const previewing = () => !!(prevF.st || prevF.pc || prevF.ty || hoverYear != null || prevCol);
+function filterItems(skipCol) {
+  const f = eff(), year = effYear(), colMap = { ...st.colFilters };
+  if (prevCol) {
+    for (const [, , , , c] of CLOUD_MODES) delete colMap[c];
+    colMap[prevCol.col] = prevCol.val;
+  }
+  const cf = Object.entries(colMap).filter(([c, v]) => v && c !== skipCol);
   const terms = qTerms();
-  const showAll = !hasChanges() || !$('onlychg').checked;
-  let list = st.items.filter(it => {
+  const showAll = !diffMode || !hasChanges() || !$('onlychg').checked;
+  return st.items.filter(it => {
+    if (!diffMode && it.type === 'removed') return false;
     if (!showAll && it.type === 'same') return false;
     if (st.filter !== 'all' && it.type !== st.filter) return false;
     if (st.transition && it.transition !== st.transition) return false;
+    if (f.st && classify(it.row[STATUS_FIELD])?.cat.id !== f.st) return false;
+    if (f.pc && pcCode(it.row['Project Category (Code)']) !== f.pc) return false;
+    if (f.ty && typeOf(it.row) !== f.ty) return false;
+    if (year != null && String(it.row['Application Date'] ?? '').slice(0, 4) !== String(year)) return false;
     for (const [f, v] of cf) {
       const cell = String(it.row[f] ?? '').toLowerCase();
       if (!parseTerms(v).every(t => t === BLANK ? !cell.trim() : cell.includes(t))) return false;
@@ -563,16 +716,16 @@ function applyFilters() {
     }
     return true;
   });
-  {
-    const { f, dir } = st.sort || DEFAULT_SORT;
-    list = list.slice().sort((x, y) => {
-      const a = x.row[f] ?? '', b = y.row[f] ?? '';
-      const na = parseFloat(a), nb = parseFloat(b);
-      const cmp = !isNaN(na) && !isNaN(nb) && String(na) === a.trim() && String(nb) === b.trim() ? na - nb : a.localeCompare(b);
-      return cmp * dir;
-    });
-  }
-  st.shown = list;
+}
+
+function applyFilters() {
+  const { f, dir } = st.sort || DEFAULT_SORT;
+  st.shown = filterItems(null).sort((x, y) => {
+    const a = x.row[f] ?? '', b = y.row[f] ?? '';
+    const na = parseFloat(a), nb = parseFloat(b);
+    const cmp = !isNaN(na) && !isNaN(nb) && String(na) === a.trim() && String(nb) === b.trim() ? na - nb : a.localeCompare(b);
+    return cmp * dir;
+  });
 }
 
 function renderNav() {
@@ -581,13 +734,30 @@ function renderNav() {
     `<option value="${i}"${i === st.idx ? ' selected' : ''}>${fmtDate(c.date)} · ${esc(c.msg)} · ${c.sha.slice(0, 7)}${i === 0 ? ' (latest)' : ''}</option>`).join('');
   $('older').disabled = st.idx >= st.commits.length - 1;
   $('newer').disabled = st.idx <= 0;
+  const c = st.commits[st.idx];
+  $('verbtn').textContent = `Version: ${st.idx === 0 ? 'Latest' : 'Older'} · ${fmtDate(c.date)} · ${c.sha.slice(0, 7)}`;
 }
+function setDiffMode(on) {
+  diffMode = on;
+  $('verpanel').hidden = !on;
+  $('verbtn').setAttribute('aria-expanded', on);
+  $('viewer').classList.toggle('diffmode', on);
+  if (!st.cur) return;
+  if (!on && st.idx !== 0) { st.idx = 0; showVersion(); return; }
+  st.filter = 'all';
+  st.transition = null;
+  st.page = 0;
+  $('onlychg').checked = on && hasChanges();
+  renderSummary();
+  renderTable();
+}
+$('verbtn').addEventListener('click', () => setDiffMode(!diffMode));
 
 function renderSummary() {
   const c = counts(), d = st.diff;
   const chip = (key, label, n) => `<button class="chip ${key}${st.filter === key ? ' on' : ''}" data-filter="${key}">${label} ${n}</button>`;
   $('chips').innerHTML = d.hasPrev
-    ? chip('all', 'All', st.items.length) + chip('added', '+ Added', c.added) + chip('updated', '~ Updated', c.updated) + chip('removed', '− Removed', c.removed)
+    ? '<span class="chiplabel">Filter by data change:</span>' + chip('all', 'All', st.items.length) + chip('added', '+ Added', c.added) + chip('updated', '~ Updated', c.updated) + chip('removed', '− Removed', c.removed)
     : '';
   const tally = {};
   st.items.forEach(i => { if (i.transition) tally[i.transition] = (tally[i.transition] || 0) + 1; });
@@ -636,10 +806,9 @@ function resetFilters() {
   st.filter = 'all';
   st.transition = null;
   st.page = 0;
-  $('onlychg').checked = hasChanges();
+  $('onlychg').checked = diffMode && hasChanges();
   renderSummary();
   renderTable();
-  updateCloudSel();
 }
 
 function renderFilterBar() {
@@ -649,8 +818,9 @@ function renderFilterBar() {
   bar.innerHTML = `<span>Filtered: ${nf(st.shown.length)} rows shown</span><small>${parts.map(esc).join(' · ')}</small><button id="resetfilters">Reset filters</button>`;
 }
 
-function renderTable() {
+function renderTable(opts = {}) {
   applyFilters();
+  $('viewer').classList.toggle('previewing', previewing());
   renderFilterBar();
   const pages = Math.max(1, Math.ceil(st.shown.length / PAGE_SIZE));
   st.page = Math.min(st.page, pages - 1);
@@ -672,6 +842,8 @@ function renderTable() {
   $('tablewrap').hidden = !slice.length;
   $('status').hidden = !!slice.length;
   if (!slice.length) $('status').textContent = hasChanges() && $('onlychg').checked ? 'No changed rows match the current filters.' : 'No rows match the current filters.';
+  if (!opts.preview || opts.explore) renderExplore();
+  if (opts.preview) renderContext(); else renderLockBar();
   $('pager').innerHTML = pages > 1
     ? `<button id="prevp" ${st.page === 0 ? 'disabled' : ''}>‹</button> Page ${st.page + 1} of ${pages} · ${st.shown.length} rows <button id="nextp" ${st.page >= pages - 1 ? 'disabled' : ''}>›</button>`
     : (slice.length ? `${st.shown.length} rows` : '');
@@ -704,21 +876,22 @@ async function showVersion() {
   try {
     const [cur, prev] = await Promise.all([loadCsv(commit.sha, st.code), parent ? loadCsv(parent.sha, st.code) : null]);
     if (tok !== st.tok) return;
-    st.cur = cur;
-    st.diff = computeDiff(cur, prev);
+    await pipeP;
+    const fc = withoutDelisted(cur), fp = withoutDelisted(prev);
+    st.cur = fc;
+    st.diff = computeDiff(fc, fp);
     st.items = buildItems();
     st.filter = 'all';
     st.transition = null;
     st.page = 0;
     st.expanded.clear();
     $('onlychg-wrap').hidden = !hasChanges();
-    $('onlychg').checked = hasChanges();
-    st.cols = DEFAULT_COLS.filter(f => cur.fields.includes(f));
-    if (!st.cols.length) st.cols = cur.fields.slice(0, 8);
+    $('onlychg').checked = diffMode && hasChanges();
+    st.cols = DEFAULT_COLS.filter(f => fc.fields.includes(f));
+    if (!st.cols.length) st.cols = fc.fields.slice(0, 8);
     $('rawcsv').href = `https://github.com/${REPO}/blob/${commit.sha}/${csvPath(st.code)}`;
     $('controls').hidden = false;
     renderColPicker();
-    buildCloud();
     renderSummary();
     renderTable();
     const grand = st.commits[st.idx + 2];
@@ -735,8 +908,13 @@ async function selectState(code, sha) {
   st.commits = [];
   st.tok++;
   $('viewer').hidden = !code;
+  $('hexplore').hidden = true;
   renderDash(code);
   ['nav', 'controls'].forEach(id => $(id).hidden = true);
+  diffMode = false;
+  $('verpanel').hidden = true;
+  $('viewer').classList.remove('diffmode');
+  $('verbtn').setAttribute('aria-expanded', false);
   ['chips', 'trans', 'meta'].forEach(id => $(id).innerHTML = '');
   if (!code) { history.replaceState(null, '', location.pathname + location.search); return; }
   setStatus('Loading history…');
@@ -802,7 +980,8 @@ async function renderHealth() {
     const status = effStatus(run.run_status || 'not_run', run.run_date);
     $('health').className = `health ${status}`;
     $('health').hidden = false;
-    $('healthage').textContent = `Last updated ${ago(run.run_date)}${status === 'ok' ? '' : ` · ${RUN_LABELS[status] || status}`}`;
+    const when = `Data updated ${ago(run.run_date)}`;
+    $('healthage').innerHTML = `${run.run_url ? `<a href="${esc(run.run_url)}" target="_blank" rel="noopener" title="Open the workflow run on GitHub">${esc(when)}</a>` : esc(when)}${status === 'ok' ? '' : ` · ${esc(RUN_LABELS[status] || status)}`}`;
     $('health').title = new Date(run.run_date).toLocaleString();
   } catch (e) { return; }
 }
@@ -835,43 +1014,17 @@ function loadDashboard() {
   return dashPromise;
 }
 
-function tileHtml(n, label, cls = '') {
-  return `<div class="tile ${cls}"><div class="n">${n}</div><div class="l">${label}</div></div>`;
-}
-
-function runHtml(sc, all) {
-  const r = sc.run, status = effStatus(r.run_status || 'not_run', r.run_date);
-  const link = r.run_url ? ` · <a href="${esc(r.run_url)}" target="_blank" rel="noopener">workflow run</a>` : '';
-  const when = r.run_date ? `Last run ${fmtDate(r.run_date)} (${ago(r.run_date)})` : 'No run recorded yet';
-  const howto = ` · <a href="https://github.com/${REPO}/blob/main/README.md#running-an-update-manually" target="_blank" rel="noopener">How to trigger an update</a>`;
-  const states = all
-    ? ` · ${r.states_ok} updated · ${r.states_failed} failed · ${r.states_no_data} no data · ${r.states_not_run} not run yet`
-    : '';
-  return `<div class="runbar"><span class="pill ${status}">${RUN_LABELS[status] || status}</span><span>${when}${states}${link}${howto}</span></div>`;
-}
-
-function statsHtml(sc, compact) {
-  const s = sc.stat, outliers = +s.cost_outliers_excluded || 0;
-  const chg = (+s.changes_added || 0) + (+s.changes_updated || 0) + (+s.changes_removed || 0);
-  const since = s.compared_with ? ` since ${fmtDate(s.compared_with)}` : '';
-  const recent = tileHtml(nf(chg), `Recent changes${since}<br>+${nf(s.changes_added)} new · ${nf(s.changes_updated)} updated · ${nf(s.changes_removed)} removed`, 'updated');
-  return `<div class="tiles">
-    ${recent}
-    ${compact ? '' : tileHtml(nf(s.projects), 'Projects tracked')}
-    ${tileHtml(nf(s.ec_pending), 'Pending')}
-    ${tileHtml(nf(s.ec_granted), 'EC granted')}
-    ${tileHtml(nf(s.ec_rejected), 'EC rejected')}
-    ${tileHtml(fmtCost(s.total_cost_lakhs), `Total cost of active projects${outliers ? ` (${outliers} implausible excluded)` : ''}`)}
-    ${tileHtml(fmtHa(s.total_land_ha), 'Total land requirement (active)')}
-    ${tileHtml(dateOrDash(s.latest_application), 'Latest application')}
-    ${tileHtml(dateOrDash(s.latest_grant), 'Latest EC grant')}
-  </div>`;
-}
-
-function stateOverview(code, sc) {
-  const r = sc.run, link = r.run_url ? ` · <a href="${esc(r.run_url)}" target="_blank" rel="noopener">workflow run</a>` : '';
-  const howto = ` · <a href="https://github.com/${REPO}/blob/main/README.md#running-an-update-manually" target="_blank" rel="noopener">How to trigger an update</a>`;
-  return `<div class="runbar"><a href="${mapUrl(code)}" target="_blank" rel="noopener">Map view</a>${link}${howto}</div>${statsHtml(sc, true)}`;
+const ACTIVE_KEYS = ['changes_added', 'changes_updated', 'changes_removed', 'changes_status', 'window_added', 'window_updated'];
+function filterScopes(raw) {
+  if (!ignoreDel) return raw;
+  const out = {};
+  for (const [k, sc] of Object.entries(raw)) {
+    const stat = { ...sc.stat };
+    if (stat.active_projects !== undefined) stat.projects = stat.active_projects;
+    for (const key of ACTIVE_KEYS) if (stat[`${key}_active`] !== undefined) stat[key] = stat[`${key}_active`];
+    out[k] = { ...sc, stat, status: sc.status.filter(([l]) => !isDelisted(l)), lists: { ...sc.lists, recent_change: (sc.lists.recent_change || []).filter(r => !isDelisted(r.status)) } };
+  }
+  return out;
 }
 
 function projectCell(r) {
@@ -889,17 +1042,11 @@ function listTable(rows, all, valueHead, valueFn) {
 function changesHtml(sc, all) {
   const s = sc.stat, list = sc.lists.recent_change || [];
   const since = s.compared_with ? `since ${fmtDate(s.compared_with)}` : 'no earlier version to compare';
-  const tiles = `<div class="tiles">
-    ${tileHtml(nf(s.changes_added), 'New projects', 'added')}
-    ${tileHtml(nf(s.changes_updated), 'Rows updated', 'updated')}
-    ${tileHtml(nf(s.changes_status), 'Status changes', 'updated')}
-    ${tileHtml(nf(s.changes_removed), 'Rows removed', 'removed')}
-  </div>`;
   const rows = list.map(r => `<tr><td>${esc(r.label)}</td><td>${projectCell(r)}</td>${all ? `<td>${esc(r.state)}</td>` : ''}<td class="num">${fmtCost(r.total_cost_lakhs)}</td></tr>`).join('');
   const table = list.length
-    ? `<div class="dtable" style="margin-top:10px"><table><thead><tr><th>Change</th><th>Project</th>${all ? '<th>State</th>' : ''}<th class="num">Cost</th></tr></thead><tbody>${rows}</tbody></table></div>`
+    ? `<div class="dtable"><table><thead><tr><th>Change</th><th>Project</th>${all ? '<th>State</th>' : ''}<th class="num">Cost</th></tr></thead><tbody>${rows}</tbody></table></div>`
     : '';
-  return sec('changes', 'Recent changes', since, tiles + table);
+  return sec('changes', 'Recent changes', since, table);
 }
 
 function statusBars(sc) {
@@ -933,7 +1080,7 @@ function sparkInner(a, acts, yMax) {
   const ys = d3.range(a.years[0], a.years[1] + 1), ids = PIPE.bar.map(c => c.id);
   const x = d3.scaleLinear(a.years, [2, 198]), y = d3.scaleLinear([0, yMax || 1], [30, 3]).clamp(true);
   const yl = d3.scaleLinear([0, a.lineMax || 1], [30, 3]);
-  const bw = Math.max(2, 196 / ys.length * .7), step = 196 / ys.length;
+  const bw = Math.max(2, 196 / ys.length * .7), step = 196 / Math.max(1, ys.length - 1);
   const line = d3.line().x(d => x(d[0])).y(d => yl(d[1])).curve(d3.curveMonotoneX);
   const area = d3.area().x(d => x(d[0])).y0(30).y1(d => yl(d[1])).curve(d3.curveMonotoneX);
   const rects = ys.map(yr => { const v = a.apps.get(yr) || 0; return `<rect class="bar${acts.includes('apps') ? ' on' : ''}" x="${x(yr) - bw / 2}" y="${y(v)}" width="${bw}" height="${30 - y(v)}"/>${v > yMax ? `<rect class="cut" x="${x(yr) - bw / 2}" y="3" width="${bw}" height="2"/>` : ''}`; }).join('');
@@ -968,7 +1115,7 @@ function groupedStates() {
 }
 
 const docIcon = (n, max) => {
-  const h = Math.round(10 + 14 * Math.sqrt(n / max));
+  const h = Math.round(10 + 14 * Math.sqrt(Math.min(1, n / max)));
   return `<svg class="doc" height="${h}" width="${Math.round(h * .8)}" viewBox="0 0 16 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M2 1h8l4 4v14H2z"/><path d="M10 1v4h4M5 9h6M5 12h6M5 15h4"/></svg>`;
 };
 let cardSort = 'name', cardFlip = false;
@@ -986,32 +1133,39 @@ function sortStates(list, scopes) {
   return list.slice().sort((x, y) => has(x) !== has(y) ? has(y) - has(x) : (key(x) - key(y) || x[1].localeCompare(y[1])) * dir);
 }
 
-function stateCards(scopes, open) {
+function cardMaker(scopes) {
   const all = (scopes.all?.lists.applications_by_year || []).map(r => +r.label);
   const years = [d3.min(all) ?? new Date().getFullYear(), d3.max(all) ?? new Date().getFullYear()];
   const peaks = Object.keys(STATES).map(c => d3.max(scopes[c]?.lists.applications_by_year || [], r => +r.value) || 0).sort(d3.ascending);
   const yMax = Math.max(1, d3.quantile(peaks, .9));
   const maxApps = d3.max(Object.keys(STATES), c => +scopes[c]?.stat.applications || 0) || 1;
-  const card = ([code, name], expanded) => {
+  return ([code, name], mode) => {
+    const expanded = mode === 'open';
     const sc = scopes[code] || { stat: {}, run: {}, lists: {} }, s = sc.stat;
     const projects = +s.projects || 0;
-    if (!projects) return `<button class="scard" disabled><div class="top"><span class="name">${esc(name)}</span></div><div class="chg">No data yet</div></button>`;
+    if (!projects) return `<button class="scard${mode === 'mini' ? ' mini' : ''}" disabled><div class="top"><span class="name">${esc(name)}</span></div><div class="chg">No data yet</div></button>`;
     const apps = +s.applications || 0, status = effStatus(sc.run.run_status || 'not_run', sc.run.run_date);
     const pill = status === 'ok' ? '' : `<span class="pill ${status}">${RUN_LABELS[status] || status}</span>`;
     const chg = `Last 30 days: <b>${nf(s.window_added)}</b> new · <b>${nf(s.window_updated)}</b> updated`;
     const own = d3.max(sc.lists.applications_by_year || [], r => +r.value) || 1;
-    const extra = expanded ? `<div class="pend">${nf(projects)} projects tracked</div>` : '';
+    const extra = mode ? `<div class="pend">${nf(projects)} projects tracked${ignoreDel ? ' (excl. delisted)' : ''}</div>` : '';
     const series = {};
     PIPE.bar.forEach(c => { series[c.id] = new Map((sc.lists[`year_${c.id}`] || []).map(r => [+r.label, +r.value])); });
     const sa = { years, apps: new Map((sc.lists.applications_by_year || []).map(r => [+r.label, +r.value])), series, shared: yMax, own };
     sa.lineMax = d3.max(Object.values(series), m => d3.max([...m.values()])) || 1;
-    sparkArgs.set(expanded ? `open:${code}` : code, sa);
-    const attrs = expanded ? `class="scard open" data-k="open:${code}" data-acts="granted,rejected" data-apps="${apps}" data-pend="${esc(defaultPend(s, apps))}" data-reset="1" title="Close and show all of India"` : `class="scard" data-code="${code}" data-k="${code}" data-acts="granted,rejected" data-apps="${apps}" data-pend="${esc(defaultPend(s, apps))}"`;
+    sparkArgs.set(mode && mode !== 'mini' ? `${mode}:${code}` : code, sa);
+    if (mode === 'mini') return `<button class="scard mini" data-code="${code}" data-k="${code}" data-acts="granted,rejected" data-apps="${apps}"><div class="top"><span class="name" title="${esc(name)}">${esc(name)}</span></div><div class="pct">${statHtml(s, apps, 'granted', 'L')}${statHtml(s, apps, 'rejected', 'R')}</div><div class="pipe">${pipeHtml(s, apps)}</div>${sparkHtml(sa, DEFAULT_ACTS, yMax)}<div class="pend"></div><div class="chg">${chg.replace('Last 30 days: ', '').replace(' · ', '<br>')}</div></button>`;
+    const attrs = mode === 'all' ? `class="scard allc" data-k="all:${code}" data-acts="granted,rejected" data-apps="${apps}" data-pend=""` : expanded ? `class="scard open" data-k="open:${code}" data-acts="granted,rejected" data-apps="${apps}" data-pend="${esc(defaultPend(s, apps))}" data-reset="1" title="Close and show all of India"` : `class="scard" data-code="${code}" data-k="${code}" data-acts="granted,rejected" data-apps="${apps}" data-pend="${esc(defaultPend(s, apps))}"`;
     const close = expanded ? '<span class="close" aria-label="Close">✕</span>' : '';
-    return `<button ${attrs}><div class="top"><span class="name">${esc(name)}</span>${pill}<span class="apps" data-cat="apps" title="${nf(apps)} applications"><b>${nf(apps)}</b>${docIcon(apps, maxApps)}</span>${close}</div><div class="pct">${statHtml(s, apps, 'granted', 'L')}${statHtml(s, apps, 'rejected', 'R')}</div><div class="pipe">${pipeHtml(s, apps)}</div><div class="pend">${defaultPend(s, apps)}</div>${extra}${sparkHtml(sa, DEFAULT_ACTS, expanded ? own : yMax)}<div class="chg">${chg}</div></button>`;
+    const tag = mode === 'all' ? 'div' : 'button', nameHtml = mode === 'all' ? `<span class="name">${esc(name)}</span>` : `<span class="name">${esc(name)}</span>`;
+    return `<${tag} ${attrs}>${mode === 'all' ? close : ''}<div class="top">${nameHtml}${pill}<span class="apps" data-cat="apps" title="${nf(apps)} applications"><b>${nf(apps)}</b>${docIcon(apps, maxApps)}</span>${mode === 'all' ? '' : close}</div><div class="pct">${statHtml(s, apps, 'granted', 'L')}${statHtml(s, apps, 'rejected', 'R')}</div><div class="pipe">${pipeHtml(s, apps)}</div><div class="pend">${defaultPend(s, apps)}</div>${extra}${sparkHtml(sa, DEFAULT_ACTS, mode ? own : yMax)}<div class="chg">${chg}</div></${tag}>`;
   };
-  if (open) return `<div class="open-wrap">${card([open, STATES[open]], true)}</div>`;
-  return groupedStates().map(([label, list]) => `<div class="group-head">${label}</div><div class="cards">${sortStates(list, scopes).map(e => card(e)).join('')}</div>`).join('');
+}
+
+function stateCards(scopes, open) {
+  const card = cardMaker(scopes);
+  if (open) return '';
+  return groupedStates().map(([label, list]) => `<div class="group-head">${label}</div><div class="cards mini">${sortStates(list, scopes).map(e => card(e, 'mini')).join('')}</div>`).join('');
 }
 
 function syncPicker(scopes) {
@@ -1034,25 +1188,356 @@ async function renderDash(code) {
   const all = !code;
   el.innerHTML = '<div class="msg">Loading dashboard…</div>';
   $('dash2').innerHTML = '';
-  $('cards').innerHTML = '';
+  $('minicards').innerHTML = '';
   let scopes;
-  try { scopes = await loadDashboard(); } catch (e) { if (tok === st.dashTok) el.innerHTML = `<div class="msg err">${esc(e.message)}</div>`; return; }
+  try { scopes = filterScopes(await loadDashboard()); } catch (e) { if (tok === st.dashTok) el.innerHTML = `<div class="msg err">${esc(e.message)}</div>`; return; }
   if (tok !== st.dashTok) return;
   syncPicker(scopes);
   st.scopes = scopes;
   const open = all || !+scopes[code]?.stat.projects ? null : code;
-  $('cards').innerHTML = open ? `<div class="state-head">${stateCards(scopes, open)}<div class="state-ov">${stateOverview(open, scopes[open])}</div></div>` : stateCards(scopes);
-  $('browse').hidden = !!open;
-  $('sortby').hidden = !!open;
+  renderAllCard(scopes, open);
+  st.open = open;
+  previewCode = null;
+  renderMap(scopes, open);
+  renderSparks(scopes, open);
+  $('minicards').innerHTML = open ? '' : stateCards(scopes);
+  $('hstate').hidden = !!open;
+  $('hsmini').hidden = !!open;
+  document.querySelector('header').classList.toggle('stateview', !!open);
+  st.open = open;
+  renderLockBar();
   const sc = scopes[all ? 'all' : code];
   const title = all ? 'All India' : STATES[code];
   if (!sc || !+sc.stat.projects) {
-    el.innerHTML = (all ? statesTable(scopes) : '') + `<h2>${esc(title)}</h2>${sc ? runHtml(sc, all) : ''}${linksHtml(code)}<div class="msg">No data published yet for ${esc(title)}.</div>`;
+    el.innerHTML = (all ? statesTable(scopes) : '') + `<h2>${esc(title)}</h2><div class="msg">No data published yet for ${esc(title)}.</div>`;
     return;
   }
   const tops = TOPS.map(([key, heading, vh, fn]) => sec(key, heading, 'top 10', listTable(sc.lists[key], all, vh, fn))).join('');
-  el.innerHTML = all ? `${statesTable(scopes)}<h2>${esc(title)} <small>overview</small></h2>${runHtml(sc, all)}${linksHtml(code)}${statsHtml(sc)}` : '';
+  el.innerHTML = all ? statesTable(scopes) : '';
   $('dash2').innerHTML = `${changesHtml(sc, all)}${statusBars(sc)}<div class="grid2">${tops}</div>`;
+}
+
+const CENTROIDS = {
+  1: [75.0, 33.5], 2: [77.2, 31.9], 3: [75.4, 31.1], 4: [76.78, 30.73], 5: [79.2, 30.1], 6: [76.1, 29.2], 7: [77.1, 28.65],
+  8: [74.2, 26.6], 9: [80.9, 26.8], 10: [85.6, 25.8], 11: [88.5, 27.6], 12: [94.5, 28.0], 13: [94.4, 26.0], 14: [93.9, 24.8],
+  15: [92.8, 23.3], 16: [91.7, 23.8], 17: [91.4, 25.5], 18: [92.9, 26.3], 19: [87.9, 23.5], 20: [85.4, 23.6], 21: [84.4, 20.5],
+  22: [82.0, 21.3], 23: [78.3, 23.5], 24: [71.6, 22.7], 27: [76.0, 19.5], 28: [79.7, 15.9], 29: [76.2, 14.8], 30: [74.05, 15.35],
+  31: [72.7, 10.5], 32: [76.5, 10.4], 33: [78.4, 11.1], 34: [79.8, 11.9], 35: [92.7, 11.7], 36: [79.0, 17.9], 37: [77.7, 34.1],
+  38: [73.0, 20.2],
+};
+let outlinePromise;
+const loadOutline = () => outlinePromise ||= fetch('india-outline.json').then(r => r.json()).catch(() => null);
+
+let mapHeadCode = null;
+function mapHead(code) {
+  mapHeadCode = code;
+  const mt = $('hmap').querySelector('.mt');
+  if (!mt) return;
+  const f = eff(), y = effYear();
+  const preview = code && code !== st.open ? STATES[code] : '';
+  const parts = [preview, f.st && PIPE.cats.get(f.st).label, f.pc && PC_LABELS.find(l => l[0] === f.pc)?.[1], f.ty && TYPES.find(t => t[0] === f.ty)?.[1], y].filter(v => v != null && v !== '' && v !== false);
+  mt.classList.toggle('on', parts.length > 0);
+  mt.textContent = parts.length ? parts.join(' · ') : st.open ? '' : 'Select State For Details';
+}
+
+let mapDraw = () => {};
+async function renderMap(scopes, open) {
+  const box = $('hmap'), outline = await loadOutline();
+  if (!outline) { box.hidden = true; return; }
+  box.hidden = false;
+  const w = box.clientWidth || 300, h = (box.clientHeight || 260) - 38;
+  const proj = d3.geoMercator().fitExtent([[6, 6], [w - 6, h - 18]], outline), path = d3.geoPath(proj);
+  const all = Object.keys(CENTROIDS).map(c => ({ code: c, name: STATES[c], n: +scopes[c]?.stat.applications || 0 })).filter(d => d.n > 0);
+  d3.select(box).html('').append('div').attr('class', 'mh').html('<span class="mt"></span>');
+  d3.select(box).append('a').attr('class', 'mlink').attr('href', mapUrl(open || '')).attr('target', '_blank').attr('rel', 'noopener').text(open ? `Open ${STATES[open]} on the map ↗` : 'Open on the map ↗');
+  const svg = d3.select(box).append('svg').attr('viewBox', `0 0 ${w} ${h}`).attr('role', 'img').attr('aria-label', 'Map of India with a pie chart per state or union territory, sized by number of applications and split by status');
+  svg.append('path').attr('class', 'out').attr('d', path(outline));
+  const pie = d3.pie().sort(null).value(d => d.n), arc = d3.arc().innerRadius(0);
+  const maxR = Math.min(26, w / 10);
+  const memo = new Map();
+  const series = (code, f) => {
+    const k = `${code}|${f.st}|${f.pc}|${f.ty}`;
+    if (!memo.has(k)) memo.set(k, cubeSeries(scopes[code], f));
+    return memo.get(k);
+  };
+  const countFor = (d, f, y) => {
+    if (!f.st && !f.pc && !f.ty && y == null) return d.n;
+    const m = series(d.code, f);
+    return y == null ? d3.sum([...m.values()]) : m.get(y) || 0;
+  };
+  mapDraw = () => {
+    const f = eff(), y = effYear(), cat = f.st;
+    const size = d => countFor(d, f, y);
+    const parts = d => (cat ? [{ id: cat, label: PIPE.cats.get(cat).label, n: size(d) }] : PIPE.bar.map(c => ({ id: c.id, label: c.label, n: countFor(d, { ...f, st: c.id }, y) }))).filter(x => x.n > 0);
+    const data = all.filter(d => size(d) > 0).sort((a, b) => size(b) - size(a));
+    const top = y == null ? d3.max(data, size) : d3.max(all, d => d3.max([...series(d.code, f).values()]));
+    const r = d3.scaleSqrt([0, top || 1], [0, maxR]);
+    const ctx = [cat && PIPE.cats.get(cat).label, f.pc && PC_LABELS.find(l => l[0] === f.pc)?.[1], f.ty && TYPES.find(t => t[0] === f.ty)?.[1], y].filter(v => v != null && v !== '').join(' · ');
+    svg.classed('focus', false).selectAll('g.pie').remove();
+    const g = svg.selectAll('g.pie').data(data).join('g').attr('class', d => `pie${d.code === open ? ' sel' : ''}`).attr('data-code', d => d.code)
+      .attr('transform', d => `translate(${proj(CENTROIDS[d.code])})`);
+    g.each(function (d) {
+      const rad = r(size(d));
+      d3.select(this).selectAll('path').data(pie(parts(d))).join('path').attr('class', x => `c-${x.data.id}`).attr('d', x => arc.outerRadius(rad)(x));
+      d3.select(this).append('circle').attr('class', 'ring').attr('r', rad);
+    });
+    g.filter('.sel').raise();
+    mapHead(mapHeadCode);
+    g.append('title').text(d => `${d.name}${ctx ? ` (${ctx})` : ''}: ${nf(size(d))} applications\n${parts(d).map(x => `${nf(x.n)} ${x.label}`).join(' · ')}`);
+  };
+  mapDraw();
+  mapHead(open);
+  d3.select(box).append('div').attr('class', 'cap').html('<em>Pie area = applications · hover or click a chart to filter by status, category, type or year</em>');
+}
+
+let previewCode = null;
+function preview(code) {
+  const show = code ?? st.open;
+  if ((code ?? null) === previewCode) return;
+  previewCode = code ?? null;
+  if (!st.scopes) return;
+  renderAllCard(st.scopes, show || null);
+  renderSparks(st.scopes, show || null);
+  const svg = $('hmap').querySelector('svg');
+  if (!svg) return;
+  svg.classList.toggle('focus', !!code);
+  mapHead(code ?? st.open);
+  svg.querySelectorAll('.pie').forEach(g => g.classList.toggle('hovered', g.dataset.code === code));
+}
+$('hmap').addEventListener('mouseover', e => preview(e.target.closest('.pie[data-code]')?.dataset.code || null));
+$('hmap').addEventListener('mouseleave', () => preview(null));
+$('hmap').addEventListener('click', e => {
+  const c = e.target.closest('.pie[data-code]');
+  if (!c) return;
+  const code = c.dataset.code === st.open ? '' : c.dataset.code;
+  $('state').value = code;
+  selectState(code);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+const PC_LABELS = [['A', 'Category A'], ['B1', 'Category B1'], ['B2', 'Category B2'], ['OTHER', 'Other / none']];
+
+let sparkCtx = null, sparkYears = null, hoverYear = null;
+const TYPES = [['ec', 'Environment (EC / ToR)'], ['forest', 'Forest'], ['wildlife', 'Wildlife'], ['crz', 'CRZ'], ['other', 'EC follow-ups']];
+const typeOf = row => {
+  const cat = String(row.Category ?? '').trim().toUpperCase(), desc = String(row.Description ?? '').trim().toLowerCase();
+  if (cat === 'CRZ' || desc.includes('crz')) return 'crz';
+  if (desc.includes('wildlife')) return 'wildlife';
+  if (cat === 'EC' || cat === 'TOR') return 'ec';
+  if (cat === 'OTHER' || desc.includes('pollution load') || !desc) return 'other';
+  return cat === '' ? 'forest' : 'other';
+};
+let lock = { st: null, pc: null, ty: null, year: null }, prevF = { st: null, pc: null, ty: null };
+const eff = () => ({ st: prevF.st ?? lock.st, pc: prevF.pc ?? lock.pc, ty: prevF.ty ?? lock.ty });
+const cubeOf = sc => sc._cube ??= (sc.lists.cube || []).map(r => { const [y, st, pc, ty] = r.label.split('|'); return { y: +y, st, pc, ty, n: +r.value }; });
+function cubeSeries(sc, f) {
+  const out = new Map();
+  for (const r of cubeOf(sc)) if ((!f.st || r.st === f.st) && (!f.pc || r.pc === f.pc) && (!f.ty || r.ty === f.ty)) out.set(r.y, (out.get(r.y) || 0) + r.n);
+  return out;
+}
+const effYear = () => hoverYear ?? lock.year;
+const pcCode = v => { const c = String(v ?? '').trim().toUpperCase(); return ['A', 'B1', 'B2'].includes(c) ? c : 'OTHER'; };
+function renderSparks(scopes, code) {
+  sparkCtx = { scopes, code };
+  const boxes = [$('hspark'), $('hspark2'), $('hspark3')], sc = scopes[code || 'all'];
+  const hide = () => boxes.forEach(b => { b.hidden = true; });
+  if (!sc || !PIPE) { hide(); return; }
+  const yrs = (scopes.all?.lists.applications_by_year || []).map(r => +r.label);
+  const y0 = d3.min(yrs), y1 = d3.max(yrs);
+  if (y0 == null) { hide(); return; }
+  sparkYears = [y0, y1];
+  const ys = d3.range(y0, y1 + 1), x = d3.scaleLinear([y0, y1], [2, 198]), step = 196 / Math.max(1, ys.length - 1);
+  const flt = eff();
+  const label = { st: flt.st && PIPE.cats.get(flt.st).label, pc: flt.pc && PC_LABELS.find(l => l[0] === flt.pc)?.[1], ty: flt.ty && TYPES.find(t => t[0] === flt.ty)?.[1] };
+  const row = (cls, name, tipKey, f, own, statKey) => {
+    const m = cubeSeries(sc, f), d = ys.map(y => [y, m.get(y) || 0]);
+    const others = ['st', 'pc', 'ty'].filter(k => k !== own && flt[k]);
+    const total = others.length ? d3.sum(d, v => v[1]) : +sc.stat[statKey] || d3.sum(d, v => v[1]);
+    const suffix = others.map(k => label[k]).join(' · ');
+    const yl = d3.scaleLinear([0, d3.max(d, v => v[1]) || 1], [30, 3]);
+    const line = d3.line().x(v => x(v[0])).y(v => yl(v[1])).curve(d3.curveMonotoneX);
+    const area = d3.area().x(v => x(v[0])).y0(30).y1(v => yl(v[1])).curve(d3.curveMonotoneX);
+    const tl = suffix ? `${name} · ${suffix}` : name;
+    const hits = d.map(v => `<rect class="hit" x="${x(v[0]) - step / 2}" y="0" width="${step}" height="32" data-y="${v[0]}" data-n="${v[1]}" data-l="${esc(tl)}"/>`).join('');
+    const dim = !!flt[own] && flt[own] !== tipKey.split(':')[1], locked = lock[own] === tipKey.split(':')[1];
+    return `<div class="row ${cls}${dim ? ' dim' : ''}${locked ? ' locked' : ''}" data-tip="${tipKey}" data-t="${total}" data-v="${d.map(v => v[1]).join(',')}"><span class="l">${esc(name)}</span><span class="t">${nf(total)}</span><svg viewBox="0 0 200 32" preserveAspectRatio="none" role="img" aria-label="${esc(tl)} applications per year"><path class="ar" d="${area(d)}"/><path class="ln" d="${line(d)}"/>${hits}</svg></div>`;
+  };
+  const status = PIPE.bar.map(c => row(`c-${c.id}`, c.label, `st:${c.id}`, { st: c.id, pc: flt.pc, ty: flt.ty }, 'st', `ec_${c.id}`)).join('');
+  const cats = PC_LABELS.map(([id, name]) => row(`pc-${id}`, name, `pc:${id}`, { st: flt.st, pc: id, ty: flt.ty }, 'pc', `pc_${id}`)).join('');
+  const types = TYPES.map(([id, name]) => row(`ty-${id}`, name, `ty:${id}`, { st: flt.st, pc: flt.pc, ty: id }, 'ty', `ty_${id}`)).join('');
+  const yrsHtml = `<div class="yrs"><span>${y0}</span><span>${y1}</span></div>`;
+  const sub = (own, base) => { const o = ['st', 'pc', 'ty'].filter(k => k !== own && flt[k]).map(k => label[k]).join(' · '); return o ? `${base} · ${esc(o)}` : base; };
+  boxes[0].innerHTML = `<div class="hs-title">${sub('st', 'Applications by year')}</div>${status}${yrsHtml}`;
+  boxes[1].innerHTML = `<div class="hs-title">${sub('pc', 'By project category')}</div>${cats}${yrsHtml}`;
+  boxes[2].innerHTML = `<div class="hs-title">${sub('ty', 'By clearance type')}</div>${types}${yrsHtml}`;
+  boxes.forEach(b => { b.hidden = false; });
+  const ey = effYear();
+  if (ey != null) paintYear(ey); else unpaintYear();
+}
+
+const YEAR_SVGS = '#hspark svg, #hspark2 svg, #hspark3 svg, #allcard svg.spark';
+let yearClearTimer = null;
+function clearYearSoon() {
+  clearTimeout(yearClearTimer);
+  yearClearTimer = setTimeout(clearYear, 180);
+}
+function paintYear(y) {
+  if (!sparkYears) return;
+  const [y0, y1] = sparkYears, i = y - y0, mx = 2 + 196 * (y1 > y0 ? i / (y1 - y0) : 0);
+  document.querySelectorAll(YEAR_SVGS).forEach(svg => {
+    let ln = svg.querySelector('line.ymark');
+    if (!ln) { ln = document.createElementNS('http://www.w3.org/2000/svg', 'line'); ln.setAttribute('class', 'ymark'); ln.setAttribute('y1', 0); ln.setAttribute('y2', 32); svg.appendChild(ln); }
+    ln.setAttribute('x1', mx); ln.setAttribute('x2', mx);
+  });
+  document.querySelectorAll('.hspark .row').forEach(r => { r.querySelector('.t').textContent = nf(r.dataset.v.split(',')[i] || 0); r.classList.add('byyear'); });
+}
+function unpaintYear() {
+  document.querySelectorAll(YEAR_SVGS.split(', ').map(q => q + ' line.ymark').join(', ')).forEach(l => l.remove());
+  document.querySelectorAll('.hspark .row').forEach(r => { r.querySelector('.t').textContent = nf(r.dataset.t); r.classList.remove('byyear'); });
+}
+function applyYear(y) {
+  clearTimeout(yearClearTimer);
+  hoverYear = y;
+  paintYear(y);
+  mapDraw();
+  if (st.cur) renderTable({ preview: true, explore: true });
+}
+function clearYear() {
+  clearTimeout(yearClearTimer);
+  hoverYear = null;
+  if (lock.year != null) paintYear(lock.year); else unpaintYear();
+  mapDraw();
+  if (st.cur) renderTable({ preview: true, explore: true });
+}
+
+const statusCards = () => [...document.querySelectorAll('#minicards .scard.mini[data-code], #allcard .scard')];
+function syncCards() {
+  const e = eff();
+  statusCards().forEach(c => setActs(c, e.st, !!e.st));
+}
+function syncViews() {
+  if (sparkCtx) renderSparks(sparkCtx.scopes, sparkCtx.code);
+  mapDraw();
+  syncCards();
+}
+function setPreview(f) {
+  const n = { st: f.st ?? null, pc: f.pc ?? null, ty: f.ty ?? null };
+  if (n.st === prevF.st && n.pc === prevF.pc && n.ty === prevF.ty) return;
+  prevF = n;
+  syncViews();
+  if (st.cur) renderTable({ preview: true, explore: true });
+}
+function renderContext() {
+  const sc = st.scopes?.[st.open || 'all'];
+  if (!sc) return;
+  const total = +sc.stat.projects || 0, f = eff(), y = effYear();
+  let text = ignoreDel ? `${nf(total)} applications · delisted excluded` : `${nf(total)} projects · delisted included`;
+  if (f.st || f.pc || f.ty || y != null) {
+    const m = cubeSeries(sc, f);
+    text += ` · ${nf(y != null ? m.get(y) || 0 : d3.sum([...m.values()]))} match the filters`;
+  }
+  $('dnctx').textContent = text;
+  $('dnreset').hidden = !st.open;
+}
+function renderLockBar() {
+  if (!PIPE) return;
+  const parts = [];
+  if (lock.st) parts.push(['st', `Status: ${PIPE.cats.get(lock.st).label}`]);
+  if (lock.pc) parts.push(['pc', `Category: ${PC_LABELS.find(l => l[0] === lock.pc)[1]}`]);
+  if (lock.ty) parts.push(['ty', `Type: ${TYPES.find(t => t[0] === lock.ty)[1]}`]);
+  if (lock.year != null) parts.push(['year', `Year: ${lock.year}`]);
+  for (const [f, v] of Object.entries(st.colFilters)) if (v) parts.push([`cf:${f}`, `${f}: ${v.replace(/"/g, '')}`]);
+  $('lockbar').innerHTML = parts.length
+    ? `<span class="dn-label">Filters</span>${parts.map(([k, l]) => `<button type="button" class="lockchip" data-k="${esc(k)}" title="Remove this filter">${esc(l)} ✕</button>`).join('')}<button type="button" class="lockchip" data-k="all">Clear all filters</button>`
+    : '<span class="dn-none">No filters applied</span>';
+  renderContext();
+}
+function setLock(patch) {
+  Object.assign(lock, patch);
+  prevF = { st: null, pc: null, ty: null };
+  prevCol = null;
+  clearTimeout(yearClearTimer);
+  hoverYear = null;
+  syncViews();
+  renderLockBar();
+  if (st.cur) { st.page = 0; renderTable(); }
+}
+const toggleLock = (k, v) => setLock({ [k]: lock[k] === v ? null : v });
+$('lockbar').addEventListener('click', e => {
+  const k = e.target.closest('[data-k]')?.dataset.k;
+  if (!k) return;
+  if (k === 'all') { st.colFilters = {}; setLock({ st: null, pc: null, ty: null, year: null }); }
+  else if (k.startsWith('cf:')) { st.colFilters[k.slice(3)] = ''; setLock({}); }
+  else setLock({ [k]: null });
+});
+for (const id of ['hspark', 'hspark2', 'hspark3']) {
+  $(id).addEventListener('click', e => {
+    const row = e.target.closest('.row[data-tip]');
+    if (!row) return;
+    const [type, rid] = row.dataset.tip.split(':'), hit = e.target.closest('rect.hit');
+    if (hit) {
+      const y = +hit.dataset.y;
+      setLock(lock[type] === rid && lock.year === y ? { [type]: null, year: null } : { [type]: rid, year: y });
+    } else toggleLock(type, rid);
+  });
+}
+
+for (const id of ['hspark', 'hspark2', 'hspark3', 'allcard']) {
+  $(id).addEventListener('mouseover', e => {
+    const hit = e.target.closest?.('rect.hit');
+    if (hit) applyYear(+hit.dataset.y);
+    if (id === 'allcard') return;
+    const k = e.target.closest('.row[data-tip]')?.dataset.tip;
+    if (k) { const [type, fid] = k.split(':'); setPreview({ [type]: fid }); }
+  });
+  $(id).addEventListener('mouseout', e => {
+    if (e.target.closest?.('rect.hit') && !e.relatedTarget?.closest?.('rect.hit')) clearYearSoon();
+    if (id === 'allcard') return;
+    if (e.target.closest('.row') && !e.relatedTarget?.closest?.('.row')) setPreview({});
+  });
+}
+
+const pcMeaning = id => {
+  const g = glossary['Project Category (Code)'];
+  if (!g) return '';
+  if (id !== 'OTHER') return g.get(glKey(id))?.meaning || '';
+  return `${g.get('')?.meaning || 'No project category recorded.'} Also includes the state labels MIND (mining) and NONMIND (non-mining) and coastal categories.`;
+};
+const tyMeaning = id => {
+  const desc = glossary.Description, cat = glossary.Category;
+  const d = key => desc?.get(glKey(key))?.meaning || '', c = key => cat?.get(glKey(key))?.meaning || '';
+  return { ec: c('EC') && `${c('EC')} Also covers ToR (Terms of Reference) applications, the step before an EC.`, forest: d('Forest clearance form'), wildlife: d('Wildlife clearance form'), crz: d('CRZ clearance form'), other: c('OTHER') }[id] || '';
+};
+const sparkMeaning = k => {
+  const [kind, id] = (k || '').split(':');
+  return kind === 'st' ? PIPE.cats.get(id)?.meaning || '' : kind === 'pc' ? pcMeaning(id) : kind === 'ty' ? tyMeaning(id) : '';
+};
+const sparkMove = e => {
+  const row = e.target.closest?.('.row[data-tip]');
+  const r = e.target.closest?.('rect.hit');
+  const label = e.target.closest?.('.row .l');
+  const meaning = label ? sparkMeaning(row.dataset.tip) : '';
+  const show = !!(r || meaning);
+  tip.hidden = !show;
+  tip.classList.toggle('wrap', !!meaning);
+  if (!show) return;
+  tip.innerHTML = r ? `<b>${r.dataset.y}</b>` : `<b>${esc(label.textContent)}</b><br>${esc(meaning)}`;
+  const w = tip.offsetWidth;
+  tip.style.left = `${Math.max(8, Math.min(e.clientX + 12, innerWidth - w - 8))}px`;
+  tip.style.top = `${e.clientY + 16}px`;
+};
+for (const id of ['hspark', 'hspark2', 'hspark3']) {
+  $(id).addEventListener('mousemove', sparkMove);
+  $(id).addEventListener('mouseleave', () => { tip.hidden = true; });
+}
+
+function renderAllCard(scopes, code) {
+  const box = $('allcard'), s = scopes.all?.stat;
+  if (!s || !+s.projects) { box.hidden = true; return; }
+  const cur = code || 'all';
+  box.innerHTML = cardMaker(scopes)([cur, cur === 'all' ? 'All India' : STATES[cur]], 'all');
+  $('state').value = code || '';
+  box.hidden = false;
 }
 
 for (const id of ['dash', 'dash2']) {
@@ -1071,19 +1556,23 @@ function unfocus() {
   setScale(hovered, false);
   hovered?.classList.remove('hovered');
   hovered = null;
-  $('cards').classList.remove('focus');
+  $('minicards').classList.remove('focus');
 }
-$('cards').addEventListener('mouseover', e => {
-  const card = e.target.closest('.scard[data-code]');
-  if (card === hovered) return;
-  unfocus();
-  if (!card) return;
-  hovered = card;
-  card.classList.add('hovered');
-  setScale(card, true);
-  $('cards').classList.add('focus');
-});
-$('cards').addEventListener('mouseleave', unfocus);
+for (const root of [$('minicards')]) {
+  const mini = root.id === 'minicards';
+  root.addEventListener('mouseover', e => {
+    const card = e.target.closest('.scard[data-code]');
+    if (card === hovered) return;
+    unfocus();
+    if (mini) preview(card?.dataset.code || null);
+    if (!card) return;
+    hovered = card;
+    card.classList.add('hovered');
+    setScale(card, true);
+    root.classList.add('focus');
+  });
+  root.addEventListener('mouseleave', () => { unfocus(); if (mini) preview(null); });
+}
 $('sortby').addEventListener('click', e => {
   const b = e.target.closest('[data-sort]');
   if (!b || !st.scopes) return;
@@ -1094,9 +1583,14 @@ $('sortby').addEventListener('click', e => {
     x.dataset.dir = x === b ? (cardFlip === (x.dataset.sort === 'name') ? '↓' : '↑') : '';
   });
   unfocus();
-  $('cards').innerHTML = stateCards(st.scopes);
+  $('minicards').innerHTML = stateCards(st.scopes);
 });
 
+const linkedCards = src => [src, ...document.querySelectorAll('#minicards .scard.mini[data-code], #allcard .scard')].filter((c, i, a) => a.indexOf(c) === i);
+$('allcard').addEventListener('mouseover', e => { if (e.target.closest('.chg')) $('minicards').classList.add('show-chg'); });
+$('allcard').addEventListener('mouseout', e => { if (e.target.closest('.chg') && !e.relatedTarget?.closest?.('.chg')) $('minicards').classList.remove('show-chg'); });
+$('allcard').addEventListener('mouseleave', () => $('minicards').classList.remove('show-chg'));
+const onCards = (t, f) => [$('minicards'), $('allcard')].forEach(el => el.addEventListener(t, f));
 function setActs(card, hov, swap) {
   const L = card.querySelector('[data-side="L"]'), R = card.querySelector('[data-side="R"]');
   const acts = hov ? [hov] : DEFAULT_ACTS, sig = `${acts.join(',')}${swap ? '*' : ''}`;
@@ -1104,29 +1598,47 @@ function setActs(card, hov, swap) {
   card.dataset.sig = sig;
   card.dataset.acts = acts.join(',');
   const id = swap ? hov : 'granted', n = +(card.querySelector(`.seg[data-cat="${hov}"]`)?.dataset.n || 0), apps = +card.dataset.apps;
-  L.className = `pn c-${id}`;
-  L.dataset.cat = id;
-  L.querySelector('.n').textContent = `${pct(+card.querySelector(`.seg[data-cat="${id}"]`)?.dataset.n || 0, apps)}%`;
-  L.querySelector('.l').textContent = PIPE.cats.get(id).label;
-  R.hidden = !!swap;
-  card.querySelector('.pend').textContent = hov && hov !== 'apps' ? `${nf(n)} of ${nf(apps)} applications` : '';
+  if (L && R) {
+    L.className = `pn c-${id}`;
+    L.dataset.cat = id;
+    L.querySelector('.n').textContent = `${pct(+card.querySelector(`.seg[data-cat="${id}"]`)?.dataset.n || 0, apps)}%`;
+    L.querySelector('.l').textContent = PIPE.cats.get(id).label;
+    R.hidden = !!swap;
+    R.style.display = swap ? 'none' : '';
+    L.style.flex = swap ? 'none' : '';
+    L.style.marginLeft = '';
+    const seg = swap && card.querySelector(`.seg[data-cat="${hov}"]`), row = L.parentElement;
+    if (swap) {
+      const endX = seg ? seg.getBoundingClientRect().right - row.getBoundingClientRect().left : row.clientWidth;
+      L.style.marginLeft = `${Math.max(0, Math.min(endX - L.offsetWidth, row.clientWidth - L.offsetWidth))}px`;
+    }
+  }
+  card.querySelector('.pend').textContent = hov && hov !== 'apps' ? `${nf(n)} ${PIPE.cats.get(hov).label} of ${nf(apps)}` : '';
   card.querySelectorAll('.seg').forEach(g => g.classList.toggle('on', hov === 'apps' || acts.includes(g.dataset.cat)));
-  setScale(card, card.classList.contains('hovered') || card.classList.contains('open'));
+  setScale(card, card.classList.contains('hovered') || card.classList.contains('open') || card.classList.contains('allc'));
 }
-$('cards').addEventListener('mouseover', e => {
+onCards('mouseover', e => {
   const zone = e.target.closest('.seg, .pn, .apps');
-  if (zone) setActs(zone.closest('.scard'), zone.dataset.cat, zone.classList.contains('seg'));
+  if (!zone) return;
+  const card = zone.closest('.scard');
+  linkedCards(card).forEach(c => setActs(c, zone.dataset.cat, zone.classList.contains('seg')));
+  const cat = zone.dataset.cat;
+  if (PIPE?.cats.has(cat)) setPreview({ st: cat });
 });
-$('cards').addEventListener('mouseout', e => {
+onCards('mouseout', e => {
   const zone = e.target.closest('.pipe, .pn, .apps');
-  if (zone && !zone.contains(e.relatedTarget)) setActs(zone.closest('.scard'), null);
+  if (zone && !zone.contains(e.relatedTarget)) {
+    linkedCards(zone.closest('.scard')).forEach(c => setActs(c, null));
+    setPreview({});
+    syncCards();
+  }
 });
 
 const tip = document.createElement('div');
 tip.id = 'tip';
 tip.hidden = true;
 document.body.appendChild(tip);
-$('cards').addEventListener('mousemove', e => {
+onCards('mousemove', e => {
   const r = e.target.closest?.('rect.hit');
   tip.classList.remove('wrap');
   tip.hidden = !r;
@@ -1137,7 +1649,22 @@ $('cards').addEventListener('mousemove', e => {
   tip.style.left = `${Math.min(e.clientX + 12, innerWidth - w - 8)}px`;
   tip.style.top = `${e.clientY + 16}px`;
 });
-$('cards').addEventListener('mouseleave', () => { tip.hidden = true; });
+onCards('mouseleave', () => { tip.hidden = true; });
+onCards('mouseover', e => {
+  const r = e.target.closest?.('rect.hit');
+  if (!r) return;
+  linkedCards(r.closest('.scard')).forEach(c => {
+    const h = c.querySelector(`rect.hit[data-y="${r.dataset.y}"]`);
+    const el = c.querySelector('.pend');
+    if (h && el) el.textContent = `${r.dataset.y}: ${nf(h.dataset.a)} applied`;
+  });
+});
+onCards('mouseout', e => {
+  if (!e.target.closest?.('rect.hit') || e.relatedTarget?.closest?.('rect.hit')) return;
+  linkedCards(e.target.closest('.scard')).forEach(c => {
+    if (c.dataset.sig === undefined || c.dataset.sig === DEFAULT_ACTS.join(',')) c.querySelector('.pend').textContent = '';
+  });
+});
 $('tbl').addEventListener('mousemove', e => {
   const td = e.target.closest?.('td[data-gl]');
   tip.hidden = !td;
@@ -1149,11 +1676,16 @@ $('tbl').addEventListener('mousemove', e => {
   tip.style.top = `${e.clientY + 16}px`;
 });
 $('tbl').addEventListener('mouseleave', () => { tip.hidden = true; tip.classList.remove('wrap'); });
-$('cards').addEventListener('click', e => {
+onCards('click', e => {
+  const hit = e.target.closest('rect.hit');
+  if (hit) { toggleLock('year', +hit.dataset.y); return; }
+  const zone = e.target.closest('.seg, .pn'), cat = zone?.dataset.cat;
+  if (cat && PIPE?.cats.has(cat)) { toggleLock('st', cat); return; }
   const b = e.target.closest('[data-code], [data-reset]');
   if (!b) return;
   $('state').value = b.dataset.code || '';
   selectState(b.dataset.code || '');
+  if (!b.dataset.code) window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 $('dash').addEventListener('click', e => {
@@ -1176,27 +1708,38 @@ $('newer').addEventListener('click', () => go(-1));
 $('version').addEventListener('change', e => { st.idx = +e.target.value; showVersion(); });
 $('q').addEventListener('input', () => { st.page = 0; renderTable(); });
 $('filterbar').addEventListener('click', e => { if (e.target.id === 'resetfilters') resetFilters(); });
-$('cloudmodes').addEventListener('click', e => {
-  const m = e.target.closest('[data-mode]')?.dataset.mode;
-  if (!m || m === cloudMode) return;
-  cloudMode = m;
-  buildCloud();
+$('ignoredel').checked = ignoreDel;
+$('ignoredel').addEventListener('change', e => {
+  ignoreDel = e.target.checked;
+  try { localStorage.setItem('ignoreDelisted', ignoreDel ? '1' : '0'); } catch (err) {}
+  renderDash(st.code);
+  if (st.code && st.commits.length) showVersion();
 });
-$('cloud').addEventListener('click', e => {
-  const node = e.target.closest('text.cw');
-  if (!node) return;
-  const w = d3.select(node).datum().key;
-  const col = cloudCol();
-  const was = cloudTerms().includes(w);
+$('dnreset').addEventListener('click', () => { $('state').value = ''; selectState(''); });
+$('exlist').addEventListener('mouseover', e => {
+  const key = e.target.closest('[data-key]')?.dataset.key;
+  if (key == null) return;
+  prevCol = { col: cloudCol(), val: /\s/.test(key) ? `"${key}"` : key };
+  if (st.cur) renderTable({ preview: true });
+});
+$('exlist').addEventListener('mouseout', e => {
+  if (!e.target.closest('[data-key]') || e.relatedTarget?.closest?.('[data-key]')) return;
+  prevCol = null;
+  if (st.cur) renderTable({ preview: true });
+});
+$('exmode').addEventListener('change', e => { cloudMode = e.target.value; renderExplore(); });
+$('exlist').addEventListener('click', e => {
+  const key = e.target.closest('[data-key]')?.dataset.key;
+  if (key == null) return;
+  const col = cloudCol(), was = cloudTerms().includes(key);
   for (const [, , , , c] of CLOUD_MODES) delete st.colFilters[c];
-  st.colFilters[col] = was ? '' : /\s/.test(w) ? `"${w}"` : w;
+  st.colFilters[col] = was ? '' : /\s/.test(key) ? `"${key}"` : key;
   if (st.colFilters[col] && st.cur.fields.includes(col) && !st.cols.includes(col)) {
     st.cols.push(col);
     renderColPicker();
   }
   st.page = 0;
   renderTable();
-  updateCloudSel();
 });
 $('onlychg').addEventListener('change', () => { st.page = 0; renderTable(); });
 $('colpick').addEventListener('change', () => {
@@ -1238,7 +1781,6 @@ $('tbl').addEventListener('input', e => {
   st.colFilters[f] = e.target.value;
   st.page = 0;
   renderTable();
-  updateCloudSel();
   const inp = [...$('tbl').querySelectorAll('input[data-cf]')].find(i => i.dataset.cf === f);
   if (inp) { inp.focus(); inp.setSelectionRange(inp.value.length, inp.value.length); }
 });
@@ -1266,7 +1808,7 @@ $('pager').addEventListener('click', e => {
   $('tablewrap').scrollTop = 0;
 });
 document.addEventListener('keydown', e => {
-  if (!st.commits.length || e.target.matches('input, select, textarea')) return;
+  if (!diffMode || !st.commits.length || e.target.matches('input, select, textarea')) return;
   if (e.key === 'ArrowLeft') go(1);
   else if (e.key === 'ArrowRight') go(-1);
 });
